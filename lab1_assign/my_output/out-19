@@ -1,5 +1,7 @@
 reading new line
-read line :
+read line :0
+defcount :0
+
 reading new line
 read line :0
 useCount :0
@@ -13,3 +15,6 @@ insCount :5
 	Type :I	operand :0
 	Type :R	operand :3001
 
+reading new line
+read line :
+Symbol Table

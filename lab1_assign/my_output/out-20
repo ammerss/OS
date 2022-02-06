@@ -1,21 +1,24 @@
 reading new line
-read line : bourbon 1 
-defcount :0
+read line :1 bourbon 1 
+defcount :1
 
-useCount :1
+Symbol : bourbonoffset : 2
+	val :1
+
 reading new line
 read line :1 whiskey
-	Symbol : 1
-
-insCount :0
+useCount :1
+	Symbol : whiskey
 
 reading new line
-read line : R 2 I 2 I 8 I 0 
-defcount :0
+read line :4 R 2 I 2 I 8 I 0 
+insCount :4
+	Type :R	operand :2
+	Type :I	operand :2
+	Type :I	operand :8
+	Type :I	operand :0
 
-useCount :2
-	Symbol : I
-	Symbol : 2
-
-insCount :0
-
+reading new line
+read line :
+Symbol Table
+bourbon 2

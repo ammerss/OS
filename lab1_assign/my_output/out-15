@@ -1,13 +1,13 @@
 terminate called after throwing an instance of 'std::logic_error'
   what():  basic_string::_M_construct null not valid
 reading new line
-read line :3 a 1 b 2
-defcount :3
+read line :23 a 1 b 2
+defcount :23
 
-Symbol : aoffset : 2
+Symbol : aoffset : 3
 	val :1
 
-Symbol : boffset : 6
+Symbol : boffset : 7
 	val :2
 reading new line
 read line :

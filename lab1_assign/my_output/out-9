@@ -1,5 +1,7 @@
 reading new line
-read line :
+read line :0
+defcount :0
+
 reading new line
 read line :1  X31
 useCount :1
@@ -11,32 +13,5 @@ insCount :1
 	Type :I	operand :2001
 
 reading new line
-read line :1  X31 0
-defcount :1
-
-Symbol : X31offset : 3
-	val :0
-
-reading new line
-read line :0
-useCount :0
-
-reading new line
-read line :1  I 3001
-insCount :1
-	Type :I	operand :3001
-
-reading new line
-read line :0
-defcount :0
-
-reading new line
-read line :1  X31
-useCount :1
-	Symbol : X31
-
-reading new line
-read line :1  E 4000
-insCount :1
-	Type :E	operand :4000
-
+read line :
+Symbol Table

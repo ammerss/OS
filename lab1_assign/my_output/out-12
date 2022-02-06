@@ -1,13 +1,18 @@
 reading new line
-read line : z
-defcount :0
+read line :1 z
+defcount :1
 
+Symbol : zoffset : 2
 reading new line
 read line :0
-useCount :0
+	val :0
 
 reading new line
 read line :1 I 400
-insCount :1
-	Type :I	operand :400
+useCount :1
+	Symbol : I
 
+insCount :400
+reading new line
+read line :
+	Type :

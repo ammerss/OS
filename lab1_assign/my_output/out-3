@@ -1,14 +1,14 @@
 reading new line
-read line :3   X11 6  X12 8  X13 9
+read line : 3   X11 6  X12 8  X13 9
 defcount :3
 
-Symbol : X11offset : 4
+Symbol : X11offset : 5
 	val :6
 
-Symbol : X12offset : 11
+Symbol : X12offset : 12
 	val :8
 
-Symbol : X13offset : 18
+Symbol : X13offset : 19
 	val :9
 
 reading new line
@@ -32,110 +32,8 @@ insCount :10
 	Type :R	operand :1009
 
 reading new line
-read line : 3   X21 0  X22 2  X23 5
-defcount :3
-
-Symbol : X21offset : 5
-	val :0
-
-Symbol : X22offset : 12
-	val :2
-
-Symbol : X23offset : 19
-	val :5
-
-reading new line
-read line : 3   X11  X13  X31
-useCount :3
-	Symbol : X11
-	Symbol : X13
-	Symbol : X31
-
-reading new line
-read line : 8   E 2001  E 2000  R 2002  E 2000  E 2001  R 2005  E 2001  E 2002
-insCount :8
-	Type :E	operand :2001
-	Type :E	operand :2000
-	Type :R	operand :2002
-	Type :E	operand :2000
-	Type :E	operand :2001
-	Type :R	operand :2005
-	Type :E	operand :2001
-	Type :E	operand :2002
-
-reading new line
-read line : 1   X31 2
-defcount :1
-
-Symbol : X31offset : 5
-	val :2
-
-reading new line
-read line : 0
-useCount :0
-
-reading new line
-read line : 3   A 3000  I 3701  A 3002
-insCount :3
-	Type :A	operand :3000
-	Type :I	operand :3701
-	Type :A	operand :3002
-
-reading new line
-read line : 0
-defcount :0
-
-reading new line
-read line : 3   X31  X11  X22
-useCount :3
-	Symbol : X31
-	Symbol : X11
-	Symbol : X22
-
-reading new line
-read line : 6   R 4000  E 4000  E 4001  R 4003  R 4004  E 4002
-insCount :6
-	Type :R	operand :4000
-	Type :E	operand :4000
-	Type :E	operand :4001
-	Type :R	operand :4003
-	Type :R	operand :4004
-	Type :E	operand :4002
-
-reading new line
-read line : 00
-defcount :0
-
-reading new line
-read line : 00
-useCount :0
-
-reading new line
-read line : 3    R 5000  I 5987  R 5002
-insCount :3
-	Type :R	operand :5000
-	Type :I	operand :5987
-	Type :R	operand :5002
-
-reading new line
-read line : 1   X61 2
-defcount :1
-
-Symbol : X61offset : 5
-	val :2
-
-reading new line
-read line : 1   X31
-useCount :1
-	Symbol : X31
-
-reading new line
-read line : 6   R 6000  E 6000  A 6002  A 6003  R 6004  I 6005
-insCount :6
-	Type :R	operand :6000
-	Type :E	operand :6000
-	Type :A	operand :6002
-	Type :A	operand :6003
-	Type :R	operand :6004
-	Type :I	operand :6005
-
+read line :
+Symbol Table
+X11 5
+X12 12
+X13 19

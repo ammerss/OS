@@ -2,6 +2,7 @@
 #include <fstream>
 #include <string.h>
 #include <string>
+#include <map>
 #include <vector>
 #include <utility>
 using namespace std;
@@ -11,8 +12,8 @@ char buff[512]={0,};
 int num_lines;
 int cnt_lines;
 ifstream f;
-vector<pair<string, int> > sym_table;
-
+//map<string,int> table;
+vector<string,int> table;
 char* getToken(){
 	char* tok;
 	const char* delim = " \n\t";
@@ -28,24 +29,7 @@ char* getToken(){
 		flag = 0;
 	} 
 	return tok;
-	/*
-	int cnt_line = 0;
-	char line[512]={0,};
-	char* tok;
-	int offset;
-	const char* delim=" \n\t";
-	while(f.getline(line,512)){
-		cout<<"line"<<cnt_line<<":"<<"\n";
-		cout<<line<<"\n";
-		cnt_line++;
-		tok = strtok(line,delim);
-		while(tok!=NULL){
-			offset = tok - line;
-			printf("Token[%s], offset[%d], line[%d]\n",tok,offset,cnt_line);
-			tok = strtok(NULL,delim);
-		}
-	}*/
-}
+	}
 int readInt(){
 	int i = 0;
 	char *s = getToken();
@@ -57,13 +41,16 @@ int readInt(){
 	return i;
 }
 int checkInt(int i){
-	if(i==-1) return -1; // NULL
+	if(i==-1) {
+		flag=-1;
+		return -1; // NULL
+	}	
 	if(i>9999) return 9999;
 }
 void readSym(){
 	char *s = getToken();
 	cout <<"\nSymbol : " << s << "offset : " << s-buff<<"\n";
-	sym_table.push_back({s,s-buff});
+	table.insert({s,s-buff});
 }
 void getDef(){
 	int defCount = readInt();
@@ -97,13 +84,24 @@ void getIns(){
 	cout <<"\n";
 }
 void passOne(){
-	while(f.get()!=EOF){
+	while(true){
 		getDef();
+		if(flag==-1)break;
 		getUse();
 		getIns();
 	}
 }
+void printSymbolTable(){
+	cout<<"Symbol Table\n";
+	
+	for(map<string,int> const& x : table){
+		cout<<x[0]<<"\n";
+	}
 
+	/*for(int i=0;i<symbol_table.size();i++){
+		cout<<symbol_table[i]<<"\n";
+	}*/
+}
 int main(int argc, char *argv[]){
 	f.open(argv[1]);
 	if (f.fail()){
@@ -111,5 +109,6 @@ int main(int argc, char *argv[]){
 		return -1;
 	}
 	passOne();
+	printSymbolTable();
 	return 0;
 }

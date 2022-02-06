@@ -1,83 +1,81 @@
 reading new line
-read line : xy 2
-defcount :0
+read line :1 xy 2
+defcount :1
 
-useCount :2
+Symbol : xyoffset : 2
+	val :2
+
 reading new line
 read line :2 z xy
-	Symbol : 2
+useCount :2
 	Symbol : z
-
-insCount :0
+	Symbol : xy
 
 reading new line
-read line : R 1004  I 5678  E 2000  R 8002  E 7001
+read line :5 R 1004  I 5678  E 2000  R 8002  E 7001
+insCount :5
+	Type :R	operand :1004
+	Type :I	operand :5678
+	Type :E	operand :2000
+	Type :R	operand :8002
+	Type :E	operand :7001
+
+reading new line
+read line :0
 defcount :0
 
-useCount :1004
-	Symbol : I
-	Symbol : 5678
-	Symbol : E
-	Symbol : 2000
-	Symbol : R
-	Symbol : 8002
-	Symbol : E
-	Symbol : 7001
-reading new line
-read line :0
-	Symbol : 0
 reading new line
 read line :1 z
-	Symbol : 1
+useCount :1
 	Symbol : z
+
 reading new line
 read line :6 R 8001  E 1000  E 1000  E 3000  R 1002  A 1010
-	Symbol : 6
-	Symbol : R
-	Symbol : 8001
-	Symbol : E
-	Symbol : 1000
-	Symbol : E
-	Symbol : 1000
-	Symbol : E
-	Symbol : 3000
-	Symbol : R
-	Symbol : 1002
-	Symbol : A
-	Symbol : 1010
+insCount :6
+	Type :R	operand :8001
+	Type :E	operand :1000
+	Type :E	operand :1000
+	Type :E	operand :3000
+	Type :R	operand :1002
+	Type :A	operand :1010
+
 reading new line
 read line :0
-	Symbol : 0
+defcount :0
+
 reading new line
 read line :1 z
-	Symbol : 1
+useCount :1
 	Symbol : z
+
 reading new line
 read line :2 R 5001  E 4000
-	Symbol : 2
-	Symbol : R
-	Symbol : 5001
-	Symbol : E
-	Symbol : 4000
+insCount :2
+	Type :R	operand :5001
+	Type :E	operand :4000
+
 reading new line
 read line :1 z 2
-	Symbol : 1
-	Symbol : z
-	Symbol : 2
+defcount :1
+
+Symbol : zoffset : 2
+	val :2
+
 reading new line
 read line :2 xy z
-	Symbol : 2
+useCount :2
 	Symbol : xy
 	Symbol : z
+
 reading new line
 read line :3 A 8000  E 1001  E 2000
-	Symbol : 3
-	Symbol : A
-	Symbol : 8000
-	Symbol : E
-	Symbol : 1001
-	Symbol : E
-	Symbol : 2000
+insCount :3
+	Type :A	operand :8000
+	Type :E	operand :1001
+	Type :E	operand :2000
+
 reading new line
 read line :
-	Symbol : 
+Symbol Table
+xy 2
+z 2

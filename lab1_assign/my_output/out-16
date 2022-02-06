@@ -1,5 +1,7 @@
 reading new line
-read line :
+read line :0
+defcount :0
+
 reading new line
 read line :23 a b c      
 useCount :23

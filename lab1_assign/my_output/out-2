@@ -1,97 +1,97 @@
 reading new line
-read line :
+read line :1
+defcount :1
 reading new line
 read line :    xy 2
-useCount :0
 
-insCount :2
+Symbol : xyoffset : 4
+	val :2
+
 reading new line
 read line :2 z            xy
-	Type :2	operand :z
-	Type :xyreading new line
+useCount :2
+	Symbol : z
+	Symbol : xy
+
+reading new line
 read line :5 	R 1004  I 5678  
-	operand :5
+insCount :5
+	Type :R	operand :1004
+	Type :I	operand :5678
+reading new line
+read line :      E 2000  R 
+	Type :E	operand :2000
+	Type :Rreading new line
+read line :8002  E 7001  0      1 z
+	operand :8002
+	Type :E	operand :7001
 
 defcount :0
 
-useCount :1004
-	Symbol : I
-	Symbol : 5678
-reading new line
-read line :     E 2000  R 
-	Symbol : E
-	Symbol : 2000
-	Symbol : R
-reading new line
-read line :8002  E 7001  0      1 z
-	Symbol : 8002
-	Symbol : E
-	Symbol : 7001
-	Symbol : 0
-	Symbol : 1
+useCount :1
 	Symbol : z
+
 reading new line
 read line :6 R 8001  E 1000  E 
-	Symbol : 6
-	Symbol : R
-	Symbol : 8001
-	Symbol : E
-	Symbol : 1000
-	Symbol : E
-reading new line
+insCount :6
+	Type :R	operand :8001
+	Type :E	operand :1000
+	Type :Ereading new line
 read line :1000  E 3000  R 1002  A 1010
-	Symbol : 1000
-	Symbol : E
-	Symbol : 3000
-	Symbol : R
-	Symbol : 1002
-	Symbol : A
-	Symbol : 1010
+	operand :1000
+	Type :E	operand :3000
+	Type :R	operand :1002
+	Type :A	operand :1010
+
 reading new line
 read line :0
-	Symbol : 0
+defcount :0
+
 reading new line
 read line :1
-	Symbol : 1
+useCount :1
 reading new line
 read line :z
 	Symbol : z
+
 reading new line
 read line :2
-	Symbol : 2
+insCount :2
 reading new line
 read line :R
-	Symbol : R
-reading new line
+	Type :Rreading new line
 read line :5001
-	Symbol : 5001
+	operand :5001
 reading new line
 read line :E 4000
-	Symbol : E
-	Symbol : 4000
+	Type :E	operand :4000
+
 reading new line
 read line :1 z 2
-	Symbol : 1
-	Symbol : z
-	Symbol : 2
+defcount :1
+
+Symbol : zoffset : 2
+	val :2
+
 reading new line
 read line :2
-	Symbol : 2
+useCount :2
 reading new line
 read line :xy z
 	Symbol : xy
 	Symbol : z
+
 reading new line
 read line :3 A 8000
-	Symbol : 3
-	Symbol : A
-	Symbol : 8000
+insCount :3
+	Type :A	operand :8000
 reading new line
 read line :E 1001  E 2000
-	Symbol : E
-	Symbol : 1001
-	Symbol : E
-	Symbol : 2000
+	Type :E	operand :1001
+	Type :E	operand :2000
+
 reading new line
 read line :
-	Symbol : 
+Symbol Table
+xy 4
+z 2
