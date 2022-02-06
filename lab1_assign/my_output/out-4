@@ -1,0 +1,46 @@
+reading new line
+read line :
+reading new line
+read line :1  X21
+useCount :1
+	Symbol : X21
+
+reading new line
+read line :3  E 2000  E 2000  E 2000
+insCount :3
+	Type :E	operand :2000
+	Type :E	operand :2000
+	Type :E	operand :2000
+
+reading new line
+read line :1  X21 0
+defcount :1
+
+Symbol : X21offset : 3
+	val :0
+
+reading new line
+read line :0
+useCount :0
+
+reading new line
+read line :1  A 2936
+insCount :1
+	Type :A	operand :2936
+
+reading new line
+read line :1  X21 1
+defcount :1
+
+Symbol : X21offset : 3
+	val :1
+
+reading new line
+read line :0
+useCount :0
+
+reading new line
+read line :1  I 3465
+insCount :1
+	Type :I	operand :3465
+

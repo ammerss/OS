@@ -1,0 +1,21 @@
+reading new line
+read line : bourbon 1 
+defcount :0
+
+useCount :1
+reading new line
+read line :1 whiskey
+	Symbol : 1
+
+insCount :0
+
+reading new line
+read line : R 2 I 2 I 8 I 0 
+defcount :0
+
+useCount :2
+	Symbol : I
+	Symbol : 2
+
+insCount :0
+

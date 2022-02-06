@@ -1,0 +1,14 @@
+reading new line
+read line :
+reading new line
+read line :1  X21
+useCount :1
+	Symbol : X21
+
+reading new line
+read line :3  E 1001  E 1004  E 1222
+insCount :3
+	Type :E	operand :1001
+	Type :E	operand :1004
+	Type :E	operand :1222
+

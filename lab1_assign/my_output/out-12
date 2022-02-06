@@ -1,0 +1,13 @@
+reading new line
+read line : z
+defcount :0
+
+reading new line
+read line :0
+useCount :0
+
+reading new line
+read line :1 I 400
+insCount :1
+	Type :I	operand :400
+

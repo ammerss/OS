@@ -1,0 +1,26 @@
+reading new line
+read line :
+reading new line
+read line :0
+useCount :0
+
+reading new line
+read line :2 I 0000 I 0000
+insCount :2
+	Type :I	operand :0000
+	Type :I	operand :0000
+
+reading new line
+read line :0
+defcount :0
+
+reading new line
+read line :0
+useCount :0
+
+reading new line
+read line :511 iamnotprintinganyfurtherheretoillustratecatchingtheerrorattheearliestpoint
+insCount :511
+	Type :iamnotprintinganyfurtherheretoillustratecatchingtheerrorattheearliestpointreading new line
+read line :
+	operand :

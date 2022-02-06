@@ -1,0 +1,15 @@
+reading new line
+read line :
+reading new line
+read line :0
+useCount :0
+
+reading new line
+read line :5 R 10002 I 10002 I 40008 I 0 R 3001
+insCount :5
+	Type :R	operand :10002
+	Type :I	operand :10002
+	Type :I	operand :40008
+	Type :I	operand :0
+	Type :R	operand :3001
+

@@ -1,0 +1,15 @@
+reading new line
+read line : z
+defcount :0
+
+reading new line
+read line :0
+useCount :0
+
+reading new line
+read line :2 I 4000
+insCount :2
+	Type :I	operand :4000
+reading new line
+read line :
+	Type :
