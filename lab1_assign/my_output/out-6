@@ -2,5 +2,15 @@ read line : 0
 read line : 1  X21
 read line : 3  E 1000  E 1000  E 1000
 read line : 
+read line : 1  X21 0
+read line : 0
+read line : 1  A 2956
+read line : 
+read line : 1  X31 0
+read line : 0
+read line : 1  R 3056
+read line : 
 reach eof
 Symbol Table
+X21=7
+X31=8

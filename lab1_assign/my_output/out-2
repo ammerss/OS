@@ -21,5 +21,5 @@ read line : E 1001  E 2000
 read line : 
 reach eof
 Symbol Table
-xy=4
-z=15
+xy=5
+z=16

@@ -7,5 +7,5 @@ read line : 5 R 1004  I 5678  E 2000  R 8002  E 7001
 read line : 
 reach eof
 Symbol Table
-ab=2
-xy=5
+ab=3
+xy=6

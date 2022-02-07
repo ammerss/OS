@@ -1,1 +1,3 @@
 read line : 1
+read line : 
+Parse Error line 1 offset 452681025: SYM_EXPECTED

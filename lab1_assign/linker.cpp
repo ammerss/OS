@@ -14,11 +14,13 @@ char buff[512]={0,};
 int linenum;
 int lineoffset;
 int cur_pointer;
+int last_token_len;
 ifstream f;
 map<string,int> table;
 const int DEF_LIMIT=16;
 const int BUFF_SIZE=512;
-const char* DELIMITER=" \n\t";
+const char* DELIMITER=" \t";
+const char* eof;
 
 void parse_error(int errorcode);
 char* getToken();
@@ -29,7 +31,7 @@ void getUse();
 void isIEAR(char *s);
 void getIns();	
 void passOne();
-void void checkSymLen(char *s);
+void checkSymLen(char *s);
 	
 void parse_error(int errcode){
 	static char* errstr[] = {
@@ -51,14 +53,17 @@ char* getToken(){
 		if(tok==NULL) flag = 1;
 	}
 	if(flag==1){
+		do{
 		f.getline(buff,BUFF_SIZE);
-		linenum++;
 		printf("read line : %s\n", buff);
 		tok = strtok(buff,DELIMITER);
 		flag = 0;
-		if(tok==NULL) flag=-1;
+		if(tok == NULL) flag=-1;
+		else linenum++;
+		}while(tok == NULL && !f.eof());
+		
 	} 
-	if(tok!=NULL) lineoffset = tok - buff;
+	lineoffset = tok - buff + 1;
 	return tok;
 	}
 
@@ -68,18 +73,16 @@ void isInt(char *s){
 	if(strlen(s)>30) check = false;
 	if(check==true){
 		while(*s){
-			if(*s >= '0' && *s <= '9'){
-				//i = i*10 + (*s - '0');
-				s++;
+			if(!(*s >= '0' && *s <= '9')){
+				check = false;
+				break;
 			}
-			else{
-				bool check = false;
-			}
+			s++;
 		}
 	}
 	cout.flush();
 	if(check == false){
-		parse_error(1);
+		parse_error(0);
 		exit(1);
 	}
 }
@@ -108,6 +111,7 @@ void isSymbol(char *s){
 void checkSymLen(char *s){
 	bool check = true;
 	if(strlen(s)>16) check = false;
+	cout.flush();
 	if(check==false){
 		parse_error(3);
 		exit(1);
@@ -115,7 +119,7 @@ void checkSymLen(char *s){
 }
 void getDef(){
 	char *defCount_s = getToken();
-	if(defCount_s==NULL) return; // end of file
+	if(f.eof()) return; // end of file
 	isInt(defCount_s);
 	int defCount = stoi(defCount_s);
 	if(defCount > DEF_LIMIT){
@@ -148,7 +152,14 @@ void getUse(){
 	}
 }
 void isIEAR(char *s){
-	if( (*s != 'I' && *s != 'E' && *s!= 'A' && *s!= 'R') || strlen(s)>1 ){
+	bool check = true;
+	
+	if(s==NULL) check = false;
+	else if(strlen(s)>1) check = false;
+	else if(*s != 'I' && *s != 'E' && *s!= 'A' && *s!= 'R') check = false;
+	
+	cout.flush();
+	if(check == false){
 		parse_error(2);
 		exit(1);
 	}
@@ -157,12 +168,11 @@ void getIns(){
 	char *insCount_s = getToken();
 	isInt(insCount_s);
 	int insCount = stoi(insCount_s);
-	if(insCount >= 512){
+	if(insCount >= 511){
 		parse_error(6);
 		exit(1);
 	}
 	cur_pointer += insCount;
-	cout << "instruction Count : "<<insCount<<"\n";
 	for(int i=0;i<insCount;i++){
 		char * ins = getToken();
 		isIEAR(ins);
@@ -173,7 +183,7 @@ void getIns(){
 void passOne(){
 	while(true){
 		getDef();
-		if(flag==-1){
+		if(f.eof()){
 			printf("reach eof\n");
 			break;
 		}

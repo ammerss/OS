@@ -2,5 +2,14 @@ read line : 0
 read line : 1  X31
 read line : 1  I 2001
 read line : 
+read line : 1  X31 0
+read line : 0
+read line : 1  I 3001
+read line : 
+read line : 0
+read line : 1  X31
+read line : 1  E 4000
+read line : 
 reach eof
 Symbol Table
+X31=5
