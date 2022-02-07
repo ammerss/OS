@@ -12,4 +12,4 @@ read line : 1  I 3465
 read line : 
 reach eof
 Symbol Table
-X21=7
+X21=7Error:This variable is multiple times defined; first value used

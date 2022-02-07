@@ -16,7 +16,8 @@ int lineoffset;
 int cur_pointer;
 int last_token_len;
 ifstream f;
-map<string,int> table;
+map<string,int> symbol_table;
+map<string,bool> symbol_multiple_defined;
 const int DEF_LIMIT=16;
 const int BUFF_SIZE=512;
 const char* DELIMITER=" \t";
@@ -32,7 +33,7 @@ void isIEAR(char *s);
 void getIns();	
 void passOne();
 void checkSymLen(char *s);
-	
+
 void parse_error(int errcode){
 	static char* errstr[] = {
 		"NUM_EXPECTED",
@@ -130,7 +131,9 @@ void getDef(){
 	for(int i=0;i<defCount;i++){
 		char *symbol = getToken();
 		isSymbol(symbol);
-		table.insert({symbol,lineoffset+cur_pointer});
+		if(symbol_table.find(symbol) != symbol_table.end())
+			symbol_multiple_defined.insert({symbol,true});
+		else symbol_table.insert({symbol,lineoffset+cur_pointer});
 	
 		char *addr_s = getToken();
 		isInt(addr_s);
@@ -192,21 +195,29 @@ void passOne(){
 	}
 	return;
 }
+void passTwo(){
+
+}
 void printSymbolTable(){
 	cout<<"Symbol Table\n";	
-	for(auto const& x : table){
-		cout << x.first<<"="<<x.second<<endl;
+	for(auto const& x : symbol_table){
+		cout << x.first<<"="<<x.second;
+		if(symbol_multiple_defined[x.first]) 
+			cout << "Error:This variable is multiple times defined; first value used"<<endl;
+		else cout <<endl;
 	}
 }
 int main(int argc, char *argv[]){
 	f.open(argv[1]);
-	if (f.fail()){
-		cerr<<"file open error"<<"\n";
-		return -1;
-	}
 	passOne();
 	f.close();
+	
 	printSymbolTable();
+
+	f.open(argv[1]);
+	passTwo();
+	f.close();
+
 	return 0;
 }
 //when i try to print the null pointer the program seems to stop printing
