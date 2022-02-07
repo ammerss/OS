@@ -22,9 +22,15 @@ const char* DELIMITER=" \n\t";
 
 void parse_error(int errorcode);
 char* getToken();
-int readInt();
 void isInt(char *s);
-
+void isSymbol(char *s);
+void getDef();
+void getUse();
+void isIEAR(char *s);
+void getIns();	
+void passOne();
+void void checkSymLen(char *s);
+	
 void parse_error(int errcode){
 	static char* errstr[] = {
 		"NUM_EXPECTED",
@@ -49,7 +55,6 @@ char* getToken(){
 		linenum++;
 		printf("read line : %s\n", buff);
 		tok = strtok(buff,DELIMITER);
-		if(tok==NULL) flag = -1;
 		flag = 0;
 		if(tok==NULL) flag=-1;
 	} 
@@ -86,15 +91,25 @@ bool null(char *s){
 void isSymbol(char *s){
 	bool check = true;
 	if(s == NULL) check = false;
-	else if(strlen(s)>16) check = false;
 	else if(!isalpha(*s)) check = false;
-	while(*s){
-		if(!isalpha(*s) && !isdigit(*s)) check = false;
-		s++;
+	if(check==true){
+		while(*s){
+			if(!isalpha(*s) && !isdigit(*s)) check = false;
+			s++;
+		}
 	}
 	cout.flush();
 	if(check==false){
 		parse_error(1);
+		exit(1);
+	}
+	checkSymLen(s);
+}
+void checkSymLen(char *s){
+	bool check = true;
+	if(strlen(s)>16) check = false;
+	if(check==false){
+		parse_error(3);
 		exit(1);
 	}
 }
@@ -121,6 +136,7 @@ void getUse(){
 	char *useCount_s = getToken();
 	isInt(useCount_s);
 	int useCount = stoi(useCount_s);
+	
 	if(useCount > DEF_LIMIT){
 		parse_error(5);
 		exit(1);
