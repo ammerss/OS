@@ -1,61 +1,11 @@
-reading new line
-read line :1 ab 6
-tok is : 1
-isInt : 1
-defcount :1
-
-Symbol : aboffset : 2
-	val :isInt : 6
-6
-
-reading new line
-read line :0 
-tok is : 0
-isInt : 0
-useCount :0
-
-reading new line
-read line :3 I 1000 I 2000 I 3000
-tok is : 3
-isInt : 3
-insCount :3
-I1	operand :1000
-I1	operand :2000
-I1	operand :3000
-
-reading new line
-read line :1 xy 8
-tok is : 1
-isInt : 1
-defcount :1
-
-Symbol : xyoffset : 2
-	val :isInt : 8
-8
-
-reading new line
-read line :2 z xy
-tok is : 2
-isInt : 2
-useCount :2
-
-Symbol : zoffset : 2
-
-
-Symbol : xyoffset : 4
-
-
-reading new line
-read line :5 R 1004  I 5678  E 2000  R 8002  E 7001
-tok is : 5
-isInt : 5
-insCount :5
-R1	operand :1004
-I1	operand :5678
-E1	operand :2000
-R1	operand :8002
-E1	operand :7001
-
-reading new line
-read line :
-tok is : 
+read line : 1 ab 6
+read line : 0 
+read line : 3 I 1000 I 2000 I 3000
+read line : 1 xy 8
+read line : 2 z xy
+read line : 5 R 1004  I 5678  E 2000  R 8002  E 7001
+read line : 
+reach eof
+Symbol Table
+ab=2
+xy=5

@@ -1,23 +1,6 @@
-reading new line
-read line :0
-tok is : 0
-isInt : 0
-defcount :0
-
-reading new line
-read line :0
-tok is : 0
-isInt : 0
-useCount :0
-
-reading new line
-read line :2 I 0000 I 0000
-tok is : 2
-isInt : 2
-insCount :2
-I1	operand :0000
-I1	operand :0000
-
-reading new line
-read line :
-tok is : 
+read line : 0
+read line : 0
+read line : 2 I 0000 I 0000
+read line : 
+reach eof
+Symbol Table

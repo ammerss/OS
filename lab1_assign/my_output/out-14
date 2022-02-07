@@ -1,8 +1,1 @@
-reading new line
-read line :1 z a
-tok is : 1
-isInt : 1
-defcount :1
-
-Symbol : zoffset : 2
-	val :Parse Error line 1 offset 4: NUM_EXPECTED
+read line : 1 z a

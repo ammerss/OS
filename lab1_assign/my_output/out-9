@@ -1,25 +1,6 @@
-reading new line
-read line :0
-tok is : 0
-isInt : 0
-defcount :0
-
-reading new line
-read line :1  X31
-tok is : 1
-isInt : 1
-useCount :1
-
-Symbol : X31offset : 3
-
-
-reading new line
-read line :1  I 2001
-tok is : 1
-isInt : 1
-insCount :1
-I1	operand :2001
-
-reading new line
-read line :
-tok is : 
+read line : 0
+read line : 1  X31
+read line : 1  I 2001
+read line : 
+reach eof
+Symbol Table

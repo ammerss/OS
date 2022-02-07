@@ -1,16 +1,2 @@
-reading new line
-read line :23 a 1 b 2
-tok is : 23
-isInt : 23
-defcount :23
-
-Symbol : aoffset : 3
-	val :isInt : 1
-1
-
-Symbol : boffset : 7
-	val :isInt : 2
-2
-reading new line
-read line :
-tok is : Parse Error line 2 offset 9: SYM_EXPECTED
+read line : 23 a 1 b 2
+Parse Error line 1 offset 0: TOO_MANY_DEF_IN_MODULE

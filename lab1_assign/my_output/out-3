@@ -1,49 +1,9 @@
-reading new line
-read line : 3   X11 6  X12 8  X13 9
-tok is : 3
-isInt : 3
-defcount :3
-
-Symbol : X11offset : 5
-	val :isInt : 6
-6
-
-Symbol : X12offset : 12
-	val :isInt : 8
-8
-
-Symbol : X13offset : 19
-	val :isInt : 9
-9
-
-reading new line
-read line : 2   X22  X31
-tok is : 2
-isInt : 2
-useCount :2
-
-Symbol : X22offset : 5
-
-
-Symbol : X31offset : 10
-
-
-reading new line
-read line :10   R 1000  E 1001  E 1000  E 1001  E 1000  E 1000  A 1006  R 1007  A 1008  R 1009
-tok is : 10
-isInt : 10
-insCount :10
-R1	operand :1000
-E1	operand :1001
-E1	operand :1000
-E1	operand :1001
-E1	operand :1000
-E1	operand :1000
-A1	operand :1006
-R1	operand :1007
-A1	operand :1008
-R1	operand :1009
-
-reading new line
-read line :
-tok is : 
+read line :  3   X11 6  X12 8  X13 9
+read line :  2   X22  X31
+read line : 10   R 1000  E 1001  E 1000  E 1001  E 1000  E 1000  A 1006  R 1007  A 1008  R 1009
+read line : 
+reach eof
+Symbol Table
+X11=5
+X12=12
+X13=19

@@ -16,11 +16,14 @@ int lineoffset;
 int cur_pointer;
 ifstream f;
 map<string,int> table;
+const int DEF_LIMIT=16;
+const int BUFF_SIZE=512;
+const char* DELIMITER=" \n\t";
 
 void parse_error(int errorcode);
 char* getToken();
 int readInt();
-bool isInt(char *s);
+void isInt(char *s);
 
 void parse_error(int errcode){
 	static char* errstr[] = {
@@ -38,135 +41,135 @@ char* getToken(){
 	char* tok;
 	const char* delim = " \n\t";
 	if(flag==0){
-		tok = strtok(NULL, delim); 
+		tok = strtok(NULL, DELIMITER); 
 		if(tok==NULL) flag = 1;
 	}
 	if(flag==1){
-		cout << "reading new line"<<"\n";
-		f.getline(buff,512);
+		f.getline(buff,BUFF_SIZE);
 		linenum++;
-		cout << "read line :" << buff <<"\n";
-		tok = strtok(buff,delim);
-		cout << "tok is : " << tok << "\n";
+		printf("read line : %s\n", buff);
+		tok = strtok(buff,DELIMITER);
+		if(tok==NULL) flag = -1;
 		flag = 0;
+		if(tok==NULL) flag=-1;
 	} 
 	if(tok!=NULL) lineoffset = tok - buff;
 	return tok;
 	}
-int readInt(){
-	int i = 0;
-	char *s = getToken();
-	if(s==NULL) return -1;
-	while( *s >= '0' && *s <= '9'){
-		i = i*10 + (*s - '0');
-		s++;
-	}
-	if(i>9999) return 9999;
-	return i;
-}
-int isInt(){
-	int i = 0;
-	char *s = getToken();
-	if(s==NULL) return -1;
-	while(*s){
-		if(*s >= '0' && *s <= '9'){
-			i = i*10 + (*s - '0');
-			s++;
-		}
-		else {
-			parse_error(0);
-			exit(1);
+
+void isInt(char *s){
+	bool check = true;
+	if(s == NULL) check = false;
+	if(strlen(s)>30) check = false;
+	if(check==true){
+		while(*s){
+			if(*s >= '0' && *s <= '9'){
+				//i = i*10 + (*s - '0');
+				s++;
+			}
+			else{
+				bool check = false;
+			}
 		}
 	}
-	cout << "isInt : " << i <<"\n";
-	if(i>9999) return 9999;	
-	return i;
+	cout.flush();
+	if(check == false){
+		parse_error(1);
+		exit(1);
+	}
 }
-int checkEOF(int i){ 
-	if(i==-1) {
-		flag=-1;
-		return -1; // NULL
-	}	
-	return i;
+bool null(char *s){
+	if(s==NULL) return true;       
+	return false;
 }
-bool isSym(char *s){
-	if(s == NULL) return false;
-	if(!isalpha(*s)) return false;
+
+void isSymbol(char *s){
+	bool check = true;
+	if(s == NULL) check = false;
+	else if(strlen(s)>16) check = false;
+	else if(!isalpha(*s)) check = false;
 	while(*s){
-		if(!isalpha(*s) && !isdigit(*s)) return false;
+		if(!isalpha(*s) && !isdigit(*s)) check = false;
 		s++;
 	}
-	return true;
-}
-void readSym(){
-	char *s = getToken();
-	if(!isSym(s)){
-		parse_error(1);	
+	cout.flush();
+	if(check==false){
+		parse_error(1);
 		exit(1);
 	}
-	if( strlen(s) > 16 ){
-		parse_error(3);
-		exit(1);
-	} 
-	cout <<"\nSymbol : " << s << "offset : " << s-buff<<"\n";
-	table.insert({s,lineoffset + cur_pointer});
 }
 void getDef(){
-	int defCount = isInt();
-	if(checkEOF(defCount)==-1) return;
-	cout<<"defcount :" <<defCount<<"\n";
-	for(int i=0;i<defCount;i++){
-		readSym();
-		//cout << "\tSymbol :" << getToken();//Symbol sym = readSym();
-		cout << "\tval :"<< isInt();//int val = readInt();
-		cout <<"\n";
+	char *defCount_s = getToken();
+	if(defCount_s==NULL) return; // end of file
+	isInt(defCount_s);
+	int defCount = stoi(defCount_s);
+	if(defCount > DEF_LIMIT){
+		parse_error(4);
+		exit(1);
 	}
-	cout <<"\n";
+		
+	for(int i=0;i<defCount;i++){
+		char *symbol = getToken();
+		isSymbol(symbol);
+		table.insert({symbol,lineoffset+cur_pointer});
+	
+		char *addr_s = getToken();
+		isInt(addr_s);
+	}
 }
 void getUse(){
-	int useCount = isInt();
-	cout << "useCount :" << useCount<<"\n";
-	for(int i=0;i<useCount;i++){
-		readSym();
-		cout <<"\n";
+	char *useCount_s = getToken();
+	isInt(useCount_s);
+	int useCount = stoi(useCount_s);
+	if(useCount > DEF_LIMIT){
+		parse_error(5);
+		exit(1);
 	}
-	cout <<"\n";
+
+	for(int i=0;i<useCount;i++){
+		char *s = getToken();
+		isSymbol(s);
+	}
 }
-void isIEAR(){
-	char *s = getToken();
+void isIEAR(char *s){
 	if( (*s != 'I' && *s != 'E' && *s!= 'A' && *s!= 'R') || strlen(s)>1 ){
 		parse_error(2);
 		exit(1);
 	}
-	cout << s << strlen(s) ;
 }
 void getIns(){
-	int insCount = isInt();
-	if(insCount >= 512-1){
+	char *insCount_s = getToken();
+	isInt(insCount_s);
+	int insCount = stoi(insCount_s);
+	if(insCount >= 512){
 		parse_error(6);
 		exit(1);
 	}
 	cur_pointer += insCount;
-	cout << "insCount :"<< insCount<<"\n";
+	cout << "instruction Count : "<<insCount<<"\n";
 	for(int i=0;i<insCount;i++){
-		isIEAR();
-		cout<<"\toperand :" << getToken();
-		cout <<"\n";
+		char * ins = getToken();
+		isIEAR(ins);
+		char * op = getToken();
+		isInt(op);
 	}
-	cout <<"\n";
 }
 void passOne(){
 	while(true){
 		getDef();
-		if(flag==-1)break;
+		if(flag==-1){
+			printf("reach eof\n");
+			break;
+		}
 		getUse();
 		getIns();
 	}
+	return;
 }
 void printSymbolTable(){
 	cout<<"Symbol Table\n";	
 	for(auto const& x : table){
-		cout<<x.first<<"="<<x.second<<"\n";
+		cout << x.first<<"="<<x.second<<endl;
 	}
 }
 int main(int argc, char *argv[]){
@@ -176,6 +179,8 @@ int main(int argc, char *argv[]){
 		return -1;
 	}
 	passOne();
+	f.close();
 	printSymbolTable();
 	return 0;
 }
+//when i try to print the null pointer the program seems to stop printing

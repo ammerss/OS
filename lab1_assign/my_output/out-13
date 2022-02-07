@@ -1,8 +1,1 @@
-reading new line
-read line :1
-tok is : 1
-isInt : 1
-defcount :1
-reading new line
-read line :
-tok is : Parse Error line 2 offset 0: SYM_EXPECTED
+read line : 1

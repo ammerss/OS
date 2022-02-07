@@ -1,32 +1,7 @@
-reading new line
-read line :1 bourbon 1 
-tok is : 1
-isInt : 1
-defcount :1
-
-Symbol : bourbonoffset : 2
-	val :isInt : 1
-1
-
-reading new line
-read line :1 whiskey
-tok is : 1
-isInt : 1
-useCount :1
-
-Symbol : whiskeyoffset : 2
-
-
-reading new line
-read line :4 R 2 I 2 I 8 I 0 
-tok is : 4
-isInt : 4
-insCount :4
-R1	operand :2
-I1	operand :2
-I1	operand :8
-I1	operand :0
-
-reading new line
-read line :
-tok is : 
+read line : 1 bourbon 1 
+read line : 1 whiskey
+read line : 4 R 2 I 2 I 8 I 0 
+read line : 
+reach eof
+Symbol Table
+bourbon=2
