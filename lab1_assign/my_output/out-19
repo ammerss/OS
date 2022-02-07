@@ -1,20 +1,26 @@
 reading new line
 read line :0
+tok is : 0
+isInt : 0
 defcount :0
 
 reading new line
 read line :0
+tok is : 0
+isInt : 0
 useCount :0
 
 reading new line
 read line :5 R 10002 I 10002 I 40008 I 0 R 3001
+tok is : 5
+isInt : 5
 insCount :5
-	Type :R	operand :10002
-	Type :I	operand :10002
-	Type :I	operand :40008
-	Type :I	operand :0
-	Type :R	operand :3001
+R1	operand :10002
+I1	operand :10002
+I1	operand :40008
+I1	operand :0
+R1	operand :3001
 
 reading new line
 read line :
-Symbol Table
+tok is : 

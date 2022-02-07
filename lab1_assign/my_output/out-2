@@ -1,97 +1,141 @@
 reading new line
 read line :1
+tok is : 1
+isInt : 1
 defcount :1
 reading new line
 read line :    xy 2
+tok is : xy
 
 Symbol : xyoffset : 4
-	val :2
+	val :isInt : 2
+2
 
 reading new line
 read line :2 z            xy
+tok is : 2
+isInt : 2
 useCount :2
-	Symbol : z
-	Symbol : xy
+
+Symbol : zoffset : 2
+
+
+Symbol : xyoffset : 15
+
 
 reading new line
 read line :5 	R 1004  I 5678  
+tok is : 5
+isInt : 5
 insCount :5
-	Type :R	operand :1004
-	Type :I	operand :5678
+R1	operand :1004
+I1	operand :5678
 reading new line
 read line :      E 2000  R 
-	Type :E	operand :2000
-	Type :Rreading new line
+tok is : E
+E1	operand :2000
+R1	operand :reading new line
 read line :8002  E 7001  0      1 z
-	operand :8002
-	Type :E	operand :7001
+tok is : 8002
+8002
+E1	operand :7001
 
+isInt : 0
 defcount :0
 
+isInt : 1
 useCount :1
-	Symbol : z
+
+Symbol : zoffset : 23
+
 
 reading new line
 read line :6 R 8001  E 1000  E 
+tok is : 6
+isInt : 6
 insCount :6
-	Type :R	operand :8001
-	Type :E	operand :1000
-	Type :Ereading new line
+R1	operand :8001
+E1	operand :1000
+E1	operand :reading new line
 read line :1000  E 3000  R 1002  A 1010
-	operand :1000
-	Type :E	operand :3000
-	Type :R	operand :1002
-	Type :A	operand :1010
+tok is : 1000
+1000
+E1	operand :3000
+R1	operand :1002
+A1	operand :1010
 
 reading new line
 read line :0
+tok is : 0
+isInt : 0
 defcount :0
 
 reading new line
 read line :1
+tok is : 1
+isInt : 1
 useCount :1
 reading new line
 read line :z
-	Symbol : z
+tok is : z
+
+Symbol : zoffset : 0
+
 
 reading new line
 read line :2
+tok is : 2
+isInt : 2
 insCount :2
 reading new line
 read line :R
-	Type :Rreading new line
+tok is : R
+R1	operand :reading new line
 read line :5001
-	operand :5001
+tok is : 5001
+5001
 reading new line
 read line :E 4000
-	Type :E	operand :4000
+tok is : E
+E1	operand :4000
 
 reading new line
 read line :1 z 2
+tok is : 1
+isInt : 1
 defcount :1
 
 Symbol : zoffset : 2
-	val :2
+	val :isInt : 2
+2
 
 reading new line
 read line :2
+tok is : 2
+isInt : 2
 useCount :2
 reading new line
 read line :xy z
-	Symbol : xy
-	Symbol : z
+tok is : xy
+
+Symbol : xyoffset : 0
+
+
+Symbol : zoffset : 3
+
 
 reading new line
 read line :3 A 8000
+tok is : 3
+isInt : 3
 insCount :3
-	Type :A	operand :8000
+A1	operand :8000
 reading new line
 read line :E 1001  E 2000
-	Type :E	operand :1001
-	Type :E	operand :2000
+tok is : E
+E1	operand :1001
+E1	operand :2000
 
 reading new line
 read line :
-Symbol Table
-xy 4
-z 2
+tok is : 

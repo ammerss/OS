@@ -1,13 +1,23 @@
 reading new line
 read line :0
+tok is : 0
+isInt : 0
 defcount :0
 
 reading new line
 read line :23 a b c      
+tok is : 23
+isInt : 23
 useCount :23
-	Symbol : a
-	Symbol : b
-	Symbol : c
+
+Symbol : aoffset : 3
+
+
+Symbol : boffset : 5
+
+
+Symbol : coffset : 7
+
 reading new line
 read line :
-	Symbol : 
+tok is : Parse Error line 3 offset 7: SYM_EXPECTED

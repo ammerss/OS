@@ -1,20 +1,8 @@
 reading new line
 read line :1 z a
+tok is : 1
+isInt : 1
 defcount :1
 
 Symbol : zoffset : 2
-	val :0
-
-reading new line
-read line :0
-useCount :0
-
-reading new line
-read line :1 I 400
-insCount :1
-	Type :I	operand :400
-
-reading new line
-read line :
-Symbol Table
-z 2
+	val :Parse Error line 1 offset 4: NUM_EXPECTED

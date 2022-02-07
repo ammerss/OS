@@ -1,15 +1,16 @@
-terminate called after throwing an instance of 'std::logic_error'
-  what():  basic_string::_M_construct null not valid
 reading new line
 read line :23 a 1 b 2
+tok is : 23
+isInt : 23
 defcount :23
 
 Symbol : aoffset : 3
-	val :1
+	val :isInt : 1
+1
 
 Symbol : boffset : 7
-	val :2
+	val :isInt : 2
+2
 reading new line
 read line :
-
-Symbol : 
+tok is : Parse Error line 2 offset 9: SYM_EXPECTED

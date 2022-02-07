@@ -1,23 +1,22 @@
 reading new line
 read line :1 z
+tok is : 1
+isInt : 1
 defcount :1
 
 Symbol : zoffset : 2
-reading new line
+	val :reading new line
 read line :0
-	val :0
+tok is : 0
+isInt : 0
+0
 
 reading new line
 read line :2 I 4000
+tok is : 2
+isInt : 2
 useCount :2
-	Symbol : I
-	Symbol : 4000
 
-reading new line
-read line :
-insCount :-1
+Symbol : Ioffset : 2
 
-reading new line
-read line :
-Symbol Table
-z 2
+Parse Error line 3 offset 4: SYM_EXPECTED

@@ -1,39 +1,49 @@
 reading new line
 read line : 3   X11 6  X12 8  X13 9
+tok is : 3
+isInt : 3
 defcount :3
 
 Symbol : X11offset : 5
-	val :6
+	val :isInt : 6
+6
 
 Symbol : X12offset : 12
-	val :8
+	val :isInt : 8
+8
 
 Symbol : X13offset : 19
-	val :9
+	val :isInt : 9
+9
 
 reading new line
 read line : 2   X22  X31
+tok is : 2
+isInt : 2
 useCount :2
-	Symbol : X22
-	Symbol : X31
+
+Symbol : X22offset : 5
+
+
+Symbol : X31offset : 10
+
 
 reading new line
 read line :10   R 1000  E 1001  E 1000  E 1001  E 1000  E 1000  A 1006  R 1007  A 1008  R 1009
+tok is : 10
+isInt : 10
 insCount :10
-	Type :R	operand :1000
-	Type :E	operand :1001
-	Type :E	operand :1000
-	Type :E	operand :1001
-	Type :E	operand :1000
-	Type :E	operand :1000
-	Type :A	operand :1006
-	Type :R	operand :1007
-	Type :A	operand :1008
-	Type :R	operand :1009
+R1	operand :1000
+E1	operand :1001
+E1	operand :1000
+E1	operand :1001
+E1	operand :1000
+E1	operand :1000
+A1	operand :1006
+R1	operand :1007
+A1	operand :1008
+R1	operand :1009
 
 reading new line
 read line :
-Symbol Table
-X11 5
-X12 12
-X13 19
+tok is : 

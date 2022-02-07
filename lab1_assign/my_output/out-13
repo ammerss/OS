@@ -1,9 +1,8 @@
-terminate called after throwing an instance of 'std::logic_error'
-  what():  basic_string::_M_construct null not valid
 reading new line
 read line :1
+tok is : 1
+isInt : 1
 defcount :1
 reading new line
 read line :
-
-Symbol : 
+tok is : Parse Error line 2 offset 0: SYM_EXPECTED

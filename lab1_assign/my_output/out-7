@@ -1,19 +1,27 @@
 reading new line
 read line :0
+tok is : 0
+isInt : 0
 defcount :0
 
 reading new line
 read line :1  X21
+tok is : 1
+isInt : 1
 useCount :1
-	Symbol : X21
+
+Symbol : X21offset : 3
+
 
 reading new line
 read line :3  E 1000  E 1004  E 1222
+tok is : 3
+isInt : 3
 insCount :3
-	Type :E	operand :1000
-	Type :E	operand :1004
-	Type :E	operand :1222
+E1	operand :1000
+E1	operand :1004
+E1	operand :1222
 
 reading new line
 read line :
-Symbol Table
+tok is : 
