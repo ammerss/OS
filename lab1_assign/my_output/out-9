@@ -1,51 +1,7 @@
-read line : 0
-read line : 1  X31
-read line : 1  I 2001
-read line : 
-read line : 1  X31 0
-read line : 0
-read line : 1  I 3001
-read line : 
-read line : 0
-read line : 1  X31
-read line : 1  E 4000
-read line : 
 Symbol Table
 X31=1
-Memory Map
-read line : 0
-read line : 1  X31
-print use_list : X31 
-X31123123123123
-read line : 1  I 2001
-Iherehrehrere
-input op 2001
-opcode 2
-operand 1
-insCount 1
-123345546567567567I   0: : 2001
-read line : 
-read line : 1  X31 0
-read line : 0
-print use_list : 
-read line : 1  I 3001
 
-input op 3001
-opcode 3
-operand 1
-insCount 1
-  1: : 3001
-read line : 
-read line : 0
-read line : 1  X31
-print use_list : X31 
-X31123123123123
-read line : 1  E 4000
-Eherehrehrere
-input op 4000
-opcode 4
-operand 0
-insCount 1
-123345546567567567E use list !!!!!!: E 
-  2: : 32764Error:E is not defined;zero used
-read line : 
+Memory Map
+000: 2001 
+001: 3001 
+002: 4001 

@@ -1,4 +1,1 @@
-read line : 1 z
-read line : 0
-read line : 2 I 4000
 Parse Error line 3 offset 5: SYM_EXPECTED

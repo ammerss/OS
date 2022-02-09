@@ -1,72 +1,13 @@
-read line : 1 ab 6
-read line : 0 
-read line : 3 I 1000 I 2000 I 3000
-read line : 1 xy 8
-read line : 2 z xy
-read line : 5 R 1004  I 5678  E 2000  R 8002  E 7001
-read line : 
 Symbol Table
 ab=6
 xy=11
+
 Memory Map
-read line : 1 ab 6
-read line : 0 
-print use_list : 
-read line : 3 I 1000 I 2000 I 3000
-
-input op 1000
-opcode 1
-operand 0
-insCount 3
-  0: : 1000
-
-input op 2000
-opcode 2
-operand 0
-insCount 3
-  1: : 2000
-
-input op 3000
-opcode 3
-operand 0
-insCount 3
-  2: : 3000
-read line : 1 xy 8
-read line : 2 z xy
-print use_list : z xy 
-z123123123123
-xy123123123123
-read line : 5 R 1004  I 5678  E 2000  R 8002  E 7001
-Rherehrehrere1004herehrehrere
-input op 1004
-opcode 1
-operand 4
-insCount 5
-123345546567567567R 1233455465675675671004   3: : 1007
-Rherehrehrere1004herehrehrere
-input op 5678
-opcode 5
-operand 678
-insCount 5
-123345546567567567R 1233455465675675671004   4: : 5678
-Rherehrehrere1004herehrehrere
-input op 2000
-opcode 2
-operand 0
-insCount 5
-123345546567567567R 1233455465675675671004 use list !!!!!!: R 1004 
-  5: : 32767Error:R is not defined;zero used
-Rherehrehrere1004herehrehrere
-input op 8002
-opcode 8
-operand 2
-insCount 5
-123345546567567567R 1233455465675675671004   6: : 8005
-Rherehrehrere1004herehrehrere
-input op 7001
-opcode 7
-operand 1
-insCount 5
-123345546567567567R 1233455465675675671004 use list !!!!!!: R 1004 
-  7: : 32767Error:1004 is not defined;zero used
-read line : 
+000: 1000 
+001: 2000 
+002: 3000 
+003: 1007 
+004: 5678 
+005: 21883 Error:z is not defined;zero used
+006: 8005 
+007: 7011 

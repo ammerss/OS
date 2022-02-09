@@ -1,63 +1,10 @@
-read line : 0
-read line : 1  X21
-read line : 3  E 1000  E 1004  E 1222
-read line : 
-read line : 1  X21 0
-read line : 0
-read line : 1  A 2956
-read line : 
-read line : 1  X31 0
-read line : 0
-read line : 1  R 3456
-read line : 
 Symbol Table
 X21=3
 X31=4
+
 Memory Map
-read line : 0
-read line : 1  X21
-print use_list : X21 
-X21123123123123
-read line : 3  E 1000  E 1004  E 1222
-Eherehrehrere
-input op 1000
-opcode 1
-operand 0
-insCount 3
-123345546567567567E use list !!!!!!: E 
-  0: : 32766Error:E is not defined;zero used
-Eherehrehrere
-input op 1004
-opcode 1
-operand 4
-insCount 3
-123345546567567567E   1: : 32766Error: External address exceeds length of uselist;treated as immediate
-Eherehrehrere
-input op 1222
-opcode 1
-operand 222
-insCount 3
-123345546567567567E   2: : 32766Error: External address exceeds length of uselist;treated as immediate
-read line : 
-read line : 1  X21 0
-read line : 0
-print use_list : 
-read line : 1  A 2956
-
-input op 2956
-opcode 2
-operand 956
-insCount 1
-  3: : 2000Error: Absolute address exceeds machine size;zero used
-read line : 
-read line : 1  X31 0
-read line : 0
-print use_list : 
-read line : 1  R 3456
-
-input op 3456
-opcode 3
-operand 456
-insCount 1
-  4: : 3004Error: Relative address exceeds module size;zero used
-read line : 
+000: 1003 
+001: 21911 Error: External address exceeds length of uselist;treated as immediate
+002: 21911 Error: External address exceeds length of uselist;treated as immediate
+003: 2000 Error: Absolute address exceeds machine size;zero used
+004: 3004 Error: Relative address exceeds module size;zero used

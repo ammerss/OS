@@ -1,5 +1,1 @@
-read line : 11
-read line : 
-read line : 
-read line : 
-Parse Error line 3 offset -648106463: SYM_EXPECTED
+Parse Error line 3 offset 1: SYM_EXPECTED

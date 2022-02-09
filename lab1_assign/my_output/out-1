@@ -1,144 +1,21 @@
-read line : 1 xy 2
-read line : 2 z xy
-read line : 5 R 1004  I 5678  E 2000  R 8002  E 7001
-read line : 0
-read line : 1 z
-read line : 6 R 8001  E 1000  E 1000  E 3000  R 1002  A 1010
-read line : 0
-read line : 1 z
-read line : 2 R 5001  E 4000
-read line : 1 z 2
-read line : 2 xy z
-read line : 3 A 8000  E 1001  E 2000
-read line : 
 Symbol Table
 xy=2
 z=15
+
 Memory Map
-read line : 1 xy 2
-read line : 2 z xy
-print use_list : z xy 
-z123123123123
-xy123123123123
-read line : 5 R 1004  I 5678  E 2000  R 8002  E 7001
-Rherehrehrere1004herehrehrere
-input op 1004
-opcode 1
-operand 4
-insCount 5
-123345546567567567R 1233455465675675671004   0: : 1004
-Rherehrehrere1004herehrehrere
-input op 5678
-opcode 5
-operand 678
-insCount 5
-123345546567567567R 1233455465675675671004   1: : 5678
-Rherehrehrere1004herehrehrere
-input op 2000
-opcode 2
-operand 0
-insCount 5
-123345546567567567R 1233455465675675671004 use list !!!!!!: R 1004 
-  2: : 32767Error:R is not defined;zero used
-Rherehrehrere1004herehrehrere
-input op 8002
-opcode 8
-operand 2
-insCount 5
-123345546567567567R 1233455465675675671004   3: : 8002
-Rherehrehrere1004herehrehrere
-input op 7001
-opcode 7
-operand 1
-insCount 5
-123345546567567567R 1233455465675675671004 use list !!!!!!: R 1004 
-  4: : 32767Error:1004 is not defined;zero used
-read line : 0
-read line : 1 z
-print use_list : z 
-z123123123123
-read line : 6 R 8001  E 1000  E 1000  E 3000  R 1002  A 1010
-Rherehrehrere
-input op 8001
-opcode 8
-operand 1
-insCount 6
-123345546567567567R   5: : 8006
-Rherehrehrere
-input op 1000
-opcode 1
-operand 0
-insCount 6
-123345546567567567R use list !!!!!!: R 
-  6: : 32767Error:R is not defined;zero used
-Rherehrehrere
-input op 1000
-opcode 1
-operand 0
-insCount 6
-123345546567567567R use list !!!!!!: R 
-  7: : 32767Error:R is not defined;zero used
-Rherehrehrere
-input op 3000
-opcode 3
-operand 0
-insCount 6
-123345546567567567R use list !!!!!!: R 
-  8: : 32767Error:R is not defined;zero used
-Rherehrehrere
-input op 1002
-opcode 1
-operand 2
-insCount 6
-123345546567567567R   9: : 1007
-Rherehrehrere
-input op 1010
-opcode 1
-operand 10
-insCount 6
-123345546567567567R  10: : 1010
-read line : 0
-read line : 1 z
-print use_list : z 
-z123123123123
-read line : 2 R 5001  E 4000
-Rherehrehrere
-input op 5001
-opcode 5
-operand 1
-insCount 2
-123345546567567567R  11: : 5012
-Rherehrehrere
-input op 4000
-opcode 4
-operand 0
-insCount 2
-123345546567567567R use list !!!!!!: R 
- 12: : 32767Error:R is not defined;zero used
-read line : 1 z 2
-read line : 2 xy z
-print use_list : xy z 
-xy123123123123
-z123123123123
-read line : 3 A 8000  E 1001  E 2000
-Aherehrehrere000herehrehrere
-input op 8000
-opcode 8
-operand 0
-insCount 3
-123345546567567567A 123345546567567567000  13: : 8000
-Aherehrehrere000herehrehrere
-input op 1001
-opcode 1
-operand 1
-insCount 3
-123345546567567567A 123345546567567567000 use list !!!!!!: A 000 
- 14: : 32767Error:000 is not defined;zero used
-Aherehrehrere000herehrehrere
-input op 2000
-opcode 2
-operand 0
-insCount 3
-123345546567567567A 123345546567567567000 use list !!!!!!: A 000 
- 15: : 32767Error:A is not defined;zero used
-read line : 
+000: 1004 
+001: 5678 
+002: 2015 
+003: 8002 
+004: 7002 
+005: 8006 
+006: 1015 
+007: 1015 
+008: 3015 
+009: 1007 
+010: 1010 
+011: 5012 
+012: 4015 
+013: 8000 
+014: 1015 
+015: 2002 

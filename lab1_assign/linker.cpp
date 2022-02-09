@@ -7,6 +7,7 @@
 #include <utility>
 #include <ctype.h>
 #include <string.h>
+#include <stdlib.h>
 using namespace std;
 
 int flag = 1; //for reading new token, flag to getline()
@@ -14,7 +15,7 @@ char buff[512]={0,};
 int linenum; //the current line number of getToken()
 int lineoffset; //the current offset of getToken()
 int module_base; // current address // running sum of modules
-int last_token_len; //the length of the last read token
+int last_line_len; //the length of the last line read
 ifstream f;
 map<string,int> symbol_table;
 map<string,bool> symbol_multiple_defined;
@@ -36,13 +37,13 @@ void checkSymLen(char *s);
 
 void print_error(int errcode, char* c="null"){
 	static char* errstr[] = {
-		"Error: Absolute address exceeds machine size;zero used",
-		"Error: Relative address exceeds module size;zero used",
-		"Error: External address exceeds length of uselist;treated as immediate",
-		"is not defined;zero used",
-		"Error: This variable is multiple times defined;first value used",
-		"Error: Illegal immediate value;treated as 9999",
-		"Error: Illegal opcode;treated as 9999",
+		"Error: Absolute address exceeds machine size; zero used",
+		"Error: Relative address exceeds module size; zero used",
+		"Error: External address exceeds length of uselist; treated as immediate",
+		"is not defined; zero used",
+		"Error: This variable is multiple times defined; first value used",
+		"Error: Illegal immediate value; treated as 9999",
+		"Error: Illegal opcode; treated as 9999",
 	};
 	if(errcode == 3)printf("Error:%s %s",c,errstr[errcode]);
 	else printf("%s",errstr[errcode]);
@@ -68,21 +69,18 @@ char* getToken(){
 		if(tok==NULL) flag = 1;
 	}
 	if(flag==1){
-		//while(f.getline(buff,BUFF_SIZE) && !f.eof()){
 		do{
 		f.getline(buff,BUFF_SIZE);
-		printf("read line : %s\n", buff);
-		//cout.flush();
+		//printf("read line : %s\n", buff);
+		if(!f.eof()) last_line_len = strlen(buff) + 1;
 		tok = strtok(buff,DELIMITER);
-		flag = 0;
-		//if(tok == NULL) flag=-1;
-		//else 
+		flag = 0; 
 		if(!f.eof()) linenum++;
 		}while(tok == NULL && !f.eof());
 		
 	}
-        cout.flush();	
-	lineoffset = tok - buff + 1;
+	if(f.eof())lineoffset = last_line_len;
+	else lineoffset = tok - buff + 1;
 	return tok;
 	}
 
@@ -218,14 +216,12 @@ void readOp(char* a, int mem_map_cnt, int op, vector<char*> use_list, int insCou
 	int operand = op%1000;
 	int error_code = -1;
 	char* error_s="null";
-	cout << endl;
-	cout << "input op " << op << endl;
-	cout << "opcode " << opcode <<endl;
-	cout << "operand " << operand << endl;
-	cout << "insCount " << insCount << endl;
-	for(int i=0;i<use_list.size();i++){
-		cout << "123345546567567567" <<use_list[i]<<" ";
-	}
+	//cout << endl;
+	//cout << "input op " << op << endl;
+	//cout << "opcode " << opcode <<endl;
+	//cout << "operand " << operand << endl;
+	//cout << "insCount " << insCount << endl;
+	//cout << "instruction "<<a<<endl;
 	switch(*a){
 		case 'R' :
 			if(insCount < operand){
@@ -246,19 +242,15 @@ void readOp(char* a, int mem_map_cnt, int op, vector<char*> use_list, int insCou
 			int global_address;
 			if(operand < use_list.size()){ 
 				var = use_list[operand];
-				cout << "use list !!!!!!: ";
-				for(int i=0;i<use_list.size();i++){
-					cout << use_list[i]<<" ";
-					}
-				cout <<endl;
 			}	
 			else{
 				//exceeds length of uselist
 				error_code = 2;
 				break;
 			}
-			if(symbol_table.find(var) != symbol_table.end())
+			if(symbol_table.find(var) != symbol_table.end()){
 				global_address = symbol_table[var];
+			}
 			else{
 				//var is not defined
 				error_code = 3;
@@ -268,47 +260,39 @@ void readOp(char* a, int mem_map_cnt, int op, vector<char*> use_list, int insCou
 			if(symbol_multiple_defined[var] == true){
 				error_code = 4;
 			}
-			cout << "global address: " << global_address << endl;
 			op_after = opcode * 1000 + global_address;
+			break;
 		case 'I' : 
 			if(op>9999){
 				error_code = 5;
 				op_after = 9999;
 			}
 			else op_after = op;
+			break;
 	}
 	if(opcode >= 10 && error_code == -1){
-		cout << "illegal op_after : " << op_after <<"\n";
 		error_code = 6;
 		op_after = 9999;
 	}
-	printf("%3d: : %d", mem_map_cnt, op_after);
+	printf("%03d: %04d ", mem_map_cnt, op_after);
 	if(error_code!=-1) print_error(error_code,error_s);
 	cout<<endl;
 	return;
 }
 void readIns(int& mem_map_cnt, vector<char*> use_list){
-	for(int i=0;i<use_list.size();i++){
-		cout << use_list[i]<< "123123123123" <<endl;
-	}
 	char * insCount_s = getToken();
 	int insCount = stoi(insCount_s);
 	for(int i=0;i<insCount;i++){
 		char* addressing = getToken();
 		int op = stoi(getToken());
-		for(int i=0;i<use_list.size();i++){
-			cout << use_list[i]<< "herehrehrere";
-		}
 		readOp(addressing, mem_map_cnt, op, use_list, insCount);
-		//int op_after = readOp(addressing, op,use_list);
-		//printf("%3d: %d\n",ins_cnt,op_after);
 		mem_map_cnt++;
 	}
 	module_base += insCount;
 }
 void passTwo(){
 	int mem_map_cnt = 0; // to print the cnt number thing in the memory map
-	cout << "Memory Map" << endl;
+	cout << "\nMemory Map" << endl;
 	while(true){
 		//def
 		char * defCount_s = getToken();
@@ -325,13 +309,10 @@ void passTwo(){
 		int useCount = stoi(useCount_s);
 		for(int i=0;i<useCount;i++){
 			char* use_var = getToken();
-			use_list.push_back(use_var);
+			char* use_var_cpy = (char*)malloc(strlen(use_var)+1);
+			strcpy(use_var_cpy,use_var);
+			use_list.push_back(use_var_cpy);
 		}
-		cout << "print use_list : ";
-		for(int i = 0;i<use_list.size();i++){
-			cout << use_list[i]<< " ";
-		}
-		cout << endl;
 
 		//instruction
 		readIns(mem_map_cnt, use_list);
