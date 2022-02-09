@@ -45,7 +45,7 @@ void print_error(int errcode, char* c="null"){
 		"Error: Illegal immediate value; treated as 9999",
 		"Error: Illegal opcode; treated as 9999",
 	};
-	if(errcode == 3)printf("Error:%s %s",c,errstr[errcode]);
+	if(errcode == 3)printf("Error: %s %s",c,errstr[errcode]);
 	else printf("%s",errstr[errcode]);
 	
 }
@@ -255,10 +255,8 @@ void readOp(char* a, int mem_map_cnt, int op, vector<char*> use_list, int insCou
 				//var is not defined
 				error_code = 3;
 				error_s = var;
+				op_after = opcode * 1000;
 				break;
-			}
-			if(symbol_multiple_defined[var] == true){
-				error_code = 4;
 			}
 			op_after = opcode * 1000 + global_address;
 			break;
@@ -323,7 +321,7 @@ void printSymbolTable(){
 	for(auto const& x : symbol_table){
 		cout << x.first<<"="<<x.second;
 		if(symbol_multiple_defined[x.first]) 
-			cout << "Error:This variable is multiple times defined; first value used"<<endl;
+			cout << " Error : This variable is multiple times defined; first value used"<<endl;
 		else cout <<endl;
 	}
 }

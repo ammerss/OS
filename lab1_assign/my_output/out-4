@@ -1,9 +1,9 @@
 Symbol Table
-X21=3Error:This variable is multiple times defined; first value used
+X21=3 Error : This variable is multiple times defined; first value used
 
 Memory Map
-000: 2003 Error: This variable is multiple times defined;first value used
-001: 2003 Error: This variable is multiple times defined;first value used
-002: 2003 Error: This variable is multiple times defined;first value used
-003: 2000 Error: Absolute address exceeds machine size;zero used
+000: 2003 
+001: 2003 
+002: 2003 
+003: 2000 Error: Absolute address exceeds machine size; zero used
 004: 3465 
