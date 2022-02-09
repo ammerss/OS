@@ -5,4 +5,4 @@ read line :
 read line : 0
 read line : 0
 read line : 511 iamnotprintinganyfurtherheretoillustratecatchingtheerrorattheearliestpoint
-Parse Error line 6 offset 1: TOO_MANY_INSTR
+Parse Error line 7 offset 1: TOO_MANY_INSTR

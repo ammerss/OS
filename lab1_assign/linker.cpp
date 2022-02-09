@@ -9,12 +9,12 @@
 #include <string.h>
 using namespace std;
 
-int flag = 1;
+int flag = 1; //for reading new token, flag to getline()
 char buff[512]={0,};
-int linenum;
-int lineoffset;
-int cur_pointer;
-int last_token_len;
+int linenum; //the current line number of getToken()
+int lineoffset; //the current offset of getToken()
+int module_base; // current address // running sum of modules
+int last_token_len; //the length of the last read token
 ifstream f;
 map<string,int> symbol_table;
 map<string,bool> symbol_multiple_defined;
@@ -34,6 +34,20 @@ void getIns();
 void passOne();
 void checkSymLen(char *s);
 
+void print_error(int errcode, char* c="null"){
+	static char* errstr[] = {
+		"Error: Absolute address exceeds machine size;zero used",
+		"Error: Relative address exceeds module size;zero used",
+		"Error: External address exceeds length of uselist;treated as immediate",
+		"is not defined;zero used",
+		"Error: This variable is multiple times defined;first value used",
+		"Error: Illegal immediate value;treated as 9999",
+		"Error: Illegal opcode;treated as 9999",
+	};
+	if(errcode == 3)printf("Error:%s %s",c,errstr[errcode]);
+	else printf("%s",errstr[errcode]);
+	
+}
 void parse_error(int errcode){
 	static char* errstr[] = {
 		"NUM_EXPECTED",
@@ -54,16 +68,20 @@ char* getToken(){
 		if(tok==NULL) flag = 1;
 	}
 	if(flag==1){
+		//while(f.getline(buff,BUFF_SIZE) && !f.eof()){
 		do{
 		f.getline(buff,BUFF_SIZE);
 		printf("read line : %s\n", buff);
+		//cout.flush();
 		tok = strtok(buff,DELIMITER);
 		flag = 0;
-		if(tok == NULL) flag=-1;
-		else linenum++;
+		//if(tok == NULL) flag=-1;
+		//else 
+		if(!f.eof()) linenum++;
 		}while(tok == NULL && !f.eof());
 		
-	} 
+	}
+        cout.flush();	
 	lineoffset = tok - buff + 1;
 	return tok;
 	}
@@ -131,12 +149,14 @@ void getDef(){
 	for(int i=0;i<defCount;i++){
 		char *symbol = getToken();
 		isSymbol(symbol);
-		if(symbol_table.find(symbol) != symbol_table.end())
-			symbol_multiple_defined.insert({symbol,true});
-		else symbol_table.insert({symbol,lineoffset+cur_pointer});
-	
+
 		char *addr_s = getToken();
 		isInt(addr_s);
+		int addr = stoi(addr_s);
+
+		if(symbol_table.find(symbol) != symbol_table.end())
+			symbol_multiple_defined.insert({symbol,true});
+		else symbol_table.insert({symbol,addr+module_base});
 	}
 }
 void getUse(){
@@ -175,7 +195,7 @@ void getIns(){
 		parse_error(6);
 		exit(1);
 	}
-	cur_pointer += insCount;
+	module_base += insCount;
 	for(int i=0;i<insCount;i++){
 		char * ins = getToken();
 		isIEAR(ins);
@@ -186,17 +206,136 @@ void getIns(){
 void passOne(){
 	while(true){
 		getDef();
-		if(f.eof()){
-			printf("reach eof\n");
-			break;
-		}
+		if(f.eof())break;
 		getUse();
 		getIns();
 	}
 	return;
 }
+void readOp(char* a, int mem_map_cnt, int op, vector<char*> use_list, int insCount){
+	int op_after;
+	int opcode = op/1000;
+	int operand = op%1000;
+	int error_code = -1;
+	char* error_s="null";
+	cout << endl;
+	cout << "input op " << op << endl;
+	cout << "opcode " << opcode <<endl;
+	cout << "operand " << operand << endl;
+	cout << "insCount " << insCount << endl;
+	for(int i=0;i<use_list.size();i++){
+		cout << "123345546567567567" <<use_list[i]<<" ";
+	}
+	switch(*a){
+		case 'R' :
+			if(insCount < operand){
+				error_code = 1;
+				op_after = opcode * 1000 + module_base;
+			}
+			else op_after = opcode * 1000 + operand + module_base;
+		       	break;
+		case 'A' :
+			if(operand > 512){
+				error_code = 0;
+				op_after = opcode * 1000;
+			}
+			else op_after = op;
+			break;
+		case 'E' :
+			char* var;
+			int global_address;
+			if(operand < use_list.size()){ 
+				var = use_list[operand];
+				cout << "use list !!!!!!: ";
+				for(int i=0;i<use_list.size();i++){
+					cout << use_list[i]<<" ";
+					}
+				cout <<endl;
+			}	
+			else{
+				//exceeds length of uselist
+				error_code = 2;
+				break;
+			}
+			if(symbol_table.find(var) != symbol_table.end())
+				global_address = symbol_table[var];
+			else{
+				//var is not defined
+				error_code = 3;
+				error_s = var;
+				break;
+			}
+			if(symbol_multiple_defined[var] == true){
+				error_code = 4;
+			}
+			cout << "global address: " << global_address << endl;
+			op_after = opcode * 1000 + global_address;
+		case 'I' : 
+			if(op>9999){
+				error_code = 5;
+				op_after = 9999;
+			}
+			else op_after = op;
+	}
+	if(opcode >= 10 && error_code == -1){
+		cout << "illegal op_after : " << op_after <<"\n";
+		error_code = 6;
+		op_after = 9999;
+	}
+	printf("%3d: : %d", mem_map_cnt, op_after);
+	if(error_code!=-1) print_error(error_code,error_s);
+	cout<<endl;
+	return;
+}
+void readIns(int& mem_map_cnt, vector<char*> use_list){
+	for(int i=0;i<use_list.size();i++){
+		cout << use_list[i]<< "123123123123" <<endl;
+	}
+	char * insCount_s = getToken();
+	int insCount = stoi(insCount_s);
+	for(int i=0;i<insCount;i++){
+		char* addressing = getToken();
+		int op = stoi(getToken());
+		for(int i=0;i<use_list.size();i++){
+			cout << use_list[i]<< "herehrehrere";
+		}
+		readOp(addressing, mem_map_cnt, op, use_list, insCount);
+		//int op_after = readOp(addressing, op,use_list);
+		//printf("%3d: %d\n",ins_cnt,op_after);
+		mem_map_cnt++;
+	}
+	module_base += insCount;
+}
 void passTwo(){
+	int mem_map_cnt = 0; // to print the cnt number thing in the memory map
+	cout << "Memory Map" << endl;
+	while(true){
+		//def
+		char * defCount_s = getToken();
+		if(f.eof())break;
+		int defCount = stoi(defCount_s);
+		for(int i=0;i<defCount;i++){
+			getToken();
+			getToken();
+		}
 
+		//use
+		vector<char*> use_list;
+		char * useCount_s = getToken();
+		int useCount = stoi(useCount_s);
+		for(int i=0;i<useCount;i++){
+			char* use_var = getToken();
+			use_list.push_back(use_var);
+		}
+		cout << "print use_list : ";
+		for(int i = 0;i<use_list.size();i++){
+			cout << use_list[i]<< " ";
+		}
+		cout << endl;
+
+		//instruction
+		readIns(mem_map_cnt, use_list);
+	}
 }
 void printSymbolTable(){
 	cout<<"Symbol Table\n";	
@@ -207,12 +346,19 @@ void printSymbolTable(){
 		else cout <<endl;
 	}
 }
+void init_vars(){
+	module_base = 0;
+	flag = 1;
+	linenum = 0;
+	lineoffset = 0;
+}
 int main(int argc, char *argv[]){
 	f.open(argv[1]);
 	passOne();
 	f.close();
 	
 	printSymbolTable();
+	init_vars();
 
 	f.open(argv[1]);
 	passTwo();

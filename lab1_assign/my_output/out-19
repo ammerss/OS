@@ -2,5 +2,41 @@ read line : 0
 read line : 0
 read line : 5 R 10002 I 10002 I 40008 I 0 R 3001
 read line : 
-reach eof
 Symbol Table
+Memory Map
+read line : 0
+read line : 0
+print use_list : 
+read line : 5 R 10002 I 10002 I 40008 I 0 R 3001
+
+input op 10002
+opcode 10
+operand 2
+insCount 5
+illegal op_after : 10002
+  0: : 9999Error: Illegal opcode;treated as 9999
+
+input op 10002
+opcode 10
+operand 2
+insCount 5
+  1: : 9999Error: Illegal immediate value;treated as 9999
+
+input op 40008
+opcode 40
+operand 8
+insCount 5
+  2: : 9999Error: Illegal immediate value;treated as 9999
+
+input op 0
+opcode 0
+operand 0
+insCount 5
+  3: : 0
+
+input op 3001
+opcode 3
+operand 1
+insCount 5
+  4: : 3001
+read line : 

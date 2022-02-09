@@ -2,5 +2,29 @@ read line : 0
 read line : 1  X21
 read line : 3  E 1001  E 1004  E 1222
 read line : 
-reach eof
 Symbol Table
+Memory Map
+read line : 0
+read line : 1  X21
+print use_list : X21 
+X21123123123123
+read line : 3  E 1001  E 1004  E 1222
+Eherehrehrere
+input op 1001
+opcode 1
+operand 1
+insCount 3
+123345546567567567E   0: : 32766Error: External address exceeds length of uselist;treated as immediate
+Eherehrehrere
+input op 1004
+opcode 1
+operand 4
+insCount 3
+123345546567567567E   1: : 32766Error: External address exceeds length of uselist;treated as immediate
+Eherehrehrere
+input op 1222
+opcode 1
+operand 222
+insCount 3
+123345546567567567E   2: : 32766Error: External address exceeds length of uselist;treated as immediate
+read line : 

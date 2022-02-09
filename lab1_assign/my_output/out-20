@@ -2,6 +2,36 @@ read line : 1 bourbon 1
 read line : 1 whiskey
 read line : 4 R 2 I 2 I 8 I 0 
 read line : 
-reach eof
 Symbol Table
-bourbon=3
+bourbon=1
+Memory Map
+read line : 1 bourbon 1 
+read line : 1 whiskey
+print use_list : whiskey 
+whiskey123123123123
+read line : 4 R 2 I 2 I 8 I 0 
+Rherehrehrere
+input op 2
+opcode 0
+operand 2
+insCount 4
+123345546567567567R   0: : 2
+Rherehrehrere
+input op 2
+opcode 0
+operand 2
+insCount 4
+123345546567567567R   1: : 2
+Rherehrehrere
+input op 8
+opcode 0
+operand 8
+insCount 4
+123345546567567567R   2: : 8
+Rherehrehrere
+input op 0
+opcode 0
+operand 0
+insCount 4
+123345546567567567R   3: : 0
+read line : 

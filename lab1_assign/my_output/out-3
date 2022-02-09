@@ -22,13 +22,283 @@ read line :  1   X61 2
 read line :  1   X31
 read line :  6   R 6000  E 6000  A 6002  A 6003  R 6004  I 6005
 read line : 
-reach eof
 Symbol Table
 X11=6
-X12=13
-X13=20
-X21=16
-X22=23
-X23=30
-X31=24
-X61=36
+X12=8
+X13=9
+X21=10
+X22=12
+X23=15
+X31=20
+X61=32
+Memory Map
+read line :  3   X11 6  X12 8  X13 9
+read line :  2   X22  X31
+print use_list : X22 X31 
+X22123123123123
+X31123123123123
+read line : 10   R 1000  E 1001  E 1000  E 1001  E 1000  E 1000  A 1006  R 1007  A 1008  R 1009
+Rherehrehrere0herehrehrere
+input op 1000
+opcode 1
+operand 0
+insCount 10
+123345546567567567R 1233455465675675670   0: : 1000
+Rherehrehrere0herehrehrere
+input op 1001
+opcode 1
+operand 1
+insCount 10
+123345546567567567R 1233455465675675670 use list !!!!!!: R 0 
+  1: : 32764Error:0 is not defined;zero used
+Rherehrehrere0herehrehrere
+input op 1000
+opcode 1
+operand 0
+insCount 10
+123345546567567567R 1233455465675675670 use list !!!!!!: R 0 
+  2: : 32764Error:R is not defined;zero used
+Rherehrehrere0herehrehrere
+input op 1001
+opcode 1
+operand 1
+insCount 10
+123345546567567567R 1233455465675675670 use list !!!!!!: R 0 
+  3: : 32764Error:0 is not defined;zero used
+Rherehrehrere0herehrehrere
+input op 1000
+opcode 1
+operand 0
+insCount 10
+123345546567567567R 1233455465675675670 use list !!!!!!: R 0 
+  4: : 32764Error:R is not defined;zero used
+Rherehrehrere0herehrehrere
+input op 1000
+opcode 1
+operand 0
+insCount 10
+123345546567567567R 1233455465675675670 use list !!!!!!: R 0 
+  5: : 32764Error:R is not defined;zero used
+Rherehrehrere0herehrehrere
+input op 1006
+opcode 1
+operand 6
+insCount 10
+123345546567567567R 1233455465675675670   6: : 1006
+Rherehrehrere0herehrehrere
+input op 1007
+opcode 1
+operand 7
+insCount 10
+123345546567567567R 1233455465675675670   7: : 1007
+Rherehrehrere0herehrehrere
+input op 1008
+opcode 1
+operand 8
+insCount 10
+123345546567567567R 1233455465675675670   8: : 1008
+Rherehrehrere0herehrehrere
+input op 1009
+opcode 1
+operand 9
+insCount 10
+123345546567567567R 1233455465675675670   9: : 1009
+read line : 
+read line :  3   X21 0  X22 2  X23 5
+read line :  3   X11  X13  X31
+print use_list : X11 X13 X31 
+X11123123123123
+X13123123123123
+X31123123123123
+read line :  8   E 2001  E 2000  R 2002  E 2000  E 2001  R 2005  E 2001  E 2002
+Eherehrehrere1herehrehrere2000  R 2002  E 2000  E 2001  R 2005  E 2001  E 2002herehrehrere
+input op 2001
+opcode 2
+operand 1
+insCount 8
+123345546567567567E 1233455465675675671 1233455465675675672000  R 2002  E 2000  E 2001  R 2005  E 2001  E 2002 use list !!!!!!: E 1 2000  R 2002  E 2000  E 2001  R 2005  E 2001  E 2002 
+ 10: : 32764Error:1 is not defined;zero used
+Eherehrehrere1herehrehrere2000herehrehrere
+input op 2000
+opcode 2
+operand 0
+insCount 8
+123345546567567567E 1233455465675675671 1233455465675675672000 use list !!!!!!: E 1 2000 
+ 11: : 32764Error:E is not defined;zero used
+Eherehrehrere1herehrehrere2000herehrehrere
+input op 2002
+opcode 2
+operand 2
+insCount 8
+123345546567567567E 1233455465675675671 1233455465675675672000  12: : 2012
+Eherehrehrere1herehrehrere2000herehrehrere
+input op 2000
+opcode 2
+operand 0
+insCount 8
+123345546567567567E 1233455465675675671 1233455465675675672000 use list !!!!!!: E 1 2000 
+ 13: : 32764Error:E is not defined;zero used
+Eherehrehrere1herehrehrere2000herehrehrere
+input op 2001
+opcode 2
+operand 1
+insCount 8
+123345546567567567E 1233455465675675671 1233455465675675672000 use list !!!!!!: E 1 2000 
+ 14: : 32764Error:1 is not defined;zero used
+Eherehrehrere1herehrehrere2000herehrehrere
+input op 2005
+opcode 2
+operand 5
+insCount 8
+123345546567567567E 1233455465675675671 1233455465675675672000  15: : 2015
+Eherehrehrere1herehrehrere2000herehrehrere
+input op 2001
+opcode 2
+operand 1
+insCount 8
+123345546567567567E 1233455465675675671 1233455465675675672000 use list !!!!!!: E 1 2000 
+ 16: : 32764Error:1 is not defined;zero used
+Eherehrehrere1herehrehrere2000herehrehrere
+input op 2002
+opcode 2
+operand 2
+insCount 8
+123345546567567567E 1233455465675675671 1233455465675675672000 use list !!!!!!: E 1 2000 
+ 17: : 32764Error:2000 is not defined;zero used
+read line : 
+read line :  1   X31 2
+read line :  0
+print use_list : 
+read line :  3   A 3000  I 3701  A 3002
+
+input op 3000
+opcode 3
+operand 0
+insCount 3
+ 18: : 3000
+
+input op 3701
+opcode 3
+operand 701
+insCount 3
+ 19: : 3701
+
+input op 3002
+opcode 3
+operand 2
+insCount 3
+ 20: : 3002
+read line : 
+read line :  0
+read line :  3   X31  X11  X22
+print use_list : X31 X11 X22 
+X31123123123123
+X11123123123123
+X22123123123123
+read line :  6   R 4000  E 4000  E 4001  R 4003  R 4004  E 4002
+Rherehrehrere0herehrehrere4000  E 4001  R 4003  R 4004  E 4002herehrehrere
+input op 4000
+opcode 4
+operand 0
+insCount 6
+123345546567567567R 1233455465675675670 1233455465675675674000  E 4001  R 4003  R 4004  E 4002  21: : 4021
+Rherehrehrere0herehrehrere4000herehrehrere
+input op 4000
+opcode 4
+operand 0
+insCount 6
+123345546567567567R 1233455465675675670 1233455465675675674000 use list !!!!!!: R 0 4000 
+ 22: : 32764Error:R is not defined;zero used
+Rherehrehrere0herehrehrere4000herehrehrere
+input op 4001
+opcode 4
+operand 1
+insCount 6
+123345546567567567R 1233455465675675670 1233455465675675674000 use list !!!!!!: R 0 4000 
+ 23: : 32764Error:0 is not defined;zero used
+Rherehrehrere0herehrehrere4000herehrehrere
+input op 4003
+opcode 4
+operand 3
+insCount 6
+123345546567567567R 1233455465675675670 1233455465675675674000  24: : 4024
+Rherehrehrere0herehrehrere4000herehrehrere
+input op 4004
+opcode 4
+operand 4
+insCount 6
+123345546567567567R 1233455465675675670 1233455465675675674000  25: : 4025
+Rherehrehrere0herehrehrere4000herehrehrere
+input op 4002
+opcode 4
+operand 2
+insCount 6
+123345546567567567R 1233455465675675670 1233455465675675674000 use list !!!!!!: R 0 4000 
+ 26: : 32764Error:4000 is not defined;zero used
+read line : 
+read line :  00
+read line :  00
+print use_list : 
+read line :  3    R 5000  I 5987  R 5002
+
+input op 5000
+opcode 5
+operand 0
+insCount 3
+ 27: : 5027
+
+input op 5987
+opcode 5
+operand 987
+insCount 3
+ 28: : 5987
+
+input op 5002
+opcode 5
+operand 2
+insCount 3
+ 29: : 5029
+read line : 
+read line :  1   X61 2
+read line :  1   X31
+print use_list : X31 
+X31123123123123
+read line :  6   R 6000  E 6000  A 6002  A 6003  R 6004  I 6005
+Rherehrehrere
+input op 6000
+opcode 6
+operand 0
+insCount 6
+123345546567567567R  30: : 6030
+Rherehrehrere
+input op 6000
+opcode 6
+operand 0
+insCount 6
+123345546567567567R use list !!!!!!: R 
+ 31: : 32764Error:R is not defined;zero used
+Rherehrehrere
+input op 6002
+opcode 6
+operand 2
+insCount 6
+123345546567567567R  32: : 6002
+Rherehrehrere
+input op 6003
+opcode 6
+operand 3
+insCount 6
+123345546567567567R  33: : 6003
+Rherehrehrere
+input op 6004
+opcode 6
+operand 4
+insCount 6
+123345546567567567R  34: : 6034
+Rherehrehrere
+input op 6005
+opcode 6
+operand 5
+insCount 6
+123345546567567567R  35: : 6005
+read line : 
