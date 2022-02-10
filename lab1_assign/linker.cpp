@@ -17,25 +17,10 @@ int lineoffset; //the current offset of getToken()
 int module_base; // current address // running sum of modules
 int last_line_len; //the length of the last line read
 ifstream f;
-//map<string, symbol> symbol_table;
-//map<string,int> symbol_table;
-//map<string,bool> symbol_multiple_defined;
 vector<pair<string,bool>> symbol_used;
 const int DEF_LIMIT=16;
 const int BUFF_SIZE=4096;
 const char* DELIMITER=" \t\n";
-
-void parse_error(int errorcode);
-char* getToken();
-void isInt(char *s);
-void isSymbol(char *s);
-void getDef();
-void getUse();
-void isIEAR(char *s);
-void getIns();	
-void passOne();
-void checkSymLen(char *s);
-void passTwo();
 
 struct symbol{
 	string name;
@@ -45,6 +30,27 @@ struct symbol{
 	int mod_num;
 };
 map<string, symbol> sym_table;
+
+
+void print_error(int errcode, char* c="null")
+void parse_error(int errorcode);
+char* getToken();
+void isInt(char *s);
+void isSymbol(char *s);
+void checkSymLen(char *s);
+char* getDef(int& sym_num,int mod_num);
+void getUse();
+void isIEAR(char *s);
+void getIns(int mod_num, char* symbol=NULL);
+void passOne();
+void readOp(char* a, int mem_map_cnt, int op, vector<pair<char*,bool>>& use_list, int insCount);
+void readIns(int& mem_map_cnt, vector<pair<char*,bool>>& use_list);
+void print_never_used_usedlist_warnings(int module_num, vector<pair<char*,bool>>& use_list);
+void print_never_used_def_warnings();
+void passTwo();
+void printSymbolTable();
+void init_vars();
+
 void print_error(int errcode, char* c="null"){
 	static char* errstr[] = {
 		"Error: Absolute address exceeds machine size; zero used",
@@ -57,7 +63,6 @@ void print_error(int errcode, char* c="null"){
 	};
 	if(errcode == 3)printf("Error: %s %s",c,errstr[errcode]);
 	else printf("%s",errstr[errcode]);
-	
 }
 void parse_error(int errcode){
 	static char* errstr[] = {
@@ -112,11 +117,6 @@ void isInt(char *s){
 		exit(1);
 	}
 }
-bool null(char *s){
-	if(s==NULL) return true;       
-	return false;
-}
-
 void isSymbol(char *s){
 	bool check = true;
 	if(s == NULL) check = false;
@@ -244,10 +244,7 @@ void passOne(){
 		}
 		if(f.eof())break;
 		getUse();
-		//cout << s<<endl;
 		getIns(mod_num,s);
-		//if(s_temp)getIns(mod_num,s);
-		//else getIns(mod_num,"null");
 		mod_num++;
 	}
 	return;
@@ -258,14 +255,6 @@ void readOp(char* a, int mem_map_cnt, int op, vector<pair<char*,bool>>& use_list
 	int operand = op%1000;
 	int error_code = -1;
 	char* error_s="null";
-	/*
-	cout << endl;
-	cout << "input op " << op << endl;
-	cout << "opcode " << opcode <<endl;
-	cout << "operand " << operand << endl;
-	cout << "insCount " << insCount << endl;
-	cout << "instruction "<<a<<endl;
-	*/
 	switch(*a){
 		case 'R' :
 			if(insCount <= operand){
