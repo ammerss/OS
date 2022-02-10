@@ -11,18 +11,19 @@
 using namespace std;
 
 int flag = 1; //for reading new token, flag to getline()
-char buff[512]={0,};
+char buff[4096]={0,};
 int linenum; //the current line number of getToken()
 int lineoffset; //the current offset of getToken()
 int module_base; // current address // running sum of modules
 int last_line_len; //the length of the last line read
 ifstream f;
-map<string,int> symbol_table;
-map<string,bool> symbol_multiple_defined;
+//map<string, symbol> symbol_table;
+//map<string,int> symbol_table;
+//map<string,bool> symbol_multiple_defined;
+vector<pair<string,bool>> symbol_used;
 const int DEF_LIMIT=16;
-const int BUFF_SIZE=512;
-const char* DELIMITER=" \t";
-const char* eof;
+const int BUFF_SIZE=4096;
+const char* DELIMITER=" \t\n";
 
 void parse_error(int errorcode);
 char* getToken();
@@ -34,7 +35,16 @@ void isIEAR(char *s);
 void getIns();	
 void passOne();
 void checkSymLen(char *s);
+void passTwo();
 
+struct symbol{
+	string name;
+	int address;
+	bool mul; //multiple times defined
+	int n; //n-th defined
+	int mod_num;
+};
+map<string, symbol> sym_table;
 void print_error(int errcode, char* c="null"){
 	static char* errstr[] = {
 		"Error: Absolute address exceeds machine size; zero used",
@@ -63,7 +73,6 @@ void parse_error(int errcode){
 }
 char* getToken(){
 	char* tok;
-	const char* delim = " \n\t";
 	if(flag==0){
 		tok = strtok(NULL, DELIMITER); 
 		if(tok==NULL) flag = 1;
@@ -134,30 +143,44 @@ void checkSymLen(char *s){
 		exit(1);
 	}
 }
-void getDef(){
+char* getDef(int& sym_num,int mod_num){
+	//def list
+	//def count
 	char *defCount_s = getToken();
-	if(f.eof()) return; // end of file
+	if(f.eof()) return NULL; // end of file
 	isInt(defCount_s);
 	int defCount = stoi(defCount_s);
 	if(defCount > DEF_LIMIT){
 		parse_error(4);
 		exit(1);
 	}
-		
+	//loop defs
+	char* symbol=NULL;	
 	for(int i=0;i<defCount;i++){
-		char *symbol = getToken();
+		symbol = getToken();
 		isSymbol(symbol);
 
 		char *addr_s = getToken();
 		isInt(addr_s);
 		int addr = stoi(addr_s);
 
-		if(symbol_table.find(symbol) != symbol_table.end())
-			symbol_multiple_defined.insert({symbol,true});
-		else symbol_table.insert({symbol,addr+module_base});
+		if(sym_table.find(symbol) != sym_table.end())
+			sym_table[symbol].mul = true;
+
+		else {  
+			struct symbol s = {symbol, addr+module_base,false,sym_num,mod_num};
+			sym_table.insert({symbol,s});
+			sym_num++;
+			char* name_cpy = (char*)malloc(strlen(symbol)+1);
+			strcpy(name_cpy,symbol);
+			symbol_used.push_back({name_cpy,false});
+		}
 	}
+	return symbol;
 }
 void getUse(){
+	//use list
+	//use count
 	char *useCount_s = getToken();
 	isInt(useCount_s);
 	int useCount = stoi(useCount_s);
@@ -166,7 +189,7 @@ void getUse(){
 		parse_error(5);
 		exit(1);
 	}
-
+	//loop use
 	for(int i=0;i<useCount;i++){
 		char *s = getToken();
 		isSymbol(s);
@@ -185,7 +208,7 @@ void isIEAR(char *s){
 		exit(1);
 	}
 }
-void getIns(){
+void getIns(int mod_num, char* symbol=NULL){
 	char *insCount_s = getToken();
 	isInt(insCount_s);
 	int insCount = stoi(insCount_s);
@@ -193,6 +216,14 @@ void getIns(){
 		parse_error(6);
 		exit(1);
 	}
+	if(symbol){
+		int sym_addr = sym_table[symbol].address - module_base;
+		if(symbol && sym_addr > insCount-1){
+		printf("Warning: Module %d: %s too big %d (max=%d) assume zero relative\n",mod_num,symbol,sym_addr,insCount-1);
+		sym_table[symbol].address-=sym_addr;
+		}
+	}
+	
 	module_base += insCount;
 	for(int i=0;i<insCount;i++){
 		char * ins = getToken();
@@ -202,36 +233,49 @@ void getIns(){
 	}
 }
 void passOne(){
+	int sym_num = 0;
+	int mod_num = 1;
 	while(true){
-		getDef();
+		char* s=NULL;
+		char* s_temp = getDef(sym_num,mod_num);
+		if(s_temp){
+			s = (char*)malloc(strlen(s_temp)+1);
+			strcpy(s,s_temp);
+		}
 		if(f.eof())break;
 		getUse();
-		getIns();
+		//cout << s<<endl;
+		getIns(mod_num,s);
+		//if(s_temp)getIns(mod_num,s);
+		//else getIns(mod_num,"null");
+		mod_num++;
 	}
 	return;
 }
-void readOp(char* a, int mem_map_cnt, int op, vector<char*> use_list, int insCount){
+void readOp(char* a, int mem_map_cnt, int op, vector<pair<char*,bool>>& use_list, int insCount){
 	int op_after;
 	int opcode = op/1000;
 	int operand = op%1000;
 	int error_code = -1;
 	char* error_s="null";
-	//cout << endl;
-	//cout << "input op " << op << endl;
-	//cout << "opcode " << opcode <<endl;
-	//cout << "operand " << operand << endl;
-	//cout << "insCount " << insCount << endl;
-	//cout << "instruction "<<a<<endl;
+	/*
+	cout << endl;
+	cout << "input op " << op << endl;
+	cout << "opcode " << opcode <<endl;
+	cout << "operand " << operand << endl;
+	cout << "insCount " << insCount << endl;
+	cout << "instruction "<<a<<endl;
+	*/
 	switch(*a){
 		case 'R' :
-			if(insCount < operand){
+			if(insCount <= operand){
 				error_code = 1;
 				op_after = opcode * 1000 + module_base;
 			}
 			else op_after = opcode * 1000 + operand + module_base;
 		       	break;
 		case 'A' :
-			if(operand > 512){
+			if(operand >= 512){
 				error_code = 0;
 				op_after = opcode * 1000;
 			}
@@ -240,16 +284,21 @@ void readOp(char* a, int mem_map_cnt, int op, vector<char*> use_list, int insCou
 		case 'E' :
 			char* var;
 			int global_address;
+			int temp;
 			if(operand < use_list.size()){ 
-				var = use_list[operand];
+				var = use_list[operand].first;
+				use_list[operand].second = true;
 			}	
 			else{
 				//exceeds length of uselist
 				error_code = 2;
+				op_after = op;
 				break;
 			}
-			if(symbol_table.find(var) != symbol_table.end()){
-				global_address = symbol_table[var];
+			if(sym_table.find(var) != sym_table.end()){
+				global_address = sym_table[var].address;
+				int temp = sym_table[var].n;
+				symbol_used[temp].second = true;
 			}
 			else{
 				//var is not defined
@@ -277,20 +326,43 @@ void readOp(char* a, int mem_map_cnt, int op, vector<char*> use_list, int insCou
 	cout<<endl;
 	return;
 }
-void readIns(int& mem_map_cnt, vector<char*> use_list){
+void readIns(int& mem_map_cnt, vector<pair<char*,bool>>& use_list){
 	char * insCount_s = getToken();
 	int insCount = stoi(insCount_s);
 	for(int i=0;i<insCount;i++){
 		char* addressing = getToken();
+		char* addr = (char*)malloc(strlen(addressing)+1);
+		strcpy(addr, addressing);
 		int op = stoi(getToken());
-		readOp(addressing, mem_map_cnt, op, use_list, insCount);
+		readOp(addr, mem_map_cnt, op, use_list, insCount);
 		mem_map_cnt++;
 	}
 	module_base += insCount;
 }
+void print_never_used_usedlist_warnings(int module_num, vector<pair<char*,bool>>& use_list){
+	for(int i=0;i<use_list.size();i++){
+		if(use_list[i].second==false)
+			printf("Warning: Module %d: %s appeared in the uselist but was not actually used\n",module_num,use_list[i].first);
+	}
+}
+void print_never_used_def_warnings(){
+	cout<<endl;
+	for(int i=0;i<symbol_used.size();i++){
+		if(symbol_used[i].second== false){
+			string sn = symbol_used[i].first;
+			int mn = sym_table[sn].mod_num;
+			cout<< "Warning: Module "<< mn <<": " <<sn;
+			cout<< " was defined but never used"<<endl;
+  						
+		}
+	}
+
+}
 void passTwo(){
 	int mem_map_cnt = 0; // to print the cnt number thing in the memory map
 	cout << "\nMemory Map" << endl;
+	int module_num = 1;
+
 	while(true){
 		//def
 		char * defCount_s = getToken();
@@ -302,26 +374,30 @@ void passTwo(){
 		}
 
 		//use
-		vector<char*> use_list;
+		vector<pair<char*,bool>> use_list;
 		char * useCount_s = getToken();
 		int useCount = stoi(useCount_s);
 		for(int i=0;i<useCount;i++){
 			char* use_var = getToken();
 			char* use_var_cpy = (char*)malloc(strlen(use_var)+1);
 			strcpy(use_var_cpy,use_var);
-			use_list.push_back(use_var_cpy);
+			use_list.push_back({use_var_cpy,false});
 		}
 
 		//instruction
 		readIns(mem_map_cnt, use_list);
+		print_never_used_usedlist_warnings(module_num,use_list);
+		
+		module_num++;
 	}
+	print_never_used_def_warnings();
 }
 void printSymbolTable(){
 	cout<<"Symbol Table\n";	
-	for(auto const& x : symbol_table){
-		cout << x.first<<"="<<x.second;
-		if(symbol_multiple_defined[x.first]) 
-			cout << " Error : This variable is multiple times defined; first value used"<<endl;
+	for(auto const& x : sym_table){
+		cout << x.second.name<<"="<<x.second.address;
+		if(x.second.mul) 
+			cout << " Error: This variable is multiple times defined; first value used"<<endl;
 		else cout <<endl;
 	}
 }
