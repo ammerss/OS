@@ -43,7 +43,7 @@ void checkSymLen(char *s);
 char* getDef(int& sym_num,int mod_num);
 void getUse();
 void isIEAR(char *s);
-void getIns(int mod_num, char* symbol);
+void getIns(int mod_num);
 void passOne();
 void readOp(char* a, int mem_map_cnt, int op, vector<pair<char*,bool>>& use_list, int insCount);
 void readIns(int& mem_map_cnt, vector<pair<char*,bool>>& use_list);
@@ -215,7 +215,7 @@ void isIEAR(char *s){
 		exit(1);
 	}
 }
-void getIns(int mod_num, char* symbol=NULL){
+void getIns(int mod_num){
 	char *insCount_s = getToken();
 	isInt(insCount_s);
 	int insCount = stoi(insCount_s);
@@ -223,12 +223,9 @@ void getIns(int mod_num, char* symbol=NULL){
 		parse_error(6);
 		exit(1);
 	}
-	//for(auto const &x : symbol_input){
 	while(!symbol_input.empty()){
 		string x = symbol_input.front();
 		symbol_input.pop();
-		//cout <<"herhehr              " << x <<" " << sym_table[x].address << " " <<insCount<< endl;
-		//if(sym_table[x].mod_num == mod_num){
 		int sym_addr = sym_table[x].address - module_base;
 		if((insCount == 0) || (sym_addr>0 && sym_addr > insCount-1)){
 			cout << "Warning: Module " << mod_num;
@@ -257,7 +254,7 @@ void passOne(){
 		}
 		if(f.eof())break;
 		getUse();
-		getIns(mod_num,s);
+		getIns(mod_num);
 		mod_num++;
 	}
 	return;
@@ -425,4 +422,3 @@ int main(int argc, char *argv[]){
 
 	return 0;
 }
-//when i try to print the null pointer the program seems to stop printing
