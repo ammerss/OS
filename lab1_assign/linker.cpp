@@ -19,7 +19,7 @@ int module_base; // current address // running sum of modules
 int last_line_len; //the length of the last line read
 ifstream f;
 vector<pair<string,bool>> symbol_used;
-queue<string> symbol_input;
+queue<pair<string,bool>> symbol_input;
 const int DEF_LIMIT=16;
 const int BUFF_SIZE=4096;
 const char* DELIMITER=" \t\n";
@@ -170,7 +170,7 @@ char* getDef(int& sym_num,int mod_num){
 			sym_table[symbol].mul = true;
 			char* name_cpy = (char*)malloc(strlen(symbol)+1);
 			strcpy(name_cpy, symbol);
-			symbol_input.push(name_cpy);
+			symbol_input.push({name_cpy,true});
 		}
 
 		else {  
@@ -180,7 +180,7 @@ char* getDef(int& sym_num,int mod_num){
 			char* name_cpy = (char*)malloc(strlen(symbol)+1);
 			strcpy(name_cpy,symbol);
 			symbol_used.push_back({name_cpy,false});
-			symbol_input.push(name_cpy);
+			symbol_input.push({name_cpy,false});
 		}
 	}
 	return symbol;
@@ -224,14 +224,16 @@ void getIns(int mod_num){
 		exit(1);
 	}
 	while(!symbol_input.empty()){
-		string x = symbol_input.front();
+		string x = symbol_input.front().first;
+		bool x_mul = symbol_input.front().second;
 		symbol_input.pop();
 		int sym_addr = sym_table[x].address - module_base;
-		if((insCount == 0) || (sym_addr>0 && sym_addr > insCount-1)){
+		if((insCount == 0 && insCount<= sym_addr) || (sym_addr>0 && sym_addr > insCount-1)){
 			cout << "Warning: Module " << mod_num;
 			cout << ": " << x<< " too big " ;
 			printf("%d (max=%d) assume zero relative\n",sym_addr,insCount-1);
-			sym_table[x].address -= sym_addr;		
+			if(sym_table[x].mul==0 || x_mul==0)
+				sym_table[x].address -= sym_addr;		
 		}
 	}
 	module_base += insCount;
