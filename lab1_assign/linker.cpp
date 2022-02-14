@@ -8,6 +8,7 @@
 #include <ctype.h>
 #include <string.h>
 #include <stdlib.h>
+#include <queue>
 using namespace std;
 
 int flag = 1; //for reading new token, flag to getline()
@@ -18,6 +19,7 @@ int module_base; // current address // running sum of modules
 int last_line_len; //the length of the last line read
 ifstream f;
 vector<pair<string,bool>> symbol_used;
+queue<string> symbol_input;
 const int DEF_LIMIT=16;
 const int BUFF_SIZE=4096;
 const char* DELIMITER=" \t\n";
@@ -164,8 +166,12 @@ char* getDef(int& sym_num,int mod_num){
 		isInt(addr_s);
 		int addr = stoi(addr_s);
 
-		if(sym_table.find(symbol) != sym_table.end())
+		if(sym_table.find(symbol) != sym_table.end()){
 			sym_table[symbol].mul = true;
+			char* name_cpy = (char*)malloc(strlen(symbol)+1);
+			strcpy(name_cpy, symbol);
+			symbol_input.push(name_cpy);
+		}
 
 		else {  
 			struct symbol s = {symbol, addr+module_base,false,sym_num,mod_num};
@@ -174,6 +180,7 @@ char* getDef(int& sym_num,int mod_num){
 			char* name_cpy = (char*)malloc(strlen(symbol)+1);
 			strcpy(name_cpy,symbol);
 			symbol_used.push_back({name_cpy,false});
+			symbol_input.push(name_cpy);
 		}
 	}
 	return symbol;
@@ -216,14 +223,20 @@ void getIns(int mod_num, char* symbol=NULL){
 		parse_error(6);
 		exit(1);
 	}
-	if(symbol){
-		int sym_addr = sym_table[symbol].address - module_base;
-		if(symbol && sym_addr > insCount-1){
-		printf("Warning: Module %d: %s too big %d (max=%d) assume zero relative\n",mod_num,symbol,sym_addr,insCount-1);
-		sym_table[symbol].address-=sym_addr;
+	//for(auto const &x : symbol_input){
+	while(!symbol_input.empty()){
+		string x = symbol_input.front();
+		symbol_input.pop();
+		//cout <<"herhehr              " << x <<" " << sym_table[x].address << " " <<insCount<< endl;
+		//if(sym_table[x].mod_num == mod_num){
+		int sym_addr = sym_table[x].address - module_base;
+		if((insCount == 0) || (sym_addr>0 && sym_addr > insCount-1)){
+			cout << "Warning: Module " << mod_num;
+			cout << ": " << x<< " too big " ;
+			printf("%d (max=%d) assume zero relative\n",sym_addr,insCount-1);
+			sym_table[x].address -= sym_addr;		
 		}
 	}
-	
 	module_base += insCount;
 	for(int i=0;i<insCount;i++){
 		char * ins = getToken();
@@ -267,7 +280,7 @@ void readOp(char* a, int mem_map_cnt, int op, vector<pair<char*,bool>>& use_list
 		case 'A' :
 			if(operand >= 512){
 				error_code = 0;
-				op_after = 0;
+				op_after = opcode * 1000;
 			}
 			else op_after = op;
 			break;
@@ -307,7 +320,7 @@ void readOp(char* a, int mem_map_cnt, int op, vector<pair<char*,bool>>& use_list
 			else op_after = op;
 			break;
 	}
-	if(opcode >= 10){
+	if(opcode >= 10 && error_code <=0 ){
 		error_code = 6;
 		op_after = 9999;
 	}
@@ -388,7 +401,7 @@ void printSymbolTable(){
 		string name = x.first;
 		cout << name << "=" << sym_table[name].address;
 		if(sym_table[name].mul)
-			cout << "Error: This variable is multiple times defined; first value used"<<endl;
+			cout << " Error: This variable is multiple times defined; first value used"<<endl;
 		else cout<<endl;
 	}
 }
