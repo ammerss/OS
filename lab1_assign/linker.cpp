@@ -32,7 +32,7 @@ struct symbol{
 map<string, symbol> sym_table;
 
 
-void print_error(int errcode, char* c)
+void print_error(int errcode, char* c);
 void parse_error(int errorcode);
 char* getToken();
 void isInt(char *s);
@@ -255,6 +255,7 @@ void readOp(char* a, int mem_map_cnt, int op, vector<pair<char*,bool>>& use_list
 	int operand = op%1000;
 	int error_code = -1;
 	char* error_s="null";
+		
 	switch(*a){
 		case 'R' :
 			if(insCount <= operand){
@@ -266,7 +267,7 @@ void readOp(char* a, int mem_map_cnt, int op, vector<pair<char*,bool>>& use_list
 		case 'A' :
 			if(operand >= 512){
 				error_code = 0;
-				op_after = opcode * 1000;
+				op_after = 0;
 			}
 			else op_after = op;
 			break;
@@ -306,7 +307,7 @@ void readOp(char* a, int mem_map_cnt, int op, vector<pair<char*,bool>>& use_list
 			else op_after = op;
 			break;
 	}
-	if(opcode >= 10 && error_code == -1){
+	if(opcode >= 10){
 		error_code = 6;
 		op_after = 9999;
 	}
