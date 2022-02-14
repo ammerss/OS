@@ -32,7 +32,7 @@ struct symbol{
 map<string, symbol> sym_table;
 
 
-void print_error(int errcode, char* c="null")
+void print_error(int errcode, char* c)
 void parse_error(int errorcode);
 char* getToken();
 void isInt(char *s);
@@ -41,7 +41,7 @@ void checkSymLen(char *s);
 char* getDef(int& sym_num,int mod_num);
 void getUse();
 void isIEAR(char *s);
-void getIns(int mod_num, char* symbol=NULL);
+void getIns(int mod_num, char* symbol);
 void passOne();
 void readOp(char* a, int mem_map_cnt, int op, vector<pair<char*,bool>>& use_list, int insCount);
 void readIns(int& mem_map_cnt, vector<pair<char*,bool>>& use_list);
@@ -383,11 +383,12 @@ void passTwo(){
 }
 void printSymbolTable(){
 	cout<<"Symbol Table\n";	
-	for(auto const& x : sym_table){
-		cout << x.second.name<<"="<<x.second.address;
-		if(x.second.mul) 
-			cout << " Error: This variable is multiple times defined; first value used"<<endl;
-		else cout <<endl;
+	for(auto const& x : symbol_used){
+		string name = x.first;
+		cout << name << "=" << sym_table[name].address;
+		if(sym_table[name].mul)
+			cout << "Error: This variable is multiple times defined; first value used"<<endl;
+		else cout<<endl;
 	}
 }
 void init_vars(){
