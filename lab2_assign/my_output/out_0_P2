@@ -1,0 +1,17 @@
+4
+./sched
+-sP2
+input0
+./rfile
+read file : 
+0    100 10 10 
+0
+100
+10
+10
+500  100 20 10 
+500
+100
+20
+10
+hello world
