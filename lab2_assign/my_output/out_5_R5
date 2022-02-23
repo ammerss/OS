@@ -1,27 +1,13 @@
 4
-./sched
+./main
 -sR5
 input5
 ./rfile
 read file : 
-000 400  50  50
-000
-400
-50
-50
-100 300  40  40
-100
-300
-40
-40
-200 200  30  50
-200
-200
-30
-50
-300 100  20  10
-300
-100
-20
-10
+rearearea 0 400 50 50
+rearearea 100 300 40 40
+rearearea 200 200 30 50
+rearearea 300 100 20 10
+scehd : -sR5
+RR
 hello world

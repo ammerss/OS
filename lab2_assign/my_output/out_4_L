@@ -1,27 +1,13 @@
 4
-./sched
+./main
 -sL
 input4
 ./rfile
 read file : 
-0  200  40  90
-0
-200
-40
-90
-40 100  10  40
-40
-100
-10
-40
-50  20  10  10
-50
-20
-10
-10
-60 200  5   20
-60
-200
-5
-20
+rearearea 0 200 40 90
+rearearea 40 100 10 40
+rearearea 50 20 10 10
+rearearea 60 200 5 20
+scehd : -sL
+LCFS
 hello world

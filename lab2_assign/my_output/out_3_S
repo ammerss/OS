@@ -1,27 +1,13 @@
 4
-./sched
+./main
 -sS
 input3
 ./rfile
 read file : 
-1 100  20  20
-1
-100
-20
-20
-1 100  30  10
-1
-100
-30
-10
-1 30  10  5 
-1
-30
-10
-5
-1000 30  10  5 
-1000
-30
-10
-5
+rearearea 1 100 20 20
+rearearea 1 100 30 10
+rearearea 1 30 10 5
+rearearea 1000 30 10 5
+scehd : -sS
+SRTF
 hello world
