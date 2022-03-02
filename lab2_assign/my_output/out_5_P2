@@ -1,13 +1,17 @@
 4
-./main
+src/main
 -sP2
 input5
 ./rfile
 read file : 
-rearearea 0 400 50 50
-rearearea 100 300 40 40
-rearearea 200 200 30 50
-rearearea 300 100 20 10
+0 400 50 50
+100 300 40 40
+200 200 30 50
+300 100 20 10
+0
+100
+200
+300
 scehd : -sP2
 PRIO
 hello world

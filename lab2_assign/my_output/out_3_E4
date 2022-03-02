@@ -1,13 +1,17 @@
 4
-./main
+src/main
 -sE4
 input3
 ./rfile
 read file : 
-rearearea 1 100 20 20
-rearearea 1 100 30 10
-rearearea 1 30 10 5
-rearearea 1000 30 10 5
+1 100 20 20
+1 100 30 10
+1 30 10 5
+1000 30 10 5
+1
+1
+1
+1000
 scehd : -sE4
 preemtive prio scheduler 
 hello world

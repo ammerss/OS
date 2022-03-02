@@ -1,12 +1,15 @@
 4
-./main
+src/main
 -sL
 input2
 ./rfile
 read file : 
-rearearea 1 20 10 90
-rearearea 1 20 10 90
-rearearea 1 20 10 90
+1 20 10 90
+1 20 10 90
+1 20 10 90
+1
+1
+1
 scehd : -sL
 LCFS
 hello world

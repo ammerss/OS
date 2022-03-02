@@ -1,14 +1,19 @@
 4
-./main
+src/main
 -sL
 input1
 ./rfile
 read file : 
-rearearea 1 200 10 20
-rearearea 1000 200 20 10
-rearearea 3000 200 30 10
-rearearea 5000 200 40 10
-rearearea 8000 200 50 10
+1 200 10 20
+1000 200 20 10
+3000 200 30 10
+5000 200 40 10
+8000 200 50 10
+1
+1000
+3000
+5000
+8000
 scehd : -sL
 LCFS
 hello world

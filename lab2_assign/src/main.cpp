@@ -6,7 +6,7 @@
 #include "sched.h"
 #include "process.h"
 using namespace std;
-//queue<process*> *CREATED;
+queue<Process*> CREATED;
 //queue<process*> *READY;
 //queue<process*> *RUNNING;
 //queue<process*> *BLOCKED;
@@ -53,7 +53,12 @@ int main(int argc, char *argv[]){
 		int io;
 		fscanf(f, "%d %d %d %d\n", &at, &tc, &cb, &io);
 		printf("%d %d %d %d\n", at, tc, cb, io);
-		
+		Process* p = new Process(at,tc,cb,io);
+		CREATED.push(p);
+	}
+	while(!CREATED.empty()){
+		cout << CREATED.front()->at <<endl;
+		CREATED.pop();
 	}
 	fclose(f);
 	select_sched(argv[1]);

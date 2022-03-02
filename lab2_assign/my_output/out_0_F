@@ -1,11 +1,13 @@
 4
-./main
+src/main
 -sF
 input0
 ./rfile
 read file : 
-rearearea 0 100 10 10
-rearearea 500 100 20 10
+0 100 10 10
+500 100 20 10
+0
+500
 scehd : -sF
 FCFS
 hello world
