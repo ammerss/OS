@@ -4,11 +4,12 @@
 using namespace std;
 class Process{
 public:
+	int id;
 	int at;
 	int tc;
 	int cb;
 	int io; 
 
-	Process(int a,int t, int c, int i);
+	Process(int id_, int at_, int tc_, int cb_, int io_);
 };
 #endif
