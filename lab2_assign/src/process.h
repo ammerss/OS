@@ -8,7 +8,13 @@ public:
 	int at;
 	int tc;
 	int cb;
-	int io; 
+	int io;
+        int prio;
+	int ft;
+	int tt;
+	int it;
+	int cw;
+	int rem;	
 
 	Process(int id_, int at_, int tc_, int cb_, int io_);
 };

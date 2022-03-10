@@ -75,14 +75,41 @@ void simulation(){
 				CALL_SCHEDULER = true;
 				break;
 			case CREATED_TO_READY:
-				//create event
-				Event e ={}; 
-				//add to run queue
+				//add to runque
+				//evt = {cur_time, proc, READY_TO_RUNNING};
+				//insertEvent(evt);
 				CALL_SCHEDULER = true;
+			case READY_TO_RUNNING:
+				//create event for when process becomes blocked
+				int run_time = proc->cb;
+				int next_block_time = proc->at + proc->cb;
+				proc->rem -= run_time;
+				proc->tt += run_time;
+				
+				if(proc->rem < 0){
+					evt = {cur_time + proc->rem, proc, DONE};
+				}
+				else{
+					evt = {cur_time + run_time, proc, RUNNING_TO_BLOCKED};
+				}
+			        insertEvent(evt);	
+				//CALL_SCHEDULER = true;
+			case DONE:
+				printf("finished pid : %d, cur_time :  %d\n", proc->pid, cur_time);
+
+
 		}
 		if(CALL_SCHEDULER){
 			cout<<"scheduler"<<endl;
 			CALL_SCHEDULER=false;
+			if(proc->rem <= 0){ //check if current process has finished and create event for new process
+				proc = scheduler.get_next_process();
+				if(proc){
+					Event e = {cur_time, proc, BLOCKED_tO_READY};
+					insertEvent(e);
+				}
+				else continue;
+			}
 
 		}
 	}
