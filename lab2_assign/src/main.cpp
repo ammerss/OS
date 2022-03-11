@@ -47,6 +47,7 @@ void select_sched(char* s){
 			cout << "LCFS" << endl;
 			break;
 		case 'S':
+			scheduler = new SRTF();
 			cout << "SRTF" << endl;
 			break;
 		case 'R':

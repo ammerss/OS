@@ -28,4 +28,10 @@ class LCFS : public Scheduler{
 		void add_process(Process *p);
 		Process* get_next_process();
 };
+class SRTF : public Scheduler{
+	public:
+		SRTF();
+		void add_process(Process *p);
+		Process* get_next_process();
+};
 #endif

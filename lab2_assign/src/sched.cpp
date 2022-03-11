@@ -32,4 +32,23 @@ Process* LCFS::get_next_process(){
 	}
 	return p;
 }
-
+//SRTF
+SRTF::SRTF(){}
+void SRTF::add_process(Process *p){
+	int pos = int(runQ.size());
+	for(int i=0;i<runQ.size();i++){
+		if(runQ[i]->rem > p->rem){
+			pos = i;
+			break;
+		}
+	}
+	runQ.insert(runQ.begin()+pos, p);
+}
+Process* SRTF::get_next_process(){
+	Process* p = NULL;
+	if(!runQ.empty()){
+		p = runQ.front();
+		runQ.pop_front();
+	}
+	return p;
+}
