@@ -6,10 +6,26 @@ using namespace std;
 Scheduler::Scheduler(){
 	this->quantum = 0;
 	this->type = "";
+	this->preempt = false;
 }
 void Scheduler::add_process(Process *p){}
 Process* Scheduler::get_next_process(){Process *p;return p;}
 //bool test_preempt(Process *p, int curtime){return false;}
+//RR
+RR::RR(){
+	this->preempt = true;
+}
+void RR::add_process(Process *p){
+	runQ.push_back(p);
+}
+Process* RR::get_next_process(){
+	Process *p = NULL;
+	if(!runQ.empty()){
+		p = runQ.front();
+		runQ.pop_front();
+	}
+	return p;
+}
 //FCFS
 FCFS::FCFS(){}
 void FCFS::add_process(Process *p){runQ.push_back(p);}

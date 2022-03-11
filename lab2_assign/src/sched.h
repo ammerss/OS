@@ -8,6 +8,7 @@ using namespace std;
 class Scheduler{
 	public:
 		Scheduler();
+		bool preempt;
 		string type;
 		int quantum;
 		deque <Process*> runQ;
@@ -15,7 +16,12 @@ class Scheduler{
 		virtual Process* get_next_process();
 		//virtual bool test_preempt(Process *p, int curtime);
 };
-
+class RR : public Scheduler{
+	public:
+		RR();
+		void add_process(Process *p);
+		Process* get_next_process();
+};
 class FCFS : public Scheduler{
 	public:
 		FCFS();

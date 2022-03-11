@@ -51,7 +51,9 @@ void select_sched(char* s){
 			cout << "SRTF" << endl;
 			break;
 		case 'R':
-			cout << "RR" << endl;
+			quantum = atoi(s+1);
+			scheduler = new RR();
+			cout << "RR" << " " << quantum << endl;
 			break;
 		case 'P' :
 			cout << "PRIO" << endl;
@@ -115,34 +117,52 @@ void simulation(){
 					      }break;
 			case READY_TO_RUNNING:{
 				//create event for when process becomes blocked
-				int run_time = proc->run_time;
+				int total_run_time = proc->run_time;
+				int run_time = min(quantum, total_run_time);
 				proc->cw += cur_time - proc->time_in_prev;
 				proc->time_in_prev = cur_time;
 				occupied = true;
-				if(proc->rem <= run_time){
+				if(proc->rem <= run_time){ //process will finish with this run
 					run_time = min(run_time, proc->rem);
 					proc->rem -= run_time;
 					proc->tt += run_time;
+					proc->burst_left = 0;
 					Event *e = new Event();
 					e->timestamp = cur_time + run_time;
 					e->process = proc;
 					e->state = DONE;
 					insertEvent(e);
 				}
-				else{
+				else if(total_run_time - run_time > 0){ //process did not finish cpu burst
 					proc->rem -= run_time;
 					proc->tt += run_time;
+					proc->burst_left = total_run_time - run_time;
+					proc->run_time = proc->burst_left;
+					Event *e = new Event();
+					e->timestamp = cur_time + run_time;
+					e->process = proc;
+					e->state = RUNNING_TO_READY;
+					insertEvent(e);
+				}
+				else{ //process finished cpu burst and will be blocked
+					proc->rem -= run_time;
+					proc->tt += run_time;
+					proc->burst_left = 0;
 					proc->run_time = myrandom(proc->io);
 					Event *e = new Event();
 					e->timestamp = cur_time + run_time;
-					//proc->run_time = myrandom(proc->io);
 					e->process = proc;
 					e->state = RUNNING_TO_BLOCKED;
 					insertEvent(e);
 				}
-			        //insertEvent(evt);	
-				//CALL_SCHEDULER = true;
 					      }break;
+			case RUNNING_TO_READY:{
+					occupied = false;
+					proc->time_in_prev = cur_time;
+					scheduler->add_process(proc);
+					CALL_SCHEDULER = true;
+					      }break;
+
 			case DONE:{
 					  occupied = false;
 					  proc->ft = cur_time;
@@ -155,14 +175,14 @@ void simulation(){
 			CALL_SCHEDULER=false;
 			if(occupied == false){
 			Process* newp = scheduler->get_next_process();
-			if(newp){	
-				newp->run_time = myrandom(newp->cb);
-                        	Event *e = new Event();
-                        	e->timestamp = cur_time;
-                        	e->process = newp;
-                        	e->state = READY_TO_RUNNING;
-                        	insertEvent(e);
-			}
+				if(newp){	 
+					if(newp->burst_left == 0) newp->run_time = myrandom(newp->cb);
+                        		Event *e = new Event();
+                        		e->timestamp = cur_time;
+                        		e->process = newp;
+                        		e->state = READY_TO_RUNNING;
+                        		insertEvent(e);
+				}
 			}
 		}
 	}
@@ -182,31 +202,28 @@ int myrandom(int burst){
 	int num;
 	rf >> num;
 	return 1 + (num % burst);
-
 }
 void printV(Event* e, bool verbose, int current_time){
 	if(verbose){
-		Process *process = e->process;
-		cout << current_time<<" "<<e->process->id<<" "<< current_time - e->process->time_in_prev<< ": ";
+		Process *p = e->process;
+		cout << current_time<<" "<<p->id<<" "<< current_time - p->time_in_prev<< ": ";
 		if(e->state == CREATED_TO_READY){
-			cout << "CREATED -> READY" <<endl;
+			printf("CREATED -> READY\n");
 		}
 		else if(e->state == READY_TO_RUNNING){
-			cout << "READY -> RUNNG";
-			cout << " cb=" << process->run_time;
-			cout << " rem=" << process->rem;
-		       	cout << " prio=" << process->dprio<<endl;
+			printf("READY -> RUNNG cb=%d rem=%d prio=%d\n",p->run_time,p->rem,p->dprio);
 		}
 		else if(e->state == RUNNING_TO_BLOCKED){
-			cout << "RUNNG -> BLOCK";
-			cout << " ib=" << process->run_time;
-			cout << " rem=" << process->rem<<endl;
+			printf("RUNNG -> BLOCK ib=%d rem=%d\n",p->run_time, p->rem);
+		}
+		else if(e->state == RUNNING_TO_READY){
+			printf("RUNNG -> READY  cb=%d rem=%d prio=%d\n", p->run_time, p->rem,p->dprio);
 		}
 		else if(e->state == BLOCKED_TO_READY){
-			cout << "BLOCK -> READY" << endl;
+			printf("BLOCK -> READY\n");
 		}
 		else if(e->state == DONE){
-			cout << "Done" << endl;
+			printf("Done\n");
 		}
 	}
 }

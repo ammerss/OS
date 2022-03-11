@@ -17,7 +17,8 @@ public:
 	int rem;
 	int run_time;
 	int time_in_prev;
-	int dprio;	
+	int dprio;
+	int burst_left;	
 
 	Process(int id_, int at_, int tc_, int cb_, int io_, int prio_);
 };
