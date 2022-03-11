@@ -14,8 +14,10 @@ public:
 	int tt;
 	int it;
 	int cw;
-	int rem;	
+	int rem;
+	int run_time;
+	int time_in_prev;	
 
-	Process(int id_, int at_, int tc_, int cb_, int io_);
+	Process(int id_, int at_, int tc_, int cb_, int io_, int prio_);
 };
 #endif

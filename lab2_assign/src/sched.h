@@ -10,9 +10,9 @@ class Scheduler{
 		Scheduler();
 		string type;
 		int quantum;
-		deque <Process*> runq;
-		//virtual void add_process(Process *p);
-		//virtual Process* get_next_process();
+		deque <Process*> runQ;
+		virtual void add_process(Process *p);
+		virtual Process* get_next_process();
 		//virtual bool test_preempt(Process *p, int curtime);
 };
 
