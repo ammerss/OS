@@ -65,6 +65,7 @@ void select_sched(char* s){
 void simulation(){
 	Event *evt;
 	bool CALL_SCHEDULER = false;
+	bool occupied = false;
 	while(!eventQ.empty()){
 		Event *evt = eventQ.front();
 		eventQ.pop_front();
@@ -76,39 +77,48 @@ void simulation(){
 		switch(state){			
 			case RUNNING_TO_BLOCKED:{
 				//create event for when process becomes ready again
+				proc->time_in_prev = cur_time;
 				proc->it += proc->run_time;
 				Event *e = new Event();
 				e->timestamp = cur_time+proc->run_time;
 				e->process = proc;
 				e->state = BLOCKED_TO_READY;
 				insertEvent(e);
+				occupied = false;
+				CALL_SCHEDULER = true;
 						}break;	
 			case BLOCKED_TO_READY:{
 				//must come from blocked?
 				//add to run queue?
 				//int run_time = proc->run_time;
-				proc-> run_time = myrandom(proc->cb);
+				/*proc-> run_time = myrandom(proc->cb);
 				Event *e = new Event();
 				e->timestamp = cur_time;
 				e->process = proc;
 				e->state = READY_TO_RUNNING;
-				insertEvent(e);
-				//CALL_SCHEDULER = true;
+				insertEvent(e);*/
+				proc->time_in_prev = cur_time;
+				scheduler->add_process(proc);
+				CALL_SCHEDULER = true;
 					      }break;
 			case CREATED_TO_READY:{
 				//add to runque
-				proc->run_time = myrandom(proc->cb);
+				/*proc->run_time = myrandom(proc->cb);
 				Event *e = new Event();
 				e->timestamp = cur_time;
 				e->process = proc;
 				e->state = READY_TO_RUNNING;
-				insertEvent(e);
+				insertEvent(e);*/
+				proc->time_in_prev = cur_time;
 				scheduler->add_process(proc);
-				//CALL_SCHEDULER = true;
+				CALL_SCHEDULER = true;
 					      }break;
 			case READY_TO_RUNNING:{
 				//create event for when process becomes blocked
 				int run_time = proc->run_time;
+				proc->cw += cur_time - proc->time_in_prev;
+				proc->time_in_prev = cur_time;
+				occupied = true;
 				if(proc->rem <= run_time){
 					run_time = min(run_time, proc->rem);
 					proc->rem -= run_time;
@@ -125,6 +135,7 @@ void simulation(){
 					proc->run_time = myrandom(proc->io);
 					Event *e = new Event();
 					e->timestamp = cur_time + run_time;
+					//proc->run_time = myrandom(proc->io);
 					e->process = proc;
 					e->state = RUNNING_TO_BLOCKED;
 					insertEvent(e);
@@ -133,25 +144,26 @@ void simulation(){
 				//CALL_SCHEDULER = true;
 					      }break;
 			case DONE:{
+					  occupied = false;
 					  proc->ft = cur_time;
 					  proc->tt = cur_time - proc->at;
-				printf("finished pid : %d, cur_time :  %d\n", proc->id, cur_time);
+					  CALL_SCHEDULER = true;
 				  }break;
-
-
 		}
 		if(CALL_SCHEDULER){
-			cout<<"scheduler"<<endl;
+			if(!eventQ.empty() && eventQ.front()->timestamp == cur_time) continue;
 			CALL_SCHEDULER=false;
-			if(proc->rem <= 0){ //check if current process has finished and create event for new process
-				proc = scheduler->get_next_process();
-				if(proc){
-					Event e = {cur_time, proc, BLOCKED_TO_READY};
-					insertEvent(&e);
-				}
-				else continue;
+			if(occupied == false){
+			Process* newp = scheduler->get_next_process();
+			if(newp){	
+				newp->run_time = myrandom(newp->cb);
+                        	Event *e = new Event();
+                        	e->timestamp = cur_time;
+                        	e->process = newp;
+                        	e->state = READY_TO_RUNNING;
+                        	insertEvent(e);
 			}
-
+			}
 		}
 	}
 
@@ -175,7 +187,7 @@ int myrandom(int burst){
 void printV(Event* e, bool verbose, int current_time){
 	if(verbose){
 		Process *process = e->process;
-		cout << current_time<<" "<<e->process->id<<" "<<e->process->time_in_prev<< ": ";
+		cout << current_time<<" "<<e->process->id<<" "<< current_time - e->process->time_in_prev<< ": ";
 		if(e->state == CREATED_TO_READY){
 			cout << "CREATED -> READY" <<endl;
 		}
@@ -183,7 +195,7 @@ void printV(Event* e, bool verbose, int current_time){
 			cout << "READY -> RUNNG";
 			cout << " cb=" << process->run_time;
 			cout << " rem=" << process->rem;
-		       	cout << " prio=" << process->prio<<endl;
+		       	cout << " prio=" << process->dprio<<endl;
 		}
 		else if(e->state == RUNNING_TO_BLOCKED){
 			cout << "RUNNG -> BLOCK";
@@ -194,17 +206,38 @@ void printV(Event* e, bool verbose, int current_time){
 			cout << "BLOCK -> READY" << endl;
 		}
 		else if(e->state == DONE){
-			cout << "DONE" << endl;
+			cout << "Done" << endl;
 		}
 	}
 }
 void summary(){
+	int time_cpubusy=0, time_iobusy=0, num_processes=0, finishtime=0;
+	int total_tt=0, total_cw=0;
+	double cpu_util;
+	double io_util;
+	double avg_tt;
+	double avg_cw;
+	double tp;
 	while(!plist.empty()){
 		Process *p = plist.front();
 		plist.pop();
 		printf("%04d: %4d %4d %4d %4d %1d | %5d %5d %5d %5d\n",
 				p->id,p->at,p->tc,p->cb,p->io,p->prio,p->ft,p->tt,p->it,p->cw);
+		finishtime = max(finishtime, p->ft);
+		time_cpubusy += p->tc;
+		time_iobusy += p->it;
+		num_processes++;
+		total_tt += p->tt;
+		total_cw += p->cw;
 	}
+	cpu_util = 100.0 * (time_cpubusy  / (double) finishtime);
+	io_util  = 100.0 * (time_iobusy   / (double) finishtime);
+	tp 	 = 100.0 * (num_processes / (double) finishtime);
+	avg_tt   = (double) total_tt/num_processes;
+	avg_cw   = (double) total_cw/num_processes;
+	printf("SUM: %d %.2lf %.2lf %.2lf %.2lf %.3lf\n",
+			finishtime, cpu_util,io_util,avg_tt,avg_cw,tp);
+
 }
 int main(int argc, char *argv[]){
 	cout <<argc<<endl;
@@ -247,7 +280,6 @@ int main(int argc, char *argv[]){
 	        e->timestamp = p->at;
 		e->process = p;
 		e->state = CREATED_TO_READY;	
-		//e = {p->at, p, CREATED_TO_READY};
 		insertEvent(e);
 		id++;
 	}

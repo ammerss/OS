@@ -19,5 +19,7 @@ class Scheduler{
 class FCFS : public Scheduler{
 	public:
 		FCFS();
+		void add_process(Process *p);
+		Process* get_next_process();
 };
 #endif
