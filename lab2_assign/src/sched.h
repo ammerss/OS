@@ -22,4 +22,10 @@ class FCFS : public Scheduler{
 		void add_process(Process *p);
 		Process* get_next_process();
 };
+class LCFS : public Scheduler{
+	public:
+		LCFS();
+		void add_process(Process *p);
+		Process* get_next_process();
+};
 #endif

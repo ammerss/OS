@@ -10,16 +10,12 @@
 #include <algorithm>
 using namespace std;
 queue<Process*> plist;
-deque<Process*> processQ;
 Scheduler* scheduler;
 ifstream rf;
 bool verbose = false;
 int maxprio = 4;
-int quantim = 10000;
-queue<Process*> CREATED;
-queue<Process*> READY;
-//queue<process*> *RUNNING;
-//queue<process*> *BLOCKED;
+int quantum = 10000;
+
 typedef enum State{
 	CREATED_TO_READY,
 	READY_TO_RUNNING,
@@ -33,10 +29,12 @@ typedef struct Event{
 	Process* process;
 	State state;
 };
+
 deque<Event*> eventQ;
 void insertEvent(Event* e);
 int myrandom(int burst);
 void printV(Event* e, bool verbose, int current_time);
+
 void select_sched(char* s){
 	//cout << "scehd : " << s << endl;
 	switch(s[0]){
@@ -45,6 +43,7 @@ void select_sched(char* s){
 			cout << "FCFS" << endl;
 			break;
 		case 'L':
+			scheduler = new LCFS();
 			cout << "LCFS" << endl;
 			break;
 		case 'S':
