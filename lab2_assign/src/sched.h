@@ -8,13 +8,22 @@ using namespace std;
 class Scheduler{
 	public:
 		Scheduler();
-		bool preempt;
+		bool prior;
 		string type;
 		int quantum;
 		deque <Process*> runQ;
 		virtual void add_process(Process *p);
 		virtual Process* get_next_process();
 		//virtual bool test_preempt(Process *p, int curtime);
+};
+class PRIO : public Scheduler{
+	public :
+		deque <Process*> expQ;
+		deque <Process*> *activeQ;
+		deque <Process*> *expireQ;
+		PRIO();
+		void add_process(Process *p);
+		Process* get_next_process();
 };
 class RR : public Scheduler{
 	public:

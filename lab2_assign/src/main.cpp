@@ -55,8 +55,12 @@ void select_sched(char* s){
 			scheduler = new RR();
 			cout << "RR" << " " << quantum << endl;
 			break;
-		case 'P' :
-			cout << "PRIO" << endl;
+		case 'P' :{
+			quantum = atoi(strtok(s+1,":"));
+			char* temp = strtok(NULL, " ");
+			if(temp) maxprio = atoi(temp);
+			scheduler = new PRIO();
+			cout << "PRIO" << endl;}
 			break;
 		case 'E' :
 			cout << "preemtive prio scheduler " << endl;
@@ -81,6 +85,7 @@ void simulation(){
 				//create event for when process becomes ready again
 				proc->time_in_prev = cur_time;
 				proc->it += proc->run_time;
+				//if(scheduler->prior) proc->dprio--;
 				Event *e = new Event();
 				e->timestamp = cur_time+proc->run_time;
 				e->process = proc;
@@ -100,6 +105,8 @@ void simulation(){
 				e->state = READY_TO_RUNNING;
 				insertEvent(e);*/
 				proc->time_in_prev = cur_time;
+				proc->dprio = proc->prio-1;
+				//if(scheduler->prior) proc->dprio--;
 				scheduler->add_process(proc);
 				CALL_SCHEDULER = true;
 					      }break;
@@ -159,6 +166,7 @@ void simulation(){
 			case RUNNING_TO_READY:{
 					occupied = false;
 					proc->time_in_prev = cur_time;
+					if(scheduler->prior) proc->dprio --;
 					scheduler->add_process(proc);
 					CALL_SCHEDULER = true;
 					      }break;
