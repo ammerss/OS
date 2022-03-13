@@ -1,29 +1,5658 @@
-4
+5
 src/main
+-v
 -sE4
 input6
-./rfile
+preemtive prio scheduler 
 read file : 
 0 400 50 50
+----------------------------------myrandom------------------------------
 0 300 40 40
+----------------------------------myrandom------------------------------
 1 200 30 50
+----------------------------------myrandom------------------------------
 1 301 20 10
+----------------------------------myrandom------------------------------
 9 302 20 20
+----------------------------------myrandom------------------------------
 10 303 15 30
+----------------------------------myrandom------------------------------
 10 304 5 40
+----------------------------------myrandom------------------------------
 11 305 20 40
+----------------------------------myrandom------------------------------
 20 306 20 10
+----------------------------------myrandom------------------------------
 50 307 20 10
-0
-0
-1
-1
-9
-10
-10
-11
-20
-50
-scehd : -sE4
-preemtive prio scheduler 
-hello world
+----------------------------------myrandom------------------------------
+0 0 0: CREATED -> READY
+
+0 1 0: CREATED -> READY
+
+1 0
+----------------------------------myrandom------------------------------
+0 1 0: READY -> RUNNG cb=9 rem=300 prio=3
+1 2 0: CREATED -> READY
+---->PRIO preemption 1 by 2  ?===0 --- TS=4 now=1--------
+1 3 0: CREATED -> READY
+---->PRIO preemption 1 by 3  ?===0 --- TS=4 now=1--------
+4 1 4: RUNNG -> READY  cb=5 rem=296 prio=3
+3 0
+----------------------------------myrandom------------------------------
+4 3 3: READY -> RUNNG cb=19 rem=301 prio=3
+8 3 4: RUNNG -> READY  cb=15 rem=297 prio=3
+1 5
+8 1 4: READY -> RUNNG cb=5 rem=296 prio=2
+9 4 0: CREATED -> READY
+---->PRIO preemption 1 by 4  ?===1 --- TS=12 now=9--------YES
+pid : 1
+actually ran: 1
+prev run time : 5
+nxt_evt_ts : 12
+ was started at : 8
+have to run more : 4
+p rem : 292
+p tt : 8
+p burst left: 1
+p run time : 1
+9 1 1: RUNNG -> READY  cb=4 rem=295 prio=2
+4 0
+----------------------------------myrandom------------------------------
+9 4 0: READY -> RUNNG cb=11 rem=302 prio=3
+10 5 0: CREATED -> READY
+---->PRIO preemption 4 by 5  ?===0 --- TS=13 now=10--------
+10 6 0: CREATED -> READY
+---->PRIO preemption 4 by 6  ?===0 --- TS=13 now=10--------
+11 7 0: CREATED -> READY
+---->PRIO preemption 4 by 7  ?===0 --- TS=13 now=11--------
+13 4 4: RUNNG -> READY  cb=7 rem=298 prio=3
+3 15
+13 3 5: READY -> RUNNG cb=15 rem=297 prio=2
+17 3 4: RUNNG -> READY  cb=11 rem=293 prio=2
+6 0
+----------------------------------myrandom------------------------------
+17 6 7: READY -> RUNNG cb=4 rem=304 prio=2
+----------------------------------myrandom------------------------------
+20 8 0: CREATED -> READY
+---->PRIO preemption 6 by 8  ?===0 --- TS=21 now=20--------
+21 6 4: RUNNG -> BLOCK ib=36 rem=300
+7 0
+----------------------------------myrandom------------------------------
+21 7 10: READY -> RUNNG cb=2 rem=305 prio=2
+----------------------------------myrandom------------------------------
+23 7 2: RUNNG -> BLOCK ib=2 rem=303
+4 7
+23 4 10: READY -> RUNNG cb=7 rem=298 prio=2
+25 7 2: BLOCK -> READY
+---->PRIO preemption 4 by 7  ? 0 === TS=27 now=25----------
+27 4 4: RUNNG -> READY  cb=3 rem=294 prio=2
+8 0
+----------------------------------myrandom------------------------------
+27 8 7: READY -> RUNNG cb=14 rem=306 prio=2
+31 8 4: RUNNG -> READY  cb=10 rem=302 prio=2
+7 0
+----------------------------------myrandom------------------------------
+31 7 6: READY -> RUNNG cb=12 rem=303 prio=2
+35 7 4: RUNNG -> READY  cb=8 rem=299 prio=2
+0 0
+----------------------------------myrandom------------------------------
+35 0 35: READY -> RUNNG cb=16 rem=400 prio=1
+39 0 4: RUNNG -> READY  cb=12 rem=396 prio=1
+2 0
+----------------------------------myrandom------------------------------
+39 2 38: READY -> RUNNG cb=29 rem=200 prio=1
+43 2 4: RUNNG -> READY  cb=25 rem=196 prio=1
+1 4
+43 1 34: READY -> RUNNG cb=4 rem=295 prio=1
+----------------------------------myrandom------------------------------
+47 1 4: RUNNG -> BLOCK ib=25 rem=291
+3 11
+47 3 30: READY -> RUNNG cb=11 rem=293 prio=1
+50 9 0: CREATED -> READY
+---->PRIO preemption 3 by 9  ?===0 --- TS=51 now=50--------
+51 3 4: RUNNG -> READY  cb=7 rem=289 prio=1
+4 3
+51 4 24: READY -> RUNNG cb=3 rem=294 prio=1
+----------------------------------myrandom------------------------------
+54 4 3: RUNNG -> BLOCK ib=19 rem=291
+8 10
+54 8 23: READY -> RUNNG cb=10 rem=302 prio=1
+57 6 36: BLOCK -> READY
+---->PRIO preemption 8 by 6  ? 1 === TS=58 now=57----------YES
+pid : 8
+actually ran: 3
+prev run time : 10
+nxt_evt_ts : 58
+ was started at : 54
+have to run more : 7
+p rem : 298
+p tt : 8
+p burst left: 6
+p run time : 6
+57 8 3: RUNNG -> READY  cb=7 rem=299 prio=1
+6 0
+----------------------------------myrandom------------------------------
+57 6 0: READY -> RUNNG cb=5 rem=300 prio=2
+61 6 4: RUNNG -> READY  cb=1 rem=296 prio=2
+7 8
+61 7 26: READY -> RUNNG cb=8 rem=299 prio=1
+65 7 4: RUNNG -> READY  cb=4 rem=295 prio=1
+6 1
+65 6 4: READY -> RUNNG cb=1 rem=296 prio=1
+----------------------------------myrandom------------------------------
+66 6 1: RUNNG -> BLOCK ib=2 rem=295
+5 0
+----------------------------------myrandom------------------------------
+66 5 56: READY -> RUNNG cb=2 rem=303 prio=0
+----------------------------------myrandom------------------------------
+68 6 2: BLOCK -> READY
+---->PRIO preemption 5 by 6  ? 1 === TS=68 now=68----------
+68 5 2: RUNNG -> BLOCK ib=13 rem=301
+6 0
+----------------------------------myrandom------------------------------
+68 6 0: READY -> RUNNG cb=5 rem=295 prio=2
+72 1 25: BLOCK -> READY
+---->PRIO preemption 6 by 1  ? 1 === TS=72 now=72----------
+72 6 4: RUNNG -> READY  cb=1 rem=291 prio=2
+1 0
+----------------------------------myrandom------------------------------
+72 1 0: READY -> RUNNG cb=27 rem=291 prio=3
+73 4 19: BLOCK -> READY
+---->PRIO preemption 1 by 4  ? 0 === TS=76 now=73----------
+76 1 4: RUNNG -> READY  cb=23 rem=287 prio=3
+4 0
+----------------------------------myrandom------------------------------
+76 4 3: READY -> RUNNG cb=12 rem=291 prio=3
+80 4 4: RUNNG -> READY  cb=8 rem=287 prio=3
+1 23
+80 1 4: READY -> RUNNG cb=23 rem=287 prio=2
+81 5 13: BLOCK -> READY
+---->PRIO preemption 1 by 5  ? 0 === TS=84 now=81----------
+84 1 4: RUNNG -> READY  cb=19 rem=283 prio=2
+4 8
+84 4 4: READY -> RUNNG cb=8 rem=287 prio=2
+88 4 4: RUNNG -> READY  cb=4 rem=283 prio=2
+6 1
+88 6 16: READY -> RUNNG cb=1 rem=291 prio=1
+----------------------------------myrandom------------------------------
+89 6 1: RUNNG -> BLOCK ib=2 rem=290
+1 19
+89 1 5: READY -> RUNNG cb=19 rem=283 prio=1
+91 6 2: BLOCK -> READY
+---->PRIO preemption 1 by 6  ? 1 === TS=93 now=91----------YES
+pid : 1
+actually ran: 2
+prev run time : 19
+nxt_evt_ts : 93
+ was started at : 89
+have to run more : 17
+p rem : 279
+p tt : 27
+p burst left: 15
+p run time : 15
+91 1 2: RUNNG -> READY  cb=17 rem=281 prio=1
+6 0
+----------------------------------myrandom------------------------------
+91 6 0: READY -> RUNNG cb=4 rem=290 prio=2
+----------------------------------myrandom------------------------------
+95 6 4: RUNNG -> BLOCK ib=1 rem=286
+4 4
+95 4 7: READY -> RUNNG cb=4 rem=283 prio=1
+----------------------------------myrandom------------------------------
+96 6 1: BLOCK -> READY
+---->PRIO preemption 4 by 6  ? 1 === TS=99 now=96----------YES
+pid : 4
+actually ran: 1
+prev run time : 4
+nxt_evt_ts : 99
+ was started at : 95
+have to run more : 3
+p rem : 279
+p tt : 23
+p burst left: 0
+p run time : 19
+96 4 1: RUNNG -> READY  cb=3 rem=282 prio=1
+6 0
+----------------------------------myrandom------------------------------
+96 6 0: READY -> RUNNG cb=4 rem=286 prio=2
+----------------------------------myrandom------------------------------
+100 6 4: RUNNG -> BLOCK ib=10 rem=282
+0 12
+100 0 61: READY -> RUNNG cb=12 rem=396 prio=0
+104 0 4: RUNNG -> READY  cb=8 rem=392 prio=0
+2 25
+104 2 61: READY -> RUNNG cb=25 rem=196 prio=0
+108 2 4: RUNNG -> READY  cb=21 rem=192 prio=0
+9 0
+----------------------------------myrandom------------------------------
+108 9 58: READY -> RUNNG cb=20 rem=307 prio=0
+110 6 10: BLOCK -> READY
+---->PRIO preemption 9 by 6  ? 1 === TS=112 now=110----------YES
+pid : 9
+actually ran: 2
+prev run time : 20
+nxt_evt_ts : 112
+ was started at : 108
+have to run more : 18
+p rem : 303
+p tt : 4
+p burst left: 16
+p run time : 16
+110 9 2: RUNNG -> READY  cb=18 rem=305 prio=0
+6 0
+----------------------------------myrandom------------------------------
+110 6 0: READY -> RUNNG cb=5 rem=282 prio=2
+114 6 4: RUNNG -> READY  cb=1 rem=278 prio=2
+6 1
+114 6 0: READY -> RUNNG cb=1 rem=278 prio=1
+----------------------------------myrandom------------------------------
+115 6 1: RUNNG -> BLOCK ib=28 rem=277
+3 7
+115 3 64: READY -> RUNNG cb=7 rem=289 prio=0
+119 3 4: RUNNG -> READY  cb=3 rem=285 prio=0
+8 7
+119 8 62: READY -> RUNNG cb=7 rem=299 prio=0
+123 8 4: RUNNG -> READY  cb=3 rem=295 prio=0
+7 4
+123 7 58: READY -> RUNNG cb=4 rem=295 prio=0
+----------------------------------myrandom------------------------------
+127 7 4: RUNNG -> BLOCK ib=10 rem=291
+5 0
+----------------------------------myrandom------------------------------
+127 5 46: READY -> RUNNG cb=9 rem=301 prio=0
+131 5 4: RUNNG -> READY  cb=5 rem=297 prio=0
+1 17
+131 1 40: READY -> RUNNG cb=17 rem=281 prio=0
+135 1 4: RUNNG -> READY  cb=13 rem=277 prio=0
+4 3
+135 4 39: READY -> RUNNG cb=3 rem=282 prio=0
+----------------------------------myrandom------------------------------
+137 7 10: BLOCK -> READY
+---->PRIO preemption 4 by 7  ? 1 === TS=138 now=137----------YES
+pid : 4
+actually ran: 2
+prev run time : 3
+nxt_evt_ts : 138
+ was started at : 135
+have to run more : 1
+p rem : 279
+p tt : 29
+p burst left: 0
+p run time : 1
+137 4 2: RUNNG -> READY  cb=1 rem=280 prio=0
+7 0
+----------------------------------myrandom------------------------------
+137 7 0: READY -> RUNNG cb=1 rem=291 prio=2
+----------------------------------myrandom------------------------------
+138 7 1: RUNNG -> BLOCK ib=18 rem=290
+3 3
+138 3 19: READY -> RUNNG cb=3 rem=285 prio=3
+----------------------------------myrandom------------------------------
+141 3 3: RUNNG -> BLOCK ib=4 rem=282
+1 13
+141 1 6: READY -> RUNNG cb=13 rem=277 prio=3
+143 6 28: BLOCK -> READY
+---->PRIO preemption 1 by 6  ? 0 === TS=145 now=143----------
+145 3 4: BLOCK -> READY
+---->PRIO preemption 1 by 3  ? 0 === TS=145 now=145----------
+145 1 4: RUNNG -> READY  cb=9 rem=273 prio=3
+4 1
+145 4 8: READY -> RUNNG cb=1 rem=280 prio=3
+----------------------------------myrandom------------------------------
+146 4 1: RUNNG -> BLOCK ib=11 rem=279
+3 0
+----------------------------------myrandom------------------------------
+146 3 1: READY -> RUNNG cb=14 rem=282 prio=3
+150 3 4: RUNNG -> READY  cb=10 rem=278 prio=3
+8 3
+150 8 27: READY -> RUNNG cb=3 rem=295 prio=2
+----------------------------------myrandom------------------------------
+153 8 3: RUNNG -> BLOCK ib=9 rem=292
+6 0
+----------------------------------myrandom------------------------------
+153 6 10: READY -> RUNNG cb=3 rem=277 prio=2
+----------------------------------myrandom------------------------------
+156 7 18: BLOCK -> READY
+---->PRIO preemption 6 by 7  ? 0 === TS=156 now=156----------
+156 6 3: RUNNG -> BLOCK ib=7 rem=274
+1 9
+156 1 11: READY -> RUNNG cb=9 rem=273 prio=2
+157 4 11: BLOCK -> READY
+---->PRIO preemption 1 by 4  ? 1 === TS=160 now=157----------YES
+pid : 1
+actually ran: 1
+prev run time : 9
+nxt_evt_ts : 160
+ was started at : 156
+have to run more : 8
+p rem : 269
+p tt : 41
+p burst left: 5
+p run time : 5
+157 1 1: RUNNG -> READY  cb=8 rem=272 prio=2
+4 0
+----------------------------------myrandom------------------------------
+157 4 0: READY -> RUNNG cb=13 rem=279 prio=3
+161 4 4: RUNNG -> READY  cb=9 rem=275 prio=3
+3 10
+161 3 11: READY -> RUNNG cb=10 rem=278 prio=2
+162 8 9: BLOCK -> READY
+---->PRIO preemption 3 by 8  ? 0 === TS=165 now=162----------
+163 6 7: BLOCK -> READY
+---->PRIO preemption 3 by 6  ? 0 === TS=165 now=163----------
+165 3 4: RUNNG -> READY  cb=6 rem=274 prio=2
+7 0
+----------------------------------myrandom------------------------------
+165 7 9: READY -> RUNNG cb=16 rem=290 prio=2
+169 7 4: RUNNG -> READY  cb=12 rem=286 prio=2
+4 9
+169 4 8: READY -> RUNNG cb=9 rem=275 prio=2
+173 4 4: RUNNG -> READY  cb=5 rem=271 prio=2
+8 0
+----------------------------------myrandom------------------------------
+173 8 11: READY -> RUNNG cb=2 rem=292 prio=2
+----------------------------------myrandom------------------------------
+175 8 2: RUNNG -> BLOCK ib=3 rem=290
+6 0
+----------------------------------myrandom------------------------------
+175 6 12: READY -> RUNNG cb=5 rem=274 prio=2
+178 8 3: BLOCK -> READY
+---->PRIO preemption 6 by 8  ? 0 === TS=179 now=178----------
+179 6 4: RUNNG -> READY  cb=1 rem=270 prio=2
+8 0
+----------------------------------myrandom------------------------------
+179 8 1: READY -> RUNNG cb=13 rem=290 prio=2
+183 8 4: RUNNG -> READY  cb=9 rem=286 prio=2
+0 8
+183 0 79: READY -> RUNNG cb=8 rem=392 prio=1
+187 0 4: RUNNG -> READY  cb=4 rem=388 prio=1
+2 21
+187 2 79: READY -> RUNNG cb=21 rem=192 prio=1
+191 2 4: RUNNG -> READY  cb=17 rem=188 prio=1
+1 8
+191 1 34: READY -> RUNNG cb=8 rem=272 prio=1
+195 1 4: RUNNG -> READY  cb=4 rem=268 prio=1
+3 6
+195 3 30: READY -> RUNNG cb=6 rem=274 prio=1
+199 3 4: RUNNG -> READY  cb=2 rem=270 prio=1
+7 12
+199 7 30: READY -> RUNNG cb=12 rem=286 prio=1
+203 7 4: RUNNG -> READY  cb=8 rem=282 prio=1
+4 5
+203 4 30: READY -> RUNNG cb=5 rem=271 prio=1
+207 4 4: RUNNG -> READY  cb=1 rem=267 prio=1
+6 1
+207 6 28: READY -> RUNNG cb=1 rem=270 prio=1
+----------------------------------myrandom------------------------------
+208 6 1: RUNNG -> BLOCK ib=2 rem=269
+8 9
+208 8 25: READY -> RUNNG cb=9 rem=286 prio=1
+210 6 2: BLOCK -> READY
+---->PRIO preemption 8 by 6  ? 1 === TS=212 now=210----------YES
+pid : 8
+actually ran: 2
+prev run time : 9
+nxt_evt_ts : 212
+ was started at : 208
+have to run more : 7
+p rem : 282
+p tt : 26
+p burst left: 5
+p run time : 5
+210 8 2: RUNNG -> READY  cb=7 rem=284 prio=1
+6 0
+----------------------------------myrandom------------------------------
+210 6 0: READY -> RUNNG cb=2 rem=269 prio=2
+----------------------------------myrandom------------------------------
+212 6 2: RUNNG -> BLOCK ib=1 rem=267
+9 18
+212 9 102: READY -> RUNNG cb=18 rem=305 prio=0
+213 6 1: BLOCK -> READY
+---->PRIO preemption 9 by 6  ? 1 === TS=216 now=213----------YES
+pid : 9
+actually ran: 1
+prev run time : 18
+nxt_evt_ts : 216
+ was started at : 212
+have to run more : 17
+p rem : 301
+p tt : 10
+p burst left: 14
+p run time : 14
+213 9 1: RUNNG -> READY  cb=17 rem=304 prio=0
+6 0
+----------------------------------myrandom------------------------------
+213 6 0: READY -> RUNNG cb=1 rem=267 prio=2
+----------------------------------myrandom------------------------------
+214 6 1: RUNNG -> BLOCK ib=38 rem=266
+5 5
+214 5 83: READY -> RUNNG cb=5 rem=297 prio=0
+218 5 4: RUNNG -> READY  cb=1 rem=293 prio=0
+0 4
+218 0 31: READY -> RUNNG cb=4 rem=388 prio=0
+----------------------------------myrandom------------------------------
+222 0 4: RUNNG -> BLOCK ib=17 rem=384
+2 17
+222 2 31: READY -> RUNNG cb=17 rem=188 prio=0
+226 2 4: RUNNG -> READY  cb=13 rem=184 prio=0
+1 4
+226 1 31: READY -> RUNNG cb=4 rem=268 prio=0
+----------------------------------myrandom------------------------------
+230 1 4: RUNNG -> BLOCK ib=19 rem=264
+3 2
+230 3 31: READY -> RUNNG cb=2 rem=270 prio=0
+----------------------------------myrandom------------------------------
+232 3 2: RUNNG -> BLOCK ib=1 rem=268
+7 8
+232 7 29: READY -> RUNNG cb=8 rem=282 prio=0
+233 3 1: BLOCK -> READY
+---->PRIO preemption 7 by 3  ? 1 === TS=236 now=233----------YES
+pid : 7
+actually ran: 1
+prev run time : 8
+nxt_evt_ts : 236
+ was started at : 232
+have to run more : 7
+p rem : 278
+p tt : 27
+p burst left: 4
+p run time : 4
+233 7 1: RUNNG -> READY  cb=7 rem=281 prio=0
+3 0
+----------------------------------myrandom------------------------------
+233 3 0: READY -> RUNNG cb=17 rem=268 prio=3
+237 3 4: RUNNG -> READY  cb=13 rem=264 prio=3
+3 13
+237 3 0: READY -> RUNNG cb=13 rem=264 prio=2
+239 0 17: BLOCK -> READY
+---->PRIO preemption 3 by 0  ? 0 === TS=241 now=239----------
+241 3 4: RUNNG -> READY  cb=9 rem=260 prio=2
+0 0
+----------------------------------myrandom------------------------------
+241 0 2: READY -> RUNNG cb=40 rem=384 prio=1
+245 0 4: RUNNG -> READY  cb=36 rem=380 prio=1
+3 9
+245 3 4: READY -> RUNNG cb=9 rem=260 prio=1
+249 1 19: BLOCK -> READY
+---->PRIO preemption 3 by 1  ? 1 === TS=249 now=249----------
+249 3 4: RUNNG -> READY  cb=5 rem=256 prio=1
+1 0
+----------------------------------myrandom------------------------------
+249 1 0: READY -> RUNNG cb=1 rem=264 prio=3
+----------------------------------myrandom------------------------------
+250 1 1: RUNNG -> BLOCK ib=18 rem=263
+4 1
+250 4 43: READY -> RUNNG cb=1 rem=267 prio=0
+----------------------------------myrandom------------------------------
+251 4 1: RUNNG -> BLOCK ib=19 rem=266
+8 7
+251 8 41: READY -> RUNNG cb=7 rem=284 prio=0
+252 6 38: BLOCK -> READY
+---->PRIO preemption 8 by 6  ? 1 === TS=255 now=252----------YES
+pid : 8
+actually ran: 1
+prev run time : 7
+nxt_evt_ts : 255
+ was started at : 251
+have to run more : 6
+p rem : 280
+p tt : 32
+p burst left: 3
+p run time : 3
+252 8 1: RUNNG -> READY  cb=6 rem=283 prio=0
+6 0
+----------------------------------myrandom------------------------------
+252 6 0: READY -> RUNNG cb=3 rem=266 prio=2
+----------------------------------myrandom------------------------------
+255 6 3: RUNNG -> BLOCK ib=38 rem=263
+0 36
+255 0 10: READY -> RUNNG cb=36 rem=380 prio=0
+259 0 4: RUNNG -> READY  cb=32 rem=376 prio=0
+3 5
+259 3 10: READY -> RUNNG cb=5 rem=256 prio=0
+263 3 4: RUNNG -> READY  cb=1 rem=252 prio=0
+3 1
+263 3 0: READY -> RUNNG cb=1 rem=252 prio=3
+----------------------------------myrandom------------------------------
+264 3 1: RUNNG -> BLOCK ib=1 rem=251
+7 7
+264 7 31: READY -> RUNNG cb=7 rem=281 prio=2
+265 3 1: BLOCK -> READY
+---->PRIO preemption 7 by 3  ? 1 === TS=268 now=265----------YES
+pid : 7
+actually ran: 1
+prev run time : 7
+nxt_evt_ts : 268
+ was started at : 264
+have to run more : 6
+p rem : 277
+p tt : 34
+p burst left: 3
+p run time : 3
+265 7 1: RUNNG -> READY  cb=6 rem=280 prio=2
+3 0
+----------------------------------myrandom------------------------------
+265 3 0: READY -> RUNNG cb=1 rem=251 prio=3
+----------------------------------myrandom------------------------------
+266 3 1: RUNNG -> BLOCK ib=8 rem=250
+8 6
+266 8 14: READY -> RUNNG cb=6 rem=283 prio=2
+268 1 18: BLOCK -> READY
+---->PRIO preemption 8 by 1  ? 1 === TS=270 now=268----------YES
+pid : 8
+actually ran: 2
+prev run time : 6
+nxt_evt_ts : 270
+ was started at : 266
+have to run more : 4
+p rem : 279
+p tt : 39
+p burst left: 2
+p run time : 2
+268 8 2: RUNNG -> READY  cb=4 rem=281 prio=2
+1 0
+----------------------------------myrandom------------------------------
+268 1 0: READY -> RUNNG cb=38 rem=263 prio=3
+270 4 19: BLOCK -> READY
+---->PRIO preemption 1 by 4  ? 0 === TS=272 now=270----------
+272 1 4: RUNNG -> READY  cb=34 rem=259 prio=3
+4 0
+----------------------------------myrandom------------------------------
+272 4 2: READY -> RUNNG cb=4 rem=266 prio=3
+----------------------------------myrandom------------------------------
+274 3 8: BLOCK -> READY
+---->PRIO preemption 4 by 3  ? 0 === TS=276 now=274----------
+276 4 4: RUNNG -> BLOCK ib=20 rem=262
+3 0
+----------------------------------myrandom------------------------------
+276 3 2: READY -> RUNNG cb=3 rem=250 prio=3
+----------------------------------myrandom------------------------------
+279 3 3: RUNNG -> BLOCK ib=2 rem=247
+1 34
+279 1 7: READY -> RUNNG cb=34 rem=259 prio=2
+281 3 2: BLOCK -> READY
+---->PRIO preemption 1 by 3  ? 1 === TS=283 now=281----------YES
+pid : 1
+actually ran: 2
+prev run time : 34
+nxt_evt_ts : 283
+ was started at : 279
+have to run more : 32
+p rem : 255
+p tt : 61
+p burst left: 30
+p run time : 30
+281 1 2: RUNNG -> READY  cb=32 rem=257 prio=2
+3 0
+----------------------------------myrandom------------------------------
+281 3 0: READY -> RUNNG cb=4 rem=247 prio=3
+----------------------------------myrandom------------------------------
+285 3 4: RUNNG -> BLOCK ib=10 rem=243
+2 13
+285 2 59: READY -> RUNNG cb=13 rem=184 prio=1
+289 2 4: RUNNG -> READY  cb=9 rem=180 prio=1
+0 32
+289 0 30: READY -> RUNNG cb=32 rem=376 prio=1
+293 6 38: BLOCK -> READY
+---->PRIO preemption 0 by 6  ? 1 === TS=293 now=293----------
+293 0 4: RUNNG -> READY  cb=28 rem=372 prio=1
+6 0
+----------------------------------myrandom------------------------------
+293 6 0: READY -> RUNNG cb=4 rem=263 prio=2
+----------------------------------myrandom------------------------------
+295 3 10: BLOCK -> READY
+---->PRIO preemption 6 by 3  ? 1 === TS=297 now=295----------YES
+pid : 6
+actually ran: 2
+prev run time : 4
+nxt_evt_ts : 297
+ was started at : 293
+have to run more : 2
+p rem : 259
+p tt : 45
+p burst left: 0
+p run time : 19
+295 6 2: RUNNG -> READY  cb=2 rem=261 prio=2
+3 0
+----------------------------------myrandom------------------------------
+295 3 0: READY -> RUNNG cb=19 rem=243 prio=3
+296 4 20: BLOCK -> READY
+---->PRIO preemption 3 by 4  ? 0 === TS=299 now=296----------
+299 3 4: RUNNG -> READY  cb=15 rem=239 prio=3
+4 0
+----------------------------------myrandom------------------------------
+299 4 3: READY -> RUNNG cb=11 rem=262 prio=3
+303 4 4: RUNNG -> READY  cb=7 rem=258 prio=3
+3 15
+303 3 4: READY -> RUNNG cb=15 rem=239 prio=2
+307 3 4: RUNNG -> READY  cb=11 rem=235 prio=2
+4 7
+307 4 4: READY -> RUNNG cb=7 rem=258 prio=2
+311 4 4: RUNNG -> READY  cb=3 rem=254 prio=2
+7 6
+311 7 46: READY -> RUNNG cb=6 rem=280 prio=1
+315 7 4: RUNNG -> READY  cb=2 rem=276 prio=1
+8 4
+315 8 47: READY -> RUNNG cb=4 rem=281 prio=1
+----------------------------------myrandom------------------------------
+319 8 4: RUNNG -> BLOCK ib=9 rem=277
+1 32
+319 1 38: READY -> RUNNG cb=32 rem=257 prio=1
+323 1 4: RUNNG -> READY  cb=28 rem=253 prio=1
+6 2
+323 6 28: READY -> RUNNG cb=2 rem=261 prio=1
+----------------------------------myrandom------------------------------
+325 6 2: RUNNG -> BLOCK ib=11 rem=259
+3 11
+325 3 18: READY -> RUNNG cb=11 rem=235 prio=1
+328 8 9: BLOCK -> READY
+---->PRIO preemption 3 by 8  ? 1 === TS=329 now=328----------YES
+pid : 3
+actually ran: 3
+prev run time : 11
+nxt_evt_ts : 329
+ was started at : 325
+have to run more : 8
+p rem : 231
+p tt : 70
+p burst left: 7
+p run time : 7
+328 3 3: RUNNG -> READY  cb=8 rem=232 prio=1
+8 0
+----------------------------------myrandom------------------------------
+328 8 0: READY -> RUNNG cb=15 rem=277 prio=2
+332 8 4: RUNNG -> READY  cb=11 rem=273 prio=2
+4 3
+332 4 21: READY -> RUNNG cb=3 rem=254 prio=1
+----------------------------------myrandom------------------------------
+335 4 3: RUNNG -> BLOCK ib=20 rem=251
+8 11
+335 8 3: READY -> RUNNG cb=11 rem=273 prio=1
+336 6 11: BLOCK -> READY
+---->PRIO preemption 8 by 6  ? 1 === TS=339 now=336----------YES
+pid : 8
+actually ran: 1
+prev run time : 11
+nxt_evt_ts : 339
+ was started at : 335
+have to run more : 10
+p rem : 269
+p tt : 53
+p burst left: 7
+p run time : 7
+336 8 1: RUNNG -> READY  cb=10 rem=272 prio=1
+6 0
+----------------------------------myrandom------------------------------
+336 6 0: READY -> RUNNG cb=2 rem=259 prio=2
+----------------------------------myrandom------------------------------
+338 6 2: RUNNG -> BLOCK ib=36 rem=257
+9 17
+338 9 125: READY -> RUNNG cb=17 rem=304 prio=0
+342 9 4: RUNNG -> READY  cb=13 rem=300 prio=0
+5 1
+342 5 124: READY -> RUNNG cb=1 rem=293 prio=0
+----------------------------------myrandom------------------------------
+343 5 1: RUNNG -> BLOCK ib=28 rem=292
+2 9
+343 2 54: READY -> RUNNG cb=9 rem=180 prio=0
+347 2 4: RUNNG -> READY  cb=5 rem=176 prio=0
+0 28
+347 0 54: READY -> RUNNG cb=28 rem=372 prio=0
+351 0 4: RUNNG -> READY  cb=24 rem=368 prio=0
+7 2
+351 7 36: READY -> RUNNG cb=2 rem=276 prio=0
+----------------------------------myrandom------------------------------
+353 7 2: RUNNG -> BLOCK ib=1 rem=274
+1 28
+353 1 30: READY -> RUNNG cb=28 rem=253 prio=0
+354 7 1: BLOCK -> READY
+---->PRIO preemption 1 by 7  ? 1 === TS=357 now=354----------YES
+pid : 1
+actually ran: 1
+prev run time : 28
+nxt_evt_ts : 357
+ was started at : 353
+have to run more : 27
+p rem : 249
+p tt : 71
+p burst left: 24
+p run time : 24
+354 1 1: RUNNG -> READY  cb=27 rem=252 prio=0
+7 0
+----------------------------------myrandom------------------------------
+354 7 0: READY -> RUNNG cb=14 rem=274 prio=2
+355 4 20: BLOCK -> READY
+---->PRIO preemption 7 by 4  ? 1 === TS=358 now=355----------YES
+pid : 7
+actually ran: 1
+prev run time : 14
+nxt_evt_ts : 358
+ was started at : 354
+have to run more : 13
+p rem : 270
+p tt : 47
+p burst left: 10
+p run time : 10
+355 7 1: RUNNG -> READY  cb=13 rem=273 prio=2
+4 0
+----------------------------------myrandom------------------------------
+355 4 0: READY -> RUNNG cb=6 rem=251 prio=3
+359 4 4: RUNNG -> READY  cb=2 rem=247 prio=3
+4 2
+359 4 0: READY -> RUNNG cb=2 rem=247 prio=2
+----------------------------------myrandom------------------------------
+361 4 2: RUNNG -> BLOCK ib=3 rem=245
+7 13
+361 7 6: READY -> RUNNG cb=13 rem=273 prio=1
+364 4 3: BLOCK -> READY
+---->PRIO preemption 7 by 4  ? 1 === TS=365 now=364----------YES
+pid : 7
+actually ran: 3
+prev run time : 13
+nxt_evt_ts : 365
+ was started at : 361
+have to run more : 10
+p rem : 269
+p tt : 54
+p burst left: 9
+p run time : 9
+364 7 3: RUNNG -> READY  cb=10 rem=270 prio=1
+4 0
+----------------------------------myrandom------------------------------
+364 4 0: READY -> RUNNG cb=11 rem=245 prio=3
+368 4 4: RUNNG -> READY  cb=7 rem=241 prio=3
+4 7
+368 4 0: READY -> RUNNG cb=7 rem=241 prio=2
+371 5 28: BLOCK -> READY
+---->PRIO preemption 4 by 5  ? 0 === TS=372 now=371----------
+372 4 4: RUNNG -> READY  cb=3 rem=237 prio=2
+4 3
+372 4 0: READY -> RUNNG cb=3 rem=237 prio=1
+----------------------------------myrandom------------------------------
+374 6 36: BLOCK -> READY
+---->PRIO preemption 4 by 6  ? 1 === TS=375 now=374----------YES
+pid : 4
+actually ran: 2
+prev run time : 3
+nxt_evt_ts : 375
+ was started at : 372
+have to run more : 1
+p rem : 234
+p tt : 76
+p burst left: 0
+p run time : 5
+374 4 2: RUNNG -> READY  cb=1 rem=235 prio=1
+6 0
+----------------------------------myrandom------------------------------
+374 6 0: READY -> RUNNG cb=5 rem=257 prio=2
+378 6 4: RUNNG -> READY  cb=1 rem=253 prio=2
+6 1
+378 6 0: READY -> RUNNG cb=1 rem=253 prio=1
+----------------------------------myrandom------------------------------
+379 6 1: RUNNG -> BLOCK ib=23 rem=252
+3 8
+379 3 51: READY -> RUNNG cb=8 rem=232 prio=0
+383 3 4: RUNNG -> READY  cb=4 rem=228 prio=0
+8 10
+383 8 47: READY -> RUNNG cb=10 rem=272 prio=0
+387 8 4: RUNNG -> READY  cb=6 rem=268 prio=0
+7 10
+387 7 23: READY -> RUNNG cb=10 rem=270 prio=0
+391 7 4: RUNNG -> READY  cb=6 rem=266 prio=0
+5 0
+----------------------------------myrandom------------------------------
+391 5 20: READY -> RUNNG cb=10 rem=292 prio=0
+395 5 4: RUNNG -> READY  cb=6 rem=288 prio=0
+4 1
+395 4 21: READY -> RUNNG cb=1 rem=235 prio=0
+----------------------------------myrandom------------------------------
+396 4 1: RUNNG -> BLOCK ib=16 rem=234
+1 27
+396 1 42: READY -> RUNNG cb=27 rem=252 prio=3
+400 1 4: RUNNG -> READY  cb=23 rem=248 prio=3
+3 4
+400 3 17: READY -> RUNNG cb=4 rem=228 prio=3
+----------------------------------myrandom------------------------------
+402 6 23: BLOCK -> READY
+---->PRIO preemption 3 by 6  ? 0 === TS=404 now=402----------
+404 3 4: RUNNG -> BLOCK ib=10 rem=224
+8 6
+404 8 17: READY -> RUNNG cb=6 rem=268 prio=2
+408 8 4: RUNNG -> READY  cb=2 rem=264 prio=2
+7 6
+408 7 17: READY -> RUNNG cb=6 rem=266 prio=2
+412 4 16: BLOCK -> READY
+---->PRIO preemption 7 by 4  ? 1 === TS=412 now=412----------
+412 7 4: RUNNG -> READY  cb=2 rem=262 prio=2
+4 0
+----------------------------------myrandom------------------------------
+412 4 0: READY -> RUNNG cb=17 rem=234 prio=3
+414 3 10: BLOCK -> READY
+---->PRIO preemption 4 by 3  ? 0 === TS=416 now=414----------
+416 4 4: RUNNG -> READY  cb=13 rem=230 prio=3
+3 0
+----------------------------------myrandom------------------------------
+416 3 2: READY -> RUNNG cb=16 rem=224 prio=3
+420 3 4: RUNNG -> READY  cb=12 rem=220 prio=3
+1 23
+420 1 20: READY -> RUNNG cb=23 rem=248 prio=2
+424 1 4: RUNNG -> READY  cb=19 rem=244 prio=2
+6 0
+----------------------------------myrandom------------------------------
+424 6 22: READY -> RUNNG cb=2 rem=252 prio=2
+----------------------------------myrandom------------------------------
+426 6 2: RUNNG -> BLOCK ib=34 rem=250
+4 13
+426 4 10: READY -> RUNNG cb=13 rem=230 prio=2
+430 4 4: RUNNG -> READY  cb=9 rem=226 prio=2
+3 12
+430 3 10: READY -> RUNNG cb=12 rem=220 prio=2
+434 3 4: RUNNG -> READY  cb=8 rem=216 prio=2
+2 5
+434 2 87: READY -> RUNNG cb=5 rem=176 prio=1
+438 2 4: RUNNG -> READY  cb=1 rem=172 prio=1
+0 24
+438 0 87: READY -> RUNNG cb=24 rem=368 prio=1
+442 0 4: RUNNG -> READY  cb=20 rem=364 prio=1
+8 2
+442 8 34: READY -> RUNNG cb=2 rem=264 prio=1
+----------------------------------myrandom------------------------------
+444 8 2: RUNNG -> BLOCK ib=5 rem=262
+7 2
+444 7 32: READY -> RUNNG cb=2 rem=262 prio=1
+----------------------------------myrandom------------------------------
+446 7 2: RUNNG -> BLOCK ib=25 rem=260
+1 19
+446 1 22: READY -> RUNNG cb=19 rem=244 prio=1
+449 8 5: BLOCK -> READY
+---->PRIO preemption 1 by 8  ? 1 === TS=450 now=449----------YES
+pid : 1
+actually ran: 3
+prev run time : 19
+nxt_evt_ts : 450
+ was started at : 446
+have to run more : 16
+p rem : 240
+p tt : 86
+p burst left: 15
+p run time : 15
+449 1 3: RUNNG -> READY  cb=16 rem=241 prio=1
+8 0
+----------------------------------myrandom------------------------------
+449 8 0: READY -> RUNNG cb=14 rem=262 prio=2
+453 8 4: RUNNG -> READY  cb=10 rem=258 prio=2
+4 9
+453 4 23: READY -> RUNNG cb=9 rem=226 prio=1
+457 4 4: RUNNG -> READY  cb=5 rem=222 prio=1
+3 8
+457 3 23: READY -> RUNNG cb=8 rem=216 prio=1
+460 6 34: BLOCK -> READY
+---->PRIO preemption 3 by 6  ? 1 === TS=461 now=460----------YES
+pid : 3
+actually ran: 3
+prev run time : 8
+nxt_evt_ts : 461
+ was started at : 457
+have to run more : 5
+p rem : 212
+p tt : 91
+p burst left: 4
+p run time : 4
+460 3 3: RUNNG -> READY  cb=5 rem=213 prio=1
+6 0
+----------------------------------myrandom------------------------------
+460 6 0: READY -> RUNNG cb=3 rem=250 prio=2
+----------------------------------myrandom------------------------------
+463 6 3: RUNNG -> BLOCK ib=7 rem=247
+8 10
+463 8 10: READY -> RUNNG cb=10 rem=258 prio=1
+467 8 4: RUNNG -> READY  cb=6 rem=254 prio=1
+9 13
+467 9 125: READY -> RUNNG cb=13 rem=300 prio=0
+470 6 7: BLOCK -> READY
+---->PRIO preemption 9 by 6  ? 1 === TS=471 now=470----------YES
+pid : 9
+actually ran: 3
+prev run time : 13
+nxt_evt_ts : 471
+ was started at : 467
+have to run more : 10
+p rem : 296
+p tt : 21
+p burst left: 9
+p run time : 9
+470 9 3: RUNNG -> READY  cb=10 rem=297 prio=0
+6 0
+----------------------------------myrandom------------------------------
+470 6 0: READY -> RUNNG cb=2 rem=247 prio=2
+----------------------------------myrandom------------------------------
+471 7 25: BLOCK -> READY
+---->PRIO preemption 6 by 7  ? 0 === TS=472 now=471----------
+472 6 2: RUNNG -> BLOCK ib=17 rem=245
+7 0
+----------------------------------myrandom------------------------------
+472 7 1: READY -> RUNNG cb=12 rem=260 prio=2
+476 7 4: RUNNG -> READY  cb=8 rem=256 prio=2
+7 8
+476 7 0: READY -> RUNNG cb=8 rem=256 prio=1
+480 7 4: RUNNG -> READY  cb=4 rem=252 prio=1
+5 6
+480 5 85: READY -> RUNNG cb=6 rem=288 prio=0
+484 5 4: RUNNG -> READY  cb=2 rem=284 prio=0
+2 1
+484 2 46: READY -> RUNNG cb=1 rem=172 prio=0
+----------------------------------myrandom------------------------------
+485 2 1: RUNNG -> BLOCK ib=38 rem=171
+0 20
+485 0 43: READY -> RUNNG cb=20 rem=364 prio=0
+489 6 17: BLOCK -> READY
+---->PRIO preemption 0 by 6  ? 1 === TS=489 now=489----------
+489 0 4: RUNNG -> READY  cb=16 rem=360 prio=0
+6 0
+----------------------------------myrandom------------------------------
+489 6 0: READY -> RUNNG cb=4 rem=245 prio=2
+----------------------------------myrandom------------------------------
+493 6 4: RUNNG -> BLOCK ib=30 rem=241
+1 16
+493 1 44: READY -> RUNNG cb=16 rem=241 prio=0
+497 1 4: RUNNG -> READY  cb=12 rem=237 prio=0
+4 5
+497 4 40: READY -> RUNNG cb=5 rem=222 prio=0
+501 4 4: RUNNG -> READY  cb=1 rem=218 prio=0
+3 5
+501 3 41: READY -> RUNNG cb=5 rem=213 prio=0
+505 3 4: RUNNG -> READY  cb=1 rem=209 prio=0
+8 6
+505 8 38: READY -> RUNNG cb=6 rem=254 prio=0
+509 8 4: RUNNG -> READY  cb=2 rem=250 prio=0
+7 4
+509 7 29: READY -> RUNNG cb=4 rem=252 prio=0
+----------------------------------myrandom------------------------------
+513 7 4: RUNNG -> BLOCK ib=18 rem=248
+1 12
+513 1 16: READY -> RUNNG cb=12 rem=237 prio=3
+517 1 4: RUNNG -> READY  cb=8 rem=233 prio=3
+4 1
+517 4 16: READY -> RUNNG cb=1 rem=218 prio=3
+----------------------------------myrandom------------------------------
+518 4 1: RUNNG -> BLOCK ib=14 rem=217
+3 1
+518 3 13: READY -> RUNNG cb=1 rem=209 prio=3
+----------------------------------myrandom------------------------------
+519 3 1: RUNNG -> BLOCK ib=2 rem=208
+8 2
+519 8 10: READY -> RUNNG cb=2 rem=250 prio=2
+----------------------------------myrandom------------------------------
+521 3 2: BLOCK -> READY
+---->PRIO preemption 8 by 3  ? 1 === TS=521 now=521----------
+521 8 2: RUNNG -> BLOCK ib=1 rem=248
+3 0
+----------------------------------myrandom------------------------------
+521 3 0: READY -> RUNNG cb=1 rem=208 prio=3
+----------------------------------myrandom------------------------------
+522 8 1: BLOCK -> READY
+---->PRIO preemption 3 by 8  ? 0 === TS=522 now=522----------
+522 3 1: RUNNG -> BLOCK ib=9 rem=207
+1 8
+522 1 5: READY -> RUNNG cb=8 rem=233 prio=2
+523 2 38: BLOCK -> READY
+---->PRIO preemption 1 by 2  ? 0 === TS=526 now=523----------
+523 6 30: BLOCK -> READY
+---->PRIO preemption 1 by 6  ? 0 === TS=526 now=523----------
+526 1 4: RUNNG -> READY  cb=4 rem=229 prio=2
+8 0
+----------------------------------myrandom------------------------------
+526 8 4: READY -> RUNNG cb=1 rem=248 prio=2
+----------------------------------myrandom------------------------------
+527 8 1: RUNNG -> BLOCK ib=4 rem=247
+6 0
+----------------------------------myrandom------------------------------
+527 6 4: READY -> RUNNG cb=4 rem=241 prio=2
+----------------------------------myrandom------------------------------
+531 7 18: BLOCK -> READY
+---->PRIO preemption 6 by 7  ? 0 === TS=531 now=531----------
+531 3 9: BLOCK -> READY
+---->PRIO preemption 6 by 3  ? 1 === TS=531 now=531----------
+531 8 4: BLOCK -> READY
+---->PRIO preemption 6 by 8  ? 0 === TS=531 now=531----------
+531 6 4: RUNNG -> BLOCK ib=35 rem=237
+3 0
+----------------------------------myrandom------------------------------
+531 3 0: READY -> RUNNG cb=16 rem=207 prio=3
+532 4 14: BLOCK -> READY
+---->PRIO preemption 3 by 4  ? 0 === TS=535 now=532----------
+535 3 4: RUNNG -> READY  cb=12 rem=203 prio=3
+4 0
+----------------------------------myrandom------------------------------
+535 4 3: READY -> RUNNG cb=19 rem=217 prio=3
+539 4 4: RUNNG -> READY  cb=15 rem=213 prio=3
+7 0
+----------------------------------myrandom------------------------------
+539 7 8: READY -> RUNNG cb=9 rem=248 prio=2
+543 7 4: RUNNG -> READY  cb=5 rem=244 prio=2
+8 0
+----------------------------------myrandom------------------------------
+543 8 12: READY -> RUNNG cb=16 rem=247 prio=2
+547 8 4: RUNNG -> READY  cb=12 rem=243 prio=2
+3 12
+547 3 12: READY -> RUNNG cb=12 rem=203 prio=2
+551 3 4: RUNNG -> READY  cb=8 rem=199 prio=2
+4 15
+551 4 12: READY -> RUNNG cb=15 rem=213 prio=2
+555 4 4: RUNNG -> READY  cb=11 rem=209 prio=2
+0 16
+555 0 66: READY -> RUNNG cb=16 rem=360 prio=1
+559 0 4: RUNNG -> READY  cb=12 rem=356 prio=1
+2 0
+----------------------------------myrandom------------------------------
+559 2 36: READY -> RUNNG cb=24 rem=171 prio=1
+563 2 4: RUNNG -> READY  cb=20 rem=167 prio=1
+1 4
+563 1 37: READY -> RUNNG cb=4 rem=229 prio=1
+----------------------------------myrandom------------------------------
+566 6 35: BLOCK -> READY
+---->PRIO preemption 1 by 6  ? 1 === TS=567 now=566----------YES
+pid : 1
+actually ran: 3
+prev run time : 4
+nxt_evt_ts : 567
+ was started at : 563
+have to run more : 1
+p rem : 225
+p tt : 103
+p burst left: 0
+p run time : 31
+566 1 3: RUNNG -> READY  cb=1 rem=226 prio=1
+6 0
+----------------------------------myrandom------------------------------
+566 6 0: READY -> RUNNG cb=1 rem=237 prio=2
+----------------------------------myrandom------------------------------
+567 6 1: RUNNG -> BLOCK ib=32 rem=236
+7 5
+567 7 24: READY -> RUNNG cb=5 rem=244 prio=1
+571 7 4: RUNNG -> READY  cb=1 rem=240 prio=1
+8 12
+571 8 24: READY -> RUNNG cb=12 rem=243 prio=1
+575 8 4: RUNNG -> READY  cb=8 rem=239 prio=1
+3 8
+575 3 24: READY -> RUNNG cb=8 rem=199 prio=1
+579 3 4: RUNNG -> READY  cb=4 rem=195 prio=1
+4 11
+579 4 24: READY -> RUNNG cb=11 rem=209 prio=1
+583 4 4: RUNNG -> READY  cb=7 rem=205 prio=1
+9 10
+583 9 113: READY -> RUNNG cb=10 rem=297 prio=0
+587 9 4: RUNNG -> READY  cb=6 rem=293 prio=0
+5 2
+587 5 103: READY -> RUNNG cb=2 rem=284 prio=0
+----------------------------------myrandom------------------------------
+589 5 2: RUNNG -> BLOCK ib=1 rem=282
+0 12
+589 0 30: READY -> RUNNG cb=12 rem=356 prio=0
+590 5 1: BLOCK -> READY
+---->PRIO preemption 0 by 5  ? 0 === TS=593 now=590----------
+593 0 4: RUNNG -> READY  cb=8 rem=352 prio=0
+2 20
+593 2 30: READY -> RUNNG cb=20 rem=167 prio=0
+597 2 4: RUNNG -> READY  cb=16 rem=163 prio=0
+1 1
+597 1 31: READY -> RUNNG cb=1 rem=226 prio=0
+----------------------------------myrandom------------------------------
+598 1 1: RUNNG -> BLOCK ib=32 rem=225
+7 1
+598 7 27: READY -> RUNNG cb=1 rem=240 prio=0
+----------------------------------myrandom------------------------------
+599 6 32: BLOCK -> READY
+---->PRIO preemption 7 by 6  ? 1 === TS=599 now=599----------
+599 7 1: RUNNG -> BLOCK ib=26 rem=239
+6 0
+----------------------------------myrandom------------------------------
+599 6 0: READY -> RUNNG cb=5 rem=236 prio=2
+603 6 4: RUNNG -> READY  cb=1 rem=232 prio=2
+6 1
+603 6 0: READY -> RUNNG cb=1 rem=232 prio=1
+----------------------------------myrandom------------------------------
+604 6 1: RUNNG -> BLOCK ib=17 rem=231
+8 8
+604 8 29: READY -> RUNNG cb=8 rem=239 prio=0
+608 8 4: RUNNG -> READY  cb=4 rem=235 prio=0
+3 4
+608 3 29: READY -> RUNNG cb=4 rem=195 prio=0
+----------------------------------myrandom------------------------------
+612 3 4: RUNNG -> BLOCK ib=1 rem=191
+4 7
+612 4 29: READY -> RUNNG cb=7 rem=205 prio=0
+613 3 1: BLOCK -> READY
+---->PRIO preemption 4 by 3  ? 1 === TS=616 now=613----------YES
+pid : 4
+actually ran: 1
+prev run time : 7
+nxt_evt_ts : 616
+ was started at : 612
+have to run more : 6
+p rem : 201
+p tt : 111
+p burst left: 3
+p run time : 3
+613 4 1: RUNNG -> READY  cb=6 rem=204 prio=0
+3 0
+----------------------------------myrandom------------------------------
+613 3 0: READY -> RUNNG cb=12 rem=191 prio=3
+617 3 4: RUNNG -> READY  cb=8 rem=187 prio=3
+3 8
+617 3 0: READY -> RUNNG cb=8 rem=187 prio=2
+621 6 17: BLOCK -> READY
+---->PRIO preemption 3 by 6  ? 0 === TS=621 now=621----------
+621 3 4: RUNNG -> READY  cb=4 rem=183 prio=2
+6 0
+----------------------------------myrandom------------------------------
+621 6 0: READY -> RUNNG cb=3 rem=231 prio=2
+----------------------------------myrandom------------------------------
+624 6 3: RUNNG -> BLOCK ib=39 rem=228
+3 4
+624 3 3: READY -> RUNNG cb=4 rem=183 prio=1
+----------------------------------myrandom------------------------------
+625 7 26: BLOCK -> READY
+---->PRIO preemption 3 by 7  ? 1 === TS=628 now=625----------YES
+pid : 3
+actually ran: 1
+prev run time : 4
+nxt_evt_ts : 628
+ was started at : 624
+have to run more : 3
+p rem : 179
+p tt : 126
+p burst left: 0
+p run time : 8
+625 3 1: RUNNG -> READY  cb=3 rem=182 prio=1
+7 0
+----------------------------------myrandom------------------------------
+625 7 0: READY -> RUNNG cb=8 rem=239 prio=2
+629 7 4: RUNNG -> READY  cb=4 rem=235 prio=2
+7 4
+629 7 0: READY -> RUNNG cb=4 rem=235 prio=1
+----------------------------------myrandom------------------------------
+630 1 32: BLOCK -> READY
+---->PRIO preemption 7 by 1  ? 1 === TS=633 now=630----------YES
+pid : 7
+actually ran: 1
+prev run time : 4
+nxt_evt_ts : 633
+ was started at : 629
+have to run more : 3
+p rem : 231
+p tt : 94
+p burst left: 0
+p run time : 26
+630 7 1: RUNNG -> READY  cb=3 rem=234 prio=1
+1 0
+----------------------------------myrandom------------------------------
+630 1 0: READY -> RUNNG cb=26 rem=225 prio=3
+634 1 4: RUNNG -> READY  cb=22 rem=221 prio=3
+1 22
+634 1 0: READY -> RUNNG cb=22 rem=221 prio=2
+638 1 4: RUNNG -> READY  cb=18 rem=217 prio=2
+1 18
+638 1 0: READY -> RUNNG cb=18 rem=217 prio=1
+642 1 4: RUNNG -> READY  cb=14 rem=213 prio=1
+5 0
+----------------------------------myrandom------------------------------
+642 5 52: READY -> RUNNG cb=1 rem=282 prio=0
+----------------------------------myrandom------------------------------
+643 5 1: RUNNG -> BLOCK ib=19 rem=281
+3 3
+643 3 18: READY -> RUNNG cb=3 rem=182 prio=0
+----------------------------------myrandom------------------------------
+646 3 3: RUNNG -> BLOCK ib=8 rem=179
+7 3
+646 7 16: READY -> RUNNG cb=3 rem=234 prio=0
+----------------------------------myrandom------------------------------
+649 7 3: RUNNG -> BLOCK ib=23 rem=231
+1 14
+649 1 7: READY -> RUNNG cb=14 rem=213 prio=0
+653 1 4: RUNNG -> READY  cb=10 rem=209 prio=0
+4 6
+653 4 40: READY -> RUNNG cb=6 rem=204 prio=3
+654 3 8: BLOCK -> READY
+---->PRIO preemption 4 by 3  ? 0 === TS=657 now=654----------
+657 4 4: RUNNG -> READY  cb=2 rem=200 prio=3
+1 10
+657 1 4: READY -> RUNNG cb=10 rem=209 prio=3
+661 1 4: RUNNG -> READY  cb=6 rem=205 prio=3
+3 0
+----------------------------------myrandom------------------------------
+661 3 7: READY -> RUNNG cb=12 rem=179 prio=3
+662 5 19: BLOCK -> READY
+---->PRIO preemption 3 by 5  ? 0 === TS=665 now=662----------
+663 6 39: BLOCK -> READY
+---->PRIO preemption 3 by 6  ? 0 === TS=665 now=663----------
+665 3 4: RUNNG -> READY  cb=8 rem=175 prio=3
+8 4
+665 8 57: READY -> RUNNG cb=4 rem=235 prio=2
+----------------------------------myrandom------------------------------
+669 8 4: RUNNG -> BLOCK ib=9 rem=231
+4 2
+669 4 12: READY -> RUNNG cb=2 rem=200 prio=2
+----------------------------------myrandom------------------------------
+671 4 2: RUNNG -> BLOCK ib=3 rem=198
+1 6
+671 1 10: READY -> RUNNG cb=6 rem=205 prio=2
+672 7 23: BLOCK -> READY
+---->PRIO preemption 1 by 7  ? 0 === TS=675 now=672----------
+674 4 3: BLOCK -> READY
+---->PRIO preemption 1 by 4  ? 1 === TS=675 now=674----------YES
+pid : 1
+actually ran: 3
+prev run time : 6
+nxt_evt_ts : 675
+ was started at : 671
+have to run more : 3
+p rem : 201
+p tt : 129
+p burst left: 2
+p run time : 2
+674 1 3: RUNNG -> READY  cb=3 rem=202 prio=2
+4 0
+----------------------------------myrandom------------------------------
+674 4 0: READY -> RUNNG cb=12 rem=198 prio=3
+678 8 9: BLOCK -> READY
+---->PRIO preemption 4 by 8  ? 0 === TS=678 now=678----------
+678 4 4: RUNNG -> READY  cb=8 rem=194 prio=3
+6 0
+----------------------------------myrandom------------------------------
+678 6 15: READY -> RUNNG cb=2 rem=228 prio=2
+----------------------------------myrandom------------------------------
+680 6 2: RUNNG -> BLOCK ib=15 rem=226
+3 8
+680 3 15: READY -> RUNNG cb=8 rem=175 prio=2
+684 3 4: RUNNG -> READY  cb=4 rem=171 prio=2
+7 0
+----------------------------------myrandom------------------------------
+684 7 12: READY -> RUNNG cb=17 rem=231 prio=2
+688 7 4: RUNNG -> READY  cb=13 rem=227 prio=2
+8 0
+----------------------------------myrandom------------------------------
+688 8 10: READY -> RUNNG cb=2 rem=231 prio=2
+----------------------------------myrandom------------------------------
+690 8 2: RUNNG -> BLOCK ib=9 rem=229
+4 8
+690 4 12: READY -> RUNNG cb=8 rem=194 prio=2
+694 4 4: RUNNG -> READY  cb=4 rem=190 prio=2
+0 8
+694 0 101: READY -> RUNNG cb=8 rem=352 prio=1
+695 6 15: BLOCK -> READY
+---->PRIO preemption 0 by 6  ? 1 === TS=698 now=695----------YES
+pid : 0
+actually ran: 1
+prev run time : 8
+nxt_evt_ts : 698
+ was started at : 694
+have to run more : 7
+p rem : 348
+p tt : 52
+p burst left: 4
+p run time : 4
+695 0 1: RUNNG -> READY  cb=7 rem=351 prio=1
+6 0
+----------------------------------myrandom------------------------------
+695 6 0: READY -> RUNNG cb=3 rem=226 prio=2
+----------------------------------myrandom------------------------------
+698 6 3: RUNNG -> BLOCK ib=40 rem=223
+2 16
+698 2 101: READY -> RUNNG cb=16 rem=163 prio=1
+699 8 9: BLOCK -> READY
+---->PRIO preemption 2 by 8  ? 1 === TS=702 now=699----------YES
+pid : 2
+actually ran: 1
+prev run time : 16
+nxt_evt_ts : 702
+ was started at : 698
+have to run more : 15
+p rem : 159
+p tt : 41
+p burst left: 12
+p run time : 12
+699 2 1: RUNNG -> READY  cb=15 rem=162 prio=1
+8 0
+----------------------------------myrandom------------------------------
+699 8 0: READY -> RUNNG cb=18 rem=229 prio=2
+703 8 4: RUNNG -> READY  cb=14 rem=225 prio=2
+1 3
+703 1 29: READY -> RUNNG cb=3 rem=202 prio=1
+----------------------------------myrandom------------------------------
+706 1 3: RUNNG -> BLOCK ib=28 rem=199
+3 4
+706 3 22: READY -> RUNNG cb=4 rem=171 prio=1
+----------------------------------myrandom------------------------------
+710 3 4: RUNNG -> BLOCK ib=5 rem=167
+7 13
+710 7 22: READY -> RUNNG cb=13 rem=227 prio=1
+714 7 4: RUNNG -> READY  cb=9 rem=223 prio=1
+4 4
+714 4 20: READY -> RUNNG cb=4 rem=190 prio=1
+----------------------------------myrandom------------------------------
+715 3 5: BLOCK -> READY
+---->PRIO preemption 4 by 3  ? 1 === TS=718 now=715----------YES
+pid : 4
+actually ran: 1
+prev run time : 4
+nxt_evt_ts : 718
+ was started at : 714
+have to run more : 3
+p rem : 186
+p tt : 132
+p burst left: 0
+p run time : 8
+715 4 1: RUNNG -> READY  cb=3 rem=189 prio=1
+3 0
+----------------------------------myrandom------------------------------
+715 3 0: READY -> RUNNG cb=8 rem=167 prio=3
+719 3 4: RUNNG -> READY  cb=4 rem=163 prio=3
+3 4
+719 3 0: READY -> RUNNG cb=4 rem=163 prio=2
+----------------------------------myrandom------------------------------
+723 3 4: RUNNG -> BLOCK ib=1 rem=159
+8 14
+723 8 20: READY -> RUNNG cb=14 rem=225 prio=1
+724 3 1: BLOCK -> READY
+---->PRIO preemption 8 by 3  ? 1 === TS=727 now=724----------YES
+pid : 8
+actually ran: 1
+prev run time : 14
+nxt_evt_ts : 727
+ was started at : 723
+have to run more : 13
+p rem : 221
+p tt : 107
+p burst left: 10
+p run time : 10
+724 8 1: RUNNG -> READY  cb=13 rem=224 prio=1
+3 0
+----------------------------------myrandom------------------------------
+724 3 0: READY -> RUNNG cb=5 rem=159 prio=3
+728 3 4: RUNNG -> READY  cb=1 rem=155 prio=3
+3 1
+728 3 0: READY -> RUNNG cb=1 rem=155 prio=2
+----------------------------------myrandom------------------------------
+729 3 1: RUNNG -> BLOCK ib=9 rem=154
+9 6
+729 9 142: READY -> RUNNG cb=6 rem=293 prio=0
+733 9 4: RUNNG -> READY  cb=2 rem=289 prio=0
+5 0
+----------------------------------myrandom------------------------------
+733 5 71: READY -> RUNNG cb=11 rem=281 prio=0
+734 1 28: BLOCK -> READY
+---->PRIO preemption 5 by 1  ? 1 === TS=737 now=734----------YES
+pid : 5
+actually ran: 1
+prev run time : 11
+nxt_evt_ts : 737
+ was started at : 733
+have to run more : 10
+p rem : 277
+p tt : 26
+p burst left: 7
+p run time : 7
+734 5 1: RUNNG -> READY  cb=10 rem=280 prio=0
+1 0
+----------------------------------myrandom------------------------------
+734 1 0: READY -> RUNNG cb=10 rem=199 prio=3
+738 6 40: BLOCK -> READY
+---->PRIO preemption 1 by 6  ? 0 === TS=738 now=738----------
+738 3 9: BLOCK -> READY
+---->PRIO preemption 1 by 3  ? 0 === TS=738 now=738----------
+738 1 4: RUNNG -> READY  cb=6 rem=195 prio=3
+3 0
+----------------------------------myrandom------------------------------
+738 3 0: READY -> RUNNG cb=7 rem=154 prio=3
+742 3 4: RUNNG -> READY  cb=3 rem=150 prio=3
+6 0
+----------------------------------myrandom------------------------------
+742 6 4: READY -> RUNNG cb=3 rem=223 prio=2
+----------------------------------myrandom------------------------------
+745 6 3: RUNNG -> BLOCK ib=33 rem=220
+1 6
+745 1 7: READY -> RUNNG cb=6 rem=195 prio=2
+749 1 4: RUNNG -> READY  cb=2 rem=191 prio=2
+3 3
+749 3 7: READY -> RUNNG cb=3 rem=150 prio=2
+----------------------------------myrandom------------------------------
+752 3 3: RUNNG -> BLOCK ib=1 rem=147
+1 2
+752 1 3: READY -> RUNNG cb=2 rem=191 prio=1
+----------------------------------myrandom------------------------------
+753 3 1: BLOCK -> READY
+---->PRIO preemption 1 by 3  ? 1 === TS=754 now=753----------YES
+pid : 1
+actually ran: 1
+prev run time : 2
+nxt_evt_ts : 754
+ was started at : 752
+have to run more : 1
+p rem : 189
+p tt : 143
+p burst left: 0
+p run time : 37
+753 1 1: RUNNG -> READY  cb=1 rem=190 prio=1
+3 0
+----------------------------------myrandom------------------------------
+753 3 0: READY -> RUNNG cb=17 rem=147 prio=3
+757 3 4: RUNNG -> READY  cb=13 rem=143 prio=3
+3 13
+757 3 0: READY -> RUNNG cb=13 rem=143 prio=2
+761 3 4: RUNNG -> READY  cb=9 rem=139 prio=2
+3 9
+761 3 0: READY -> RUNNG cb=9 rem=139 prio=1
+765 3 4: RUNNG -> READY  cb=5 rem=135 prio=1
+0 7
+765 0 70: READY -> RUNNG cb=7 rem=351 prio=0
+769 0 4: RUNNG -> READY  cb=3 rem=347 prio=0
+2 15
+769 2 70: READY -> RUNNG cb=15 rem=162 prio=0
+773 2 4: RUNNG -> READY  cb=11 rem=158 prio=0
+7 9
+773 7 59: READY -> RUNNG cb=9 rem=223 prio=0
+777 7 4: RUNNG -> READY  cb=5 rem=219 prio=0
+4 3
+777 4 62: READY -> RUNNG cb=3 rem=189 prio=0
+----------------------------------myrandom------------------------------
+778 6 33: BLOCK -> READY
+---->PRIO preemption 4 by 6  ? 1 === TS=780 now=778----------YES
+pid : 4
+actually ran: 1
+prev run time : 3
+nxt_evt_ts : 780
+ was started at : 777
+have to run more : 2
+p rem : 186
+p tt : 138
+p burst left: 0
+p run time : 13
+778 4 1: RUNNG -> READY  cb=2 rem=188 prio=0
+6 0
+----------------------------------myrandom------------------------------
+778 6 0: READY -> RUNNG cb=3 rem=220 prio=2
+----------------------------------myrandom------------------------------
+781 6 3: RUNNG -> BLOCK ib=7 rem=217
+8 13
+781 8 57: READY -> RUNNG cb=13 rem=224 prio=0
+785 8 4: RUNNG -> READY  cb=9 rem=220 prio=0
+1 1
+785 1 32: READY -> RUNNG cb=1 rem=190 prio=0
+----------------------------------myrandom------------------------------
+786 1 1: RUNNG -> BLOCK ib=2 rem=189
+3 5
+786 3 21: READY -> RUNNG cb=5 rem=135 prio=0
+788 6 7: BLOCK -> READY
+---->PRIO preemption 3 by 6  ? 1 === TS=790 now=788----------YES
+pid : 3
+actually ran: 2
+prev run time : 5
+nxt_evt_ts : 790
+ was started at : 786
+have to run more : 3
+p rem : 131
+p tt : 180
+p burst left: 1
+p run time : 1
+788 1 2: BLOCK -> READY
+---->PRIO preemption 3 by 1  ? 1 === TS=788 now=788----------
+788 3 2: RUNNG -> READY  cb=3 rem=133 prio=0
+1 0
+----------------------------------myrandom------------------------------
+788 1 0: READY -> RUNNG cb=11 rem=189 prio=3
+792 1 4: RUNNG -> READY  cb=7 rem=185 prio=3
+6 0
+----------------------------------myrandom------------------------------
+792 6 4: READY -> RUNNG cb=4 rem=217 prio=2
+----------------------------------myrandom------------------------------
+796 6 4: RUNNG -> BLOCK ib=17 rem=213
+1 7
+796 1 4: READY -> RUNNG cb=7 rem=185 prio=2
+800 1 4: RUNNG -> READY  cb=3 rem=181 prio=2
+1 3
+800 1 0: READY -> RUNNG cb=3 rem=181 prio=1
+----------------------------------myrandom------------------------------
+803 1 3: RUNNG -> BLOCK ib=34 rem=178
+4 2
+803 4 25: READY -> RUNNG cb=2 rem=188 prio=3
+----------------------------------myrandom------------------------------
+805 4 2: RUNNG -> BLOCK ib=14 rem=186
+3 3
+805 3 17: READY -> RUNNG cb=3 rem=133 prio=3
+----------------------------------myrandom------------------------------
+808 3 3: RUNNG -> BLOCK ib=9 rem=130
+7 5
+808 7 31: READY -> RUNNG cb=5 rem=219 prio=2
+812 7 4: RUNNG -> READY  cb=1 rem=215 prio=2
+8 9
+812 8 27: READY -> RUNNG cb=9 rem=220 prio=2
+813 6 17: BLOCK -> READY
+---->PRIO preemption 8 by 6  ? 0 === TS=816 now=813----------
+816 8 4: RUNNG -> READY  cb=5 rem=216 prio=2
+6 0
+----------------------------------myrandom------------------------------
+816 6 3: READY -> RUNNG cb=2 rem=213 prio=2
+----------------------------------myrandom------------------------------
+817 3 9: BLOCK -> READY
+---->PRIO preemption 6 by 3  ? 1 === TS=818 now=817----------YES
+pid : 6
+actually ran: 1
+prev run time : 2
+nxt_evt_ts : 818
+ was started at : 816
+have to run more : 1
+p rem : 211
+p tt : 97
+p burst left: 0
+p run time : 2
+817 6 1: RUNNG -> READY  cb=1 rem=212 prio=2
+3 0
+----------------------------------myrandom------------------------------
+817 3 0: READY -> RUNNG cb=2 rem=130 prio=3
+----------------------------------myrandom------------------------------
+819 4 14: BLOCK -> READY
+---->PRIO preemption 3 by 4  ? 0 === TS=819 now=819----------
+819 3 2: RUNNG -> BLOCK ib=4 rem=128
+4 0
+----------------------------------myrandom------------------------------
+819 4 0: READY -> RUNNG cb=13 rem=186 prio=3
+823 3 4: BLOCK -> READY
+---->PRIO preemption 4 by 3  ? 0 === TS=823 now=823----------
+823 4 4: RUNNG -> READY  cb=9 rem=182 prio=3
+3 0
+----------------------------------myrandom------------------------------
+823 3 0: READY -> RUNNG cb=3 rem=128 prio=3
+----------------------------------myrandom------------------------------
+826 3 3: RUNNG -> BLOCK ib=4 rem=125
+4 9
+826 4 3: READY -> RUNNG cb=9 rem=182 prio=2
+830 3 4: BLOCK -> READY
+---->PRIO preemption 4 by 3  ? 1 === TS=830 now=830----------
+830 4 4: RUNNG -> READY  cb=5 rem=178 prio=2
+3 0
+----------------------------------myrandom------------------------------
+830 3 0: READY -> RUNNG cb=17 rem=125 prio=3
+834 3 4: RUNNG -> READY  cb=13 rem=121 prio=3
+3 13
+834 3 0: READY -> RUNNG cb=13 rem=121 prio=2
+837 1 34: BLOCK -> READY
+---->PRIO preemption 3 by 1  ? 1 === TS=838 now=837----------YES
+pid : 3
+actually ran: 3
+prev run time : 13
+nxt_evt_ts : 838
+ was started at : 834
+have to run more : 10
+p rem : 117
+p tt : 198
+p burst left: 9
+p run time : 9
+837 3 3: RUNNG -> READY  cb=10 rem=118 prio=2
+1 0
+----------------------------------myrandom------------------------------
+837 1 0: READY -> RUNNG cb=15 rem=178 prio=3
+841 1 4: RUNNG -> READY  cb=11 rem=174 prio=3
+1 11
+841 1 0: READY -> RUNNG cb=11 rem=174 prio=2
+845 1 4: RUNNG -> READY  cb=7 rem=170 prio=2
+0 3
+845 0 76: READY -> RUNNG cb=3 rem=347 prio=1
+----------------------------------myrandom------------------------------
+848 0 3: RUNNG -> BLOCK ib=33 rem=344
+2 11
+848 2 75: READY -> RUNNG cb=11 rem=158 prio=1
+852 2 4: RUNNG -> READY  cb=7 rem=154 prio=1
+7 1
+852 7 40: READY -> RUNNG cb=1 rem=215 prio=1
+----------------------------------myrandom------------------------------
+853 7 1: RUNNG -> BLOCK ib=24 rem=214
+8 5
+853 8 37: READY -> RUNNG cb=5 rem=216 prio=1
+857 8 4: RUNNG -> READY  cb=1 rem=212 prio=1
+6 1
+857 6 40: READY -> RUNNG cb=1 rem=212 prio=1
+----------------------------------myrandom------------------------------
+858 6 1: RUNNG -> BLOCK ib=11 rem=211
+4 5
+858 4 28: READY -> RUNNG cb=5 rem=178 prio=1
+862 4 4: RUNNG -> READY  cb=1 rem=174 prio=1
+3 10
+862 3 25: READY -> RUNNG cb=10 rem=118 prio=1
+866 3 4: RUNNG -> READY  cb=6 rem=114 prio=1
+1 7
+866 1 21: READY -> RUNNG cb=7 rem=170 prio=1
+869 6 11: BLOCK -> READY
+---->PRIO preemption 1 by 6  ? 1 === TS=870 now=869----------YES
+pid : 1
+actually ran: 3
+prev run time : 7
+nxt_evt_ts : 870
+ was started at : 866
+have to run more : 4
+p rem : 166
+p tt : 168
+p burst left: 3
+p run time : 3
+869 1 3: RUNNG -> READY  cb=4 rem=167 prio=1
+6 0
+----------------------------------myrandom------------------------------
+869 6 0: READY -> RUNNG cb=2 rem=211 prio=2
+----------------------------------myrandom------------------------------
+871 6 2: RUNNG -> BLOCK ib=35 rem=209
+9 2
+871 9 138: READY -> RUNNG cb=2 rem=289 prio=0
+----------------------------------myrandom------------------------------
+873 9 2: RUNNG -> BLOCK ib=6 rem=287
+5 10
+873 5 139: READY -> RUNNG cb=10 rem=280 prio=0
+877 7 24: BLOCK -> READY
+---->PRIO preemption 5 by 7  ? 1 === TS=877 now=877----------
+877 5 4: RUNNG -> READY  cb=6 rem=276 prio=0
+7 0
+----------------------------------myrandom------------------------------
+877 7 0: READY -> RUNNG cb=13 rem=214 prio=2
+879 9 6: BLOCK -> READY
+---->PRIO preemption 7 by 9  ? 0 === TS=881 now=879----------
+881 0 33: BLOCK -> READY
+---->PRIO preemption 7 by 0  ? 0 === TS=881 now=881----------
+881 7 4: RUNNG -> READY  cb=9 rem=210 prio=2
+0 0
+----------------------------------myrandom------------------------------
+881 0 0: READY -> RUNNG cb=22 rem=344 prio=1
+885 0 4: RUNNG -> READY  cb=18 rem=340 prio=1
+7 9
+885 7 4: READY -> RUNNG cb=9 rem=210 prio=1
+889 7 4: RUNNG -> READY  cb=5 rem=206 prio=1
+2 7
+889 2 37: READY -> RUNNG cb=7 rem=154 prio=0
+893 2 4: RUNNG -> READY  cb=3 rem=150 prio=0
+8 1
+893 8 36: READY -> RUNNG cb=1 rem=212 prio=0
+----------------------------------myrandom------------------------------
+894 8 1: RUNNG -> BLOCK ib=7 rem=211
+4 1
+894 4 32: READY -> RUNNG cb=1 rem=174 prio=0
+----------------------------------myrandom------------------------------
+895 4 1: RUNNG -> BLOCK ib=19 rem=173
+3 6
+895 3 29: READY -> RUNNG cb=6 rem=114 prio=0
+899 3 4: RUNNG -> READY  cb=2 rem=110 prio=0
+1 4
+899 1 30: READY -> RUNNG cb=4 rem=167 prio=0
+----------------------------------myrandom------------------------------
+901 8 7: BLOCK -> READY
+---->PRIO preemption 1 by 8  ? 1 === TS=903 now=901----------YES
+pid : 1
+actually ran: 2
+prev run time : 4
+nxt_evt_ts : 903
+ was started at : 899
+have to run more : 2
+p rem : 163
+p tt : 173
+p burst left: 0
+p run time : 20
+901 1 2: RUNNG -> READY  cb=2 rem=165 prio=0
+8 0
+----------------------------------myrandom------------------------------
+901 8 0: READY -> RUNNG cb=20 rem=211 prio=2
+905 8 4: RUNNG -> READY  cb=16 rem=207 prio=2
+8 16
+905 8 0: READY -> RUNNG cb=16 rem=207 prio=1
+906 6 35: BLOCK -> READY
+---->PRIO preemption 8 by 6  ? 1 === TS=909 now=906----------YES
+pid : 8
+actually ran: 1
+prev run time : 16
+nxt_evt_ts : 909
+ was started at : 905
+have to run more : 15
+p rem : 203
+p tt : 131
+p burst left: 12
+p run time : 12
+906 8 1: RUNNG -> READY  cb=15 rem=206 prio=1
+6 0
+----------------------------------myrandom------------------------------
+906 6 0: READY -> RUNNG cb=1 rem=209 prio=2
+----------------------------------myrandom------------------------------
+907 6 1: RUNNG -> BLOCK ib=12 rem=208
+9 0
+----------------------------------myrandom------------------------------
+907 9 28: READY -> RUNNG cb=8 rem=287 prio=0
+911 9 4: RUNNG -> READY  cb=4 rem=283 prio=0
+0 18
+911 0 26: READY -> RUNNG cb=18 rem=340 prio=0
+914 4 19: BLOCK -> READY
+---->PRIO preemption 0 by 4  ? 1 === TS=915 now=914----------YES
+pid : 0
+actually ran: 3
+prev run time : 18
+nxt_evt_ts : 915
+ was started at : 911
+have to run more : 15
+p rem : 336
+p tt : 70
+p burst left: 14
+p run time : 14
+914 0 3: RUNNG -> READY  cb=15 rem=337 prio=0
+4 0
+----------------------------------myrandom------------------------------
+914 4 0: READY -> RUNNG cb=13 rem=173 prio=3
+918 4 4: RUNNG -> READY  cb=9 rem=169 prio=3
+4 9
+918 4 0: READY -> RUNNG cb=9 rem=169 prio=2
+919 6 12: BLOCK -> READY
+---->PRIO preemption 4 by 6  ? 0 === TS=922 now=919----------
+922 4 4: RUNNG -> READY  cb=5 rem=165 prio=2
+6 0
+----------------------------------myrandom------------------------------
+922 6 3: READY -> RUNNG cb=3 rem=208 prio=2
+----------------------------------myrandom------------------------------
+925 6 3: RUNNG -> BLOCK ib=1 rem=205
+4 5
+925 4 3: READY -> RUNNG cb=5 rem=165 prio=1
+926 6 1: BLOCK -> READY
+---->PRIO preemption 4 by 6  ? 1 === TS=929 now=926----------YES
+pid : 4
+actually ran: 1
+prev run time : 5
+nxt_evt_ts : 929
+ was started at : 925
+have to run more : 4
+p rem : 161
+p tt : 167
+p burst left: 1
+p run time : 1
+926 4 1: RUNNG -> READY  cb=4 rem=164 prio=1
+6 0
+----------------------------------myrandom------------------------------
+926 6 0: READY -> RUNNG cb=3 rem=205 prio=2
+----------------------------------myrandom------------------------------
+929 6 3: RUNNG -> BLOCK ib=23 rem=202
+7 5
+929 7 40: READY -> RUNNG cb=5 rem=206 prio=0
+933 7 4: RUNNG -> READY  cb=1 rem=202 prio=0
+8 15
+933 8 27: READY -> RUNNG cb=15 rem=206 prio=0
+937 8 4: RUNNG -> READY  cb=11 rem=202 prio=0
+4 4
+937 4 11: READY -> RUNNG cb=4 rem=164 prio=0
+----------------------------------myrandom------------------------------
+941 4 4: RUNNG -> BLOCK ib=17 rem=160
+3 2
+941 3 42: READY -> RUNNG cb=2 rem=110 prio=3
+----------------------------------myrandom------------------------------
+943 3 2: RUNNG -> BLOCK ib=8 rem=108
+1 2
+943 1 42: READY -> RUNNG cb=2 rem=165 prio=3
+----------------------------------myrandom------------------------------
+945 1 2: RUNNG -> BLOCK ib=28 rem=163
+7 1
+945 7 12: READY -> RUNNG cb=1 rem=202 prio=2
+----------------------------------myrandom------------------------------
+946 7 1: RUNNG -> BLOCK ib=28 rem=201
+8 11
+946 8 9: READY -> RUNNG cb=11 rem=202 prio=2
+950 8 4: RUNNG -> READY  cb=7 rem=198 prio=2
+2 3
+950 2 57: READY -> RUNNG cb=3 rem=150 prio=1
+----------------------------------myrandom------------------------------
+951 3 8: BLOCK -> READY
+---->PRIO preemption 2 by 3  ? 1 === TS=953 now=951----------YES
+pid : 2
+actually ran: 1
+prev run time : 3
+nxt_evt_ts : 953
+ was started at : 950
+have to run more : 2
+p rem : 147
+p tt : 59
+p burst left: 0
+p run time : 24
+951 2 1: RUNNG -> READY  cb=2 rem=149 prio=1
+3 0
+----------------------------------myrandom------------------------------
+951 3 0: READY -> RUNNG cb=4 rem=108 prio=3
+----------------------------------myrandom------------------------------
+952 6 23: BLOCK -> READY
+---->PRIO preemption 3 by 6  ? 0 === TS=955 now=952----------
+955 3 4: RUNNG -> BLOCK ib=9 rem=104
+6 0
+----------------------------------myrandom------------------------------
+955 6 3: READY -> RUNNG cb=3 rem=202 prio=2
+----------------------------------myrandom------------------------------
+958 4 17: BLOCK -> READY
+---->PRIO preemption 6 by 4  ? 1 === TS=958 now=958----------
+958 6 3: RUNNG -> BLOCK ib=37 rem=199
+4 0
+----------------------------------myrandom------------------------------
+958 4 0: READY -> RUNNG cb=11 rem=160 prio=3
+962 4 4: RUNNG -> READY  cb=7 rem=156 prio=3
+4 7
+962 4 0: READY -> RUNNG cb=7 rem=156 prio=2
+964 3 9: BLOCK -> READY
+---->PRIO preemption 4 by 3  ? 1 === TS=966 now=964----------YES
+pid : 4
+actually ran: 2
+prev run time : 7
+nxt_evt_ts : 966
+ was started at : 962
+have to run more : 5
+p rem : 152
+p tt : 182
+p burst left: 3
+p run time : 3
+964 4 2: RUNNG -> READY  cb=5 rem=154 prio=2
+3 0
+----------------------------------myrandom------------------------------
+964 3 0: READY -> RUNNG cb=6 rem=104 prio=3
+968 3 4: RUNNG -> READY  cb=2 rem=100 prio=3
+3 2
+968 3 0: READY -> RUNNG cb=2 rem=100 prio=2
+----------------------------------myrandom------------------------------
+970 3 2: RUNNG -> BLOCK ib=5 rem=98
+0 15
+970 0 56: READY -> RUNNG cb=15 rem=337 prio=1
+973 1 28: BLOCK -> READY
+---->PRIO preemption 0 by 1  ? 1 === TS=974 now=973----------YES
+pid : 0
+actually ran: 3
+prev run time : 15
+nxt_evt_ts : 974
+ was started at : 970
+have to run more : 12
+p rem : 333
+p tt : 75
+p burst left: 11
+p run time : 11
+973 0 3: RUNNG -> READY  cb=12 rem=334 prio=1
+1 0
+----------------------------------myrandom------------------------------
+973 1 0: READY -> RUNNG cb=25 rem=163 prio=3
+974 7 28: BLOCK -> READY
+---->PRIO preemption 1 by 7  ? 0 === TS=977 now=974----------
+975 3 5: BLOCK -> READY
+---->PRIO preemption 1 by 3  ? 0 === TS=977 now=975----------
+977 1 4: RUNNG -> READY  cb=21 rem=159 prio=3
+3 0
+----------------------------------myrandom------------------------------
+977 3 2: READY -> RUNNG cb=1 rem=98 prio=3
+----------------------------------myrandom------------------------------
+978 3 1: RUNNG -> BLOCK ib=9 rem=97
+7 0
+----------------------------------myrandom------------------------------
+978 7 4: READY -> RUNNG cb=16 rem=201 prio=2
+982 7 4: RUNNG -> READY  cb=12 rem=197 prio=2
+1 21
+982 1 5: READY -> RUNNG cb=21 rem=159 prio=2
+986 1 4: RUNNG -> READY  cb=17 rem=155 prio=2
+8 7
+986 8 36: READY -> RUNNG cb=7 rem=198 prio=1
+987 3 9: BLOCK -> READY
+---->PRIO preemption 8 by 3  ? 1 === TS=990 now=987----------YES
+pid : 8
+actually ran: 1
+prev run time : 7
+nxt_evt_ts : 990
+ was started at : 986
+have to run more : 6
+p rem : 194
+p tt : 146
+p burst left: 3
+p run time : 3
+987 8 1: RUNNG -> READY  cb=6 rem=197 prio=1
+3 0
+----------------------------------myrandom------------------------------
+987 3 0: READY -> RUNNG cb=14 rem=97 prio=3
+991 3 4: RUNNG -> READY  cb=10 rem=93 prio=3
+3 10
+991 3 0: READY -> RUNNG cb=10 rem=93 prio=2
+995 6 37: BLOCK -> READY
+---->PRIO preemption 3 by 6  ? 0 === TS=995 now=995----------
+995 3 4: RUNNG -> READY  cb=6 rem=89 prio=2
+6 0
+----------------------------------myrandom------------------------------
+995 6 0: READY -> RUNNG cb=5 rem=199 prio=2
+999 6 4: RUNNG -> READY  cb=1 rem=195 prio=2
+4 5
+999 4 35: READY -> RUNNG cb=5 rem=154 prio=1
+1003 4 4: RUNNG -> READY  cb=1 rem=150 prio=1
+7 12
+1003 7 21: READY -> RUNNG cb=12 rem=197 prio=1
+1007 7 4: RUNNG -> READY  cb=8 rem=193 prio=1
+1 17
+1007 1 21: READY -> RUNNG cb=17 rem=155 prio=1
+1011 1 4: RUNNG -> READY  cb=13 rem=151 prio=1
+3 6
+1011 3 16: READY -> RUNNG cb=6 rem=89 prio=1
+1015 3 4: RUNNG -> READY  cb=2 rem=85 prio=1
+6 1
+1015 6 16: READY -> RUNNG cb=1 rem=195 prio=1
+----------------------------------myrandom------------------------------
+1016 6 1: RUNNG -> BLOCK ib=23 rem=194
+5 6
+1016 5 139: READY -> RUNNG cb=6 rem=276 prio=0
+1020 5 4: RUNNG -> READY  cb=2 rem=272 prio=0
+9 4
+1020 9 109: READY -> RUNNG cb=4 rem=283 prio=0
+----------------------------------myrandom------------------------------
+1024 9 4: RUNNG -> BLOCK ib=6 rem=279
+2 2
+1024 2 73: READY -> RUNNG cb=2 rem=149 prio=0
+----------------------------------myrandom------------------------------
+1026 2 2: RUNNG -> BLOCK ib=8 rem=147
+0 12
+1026 0 53: READY -> RUNNG cb=12 rem=334 prio=0
+1030 9 6: BLOCK -> READY
+---->PRIO preemption 0 by 9  ? 0 === TS=1030 now=1030----------
+1030 0 4: RUNNG -> READY  cb=8 rem=330 prio=0
+8 6
+1030 8 43: READY -> RUNNG cb=6 rem=197 prio=0
+1034 2 8: BLOCK -> READY
+---->PRIO preemption 8 by 2  ? 1 === TS=1034 now=1034----------
+1034 8 4: RUNNG -> READY  cb=2 rem=193 prio=0
+2 0
+----------------------------------myrandom------------------------------
+1034 2 0: READY -> RUNNG cb=11 rem=147 prio=1
+1038 2 4: RUNNG -> READY  cb=7 rem=143 prio=1
+4 1
+1038 4 35: READY -> RUNNG cb=1 rem=150 prio=0
+----------------------------------myrandom------------------------------
+1039 6 23: BLOCK -> READY
+---->PRIO preemption 4 by 6  ? 1 === TS=1039 now=1039----------
+1039 4 1: RUNNG -> BLOCK ib=17 rem=149
+6 0
+----------------------------------myrandom------------------------------
+1039 6 0: READY -> RUNNG cb=4 rem=194 prio=2
+----------------------------------myrandom------------------------------
+1043 6 4: RUNNG -> BLOCK ib=31 rem=190
+7 8
+1043 7 36: READY -> RUNNG cb=8 rem=193 prio=0
+1047 7 4: RUNNG -> READY  cb=4 rem=189 prio=0
+1 13
+1047 1 36: READY -> RUNNG cb=13 rem=151 prio=0
+1051 1 4: RUNNG -> READY  cb=9 rem=147 prio=0
+3 2
+1051 3 36: READY -> RUNNG cb=2 rem=85 prio=0
+----------------------------------myrandom------------------------------
+1053 3 2: RUNNG -> BLOCK ib=8 rem=83
+9 0
+----------------------------------myrandom------------------------------
+1053 9 23: READY -> RUNNG cb=6 rem=279 prio=0
+1056 4 17: BLOCK -> READY
+---->PRIO preemption 9 by 4  ? 1 === TS=1057 now=1056----------YES
+pid : 9
+actually ran: 3
+prev run time : 6
+nxt_evt_ts : 1057
+ was started at : 1053
+have to run more : 3
+p rem : 275
+p tt : 44
+p burst left: 2
+p run time : 2
+1056 9 3: RUNNG -> READY  cb=3 rem=276 prio=0
+4 0
+----------------------------------myrandom------------------------------
+1056 4 0: READY -> RUNNG cb=16 rem=149 prio=3
+1060 4 4: RUNNG -> READY  cb=12 rem=145 prio=3
+4 12
+1060 4 0: READY -> RUNNG cb=12 rem=145 prio=2
+1061 3 8: BLOCK -> READY
+---->PRIO preemption 4 by 3  ? 1 === TS=1064 now=1061----------YES
+pid : 4
+actually ran: 1
+prev run time : 12
+nxt_evt_ts : 1064
+ was started at : 1060
+have to run more : 11
+p rem : 141
+p tt : 197
+p burst left: 8
+p run time : 8
+1061 4 1: RUNNG -> READY  cb=11 rem=144 prio=2
+3 0
+----------------------------------myrandom------------------------------
+1061 3 0: READY -> RUNNG cb=17 rem=83 prio=3
+1065 3 4: RUNNG -> READY  cb=13 rem=79 prio=3
+3 13
+1065 3 0: READY -> RUNNG cb=13 rem=79 prio=2
+1069 3 4: RUNNG -> READY  cb=9 rem=75 prio=2
+4 11
+1069 4 8: READY -> RUNNG cb=11 rem=144 prio=1
+1073 4 4: RUNNG -> READY  cb=7 rem=140 prio=1
+3 9
+1073 3 4: READY -> RUNNG cb=9 rem=75 prio=1
+1074 6 31: BLOCK -> READY
+---->PRIO preemption 3 by 6  ? 1 === TS=1077 now=1074----------YES
+pid : 3
+actually ran: 1
+prev run time : 9
+nxt_evt_ts : 1077
+ was started at : 1073
+have to run more : 8
+p rem : 71
+p tt : 246
+p burst left: 5
+p run time : 5
+1074 3 1: RUNNG -> READY  cb=8 rem=74 prio=1
+6 0
+----------------------------------myrandom------------------------------
+1074 6 0: READY -> RUNNG cb=4 rem=190 prio=2
+----------------------------------myrandom------------------------------
+1078 6 4: RUNNG -> BLOCK ib=10 rem=186
+2 7
+1078 2 40: READY -> RUNNG cb=7 rem=143 prio=0
+1082 2 4: RUNNG -> READY  cb=3 rem=139 prio=0
+4 7
+1082 4 9: READY -> RUNNG cb=7 rem=140 prio=0
+1086 4 4: RUNNG -> READY  cb=3 rem=136 prio=0
+3 8
+1086 3 12: READY -> RUNNG cb=8 rem=74 prio=0
+1088 6 10: BLOCK -> READY
+---->PRIO preemption 3 by 6  ? 1 === TS=1090 now=1088----------YES
+pid : 3
+actually ran: 2
+prev run time : 8
+nxt_evt_ts : 1090
+ was started at : 1086
+have to run more : 6
+p rem : 70
+p tt : 253
+p burst left: 4
+p run time : 4
+1088 3 2: RUNNG -> READY  cb=6 rem=72 prio=0
+6 0
+----------------------------------myrandom------------------------------
+1088 6 0: READY -> RUNNG cb=1 rem=186 prio=2
+----------------------------------myrandom------------------------------
+1089 6 1: RUNNG -> BLOCK ib=35 rem=185
+1 9
+1089 1 38: READY -> RUNNG cb=9 rem=147 prio=3
+1093 1 4: RUNNG -> READY  cb=5 rem=143 prio=3
+4 3
+1093 4 7: READY -> RUNNG cb=3 rem=136 prio=3
+----------------------------------myrandom------------------------------
+1096 4 3: RUNNG -> BLOCK ib=18 rem=133
+3 6
+1096 3 8: READY -> RUNNG cb=6 rem=72 prio=3
+1100 3 4: RUNNG -> READY  cb=2 rem=68 prio=3
+8 2
+1100 8 66: READY -> RUNNG cb=2 rem=193 prio=2
+----------------------------------myrandom------------------------------
+1102 8 2: RUNNG -> BLOCK ib=8 rem=191
+7 4
+1102 7 55: READY -> RUNNG cb=4 rem=189 prio=2
+----------------------------------myrandom------------------------------
+1106 7 4: RUNNG -> BLOCK ib=14 rem=185
+1 5
+1106 1 13: READY -> RUNNG cb=5 rem=143 prio=2
+1110 8 8: BLOCK -> READY
+---->PRIO preemption 1 by 8  ? 0 === TS=1110 now=1110----------
+1110 1 4: RUNNG -> READY  cb=1 rem=139 prio=2
+3 2
+1110 3 10: READY -> RUNNG cb=2 rem=68 prio=2
+----------------------------------myrandom------------------------------
+1112 3 2: RUNNG -> BLOCK ib=1 rem=66
+8 0
+----------------------------------myrandom------------------------------
+1112 8 2: READY -> RUNNG cb=6 rem=191 prio=2
+1113 3 1: BLOCK -> READY
+---->PRIO preemption 8 by 3  ? 1 === TS=1116 now=1113----------YES
+pid : 8
+actually ran: 1
+prev run time : 6
+nxt_evt_ts : 1116
+ was started at : 1112
+have to run more : 5
+p rem : 187
+p tt : 159
+p burst left: 2
+p run time : 2
+1113 8 1: RUNNG -> READY  cb=5 rem=190 prio=2
+3 0
+----------------------------------myrandom------------------------------
+1113 3 0: READY -> RUNNG cb=6 rem=66 prio=3
+1114 4 18: BLOCK -> READY
+---->PRIO preemption 3 by 4  ? 0 === TS=1117 now=1114----------
+1117 3 4: RUNNG -> READY  cb=2 rem=62 prio=3
+4 0
+----------------------------------myrandom------------------------------
+1117 4 3: READY -> RUNNG cb=9 rem=133 prio=3
+1120 7 14: BLOCK -> READY
+---->PRIO preemption 4 by 7  ? 0 === TS=1121 now=1120----------
+1121 4 4: RUNNG -> READY  cb=5 rem=129 prio=3
+3 2
+1121 3 4: READY -> RUNNG cb=2 rem=62 prio=2
+----------------------------------myrandom------------------------------
+1123 3 2: RUNNG -> BLOCK ib=6 rem=60
+7 0
+----------------------------------myrandom------------------------------
+1123 7 3: READY -> RUNNG cb=4 rem=185 prio=2
+----------------------------------myrandom------------------------------
+1124 6 35: BLOCK -> READY
+---->PRIO preemption 7 by 6  ? 0 === TS=1127 now=1124----------
+1127 7 4: RUNNG -> BLOCK ib=14 rem=181
+4 5
+1127 4 6: READY -> RUNNG cb=5 rem=129 prio=2
+1129 3 6: BLOCK -> READY
+---->PRIO preemption 4 by 3  ? 1 === TS=1131 now=1129----------YES
+pid : 4
+actually ran: 2
+prev run time : 5
+nxt_evt_ts : 1131
+ was started at : 1127
+have to run more : 3
+p rem : 125
+p tt : 219
+p burst left: 1
+p run time : 1
+1129 4 2: RUNNG -> READY  cb=3 rem=127 prio=2
+3 0
+----------------------------------myrandom------------------------------
+1129 3 0: READY -> RUNNG cb=13 rem=60 prio=3
+1133 3 4: RUNNG -> READY  cb=9 rem=56 prio=3
+6 0
+----------------------------------myrandom------------------------------
+1133 6 9: READY -> RUNNG cb=4 rem=185 prio=2
+----------------------------------myrandom------------------------------
+1137 6 4: RUNNG -> BLOCK ib=14 rem=181
+3 9
+1137 3 4: READY -> RUNNG cb=9 rem=56 prio=2
+1141 7 14: BLOCK -> READY
+---->PRIO preemption 3 by 7  ? 0 === TS=1141 now=1141----------
+1141 3 4: RUNNG -> READY  cb=5 rem=52 prio=2
+7 0
+----------------------------------myrandom------------------------------
+1141 7 0: READY -> RUNNG cb=20 rem=181 prio=2
+1145 7 4: RUNNG -> READY  cb=16 rem=177 prio=2
+0 8
+1145 0 115: READY -> RUNNG cb=8 rem=330 prio=1
+1149 0 4: RUNNG -> READY  cb=4 rem=326 prio=1
+2 3
+1149 2 67: READY -> RUNNG cb=3 rem=139 prio=1
+----------------------------------myrandom------------------------------
+1151 6 14: BLOCK -> READY
+---->PRIO preemption 2 by 6  ? 1 === TS=1152 now=1151----------YES
+pid : 2
+actually ran: 2
+prev run time : 3
+nxt_evt_ts : 1152
+ was started at : 1149
+have to run more : 1
+p rem : 136
+p tt : 74
+p burst left: 0
+p run time : 19
+1151 2 2: RUNNG -> READY  cb=1 rem=137 prio=1
+6 0
+----------------------------------myrandom------------------------------
+1151 6 0: READY -> RUNNG cb=4 rem=181 prio=2
+----------------------------------myrandom------------------------------
+1155 6 4: RUNNG -> BLOCK ib=40 rem=177
+1 1
+1155 1 45: READY -> RUNNG cb=1 rem=139 prio=1
+----------------------------------myrandom------------------------------
+1156 1 1: RUNNG -> BLOCK ib=14 rem=138
+8 5
+1156 8 43: READY -> RUNNG cb=5 rem=190 prio=1
+1160 8 4: RUNNG -> READY  cb=1 rem=186 prio=1
+4 3
+1160 4 31: READY -> RUNNG cb=3 rem=127 prio=1
+----------------------------------myrandom------------------------------
+1163 4 3: RUNNG -> BLOCK ib=15 rem=124
+3 5
+1163 3 22: READY -> RUNNG cb=5 rem=52 prio=1
+1167 3 4: RUNNG -> READY  cb=1 rem=48 prio=1
+7 16
+1167 7 22: READY -> RUNNG cb=16 rem=177 prio=1
+1170 1 14: BLOCK -> READY
+---->PRIO preemption 7 by 1  ? 1 === TS=1171 now=1170----------YES
+pid : 7
+actually ran: 3
+prev run time : 16
+nxt_evt_ts : 1171
+ was started at : 1167
+have to run more : 13
+p rem : 173
+p tt : 158
+p burst left: 12
+p run time : 12
+1170 7 3: RUNNG -> READY  cb=13 rem=174 prio=1
+1 0
+----------------------------------myrandom------------------------------
+1170 1 0: READY -> RUNNG cb=7 rem=138 prio=3
+1174 1 4: RUNNG -> READY  cb=3 rem=134 prio=3
+1 3
+1174 1 0: READY -> RUNNG cb=3 rem=134 prio=2
+----------------------------------myrandom------------------------------
+1177 1 3: RUNNG -> BLOCK ib=24 rem=131
+5 2
+1177 5 157: READY -> RUNNG cb=2 rem=272 prio=0
+----------------------------------myrandom------------------------------
+1178 4 15: BLOCK -> READY
+---->PRIO preemption 5 by 4  ? 1 === TS=1179 now=1178----------YES
+pid : 5
+actually ran: 1
+prev run time : 2
+nxt_evt_ts : 1179
+ was started at : 1177
+have to run more : 1
+p rem : 270
+p tt : 39
+p burst left: 0
+p run time : 3
+1178 5 1: RUNNG -> READY  cb=1 rem=271 prio=0
+4 0
+----------------------------------myrandom------------------------------
+1178 4 0: READY -> RUNNG cb=3 rem=124 prio=3
+----------------------------------myrandom------------------------------
+1181 4 3: RUNNG -> BLOCK ib=18 rem=121
+9 3
+1181 9 125: READY -> RUNNG cb=3 rem=276 prio=0
+----------------------------------myrandom------------------------------
+1184 9 3: RUNNG -> BLOCK ib=6 rem=273
+0 4
+1184 0 35: READY -> RUNNG cb=4 rem=326 prio=0
+----------------------------------myrandom------------------------------
+1188 0 4: RUNNG -> BLOCK ib=40 rem=322
+2 1
+1188 2 37: READY -> RUNNG cb=1 rem=137 prio=0
+----------------------------------myrandom------------------------------
+1189 2 1: RUNNG -> BLOCK ib=15 rem=136
+8 1
+1189 8 29: READY -> RUNNG cb=1 rem=186 prio=0
+----------------------------------myrandom------------------------------
+1190 9 6: BLOCK -> READY
+---->PRIO preemption 8 by 9  ? 0 === TS=1190 now=1190----------
+1190 8 1: RUNNG -> BLOCK ib=1 rem=185
+3 1
+1190 3 23: READY -> RUNNG cb=1 rem=48 prio=0
+----------------------------------myrandom------------------------------
+1191 8 1: BLOCK -> READY
+---->PRIO preemption 3 by 8  ? 1 === TS=1191 now=1191----------
+1191 3 1: RUNNG -> BLOCK ib=8 rem=47
+8 0
+----------------------------------myrandom------------------------------
+1191 8 0: READY -> RUNNG cb=13 rem=185 prio=2
+1195 6 40: BLOCK -> READY
+---->PRIO preemption 8 by 6  ? 0 === TS=1195 now=1195----------
+1195 8 4: RUNNG -> READY  cb=9 rem=181 prio=2
+6 0
+----------------------------------myrandom------------------------------
+1195 6 0: READY -> RUNNG cb=3 rem=177 prio=2
+----------------------------------myrandom------------------------------
+1198 6 3: RUNNG -> BLOCK ib=28 rem=174
+8 9
+1198 8 3: READY -> RUNNG cb=9 rem=181 prio=1
+1199 4 18: BLOCK -> READY
+---->PRIO preemption 8 by 4  ? 1 === TS=1202 now=1199----------YES
+pid : 8
+actually ran: 1
+prev run time : 9
+nxt_evt_ts : 1202
+ was started at : 1198
+have to run more : 8
+p rem : 177
+p tt : 175
+p burst left: 5
+p run time : 5
+1199 3 8: BLOCK -> READY
+---->PRIO preemption 8 by 3  ? 1 === TS=1199 now=1199----------
+1199 8 1: RUNNG -> READY  cb=8 rem=180 prio=1
+4 0
+----------------------------------myrandom------------------------------
+1199 4 0: READY -> RUNNG cb=20 rem=121 prio=3
+1201 1 24: BLOCK -> READY
+---->PRIO preemption 4 by 1  ? 0 === TS=1203 now=1201----------
+1203 4 4: RUNNG -> READY  cb=16 rem=117 prio=3
+3 0
+----------------------------------myrandom------------------------------
+1203 3 4: READY -> RUNNG cb=20 rem=47 prio=3
+1204 2 15: BLOCK -> READY
+---->PRIO preemption 3 by 2  ? 0 === TS=1207 now=1204----------
+1207 3 4: RUNNG -> READY  cb=16 rem=43 prio=3
+1 0
+----------------------------------myrandom------------------------------
+1207 1 6: READY -> RUNNG cb=25 rem=131 prio=3
+1211 1 4: RUNNG -> READY  cb=21 rem=127 prio=3
+4 16
+1211 4 8: READY -> RUNNG cb=16 rem=117 prio=2
+1215 4 4: RUNNG -> READY  cb=12 rem=113 prio=2
+3 16
+1215 3 8: READY -> RUNNG cb=16 rem=43 prio=2
+1219 3 4: RUNNG -> READY  cb=12 rem=39 prio=2
+1 21
+1219 1 8: READY -> RUNNG cb=21 rem=127 prio=2
+1223 1 4: RUNNG -> READY  cb=17 rem=123 prio=2
+2 0
+----------------------------------myrandom------------------------------
+1223 2 19: READY -> RUNNG cb=3 rem=136 prio=1
+----------------------------------myrandom------------------------------
+1226 6 28: BLOCK -> READY
+---->PRIO preemption 2 by 6  ? 1 === TS=1226 now=1226----------
+1226 2 3: RUNNG -> BLOCK ib=30 rem=133
+6 0
+----------------------------------myrandom------------------------------
+1226 6 0: READY -> RUNNG cb=2 rem=174 prio=2
+----------------------------------myrandom------------------------------
+1228 0 40: BLOCK -> READY
+---->PRIO preemption 6 by 0  ? 0 === TS=1228 now=1228----------
+1228 6 2: RUNNG -> BLOCK ib=31 rem=172
+4 12
+1228 4 13: READY -> RUNNG cb=12 rem=113 prio=1
+1232 4 4: RUNNG -> READY  cb=8 rem=109 prio=1
+3 12
+1232 3 13: READY -> RUNNG cb=12 rem=39 prio=1
+1236 3 4: RUNNG -> READY  cb=8 rem=35 prio=1
+1 17
+1236 1 13: READY -> RUNNG cb=17 rem=123 prio=1
+1240 1 4: RUNNG -> READY  cb=13 rem=119 prio=1
+0 0
+----------------------------------myrandom------------------------------
+1240 0 12: READY -> RUNNG cb=1 rem=322 prio=1
+----------------------------------myrandom------------------------------
+1241 0 1: RUNNG -> BLOCK ib=39 rem=321
+7 13
+1241 7 71: READY -> RUNNG cb=13 rem=174 prio=0
+1245 7 4: RUNNG -> READY  cb=9 rem=170 prio=0
+9 0
+----------------------------------myrandom------------------------------
+1245 9 55: READY -> RUNNG cb=14 rem=273 prio=0
+1249 9 4: RUNNG -> READY  cb=10 rem=269 prio=0
+8 8
+1249 8 50: READY -> RUNNG cb=8 rem=180 prio=0
+1253 8 4: RUNNG -> READY  cb=4 rem=176 prio=0
+4 8
+1253 4 21: READY -> RUNNG cb=8 rem=109 prio=0
+1256 2 30: BLOCK -> READY
+---->PRIO preemption 4 by 2  ? 1 === TS=1257 now=1256----------YES
+pid : 4
+actually ran: 3
+prev run time : 8
+nxt_evt_ts : 1257
+ was started at : 1253
+have to run more : 5
+p rem : 105
+p tt : 243
+p burst left: 4
+p run time : 4
+1256 4 3: RUNNG -> READY  cb=5 rem=106 prio=0
+2 0
+----------------------------------myrandom------------------------------
+1256 2 0: READY -> RUNNG cb=24 rem=133 prio=1
+1259 6 31: BLOCK -> READY
+---->PRIO preemption 2 by 6  ? 1 === TS=1260 now=1259----------YES
+pid : 2
+actually ran: 3
+prev run time : 24
+nxt_evt_ts : 1260
+ was started at : 1256
+have to run more : 21
+p rem : 129
+p tt : 83
+p burst left: 20
+p run time : 20
+1259 2 3: RUNNG -> READY  cb=21 rem=130 prio=1
+6 0
+----------------------------------myrandom------------------------------
+1259 6 0: READY -> RUNNG cb=1 rem=172 prio=2
+----------------------------------myrandom------------------------------
+1260 6 1: RUNNG -> BLOCK ib=29 rem=171
+3 8
+1260 3 24: READY -> RUNNG cb=8 rem=35 prio=0
+1264 3 4: RUNNG -> READY  cb=4 rem=31 prio=0
+1 13
+1264 1 24: READY -> RUNNG cb=13 rem=119 prio=0
+1268 1 4: RUNNG -> READY  cb=9 rem=115 prio=0
+2 21
+1268 2 9: READY -> RUNNG cb=21 rem=130 prio=0
+1272 2 4: RUNNG -> READY  cb=17 rem=126 prio=0
+4 5
+1272 4 16: READY -> RUNNG cb=5 rem=106 prio=3
+1276 4 4: RUNNG -> READY  cb=1 rem=102 prio=3
+3 4
+1276 3 12: READY -> RUNNG cb=4 rem=31 prio=3
+----------------------------------myrandom------------------------------
+1280 0 39: BLOCK -> READY
+---->PRIO preemption 3 by 0  ? 0 === TS=1280 now=1280----------
+1280 3 4: RUNNG -> BLOCK ib=9 rem=27
+1 9
+1280 1 12: READY -> RUNNG cb=9 rem=115 prio=3
+1284 1 4: RUNNG -> READY  cb=5 rem=111 prio=3
+7 9
+1284 7 39: READY -> RUNNG cb=9 rem=170 prio=2
+1288 7 4: RUNNG -> READY  cb=5 rem=166 prio=2
+8 4
+1288 8 35: READY -> RUNNG cb=4 rem=176 prio=2
+----------------------------------myrandom------------------------------
+1289 6 29: BLOCK -> READY
+---->PRIO preemption 8 by 6  ? 0 === TS=1292 now=1289----------
+1289 3 9: BLOCK -> READY
+---->PRIO preemption 8 by 3  ? 1 === TS=1292 now=1289----------YES
+pid : 8
+actually ran: 1
+prev run time : 4
+nxt_evt_ts : 1292
+ was started at : 1288
+have to run more : 3
+p rem : 172
+p tt : 186
+p burst left: 0
+p run time : 2
+1289 8 1: RUNNG -> READY  cb=3 rem=175 prio=2
+3 0
+----------------------------------myrandom------------------------------
+1289 3 0: READY -> RUNNG cb=12 rem=27 prio=3
+1293 3 4: RUNNG -> READY  cb=8 rem=23 prio=3
+4 1
+1293 4 17: READY -> RUNNG cb=1 rem=102 prio=2
+----------------------------------myrandom------------------------------
+1294 4 1: RUNNG -> BLOCK ib=17 rem=101
+1 5
+1294 1 10: READY -> RUNNG cb=5 rem=111 prio=2
+1298 1 4: RUNNG -> READY  cb=1 rem=107 prio=2
+6 0
+----------------------------------myrandom------------------------------
+1298 6 9: READY -> RUNNG cb=3 rem=171 prio=2
+----------------------------------myrandom------------------------------
+1301 6 3: RUNNG -> BLOCK ib=5 rem=168
+3 8
+1301 3 8: READY -> RUNNG cb=8 rem=23 prio=2
+1305 3 4: RUNNG -> READY  cb=4 rem=19 prio=2
+2 17
+1305 2 33: READY -> RUNNG cb=17 rem=126 prio=1
+1306 6 5: BLOCK -> READY
+---->PRIO preemption 2 by 6  ? 1 === TS=1309 now=1306----------YES
+pid : 2
+actually ran: 1
+prev run time : 17
+nxt_evt_ts : 1309
+ was started at : 1305
+have to run more : 16
+p rem : 122
+p tt : 92
+p burst left: 13
+p run time : 13
+1306 2 1: RUNNG -> READY  cb=16 rem=125 prio=1
+6 0
+----------------------------------myrandom------------------------------
+1306 6 0: READY -> RUNNG cb=3 rem=168 prio=2
+----------------------------------myrandom------------------------------
+1309 6 3: RUNNG -> BLOCK ib=16 rem=165
+0 0
+----------------------------------myrandom------------------------------
+1309 0 29: READY -> RUNNG cb=10 rem=321 prio=1
+1311 4 17: BLOCK -> READY
+---->PRIO preemption 0 by 4  ? 1 === TS=1313 now=1311----------YES
+pid : 0
+actually ran: 2
+prev run time : 10
+nxt_evt_ts : 1313
+ was started at : 1309
+have to run more : 8
+p rem : 317
+p tt : 93
+p burst left: 6
+p run time : 6
+1311 0 2: RUNNG -> READY  cb=8 rem=319 prio=1
+4 0
+----------------------------------myrandom------------------------------
+1311 4 0: READY -> RUNNG cb=5 rem=101 prio=3
+1315 4 4: RUNNG -> READY  cb=1 rem=97 prio=3
+4 1
+1315 4 0: READY -> RUNNG cb=1 rem=97 prio=2
+----------------------------------myrandom------------------------------
+1316 4 1: RUNNG -> BLOCK ib=13 rem=96
+7 5
+1316 7 28: READY -> RUNNG cb=5 rem=166 prio=1
+1320 7 4: RUNNG -> READY  cb=1 rem=162 prio=1
+8 3
+1320 8 31: READY -> RUNNG cb=3 rem=175 prio=1
+----------------------------------myrandom------------------------------
+1323 8 3: RUNNG -> BLOCK ib=6 rem=172
+1 1
+1323 1 25: READY -> RUNNG cb=1 rem=107 prio=1
+----------------------------------myrandom------------------------------
+1324 1 1: RUNNG -> BLOCK ib=6 rem=106
+3 4
+1324 3 19: READY -> RUNNG cb=4 rem=19 prio=1
+----------------------------------myrandom------------------------------
+1325 6 16: BLOCK -> READY
+---->PRIO preemption 3 by 6  ? 1 === TS=1328 now=1325----------YES
+pid : 3
+actually ran: 1
+prev run time : 4
+nxt_evt_ts : 1328
+ was started at : 1324
+have to run more : 3
+p rem : 15
+p tt : 312
+p burst left: 0
+p run time : 8
+1325 3 1: RUNNG -> READY  cb=3 rem=18 prio=1
+6 0
+----------------------------------myrandom------------------------------
+1325 6 0: READY -> RUNNG cb=3 rem=165 prio=2
+----------------------------------myrandom------------------------------
+1328 6 3: RUNNG -> BLOCK ib=18 rem=162
+5 1
+1328 5 150: READY -> RUNNG cb=1 rem=271 prio=0
+----------------------------------myrandom------------------------------
+1329 4 13: BLOCK -> READY
+---->PRIO preemption 5 by 4  ? 1 === TS=1329 now=1329----------
+1329 8 6: BLOCK -> READY
+---->PRIO preemption 5 by 8  ? 1 === TS=1329 now=1329----------
+1329 5 1: RUNNG -> BLOCK ib=13 rem=270
+4 0
+----------------------------------myrandom------------------------------
+1329 4 0: READY -> RUNNG cb=20 rem=96 prio=3
+1330 1 6: BLOCK -> READY
+---->PRIO preemption 4 by 1  ? 0 === TS=1333 now=1330----------
+1333 4 4: RUNNG -> READY  cb=16 rem=92 prio=3
+1 0
+----------------------------------myrandom------------------------------
+1333 1 3: READY -> RUNNG cb=20 rem=106 prio=3
+1337 1 4: RUNNG -> READY  cb=16 rem=102 prio=3
+8 0
+----------------------------------myrandom------------------------------
+1337 8 8: READY -> RUNNG cb=2 rem=172 prio=2
+----------------------------------myrandom------------------------------
+1339 8 2: RUNNG -> BLOCK ib=1 rem=170
+4 16
+1339 4 6: READY -> RUNNG cb=16 rem=92 prio=2
+1340 8 1: BLOCK -> READY
+---->PRIO preemption 4 by 8  ? 0 === TS=1343 now=1340----------
+1342 5 13: BLOCK -> READY
+---->PRIO preemption 4 by 5  ? 0 === TS=1343 now=1342----------
+1343 4 4: RUNNG -> READY  cb=12 rem=88 prio=2
+1 16
+1343 1 6: READY -> RUNNG cb=16 rem=102 prio=2
+1346 6 18: BLOCK -> READY
+---->PRIO preemption 1 by 6  ? 0 === TS=1347 now=1346----------
+1347 1 4: RUNNG -> READY  cb=12 rem=98 prio=2
+8 0
+----------------------------------myrandom------------------------------
+1347 8 7: READY -> RUNNG cb=11 rem=170 prio=2
+1351 8 4: RUNNG -> READY  cb=7 rem=166 prio=2
+6 0
+----------------------------------myrandom------------------------------
+1351 6 5: READY -> RUNNG cb=3 rem=162 prio=2
+----------------------------------myrandom------------------------------
+1354 6 3: RUNNG -> BLOCK ib=4 rem=159
+4 12
+1354 4 11: READY -> RUNNG cb=12 rem=88 prio=1
+1358 6 4: BLOCK -> READY
+---->PRIO preemption 4 by 6  ? 1 === TS=1358 now=1358----------
+1358 4 4: RUNNG -> READY  cb=8 rem=84 prio=1
+6 0
+----------------------------------myrandom------------------------------
+1358 6 0: READY -> RUNNG cb=1 rem=159 prio=2
+----------------------------------myrandom------------------------------
+1359 6 1: RUNNG -> BLOCK ib=19 rem=158
+1 12
+1359 1 12: READY -> RUNNG cb=12 rem=98 prio=1
+1363 1 4: RUNNG -> READY  cb=8 rem=94 prio=1
+8 7
+1363 8 12: READY -> RUNNG cb=7 rem=166 prio=1
+1367 8 4: RUNNG -> READY  cb=3 rem=162 prio=1
+9 10
+1367 9 118: READY -> RUNNG cb=10 rem=269 prio=0
+1371 9 4: RUNNG -> READY  cb=6 rem=265 prio=0
+2 16
+1371 2 65: READY -> RUNNG cb=16 rem=125 prio=0
+1375 2 4: RUNNG -> READY  cb=12 rem=121 prio=0
+0 8
+1375 0 64: READY -> RUNNG cb=8 rem=319 prio=0
+1378 6 19: BLOCK -> READY
+---->PRIO preemption 0 by 6  ? 1 === TS=1379 now=1378----------YES
+pid : 0
+actually ran: 3
+prev run time : 8
+nxt_evt_ts : 1379
+ was started at : 1375
+have to run more : 5
+p rem : 315
+p tt : 99
+p burst left: 4
+p run time : 4
+1378 0 3: RUNNG -> READY  cb=5 rem=316 prio=0
+6 0
+----------------------------------myrandom------------------------------
+1378 6 0: READY -> RUNNG cb=1 rem=158 prio=2
+----------------------------------myrandom------------------------------
+1379 6 1: RUNNG -> BLOCK ib=3 rem=157
+7 1
+1379 7 59: READY -> RUNNG cb=1 rem=162 prio=0
+----------------------------------myrandom------------------------------
+1380 7 1: RUNNG -> BLOCK ib=8 rem=161
+3 3
+1380 3 55: READY -> RUNNG cb=3 rem=18 prio=0
+----------------------------------myrandom------------------------------
+1382 6 3: BLOCK -> READY
+---->PRIO preemption 3 by 6  ? 1 === TS=1383 now=1382----------YES
+pid : 3
+actually ran: 2
+prev run time : 3
+nxt_evt_ts : 1383
+ was started at : 1380
+have to run more : 1
+p rem : 15
+p tt : 318
+p burst left: 0
+p run time : 9
+1382 3 2: RUNNG -> READY  cb=1 rem=16 prio=0
+6 0
+----------------------------------myrandom------------------------------
+1382 6 0: READY -> RUNNG cb=4 rem=157 prio=2
+----------------------------------myrandom------------------------------
+1386 6 4: RUNNG -> BLOCK ib=8 rem=153
+5 0
+----------------------------------myrandom------------------------------
+1386 5 44: READY -> RUNNG cb=10 rem=270 prio=0
+1388 7 8: BLOCK -> READY
+---->PRIO preemption 5 by 7  ? 1 === TS=1390 now=1388----------YES
+pid : 5
+actually ran: 2
+prev run time : 10
+nxt_evt_ts : 1390
+ was started at : 1386
+have to run more : 8
+p rem : 266
+p tt : 45
+p burst left: 6
+p run time : 6
+1388 5 2: RUNNG -> READY  cb=8 rem=268 prio=0
+7 0
+----------------------------------myrandom------------------------------
+1388 7 0: READY -> RUNNG cb=7 rem=161 prio=2
+1392 7 4: RUNNG -> READY  cb=3 rem=157 prio=2
+7 3
+1392 7 0: READY -> RUNNG cb=3 rem=157 prio=1
+----------------------------------myrandom------------------------------
+1394 6 8: BLOCK -> READY
+---->PRIO preemption 7 by 6  ? 1 === TS=1395 now=1394----------YES
+pid : 7
+actually ran: 2
+prev run time : 3
+nxt_evt_ts : 1395
+ was started at : 1392
+have to run more : 1
+p rem : 154
+p tt : 179
+p burst left: 0
+p run time : 26
+1394 7 2: RUNNG -> READY  cb=1 rem=155 prio=1
+6 0
+----------------------------------myrandom------------------------------
+1394 6 0: READY -> RUNNG cb=1 rem=153 prio=2
+----------------------------------myrandom------------------------------
+1395 6 1: RUNNG -> BLOCK ib=32 rem=152
+4 8
+1395 4 37: READY -> RUNNG cb=8 rem=84 prio=0
+1399 4 4: RUNNG -> READY  cb=4 rem=80 prio=0
+1 8
+1399 1 36: READY -> RUNNG cb=8 rem=94 prio=0
+1403 1 4: RUNNG -> READY  cb=4 rem=90 prio=0
+8 3
+1403 8 36: READY -> RUNNG cb=3 rem=162 prio=0
+----------------------------------myrandom------------------------------
+1406 8 3: RUNNG -> BLOCK ib=5 rem=159
+7 1
+1406 7 12: READY -> RUNNG cb=1 rem=155 prio=0
+----------------------------------myrandom------------------------------
+1407 7 1: RUNNG -> BLOCK ib=3 rem=154
+3 1
+1407 3 25: READY -> RUNNG cb=1 rem=16 prio=3
+----------------------------------myrandom------------------------------
+1408 3 1: RUNNG -> BLOCK ib=8 rem=15
+4 4
+1408 4 9: READY -> RUNNG cb=4 rem=80 prio=3
+----------------------------------myrandom------------------------------
+1410 7 3: BLOCK -> READY
+---->PRIO preemption 4 by 7  ? 0 === TS=1412 now=1410----------
+1411 8 5: BLOCK -> READY
+---->PRIO preemption 4 by 8  ? 0 === TS=1412 now=1411----------
+1412 4 4: RUNNG -> BLOCK ib=18 rem=76
+1 4
+1412 1 9: READY -> RUNNG cb=4 rem=90 prio=3
+----------------------------------myrandom------------------------------
+1416 3 8: BLOCK -> READY
+---->PRIO preemption 1 by 3  ? 0 === TS=1416 now=1416----------
+1416 1 4: RUNNG -> BLOCK ib=18 rem=86
+3 0
+----------------------------------myrandom------------------------------
+1416 3 0: READY -> RUNNG cb=8 rem=15 prio=3
+1420 3 4: RUNNG -> READY  cb=4 rem=11 prio=3
+7 0
+----------------------------------myrandom------------------------------
+1420 7 10: READY -> RUNNG cb=14 rem=154 prio=2
+1424 7 4: RUNNG -> READY  cb=10 rem=150 prio=2
+8 0
+----------------------------------myrandom------------------------------
+1424 8 13: READY -> RUNNG cb=11 rem=159 prio=2
+1427 6 32: BLOCK -> READY
+---->PRIO preemption 8 by 6  ? 0 === TS=1428 now=1427----------
+1428 8 4: RUNNG -> READY  cb=7 rem=155 prio=2
+3 4
+1428 3 8: READY -> RUNNG cb=4 rem=11 prio=2
+----------------------------------myrandom------------------------------
+1430 4 18: BLOCK -> READY
+---->PRIO preemption 3 by 4  ? 1 === TS=1432 now=1430----------YES
+pid : 3
+actually ran: 2
+prev run time : 4
+nxt_evt_ts : 1432
+ was started at : 1428
+have to run more : 2
+p rem : 7
+p tt : 328
+p burst left: 0
+p run time : 5
+1430 3 2: RUNNG -> READY  cb=2 rem=9 prio=2
+4 0
+----------------------------------myrandom------------------------------
+1430 4 0: READY -> RUNNG cb=5 rem=76 prio=3
+1434 1 18: BLOCK -> READY
+---->PRIO preemption 4 by 1  ? 0 === TS=1434 now=1434----------
+1434 4 4: RUNNG -> READY  cb=1 rem=72 prio=3
+1 0
+----------------------------------myrandom------------------------------
+1434 1 0: READY -> RUNNG cb=20 rem=86 prio=3
+1438 1 4: RUNNG -> READY  cb=16 rem=82 prio=3
+6 0
+----------------------------------myrandom------------------------------
+1438 6 11: READY -> RUNNG cb=5 rem=152 prio=2
+1442 6 4: RUNNG -> READY  cb=1 rem=148 prio=2
+4 1
+1442 4 8: READY -> RUNNG cb=1 rem=72 prio=2
+----------------------------------myrandom------------------------------
+1443 4 1: RUNNG -> BLOCK ib=2 rem=71
+1 16
+1443 1 5: READY -> RUNNG cb=16 rem=82 prio=2
+1445 4 2: BLOCK -> READY
+---->PRIO preemption 1 by 4  ? 1 === TS=1447 now=1445----------YES
+pid : 1
+actually ran: 2
+prev run time : 16
+nxt_evt_ts : 1447
+ was started at : 1443
+have to run more : 14
+p rem : 78
+p tt : 262
+p burst left: 12
+p run time : 12
+1445 1 2: RUNNG -> READY  cb=14 rem=80 prio=2
+4 0
+----------------------------------myrandom------------------------------
+1445 4 0: READY -> RUNNG cb=14 rem=71 prio=3
+1449 4 4: RUNNG -> READY  cb=10 rem=67 prio=3
+4 10
+1449 4 0: READY -> RUNNG cb=10 rem=67 prio=2
+1453 4 4: RUNNG -> READY  cb=6 rem=63 prio=2
+2 12
+1453 2 78: READY -> RUNNG cb=12 rem=121 prio=1
+1457 2 4: RUNNG -> READY  cb=8 rem=117 prio=1
+0 5
+1457 0 79: READY -> RUNNG cb=5 rem=316 prio=1
+1461 0 4: RUNNG -> READY  cb=1 rem=312 prio=1
+7 10
+1461 7 37: READY -> RUNNG cb=10 rem=150 prio=1
+1465 7 4: RUNNG -> READY  cb=6 rem=146 prio=1
+8 7
+1465 8 37: READY -> RUNNG cb=7 rem=155 prio=1
+1469 8 4: RUNNG -> READY  cb=3 rem=151 prio=1
+3 2
+1469 3 39: READY -> RUNNG cb=2 rem=9 prio=1
+----------------------------------myrandom------------------------------
+1471 3 2: RUNNG -> BLOCK ib=1 rem=7
+6 1
+1471 6 29: READY -> RUNNG cb=1 rem=148 prio=1
+----------------------------------myrandom------------------------------
+1472 3 1: BLOCK -> READY
+---->PRIO preemption 6 by 3  ? 1 === TS=1472 now=1472----------
+1472 6 1: RUNNG -> BLOCK ib=14 rem=147
+3 0
+----------------------------------myrandom------------------------------
+1472 3 0: READY -> RUNNG cb=8 rem=7 prio=3
+1476 3 4: RUNNG -> READY  cb=4 rem=3 prio=3
+3 4
+1476 3 0: READY -> RUNNG cb=4 rem=3 prio=2
+1479 3 3: Done
+1 14
+1479 1 34: READY -> RUNNG cb=14 rem=80 prio=1
+1483 1 4: RUNNG -> READY  cb=10 rem=76 prio=1
+4 6
+1483 4 30: READY -> RUNNG cb=6 rem=63 prio=1
+1486 6 14: BLOCK -> READY
+---->PRIO preemption 4 by 6  ? 1 === TS=1487 now=1486----------YES
+pid : 4
+actually ran: 3
+prev run time : 6
+nxt_evt_ts : 1487
+ was started at : 1483
+have to run more : 3
+p rem : 59
+p tt : 291
+p burst left: 2
+p run time : 2
+1486 4 3: RUNNG -> READY  cb=3 rem=60 prio=1
+6 0
+----------------------------------myrandom------------------------------
+1486 6 0: READY -> RUNNG cb=2 rem=147 prio=2
+----------------------------------myrandom------------------------------
+1488 6 2: RUNNG -> BLOCK ib=4 rem=145
+9 6
+1488 9 117: READY -> RUNNG cb=6 rem=265 prio=0
+1492 6 4: BLOCK -> READY
+---->PRIO preemption 9 by 6  ? 1 === TS=1492 now=1492----------
+1492 9 4: RUNNG -> READY  cb=2 rem=261 prio=0
+6 0
+----------------------------------myrandom------------------------------
+1492 6 0: READY -> RUNNG cb=5 rem=145 prio=2
+1496 6 4: RUNNG -> READY  cb=1 rem=141 prio=2
+6 1
+1496 6 0: READY -> RUNNG cb=1 rem=141 prio=1
+----------------------------------myrandom------------------------------
+1497 6 1: RUNNG -> BLOCK ib=7 rem=140
+5 8
+1497 5 109: READY -> RUNNG cb=8 rem=268 prio=0
+1501 5 4: RUNNG -> READY  cb=4 rem=264 prio=0
+2 8
+1501 2 44: READY -> RUNNG cb=8 rem=117 prio=0
+1504 6 7: BLOCK -> READY
+---->PRIO preemption 2 by 6  ? 1 === TS=1505 now=1504----------YES
+pid : 2
+actually ran: 3
+prev run time : 8
+nxt_evt_ts : 1505
+ was started at : 1501
+have to run more : 5
+p rem : 113
+p tt : 107
+p burst left: 4
+p run time : 4
+1504 2 3: RUNNG -> READY  cb=5 rem=114 prio=0
+6 0
+----------------------------------myrandom------------------------------
+1504 6 0: READY -> RUNNG cb=1 rem=140 prio=2
+----------------------------------myrandom------------------------------
+1505 6 1: RUNNG -> BLOCK ib=24 rem=139
+0 1
+1505 0 44: READY -> RUNNG cb=1 rem=312 prio=0
+----------------------------------myrandom------------------------------
+1506 0 1: RUNNG -> BLOCK ib=12 rem=311
+7 6
+1506 7 41: READY -> RUNNG cb=6 rem=146 prio=0
+1510 7 4: RUNNG -> READY  cb=2 rem=142 prio=0
+8 3
+1510 8 41: READY -> RUNNG cb=3 rem=151 prio=0
+----------------------------------myrandom------------------------------
+1513 8 3: RUNNG -> BLOCK ib=10 rem=148
+1 10
+1513 1 30: READY -> RUNNG cb=10 rem=76 prio=0
+1517 1 4: RUNNG -> READY  cb=6 rem=72 prio=0
+4 3
+1517 4 31: READY -> RUNNG cb=3 rem=60 prio=0
+----------------------------------myrandom------------------------------
+1518 0 12: BLOCK -> READY
+---->PRIO preemption 4 by 0  ? 1 === TS=1520 now=1518----------YES
+pid : 4
+actually ran: 1
+prev run time : 3
+nxt_evt_ts : 1520
+ was started at : 1517
+have to run more : 2
+p rem : 57
+p tt : 295
+p burst left: 0
+p run time : 3
+1518 4 1: RUNNG -> READY  cb=2 rem=59 prio=0
+0 0
+----------------------------------myrandom------------------------------
+1518 0 0: READY -> RUNNG cb=23 rem=311 prio=1
+1522 0 4: RUNNG -> READY  cb=19 rem=307 prio=1
+0 19
+1522 0 0: READY -> RUNNG cb=19 rem=307 prio=0
+1523 8 10: BLOCK -> READY
+---->PRIO preemption 0 by 8  ? 1 === TS=1526 now=1523----------YES
+pid : 0
+actually ran: 1
+prev run time : 19
+nxt_evt_ts : 1526
+ was started at : 1522
+have to run more : 18
+p rem : 303
+p tt : 113
+p burst left: 15
+p run time : 15
+1523 0 1: RUNNG -> READY  cb=18 rem=306 prio=0
+8 0
+----------------------------------myrandom------------------------------
+1523 8 0: READY -> RUNNG cb=2 rem=148 prio=2
+----------------------------------myrandom------------------------------
+1525 8 2: RUNNG -> BLOCK ib=7 rem=146
+1 6
+1525 1 8: READY -> RUNNG cb=6 rem=72 prio=3
+1529 6 24: BLOCK -> READY
+---->PRIO preemption 1 by 6  ? 0 === TS=1529 now=1529----------
+1529 1 4: RUNNG -> READY  cb=2 rem=68 prio=3
+4 2
+1529 4 11: READY -> RUNNG cb=2 rem=59 prio=3
+----------------------------------myrandom------------------------------
+1531 4 2: RUNNG -> BLOCK ib=2 rem=57
+7 2
+1531 7 21: READY -> RUNNG cb=2 rem=142 prio=2
+----------------------------------myrandom------------------------------
+1532 8 7: BLOCK -> READY
+---->PRIO preemption 7 by 8  ? 0 === TS=1533 now=1532----------
+1533 4 2: BLOCK -> READY
+---->PRIO preemption 7 by 4  ? 1 === TS=1533 now=1533----------
+1533 7 2: RUNNG -> BLOCK ib=8 rem=140
+4 0
+----------------------------------myrandom------------------------------
+1533 4 0: READY -> RUNNG cb=12 rem=57 prio=3
+1537 4 4: RUNNG -> READY  cb=8 rem=53 prio=3
+6 0
+----------------------------------myrandom------------------------------
+1537 6 8: READY -> RUNNG cb=5 rem=139 prio=2
+1541 7 8: BLOCK -> READY
+---->PRIO preemption 6 by 7  ? 0 === TS=1541 now=1541----------
+1541 6 4: RUNNG -> READY  cb=1 rem=135 prio=2
+1 2
+1541 1 12: READY -> RUNNG cb=2 rem=68 prio=2
+----------------------------------myrandom------------------------------
+1543 1 2: RUNNG -> BLOCK ib=14 rem=66
+8 0
+----------------------------------myrandom------------------------------
+1543 8 11: READY -> RUNNG cb=14 rem=146 prio=2
+1547 8 4: RUNNG -> READY  cb=10 rem=142 prio=2
+4 8
+1547 4 10: READY -> RUNNG cb=8 rem=53 prio=2
+1551 4 4: RUNNG -> READY  cb=4 rem=49 prio=2
+7 0
+----------------------------------myrandom------------------------------
+1551 7 10: READY -> RUNNG cb=13 rem=140 prio=2
+1555 7 4: RUNNG -> READY  cb=9 rem=136 prio=2
+2 5
+1555 2 51: READY -> RUNNG cb=5 rem=114 prio=1
+1557 1 14: BLOCK -> READY
+---->PRIO preemption 2 by 1  ? 1 === TS=1559 now=1557----------YES
+pid : 2
+actually ran: 2
+prev run time : 5
+nxt_evt_ts : 1559
+ was started at : 1555
+have to run more : 3
+p rem : 110
+p tt : 112
+p burst left: 1
+p run time : 1
+1557 2 2: RUNNG -> READY  cb=3 rem=112 prio=1
+1 0
+----------------------------------myrandom------------------------------
+1557 1 0: READY -> RUNNG cb=3 rem=66 prio=3
+----------------------------------myrandom------------------------------
+1560 1 3: RUNNG -> BLOCK ib=4 rem=63
+0 18
+1560 0 37: READY -> RUNNG cb=18 rem=306 prio=1
+1564 1 4: BLOCK -> READY
+---->PRIO preemption 0 by 1  ? 1 === TS=1564 now=1564----------
+1564 0 4: RUNNG -> READY  cb=14 rem=302 prio=1
+1 0
+----------------------------------myrandom------------------------------
+1564 1 0: READY -> RUNNG cb=40 rem=63 prio=3
+1568 1 4: RUNNG -> READY  cb=36 rem=59 prio=3
+1 36
+1568 1 0: READY -> RUNNG cb=36 rem=59 prio=2
+1572 1 4: RUNNG -> READY  cb=32 rem=55 prio=2
+6 1
+1572 6 31: READY -> RUNNG cb=1 rem=135 prio=1
+----------------------------------myrandom------------------------------
+1573 6 1: RUNNG -> BLOCK ib=17 rem=134
+8 10
+1573 8 26: READY -> RUNNG cb=10 rem=142 prio=1
+1577 8 4: RUNNG -> READY  cb=6 rem=138 prio=1
+4 4
+1577 4 26: READY -> RUNNG cb=4 rem=49 prio=1
+----------------------------------myrandom------------------------------
+1581 4 4: RUNNG -> BLOCK ib=6 rem=45
+7 9
+1581 7 26: READY -> RUNNG cb=9 rem=136 prio=1
+1585 7 4: RUNNG -> READY  cb=5 rem=132 prio=1
+1 32
+1585 1 13: READY -> RUNNG cb=32 rem=55 prio=1
+1587 4 6: BLOCK -> READY
+---->PRIO preemption 1 by 4  ? 1 === TS=1589 now=1587----------YES
+pid : 1
+actually ran: 2
+prev run time : 32
+nxt_evt_ts : 1589
+ was started at : 1585
+have to run more : 30
+p rem : 51
+p tt : 293
+p burst left: 28
+p run time : 28
+1587 1 2: RUNNG -> READY  cb=30 rem=53 prio=1
+4 0
+----------------------------------myrandom------------------------------
+1587 4 0: READY -> RUNNG cb=16 rem=45 prio=3
+1590 6 17: BLOCK -> READY
+---->PRIO preemption 4 by 6  ? 0 === TS=1591 now=1590----------
+1591 4 4: RUNNG -> READY  cb=12 rem=41 prio=3
+6 0
+----------------------------------myrandom------------------------------
+1591 6 1: READY -> RUNNG cb=1 rem=134 prio=2
+----------------------------------myrandom------------------------------
+1592 6 1: RUNNG -> BLOCK ib=35 rem=133
+4 12
+1592 4 1: READY -> RUNNG cb=12 rem=41 prio=2
+1596 4 4: RUNNG -> READY  cb=8 rem=37 prio=2
+4 8
+1596 4 0: READY -> RUNNG cb=8 rem=37 prio=1
+1600 4 4: RUNNG -> READY  cb=4 rem=33 prio=1
+9 2
+1600 9 108: READY -> RUNNG cb=2 rem=261 prio=0
+----------------------------------myrandom------------------------------
+1602 9 2: RUNNG -> BLOCK ib=9 rem=259
+5 4
+1602 5 101: READY -> RUNNG cb=4 rem=264 prio=0
+----------------------------------myrandom------------------------------
+1606 5 4: RUNNG -> BLOCK ib=11 rem=260
+2 3
+1606 2 49: READY -> RUNNG cb=3 rem=112 prio=0
+----------------------------------myrandom------------------------------
+1609 2 3: RUNNG -> BLOCK ib=15 rem=109
+0 14
+1609 0 45: READY -> RUNNG cb=14 rem=302 prio=0
+1611 9 9: BLOCK -> READY
+---->PRIO preemption 0 by 9  ? 0 === TS=1613 now=1611----------
+1613 0 4: RUNNG -> READY  cb=10 rem=298 prio=0
+8 6
+1613 8 36: READY -> RUNNG cb=6 rem=138 prio=0
+1617 5 11: BLOCK -> READY
+---->PRIO preemption 8 by 5  ? 0 === TS=1617 now=1617----------
+1617 8 4: RUNNG -> READY  cb=2 rem=134 prio=0
+7 5
+1617 7 32: READY -> RUNNG cb=5 rem=132 prio=0
+1621 7 4: RUNNG -> READY  cb=1 rem=128 prio=0
+1 30
+1621 1 34: READY -> RUNNG cb=30 rem=53 prio=0
+1624 2 15: BLOCK -> READY
+---->PRIO preemption 1 by 2  ? 1 === TS=1625 now=1624----------YES
+pid : 1
+actually ran: 3
+prev run time : 30
+nxt_evt_ts : 1625
+ was started at : 1621
+have to run more : 27
+p rem : 49
+p tt : 299
+p burst left: 26
+p run time : 26
+1624 1 3: RUNNG -> READY  cb=27 rem=50 prio=0
+2 0
+----------------------------------myrandom------------------------------
+1624 2 0: READY -> RUNNG cb=2 rem=109 prio=1
+----------------------------------myrandom------------------------------
+1626 2 2: RUNNG -> BLOCK ib=48 rem=107
+4 4
+1626 4 26: READY -> RUNNG cb=4 rem=33 prio=0
+----------------------------------myrandom------------------------------
+1627 6 35: BLOCK -> READY
+---->PRIO preemption 4 by 6  ? 1 === TS=1630 now=1627----------YES
+pid : 4
+actually ran: 1
+prev run time : 4
+nxt_evt_ts : 1630
+ was started at : 1626
+have to run more : 3
+p rem : 29
+p tt : 327
+p burst left: 0
+p run time : 18
+1627 4 1: RUNNG -> READY  cb=3 rem=32 prio=0
+6 0
+----------------------------------myrandom------------------------------
+1627 6 0: READY -> RUNNG cb=3 rem=133 prio=2
+----------------------------------myrandom------------------------------
+1630 6 3: RUNNG -> BLOCK ib=18 rem=130
+9 0
+----------------------------------myrandom------------------------------
+1630 9 19: READY -> RUNNG cb=13 rem=259 prio=0
+1634 9 4: RUNNG -> READY  cb=9 rem=255 prio=0
+5 0
+----------------------------------myrandom------------------------------
+1634 5 17: READY -> RUNNG cb=9 rem=260 prio=0
+1638 5 4: RUNNG -> READY  cb=5 rem=256 prio=0
+1 27
+1638 1 14: READY -> RUNNG cb=27 rem=50 prio=3
+1642 1 4: RUNNG -> READY  cb=23 rem=46 prio=3
+4 3
+1642 4 15: READY -> RUNNG cb=3 rem=32 prio=3
+----------------------------------myrandom------------------------------
+1645 4 3: RUNNG -> BLOCK ib=15 rem=29
+8 2
+1645 8 28: READY -> RUNNG cb=2 rem=134 prio=2
+----------------------------------myrandom------------------------------
+1647 8 2: RUNNG -> BLOCK ib=8 rem=132
+7 1
+1647 7 26: READY -> RUNNG cb=1 rem=128 prio=2
+----------------------------------myrandom------------------------------
+1648 6 18: BLOCK -> READY
+---->PRIO preemption 7 by 6  ? 0 === TS=1648 now=1648----------
+1648 7 1: RUNNG -> BLOCK ib=7 rem=127
+1 23
+1648 1 6: READY -> RUNNG cb=23 rem=46 prio=2
+1652 1 4: RUNNG -> READY  cb=19 rem=42 prio=2
+6 0
+----------------------------------myrandom------------------------------
+1652 6 4: READY -> RUNNG cb=5 rem=130 prio=2
+1655 8 8: BLOCK -> READY
+---->PRIO preemption 6 by 8  ? 0 === TS=1656 now=1655----------
+1655 7 7: BLOCK -> READY
+---->PRIO preemption 6 by 7  ? 0 === TS=1656 now=1655----------
+1656 6 4: RUNNG -> READY  cb=1 rem=126 prio=2
+8 0
+----------------------------------myrandom------------------------------
+1656 8 1: READY -> RUNNG cb=2 rem=132 prio=2
+----------------------------------myrandom------------------------------
+1658 8 2: RUNNG -> BLOCK ib=8 rem=130
+7 0
+----------------------------------myrandom------------------------------
+1658 7 3: READY -> RUNNG cb=1 rem=127 prio=2
+----------------------------------myrandom------------------------------
+1659 7 1: RUNNG -> BLOCK ib=15 rem=126
+0 10
+1659 0 46: READY -> RUNNG cb=10 rem=298 prio=1
+1660 4 15: BLOCK -> READY
+---->PRIO preemption 0 by 4  ? 1 === TS=1663 now=1660----------YES
+pid : 0
+actually ran: 1
+prev run time : 10
+nxt_evt_ts : 1663
+ was started at : 1659
+have to run more : 9
+p rem : 294
+p tt : 128
+p burst left: 6
+p run time : 6
+1660 0 1: RUNNG -> READY  cb=9 rem=297 prio=1
+4 0
+----------------------------------myrandom------------------------------
+1660 4 0: READY -> RUNNG cb=7 rem=29 prio=3
+1664 4 4: RUNNG -> READY  cb=3 rem=25 prio=3
+4 3
+1664 4 0: READY -> RUNNG cb=3 rem=25 prio=2
+----------------------------------myrandom------------------------------
+1666 8 8: BLOCK -> READY
+---->PRIO preemption 4 by 8  ? 0 === TS=1667 now=1666----------
+1667 4 3: RUNNG -> BLOCK ib=13 rem=22
+8 0
+----------------------------------myrandom------------------------------
+1667 8 1: READY -> RUNNG cb=20 rem=130 prio=2
+1671 8 4: RUNNG -> READY  cb=16 rem=126 prio=2
+1 19
+1671 1 19: READY -> RUNNG cb=19 rem=42 prio=1
+1674 2 48: BLOCK -> READY
+---->PRIO preemption 1 by 2  ? 0 === TS=1675 now=1674----------
+1674 7 15: BLOCK -> READY
+---->PRIO preemption 1 by 7  ? 1 === TS=1675 now=1674----------YES
+pid : 1
+actually ran: 3
+prev run time : 19
+nxt_evt_ts : 1675
+ was started at : 1671
+have to run more : 16
+p rem : 38
+p tt : 312
+p burst left: 15
+p run time : 15
+1674 1 3: RUNNG -> READY  cb=16 rem=39 prio=1
+7 0
+----------------------------------myrandom------------------------------
+1674 7 0: READY -> RUNNG cb=1 rem=126 prio=2
+----------------------------------myrandom------------------------------
+1675 7 1: RUNNG -> BLOCK ib=38 rem=125
+6 1
+1675 6 19: READY -> RUNNG cb=1 rem=126 prio=1
+----------------------------------myrandom------------------------------
+1676 6 1: RUNNG -> BLOCK ib=4 rem=125
+8 16
+1676 8 5: READY -> RUNNG cb=16 rem=126 prio=1
+1680 4 13: BLOCK -> READY
+---->PRIO preemption 8 by 4  ? 1 === TS=1680 now=1680----------
+1680 6 4: BLOCK -> READY
+---->PRIO preemption 8 by 6  ? 1 === TS=1680 now=1680----------
+1680 8 4: RUNNG -> READY  cb=12 rem=122 prio=1
+4 0
+----------------------------------myrandom------------------------------
+1680 4 0: READY -> RUNNG cb=3 rem=22 prio=3
+----------------------------------myrandom------------------------------
+1683 4 3: RUNNG -> BLOCK ib=1 rem=19
+6 0
+----------------------------------myrandom------------------------------
+1683 6 3: READY -> RUNNG cb=5 rem=125 prio=2
+1684 4 1: BLOCK -> READY
+---->PRIO preemption 6 by 4  ? 1 === TS=1687 now=1684----------YES
+pid : 6
+actually ran: 1
+prev run time : 5
+nxt_evt_ts : 1687
+ was started at : 1683
+have to run more : 4
+p rem : 121
+p tt : 189
+p burst left: 1
+p run time : 1
+1684 6 1: RUNNG -> READY  cb=4 rem=124 prio=2
+4 0
+----------------------------------myrandom------------------------------
+1684 4 0: READY -> RUNNG cb=11 rem=19 prio=3
+1688 4 4: RUNNG -> READY  cb=7 rem=15 prio=3
+4 7
+1688 4 0: READY -> RUNNG cb=7 rem=15 prio=2
+1692 4 4: RUNNG -> READY  cb=3 rem=11 prio=2
+2 0
+----------------------------------myrandom------------------------------
+1692 2 18: READY -> RUNNG cb=26 rem=107 prio=1
+1696 2 4: RUNNG -> READY  cb=22 rem=103 prio=1
+6 4
+1696 6 12: READY -> RUNNG cb=4 rem=124 prio=1
+----------------------------------myrandom------------------------------
+1700 6 4: RUNNG -> BLOCK ib=10 rem=120
+4 3
+1700 4 8: READY -> RUNNG cb=3 rem=11 prio=1
+----------------------------------myrandom------------------------------
+1703 4 3: RUNNG -> BLOCK ib=18 rem=8
+9 9
+1703 9 69: READY -> RUNNG cb=9 rem=255 prio=0
+1707 9 4: RUNNG -> READY  cb=5 rem=251 prio=0
+5 5
+1707 5 69: READY -> RUNNG cb=5 rem=256 prio=0
+1710 6 10: BLOCK -> READY
+---->PRIO preemption 5 by 6  ? 1 === TS=1711 now=1710----------YES
+pid : 5
+actually ran: 3
+prev run time : 5
+nxt_evt_ts : 1711
+ was started at : 1707
+have to run more : 2
+p rem : 252
+p tt : 63
+p burst left: 1
+p run time : 1
+1710 5 3: RUNNG -> READY  cb=2 rem=253 prio=0
+6 0
+----------------------------------myrandom------------------------------
+1710 6 0: READY -> RUNNG cb=2 rem=120 prio=2
+----------------------------------myrandom------------------------------
+1712 6 2: RUNNG -> BLOCK ib=18 rem=118
+0 9
+1712 0 52: READY -> RUNNG cb=9 rem=297 prio=0
+1713 7 38: BLOCK -> READY
+---->PRIO preemption 0 by 7  ? 1 === TS=1716 now=1713----------YES
+pid : 0
+actually ran: 1
+prev run time : 9
+nxt_evt_ts : 1716
+ was started at : 1712
+have to run more : 8
+p rem : 293
+p tt : 135
+p burst left: 5
+p run time : 5
+1713 0 1: RUNNG -> READY  cb=8 rem=296 prio=0
+7 0
+----------------------------------myrandom------------------------------
+1713 7 0: READY -> RUNNG cb=19 rem=125 prio=2
+1717 7 4: RUNNG -> READY  cb=15 rem=121 prio=2
+7 15
+1717 7 0: READY -> RUNNG cb=15 rem=121 prio=1
+1721 4 18: BLOCK -> READY
+---->PRIO preemption 7 by 4  ? 1 === TS=1721 now=1721----------
+1721 7 4: RUNNG -> READY  cb=11 rem=117 prio=1
+4 0
+----------------------------------myrandom------------------------------
+1721 4 0: READY -> RUNNG cb=7 rem=8 prio=3
+1725 4 4: RUNNG -> READY  cb=3 rem=4 prio=3
+4 3
+1725 4 0: READY -> RUNNG cb=3 rem=4 prio=2
+----------------------------------myrandom------------------------------
+1728 4 3: RUNNG -> BLOCK ib=12 rem=1
+1 16
+1728 1 54: READY -> RUNNG cb=16 rem=39 prio=0
+1730 6 18: BLOCK -> READY
+---->PRIO preemption 1 by 6  ? 1 === TS=1732 now=1730----------YES
+pid : 1
+actually ran: 2
+prev run time : 16
+nxt_evt_ts : 1732
+ was started at : 1728
+have to run more : 14
+p rem : 35
+p tt : 317
+p burst left: 12
+p run time : 12
+1730 1 2: RUNNG -> READY  cb=14 rem=37 prio=0
+6 0
+----------------------------------myrandom------------------------------
+1730 6 0: READY -> RUNNG cb=3 rem=118 prio=2
+----------------------------------myrandom------------------------------
+1733 6 3: RUNNG -> BLOCK ib=24 rem=115
+8 12
+1733 8 53: READY -> RUNNG cb=12 rem=122 prio=0
+1737 8 4: RUNNG -> READY  cb=8 rem=118 prio=0
+2 22
+1737 2 41: READY -> RUNNG cb=22 rem=103 prio=0
+1740 4 12: BLOCK -> READY
+---->PRIO preemption 2 by 4  ? 1 === TS=1741 now=1740----------YES
+pid : 2
+actually ran: 3
+prev run time : 22
+nxt_evt_ts : 1741
+ was started at : 1737
+have to run more : 19
+p rem : 99
+p tt : 127
+p burst left: 18
+p run time : 18
+1740 2 3: RUNNG -> READY  cb=19 rem=100 prio=0
+4 0
+----------------------------------myrandom------------------------------
+1740 4 0: READY -> RUNNG cb=1 rem=1 prio=3
+1741 4 1: Done
+7 11
+1741 7 20: READY -> RUNNG cb=11 rem=117 prio=0
+1745 7 4: RUNNG -> READY  cb=7 rem=113 prio=0
+1 14
+1745 1 15: READY -> RUNNG cb=14 rem=37 prio=3
+1749 1 4: RUNNG -> READY  cb=10 rem=33 prio=3
+8 8
+1749 8 12: READY -> RUNNG cb=8 rem=118 prio=2
+1753 8 4: RUNNG -> READY  cb=4 rem=114 prio=2
+7 7
+1753 7 8: READY -> RUNNG cb=7 rem=113 prio=2
+1757 6 24: BLOCK -> READY
+---->PRIO preemption 7 by 6  ? 0 === TS=1757 now=1757----------
+1757 7 4: RUNNG -> READY  cb=3 rem=109 prio=2
+1 10
+1757 1 8: READY -> RUNNG cb=10 rem=33 prio=2
+1761 1 4: RUNNG -> READY  cb=6 rem=29 prio=2
+6 0
+----------------------------------myrandom------------------------------
+1761 6 4: READY -> RUNNG cb=2 rem=115 prio=2
+----------------------------------myrandom------------------------------
+1763 6 2: RUNNG -> BLOCK ib=40 rem=113
+0 8
+1763 0 50: READY -> RUNNG cb=8 rem=296 prio=1
+1767 0 4: RUNNG -> READY  cb=4 rem=292 prio=1
+2 19
+1767 2 27: READY -> RUNNG cb=19 rem=100 prio=1
+1771 2 4: RUNNG -> READY  cb=15 rem=96 prio=1
+8 4
+1771 8 18: READY -> RUNNG cb=4 rem=114 prio=1
+----------------------------------myrandom------------------------------
+1775 8 4: RUNNG -> BLOCK ib=5 rem=110
+7 3
+1775 7 18: READY -> RUNNG cb=3 rem=109 prio=1
+----------------------------------myrandom------------------------------
+1778 7 3: RUNNG -> BLOCK ib=1 rem=106
+1 6
+1778 1 17: READY -> RUNNG cb=6 rem=29 prio=1
+1779 7 1: BLOCK -> READY
+---->PRIO preemption 1 by 7  ? 1 === TS=1782 now=1779----------YES
+pid : 1
+actually ran: 1
+prev run time : 6
+nxt_evt_ts : 1782
+ was started at : 1778
+have to run more : 5
+p rem : 25
+p tt : 331
+p burst left: 2
+p run time : 2
+1779 1 1: RUNNG -> READY  cb=5 rem=28 prio=1
+7 0
+----------------------------------myrandom------------------------------
+1779 7 0: READY -> RUNNG cb=18 rem=106 prio=2
+1780 8 5: BLOCK -> READY
+---->PRIO preemption 7 by 8  ? 0 === TS=1783 now=1780----------
+1783 7 4: RUNNG -> READY  cb=14 rem=102 prio=2
+8 0
+----------------------------------myrandom------------------------------
+1783 8 3: READY -> RUNNG cb=1 rem=110 prio=2
+----------------------------------myrandom------------------------------
+1784 8 1: RUNNG -> BLOCK ib=2 rem=109
+7 14
+1784 7 1: READY -> RUNNG cb=14 rem=102 prio=1
+1786 8 2: BLOCK -> READY
+---->PRIO preemption 7 by 8  ? 1 === TS=1788 now=1786----------YES
+pid : 7
+actually ran: 2
+prev run time : 14
+nxt_evt_ts : 1788
+ was started at : 1784
+have to run more : 12
+p rem : 98
+p tt : 237
+p burst left: 10
+p run time : 10
+1786 7 2: RUNNG -> READY  cb=12 rem=100 prio=1
+8 0
+----------------------------------myrandom------------------------------
+1786 8 0: READY -> RUNNG cb=6 rem=109 prio=2
+1790 8 4: RUNNG -> READY  cb=2 rem=105 prio=2
+8 2
+1790 8 0: READY -> RUNNG cb=2 rem=105 prio=1
+----------------------------------myrandom------------------------------
+1792 8 2: RUNNG -> BLOCK ib=2 rem=103
+9 5
+1792 9 85: READY -> RUNNG cb=5 rem=251 prio=0
+1794 8 2: BLOCK -> READY
+---->PRIO preemption 9 by 8  ? 1 === TS=1796 now=1794----------YES
+pid : 9
+actually ran: 2
+prev run time : 5
+nxt_evt_ts : 1796
+ was started at : 1792
+have to run more : 3
+p rem : 247
+p tt : 74
+p burst left: 1
+p run time : 1
+1794 9 2: RUNNG -> READY  cb=3 rem=249 prio=0
+8 0
+----------------------------------myrandom------------------------------
+1794 8 0: READY -> RUNNG cb=9 rem=103 prio=2
+1798 8 4: RUNNG -> READY  cb=5 rem=99 prio=2
+8 5
+1798 8 0: READY -> RUNNG cb=5 rem=99 prio=1
+1802 8 4: RUNNG -> READY  cb=1 rem=95 prio=1
+5 2
+1802 5 92: READY -> RUNNG cb=2 rem=253 prio=0
+----------------------------------myrandom------------------------------
+1803 6 40: BLOCK -> READY
+---->PRIO preemption 5 by 6  ? 1 === TS=1804 now=1803----------YES
+pid : 5
+actually ran: 1
+prev run time : 2
+nxt_evt_ts : 1804
+ was started at : 1802
+have to run more : 1
+p rem : 251
+p tt : 66
+p burst left: 0
+p run time : 24
+1803 5 1: RUNNG -> READY  cb=1 rem=252 prio=0
+6 0
+----------------------------------myrandom------------------------------
+1803 6 0: READY -> RUNNG cb=4 rem=113 prio=2
+----------------------------------myrandom------------------------------
+1807 6 4: RUNNG -> BLOCK ib=6 rem=109
+0 4
+1807 0 40: READY -> RUNNG cb=4 rem=292 prio=0
+----------------------------------myrandom------------------------------
+1811 0 4: RUNNG -> BLOCK ib=50 rem=288
+2 15
+1811 2 40: READY -> RUNNG cb=15 rem=96 prio=0
+1813 6 6: BLOCK -> READY
+---->PRIO preemption 2 by 6  ? 1 === TS=1815 now=1813----------YES
+pid : 2
+actually ran: 2
+prev run time : 15
+nxt_evt_ts : 1815
+ was started at : 1811
+have to run more : 13
+p rem : 92
+p tt : 136
+p burst left: 11
+p run time : 11
+1813 2 2: RUNNG -> READY  cb=13 rem=94 prio=0
+6 0
+----------------------------------myrandom------------------------------
+1813 6 0: READY -> RUNNG cb=4 rem=109 prio=2
+----------------------------------myrandom------------------------------
+1817 6 4: RUNNG -> BLOCK ib=3 rem=105
+1 5
+1817 1 38: READY -> RUNNG cb=5 rem=28 prio=0
+1820 6 3: BLOCK -> READY
+---->PRIO preemption 1 by 6  ? 1 === TS=1821 now=1820----------YES
+pid : 1
+actually ran: 3
+prev run time : 5
+nxt_evt_ts : 1821
+ was started at : 1817
+have to run more : 2
+p rem : 24
+p tt : 338
+p burst left: 1
+p run time : 1
+1820 1 3: RUNNG -> READY  cb=2 rem=25 prio=0
+6 0
+----------------------------------myrandom------------------------------
+1820 6 0: READY -> RUNNG cb=3 rem=105 prio=2
+----------------------------------myrandom------------------------------
+1823 6 3: RUNNG -> BLOCK ib=39 rem=102
+7 12
+1823 7 37: READY -> RUNNG cb=12 rem=100 prio=0
+1827 7 4: RUNNG -> READY  cb=8 rem=96 prio=0
+8 1
+1827 8 25: READY -> RUNNG cb=1 rem=95 prio=0
+----------------------------------myrandom------------------------------
+1828 8 1: RUNNG -> BLOCK ib=6 rem=94
+1 2
+1828 1 8: READY -> RUNNG cb=2 rem=25 prio=3
+----------------------------------myrandom------------------------------
+1830 1 2: RUNNG -> BLOCK ib=9 rem=23
+7 8
+1830 7 3: READY -> RUNNG cb=8 rem=96 prio=2
+1834 8 6: BLOCK -> READY
+---->PRIO preemption 7 by 8  ? 0 === TS=1834 now=1834----------
+1834 7 4: RUNNG -> READY  cb=4 rem=92 prio=2
+8 0
+----------------------------------myrandom------------------------------
+1834 8 0: READY -> RUNNG cb=9 rem=94 prio=2
+1838 8 4: RUNNG -> READY  cb=5 rem=90 prio=2
+2 13
+1838 2 25: READY -> RUNNG cb=13 rem=94 prio=1
+1839 1 9: BLOCK -> READY
+---->PRIO preemption 2 by 1  ? 1 === TS=1842 now=1839----------YES
+pid : 2
+actually ran: 1
+prev run time : 13
+nxt_evt_ts : 1842
+ was started at : 1838
+have to run more : 12
+p rem : 90
+p tt : 142
+p burst left: 9
+p run time : 9
+1839 2 1: RUNNG -> READY  cb=12 rem=93 prio=1
+1 0
+----------------------------------myrandom------------------------------
+1839 1 0: READY -> RUNNG cb=1 rem=23 prio=3
+----------------------------------myrandom------------------------------
+1840 1 1: RUNNG -> BLOCK ib=10 rem=22
+7 4
+1840 7 6: READY -> RUNNG cb=4 rem=92 prio=1
+----------------------------------myrandom------------------------------
+1844 7 4: RUNNG -> BLOCK ib=39 rem=88
+8 5
+1844 8 6: READY -> RUNNG cb=5 rem=90 prio=1
+1848 8 4: RUNNG -> READY  cb=1 rem=86 prio=1
+9 3
+1848 9 54: READY -> RUNNG cb=3 rem=249 prio=0
+----------------------------------myrandom------------------------------
+1850 1 10: BLOCK -> READY
+---->PRIO preemption 9 by 1  ? 1 === TS=1851 now=1850----------YES
+pid : 9
+actually ran: 2
+prev run time : 3
+nxt_evt_ts : 1851
+ was started at : 1848
+have to run more : 1
+p rem : 246
+p tt : 79
+p burst left: 0
+p run time : 3
+1850 9 2: RUNNG -> READY  cb=1 rem=247 prio=0
+1 0
+----------------------------------myrandom------------------------------
+1850 1 0: READY -> RUNNG cb=33 rem=22 prio=3
+1854 1 4: RUNNG -> READY  cb=29 rem=18 prio=3
+1 29
+1854 1 0: READY -> RUNNG cb=29 rem=18 prio=2
+1858 1 4: RUNNG -> READY  cb=25 rem=14 prio=2
+1 25
+1858 1 0: READY -> RUNNG cb=25 rem=14 prio=1
+1861 0 50: BLOCK -> READY
+---->PRIO preemption 1 by 0  ? 0 === TS=1862 now=1861----------
+1862 6 39: BLOCK -> READY
+---->PRIO preemption 1 by 6  ? 1 === TS=1862 now=1862----------
+1862 1 4: RUNNG -> READY  cb=21 rem=10 prio=1
+6 0
+----------------------------------myrandom------------------------------
+1862 6 0: READY -> RUNNG cb=2 rem=102 prio=2
+----------------------------------myrandom------------------------------
+1864 6 2: RUNNG -> BLOCK ib=17 rem=100
+0 0
+----------------------------------myrandom------------------------------
+1864 0 3: READY -> RUNNG cb=41 rem=288 prio=1
+1868 0 4: RUNNG -> READY  cb=37 rem=284 prio=1
+5 1
+1868 5 65: READY -> RUNNG cb=1 rem=252 prio=0
+----------------------------------myrandom------------------------------
+1869 5 1: RUNNG -> BLOCK ib=30 rem=251
+2 12
+1869 2 30: READY -> RUNNG cb=12 rem=93 prio=0
+1873 2 4: RUNNG -> READY  cb=8 rem=89 prio=0
+8 1
+1873 8 25: READY -> RUNNG cb=1 rem=86 prio=0
+----------------------------------myrandom------------------------------
+1874 8 1: RUNNG -> BLOCK ib=6 rem=85
+1 21
+1874 1 12: READY -> RUNNG cb=21 rem=10 prio=0
+1878 1 4: RUNNG -> READY  cb=17 rem=6 prio=0
+0 37
+1878 0 10: READY -> RUNNG cb=37 rem=284 prio=0
+1880 8 6: BLOCK -> READY
+---->PRIO preemption 0 by 8  ? 1 === TS=1882 now=1880----------YES
+pid : 0
+actually ran: 2
+prev run time : 37
+nxt_evt_ts : 1882
+ was started at : 1878
+have to run more : 35
+p rem : 280
+p tt : 154
+p burst left: 33
+p run time : 33
+1880 0 2: RUNNG -> READY  cb=35 rem=282 prio=0
+8 0
+----------------------------------myrandom------------------------------
+1880 8 0: READY -> RUNNG cb=6 rem=85 prio=2
+1881 6 17: BLOCK -> READY
+---->PRIO preemption 8 by 6  ? 0 === TS=1884 now=1881----------
+1883 7 39: BLOCK -> READY
+---->PRIO preemption 8 by 7  ? 0 === TS=1884 now=1883----------
+1884 8 4: RUNNG -> READY  cb=2 rem=81 prio=2
+6 0
+----------------------------------myrandom------------------------------
+1884 6 3: READY -> RUNNG cb=2 rem=100 prio=2
+----------------------------------myrandom------------------------------
+1886 6 2: RUNNG -> BLOCK ib=8 rem=98
+7 0
+----------------------------------myrandom------------------------------
+1886 7 3: READY -> RUNNG cb=5 rem=88 prio=2
+1890 7 4: RUNNG -> READY  cb=1 rem=84 prio=2
+8 2
+1890 8 6: READY -> RUNNG cb=2 rem=81 prio=1
+----------------------------------myrandom------------------------------
+1892 8 2: RUNNG -> BLOCK ib=7 rem=79
+7 1
+1892 7 2: READY -> RUNNG cb=1 rem=84 prio=1
+----------------------------------myrandom------------------------------
+1893 7 1: RUNNG -> BLOCK ib=8 rem=83
+1 17
+1893 1 15: READY -> RUNNG cb=17 rem=6 prio=3
+1894 6 8: BLOCK -> READY
+---->PRIO preemption 1 by 6  ? 0 === TS=1897 now=1894----------
+1897 1 4: RUNNG -> READY  cb=13 rem=2 prio=3
+6 0
+----------------------------------myrandom------------------------------
+1897 6 3: READY -> RUNNG cb=3 rem=98 prio=2
+----------------------------------myrandom------------------------------
+1899 5 30: BLOCK -> READY
+---->PRIO preemption 6 by 5  ? 0 === TS=1900 now=1899----------
+1899 8 7: BLOCK -> READY
+---->PRIO preemption 6 by 8  ? 0 === TS=1900 now=1899----------
+1900 6 3: RUNNG -> BLOCK ib=37 rem=95
+1 13
+1900 1 3: READY -> RUNNG cb=13 rem=2 prio=2
+1901 7 8: BLOCK -> READY
+---->PRIO preemption 1 by 7  ? 0 === TS=1902 now=1901----------
+1902 1 2: Done
+8 0
+----------------------------------myrandom------------------------------
+1902 8 3: READY -> RUNNG cb=2 rem=79 prio=2
+----------------------------------myrandom------------------------------
+1904 8 2: RUNNG -> BLOCK ib=10 rem=77
+7 0
+----------------------------------myrandom------------------------------
+1904 7 3: READY -> RUNNG cb=10 rem=83 prio=2
+1908 7 4: RUNNG -> READY  cb=6 rem=79 prio=2
+2 8
+1908 2 35: READY -> RUNNG cb=8 rem=89 prio=1
+1912 2 4: RUNNG -> READY  cb=4 rem=85 prio=1
+0 35
+1912 0 32: READY -> RUNNG cb=35 rem=282 prio=1
+1914 8 10: BLOCK -> READY
+---->PRIO preemption 0 by 8  ? 1 === TS=1916 now=1914----------YES
+pid : 0
+actually ran: 2
+prev run time : 35
+nxt_evt_ts : 1916
+ was started at : 1912
+have to run more : 33
+p rem : 278
+p tt : 160
+p burst left: 31
+p run time : 31
+1914 0 2: RUNNG -> READY  cb=33 rem=280 prio=1
+8 0
+----------------------------------myrandom------------------------------
+1914 8 0: READY -> RUNNG cb=10 rem=77 prio=2
+1918 8 4: RUNNG -> READY  cb=6 rem=73 prio=2
+7 6
+1918 7 10: READY -> RUNNG cb=6 rem=79 prio=1
+1922 7 4: RUNNG -> READY  cb=2 rem=75 prio=1
+8 6
+1922 8 4: READY -> RUNNG cb=6 rem=73 prio=1
+1926 8 4: RUNNG -> READY  cb=2 rem=69 prio=1
+9 1
+1926 9 76: READY -> RUNNG cb=1 rem=247 prio=0
+----------------------------------myrandom------------------------------
+1927 9 1: RUNNG -> BLOCK ib=3 rem=246
+5 0
+----------------------------------myrandom------------------------------
+1927 5 28: READY -> RUNNG cb=5 rem=251 prio=0
+1930 9 3: BLOCK -> READY
+---->PRIO preemption 5 by 9  ? 0 === TS=1931 now=1930----------
+1931 5 4: RUNNG -> READY  cb=1 rem=247 prio=0
+2 4
+1931 2 19: READY -> RUNNG cb=4 rem=85 prio=0
+----------------------------------myrandom------------------------------
+1935 2 4: RUNNG -> BLOCK ib=49 rem=81
+0 33
+1935 0 21: READY -> RUNNG cb=33 rem=280 prio=0
+1937 6 37: BLOCK -> READY
+---->PRIO preemption 0 by 6  ? 1 === TS=1939 now=1937----------YES
+pid : 0
+actually ran: 2
+prev run time : 33
+nxt_evt_ts : 1939
+ was started at : 1935
+have to run more : 31
+p rem : 276
+p tt : 166
+p burst left: 29
+p run time : 29
+1937 0 2: RUNNG -> READY  cb=31 rem=278 prio=0
+6 0
+----------------------------------myrandom------------------------------
+1937 6 0: READY -> RUNNG cb=4 rem=95 prio=2
+----------------------------------myrandom------------------------------
+1941 6 4: RUNNG -> BLOCK ib=30 rem=91
+7 2
+1941 7 19: READY -> RUNNG cb=2 rem=75 prio=0
+----------------------------------myrandom------------------------------
+1943 7 2: RUNNG -> BLOCK ib=3 rem=73
+8 2
+1943 8 17: READY -> RUNNG cb=2 rem=69 prio=0
+----------------------------------myrandom------------------------------
+1945 8 2: RUNNG -> BLOCK ib=9 rem=67
+9 0
+----------------------------------myrandom------------------------------
+1945 9 15: READY -> RUNNG cb=5 rem=246 prio=0
+1946 7 3: BLOCK -> READY
+---->PRIO preemption 9 by 7  ? 1 === TS=1949 now=1946----------YES
+pid : 9
+actually ran: 1
+prev run time : 5
+nxt_evt_ts : 1949
+ was started at : 1945
+have to run more : 4
+p rem : 242
+p tt : 85
+p burst left: 1
+p run time : 1
+1946 9 1: RUNNG -> READY  cb=4 rem=245 prio=0
+7 0
+----------------------------------myrandom------------------------------
+1946 7 0: READY -> RUNNG cb=11 rem=73 prio=2
+1950 7 4: RUNNG -> READY  cb=7 rem=69 prio=2
+7 7
+1950 7 0: READY -> RUNNG cb=7 rem=69 prio=1
+1954 8 9: BLOCK -> READY
+---->PRIO preemption 7 by 8  ? 1 === TS=1954 now=1954----------
+1954 7 4: RUNNG -> READY  cb=3 rem=65 prio=1
+8 0
+----------------------------------myrandom------------------------------
+1954 8 0: READY -> RUNNG cb=9 rem=67 prio=2
+1958 8 4: RUNNG -> READY  cb=5 rem=63 prio=2
+8 5
+1958 8 0: READY -> RUNNG cb=5 rem=63 prio=1
+1962 8 4: RUNNG -> READY  cb=1 rem=59 prio=1
+7 3
+1962 7 8: READY -> RUNNG cb=3 rem=65 prio=0
+----------------------------------myrandom------------------------------
+1965 7 3: RUNNG -> BLOCK ib=17 rem=62
+8 1
+1965 8 3: READY -> RUNNG cb=1 rem=59 prio=0
+----------------------------------myrandom------------------------------
+1966 8 1: RUNNG -> BLOCK ib=10 rem=58
+0 31
+1966 0 29: READY -> RUNNG cb=31 rem=278 prio=1
+1970 0 4: RUNNG -> READY  cb=27 rem=274 prio=1
+5 1
+1970 5 39: READY -> RUNNG cb=1 rem=247 prio=0
+----------------------------------myrandom------------------------------
+1971 6 30: BLOCK -> READY
+---->PRIO preemption 5 by 6  ? 1 === TS=1971 now=1971----------
+1971 5 1: RUNNG -> BLOCK ib=7 rem=246
+6 0
+----------------------------------myrandom------------------------------
+1971 6 0: READY -> RUNNG cb=1 rem=91 prio=2
+----------------------------------myrandom------------------------------
+1972 6 1: RUNNG -> BLOCK ib=38 rem=90
+9 4
+1972 9 26: READY -> RUNNG cb=4 rem=245 prio=0
+----------------------------------myrandom------------------------------
+1976 8 10: BLOCK -> READY
+---->PRIO preemption 9 by 8  ? 1 === TS=1976 now=1976----------
+1976 9 4: RUNNG -> BLOCK ib=5 rem=241
+8 0
+----------------------------------myrandom------------------------------
+1976 8 0: READY -> RUNNG cb=11 rem=58 prio=2
+1978 5 7: BLOCK -> READY
+---->PRIO preemption 8 by 5  ? 0 === TS=1980 now=1978----------
+1980 8 4: RUNNG -> READY  cb=7 rem=54 prio=2
+8 7
+1980 8 0: READY -> RUNNG cb=7 rem=54 prio=1
+1981 9 5: BLOCK -> READY
+---->PRIO preemption 8 by 9  ? 0 === TS=1984 now=1981----------
+1982 7 17: BLOCK -> READY
+---->PRIO preemption 8 by 7  ? 1 === TS=1984 now=1982----------YES
+pid : 8
+actually ran: 2
+prev run time : 7
+nxt_evt_ts : 1984
+ was started at : 1980
+have to run more : 5
+p rem : 50
+p tt : 314
+p burst left: 3
+p run time : 3
+1982 8 2: RUNNG -> READY  cb=5 rem=52 prio=1
+7 0
+----------------------------------myrandom------------------------------
+1982 7 0: READY -> RUNNG cb=20 rem=62 prio=2
+1984 2 49: BLOCK -> READY
+---->PRIO preemption 7 by 2  ? 0 === TS=1986 now=1984----------
+1986 7 4: RUNNG -> READY  cb=16 rem=58 prio=2
+2 0
+----------------------------------myrandom------------------------------
+1986 2 2: READY -> RUNNG cb=1 rem=81 prio=1
+----------------------------------myrandom------------------------------
+1987 2 1: RUNNG -> BLOCK ib=47 rem=80
+7 16
+1987 7 1: READY -> RUNNG cb=16 rem=58 prio=1
+1991 7 4: RUNNG -> READY  cb=12 rem=54 prio=1
+0 27
+1991 0 21: READY -> RUNNG cb=27 rem=274 prio=0
+1995 0 4: RUNNG -> READY  cb=23 rem=270 prio=0
+5 0
+----------------------------------myrandom------------------------------
+1995 5 17: READY -> RUNNG cb=6 rem=246 prio=0
+1999 5 4: RUNNG -> READY  cb=2 rem=242 prio=0
+9 0
+----------------------------------myrandom------------------------------
+1999 9 18: READY -> RUNNG cb=8 rem=241 prio=0
+2003 9 4: RUNNG -> READY  cb=4 rem=237 prio=0
+8 5
+2003 8 21: READY -> RUNNG cb=5 rem=52 prio=0
+2007 8 4: RUNNG -> READY  cb=1 rem=48 prio=0
+7 12
+2007 7 16: READY -> RUNNG cb=12 rem=54 prio=0
+2010 6 38: BLOCK -> READY
+---->PRIO preemption 7 by 6  ? 1 === TS=2011 now=2010----------YES
+pid : 7
+actually ran: 3
+prev run time : 12
+nxt_evt_ts : 2011
+ was started at : 2007
+have to run more : 9
+p rem : 50
+p tt : 289
+p burst left: 8
+p run time : 8
+2010 7 3: RUNNG -> READY  cb=9 rem=51 prio=0
+6 0
+----------------------------------myrandom------------------------------
+2010 6 0: READY -> RUNNG cb=3 rem=90 prio=2
+----------------------------------myrandom------------------------------
+2013 6 3: RUNNG -> BLOCK ib=9 rem=87
+8 1
+2013 8 6: READY -> RUNNG cb=1 rem=48 prio=2
+----------------------------------myrandom------------------------------
+2014 8 1: RUNNG -> BLOCK ib=7 rem=47
+7 9
+2014 7 4: READY -> RUNNG cb=9 rem=51 prio=2
+2018 7 4: RUNNG -> READY  cb=5 rem=47 prio=2
+0 23
+2018 0 23: READY -> RUNNG cb=23 rem=270 prio=1
+2021 8 7: BLOCK -> READY
+---->PRIO preemption 0 by 8  ? 1 === TS=2022 now=2021----------YES
+pid : 0
+actually ran: 3
+prev run time : 23
+nxt_evt_ts : 2022
+ was started at : 2018
+have to run more : 20
+p rem : 266
+p tt : 180
+p burst left: 19
+p run time : 19
+2021 0 3: RUNNG -> READY  cb=20 rem=267 prio=1
+8 0
+----------------------------------myrandom------------------------------
+2021 8 0: READY -> RUNNG cb=7 rem=47 prio=2
+2022 6 9: BLOCK -> READY
+---->PRIO preemption 8 by 6  ? 0 === TS=2025 now=2022----------
+2025 8 4: RUNNG -> READY  cb=3 rem=43 prio=2
+6 0
+----------------------------------myrandom------------------------------
+2025 6 3: READY -> RUNNG cb=1 rem=87 prio=2
+----------------------------------myrandom------------------------------
+2026 6 1: RUNNG -> BLOCK ib=8 rem=86
+7 5
+2026 7 8: READY -> RUNNG cb=5 rem=47 prio=1
+2030 7 4: RUNNG -> READY  cb=1 rem=43 prio=1
+8 3
+2030 8 5: READY -> RUNNG cb=3 rem=43 prio=1
+----------------------------------myrandom------------------------------
+2033 8 3: RUNNG -> BLOCK ib=8 rem=40
+5 2
+2033 5 34: READY -> RUNNG cb=2 rem=242 prio=0
+----------------------------------myrandom------------------------------
+2034 2 47: BLOCK -> READY
+---->PRIO preemption 5 by 2  ? 1 === TS=2035 now=2034----------YES
+pid : 5
+actually ran: 1
+prev run time : 2
+nxt_evt_ts : 2035
+ was started at : 2033
+have to run more : 1
+p rem : 240
+p tt : 79
+p burst left: 0
+p run time : 27
+2034 6 8: BLOCK -> READY
+---->PRIO preemption 5 by 6  ? 1 === TS=2034 now=2034----------
+2034 5 1: RUNNG -> READY  cb=1 rem=241 prio=0
+6 0
+----------------------------------myrandom------------------------------
+2034 6 0: READY -> RUNNG cb=2 rem=86 prio=2
+----------------------------------myrandom------------------------------
+2036 6 2: RUNNG -> BLOCK ib=17 rem=84
+2 0
+----------------------------------myrandom------------------------------
+2036 2 2: READY -> RUNNG cb=11 rem=80 prio=1
+2040 2 4: RUNNG -> READY  cb=7 rem=76 prio=1
+9 4
+2040 9 37: READY -> RUNNG cb=4 rem=237 prio=0
+----------------------------------myrandom------------------------------
+2041 8 8: BLOCK -> READY
+---->PRIO preemption 9 by 8  ? 1 === TS=2044 now=2041----------YES
+pid : 9
+actually ran: 1
+prev run time : 4
+nxt_evt_ts : 2044
+ was started at : 2040
+have to run more : 3
+p rem : 233
+p tt : 100
+p burst left: 0
+p run time : 4
+2041 9 1: RUNNG -> READY  cb=3 rem=236 prio=0
+8 0
+----------------------------------myrandom------------------------------
+2041 8 0: READY -> RUNNG cb=14 rem=40 prio=2
+2045 8 4: RUNNG -> READY  cb=10 rem=36 prio=2
+8 10
+2045 8 0: READY -> RUNNG cb=10 rem=36 prio=1
+2049 8 4: RUNNG -> READY  cb=6 rem=32 prio=1
+0 20
+2049 0 28: READY -> RUNNG cb=20 rem=267 prio=0
+2053 6 17: BLOCK -> READY
+---->PRIO preemption 0 by 6  ? 1 === TS=2053 now=2053----------
+2053 0 4: RUNNG -> READY  cb=16 rem=263 prio=0
+6 0
+----------------------------------myrandom------------------------------
+2053 6 0: READY -> RUNNG cb=5 rem=84 prio=2
+2057 6 4: RUNNG -> READY  cb=1 rem=80 prio=2
+6 1
+2057 6 0: READY -> RUNNG cb=1 rem=80 prio=1
+----------------------------------myrandom------------------------------
+2058 6 1: RUNNG -> BLOCK ib=31 rem=79
+7 1
+2058 7 28: READY -> RUNNG cb=1 rem=43 prio=0
+----------------------------------myrandom------------------------------
+2059 7 1: RUNNG -> BLOCK ib=3 rem=42
+2 7
+2059 2 19: READY -> RUNNG cb=7 rem=76 prio=0
+2062 7 3: BLOCK -> READY
+---->PRIO preemption 2 by 7  ? 1 === TS=2063 now=2062----------YES
+pid : 2
+actually ran: 3
+prev run time : 7
+nxt_evt_ts : 2063
+ was started at : 2059
+have to run more : 4
+p rem : 72
+p tt : 166
+p burst left: 3
+p run time : 3
+2062 2 3: RUNNG -> READY  cb=4 rem=73 prio=0
+7 0
+----------------------------------myrandom------------------------------
+2062 7 0: READY -> RUNNG cb=7 rem=42 prio=2
+2066 7 4: RUNNG -> READY  cb=3 rem=38 prio=2
+7 3
+2066 7 0: READY -> RUNNG cb=3 rem=38 prio=1
+----------------------------------myrandom------------------------------
+2069 7 3: RUNNG -> BLOCK ib=39 rem=35
+8 6
+2069 8 20: READY -> RUNNG cb=6 rem=32 prio=0
+2073 8 4: RUNNG -> READY  cb=2 rem=28 prio=0
+8 2
+2073 8 0: READY -> RUNNG cb=2 rem=28 prio=2
+----------------------------------myrandom------------------------------
+2075 8 2: RUNNG -> BLOCK ib=9 rem=26
+0 16
+2075 0 22: READY -> RUNNG cb=16 rem=263 prio=1
+2079 0 4: RUNNG -> READY  cb=12 rem=259 prio=1
+2 4
+2079 2 17: READY -> RUNNG cb=4 rem=73 prio=1
+----------------------------------myrandom------------------------------
+2083 2 4: RUNNG -> BLOCK ib=29 rem=69
+5 1
+2083 5 49: READY -> RUNNG cb=1 rem=241 prio=0
+----------------------------------myrandom------------------------------
+2084 8 9: BLOCK -> READY
+---->PRIO preemption 5 by 8  ? 1 === TS=2084 now=2084----------
+2084 5 1: RUNNG -> BLOCK ib=9 rem=240
+8 0
+----------------------------------myrandom------------------------------
+2084 8 0: READY -> RUNNG cb=15 rem=26 prio=2
+2088 8 4: RUNNG -> READY  cb=11 rem=22 prio=2
+8 11
+2088 8 0: READY -> RUNNG cb=11 rem=22 prio=1
+2089 6 31: BLOCK -> READY
+---->PRIO preemption 8 by 6  ? 1 === TS=2092 now=2089----------YES
+pid : 8
+actually ran: 1
+prev run time : 11
+nxt_evt_ts : 2092
+ was started at : 2088
+have to run more : 10
+p rem : 18
+p tt : 350
+p burst left: 7
+p run time : 7
+2089 8 1: RUNNG -> READY  cb=10 rem=21 prio=1
+6 0
+----------------------------------myrandom------------------------------
+2089 6 0: READY -> RUNNG cb=3 rem=79 prio=2
+----------------------------------myrandom------------------------------
+2092 6 3: RUNNG -> BLOCK ib=6 rem=76
+9 3
+2092 9 51: READY -> RUNNG cb=3 rem=236 prio=0
+----------------------------------myrandom------------------------------
+2093 5 9: BLOCK -> READY
+---->PRIO preemption 9 by 5  ? 0 === TS=2095 now=2093----------
+2095 9 3: RUNNG -> BLOCK ib=6 rem=233
+0 12
+2095 0 16: READY -> RUNNG cb=12 rem=259 prio=0
+2098 6 6: BLOCK -> READY
+---->PRIO preemption 0 by 6  ? 1 === TS=2099 now=2098----------YES
+pid : 0
+actually ran: 3
+prev run time : 12
+nxt_evt_ts : 2099
+ was started at : 2095
+have to run more : 9
+p rem : 255
+p tt : 193
+p burst left: 8
+p run time : 8
+2098 0 3: RUNNG -> READY  cb=9 rem=256 prio=0
+6 0
+----------------------------------myrandom------------------------------
+2098 6 0: READY -> RUNNG cb=3 rem=76 prio=2
+----------------------------------myrandom------------------------------
+2101 9 6: BLOCK -> READY
+---->PRIO preemption 6 by 9  ? 0 === TS=2101 now=2101----------
+2101 6 3: RUNNG -> BLOCK ib=20 rem=73
+8 10
+2101 8 12: READY -> RUNNG cb=10 rem=21 prio=0
+2105 8 4: RUNNG -> READY  cb=6 rem=17 prio=0
+5 0
+----------------------------------myrandom------------------------------
+2105 5 12: READY -> RUNNG cb=6 rem=240 prio=0
+2108 7 39: BLOCK -> READY
+---->PRIO preemption 5 by 7  ? 1 === TS=2109 now=2108----------YES
+pid : 5
+actually ran: 3
+prev run time : 6
+nxt_evt_ts : 2109
+ was started at : 2105
+have to run more : 3
+p rem : 236
+p tt : 85
+p burst left: 2
+p run time : 2
+2108 5 3: RUNNG -> READY  cb=3 rem=237 prio=0
+7 0
+----------------------------------myrandom------------------------------
+2108 7 0: READY -> RUNNG cb=17 rem=35 prio=2
+2112 2 29: BLOCK -> READY
+---->PRIO preemption 7 by 2  ? 0 === TS=2112 now=2112----------
+2112 7 4: RUNNG -> READY  cb=13 rem=31 prio=2
+2 0
+----------------------------------myrandom------------------------------
+2112 2 0: READY -> RUNNG cb=12 rem=69 prio=1
+2116 2 4: RUNNG -> READY  cb=8 rem=65 prio=1
+7 13
+2116 7 4: READY -> RUNNG cb=13 rem=31 prio=1
+2120 7 4: RUNNG -> READY  cb=9 rem=27 prio=1
+9 0
+----------------------------------myrandom------------------------------
+2120 9 19: READY -> RUNNG cb=14 rem=233 prio=0
+2121 6 20: BLOCK -> READY
+---->PRIO preemption 9 by 6  ? 1 === TS=2124 now=2121----------YES
+pid : 9
+actually ran: 1
+prev run time : 14
+nxt_evt_ts : 2124
+ was started at : 2120
+have to run more : 13
+p rem : 229
+p tt : 110
+p burst left: 10
+p run time : 10
+2121 9 1: RUNNG -> READY  cb=13 rem=232 prio=0
+6 0
+----------------------------------myrandom------------------------------
+2121 6 0: READY -> RUNNG cb=2 rem=73 prio=2
+----------------------------------myrandom------------------------------
+2123 6 2: RUNNG -> BLOCK ib=19 rem=71
+2 8
+2123 2 7: READY -> RUNNG cb=8 rem=65 prio=0
+2127 2 4: RUNNG -> READY  cb=4 rem=61 prio=0
+7 9
+2127 7 7: READY -> RUNNG cb=9 rem=27 prio=0
+2131 7 4: RUNNG -> READY  cb=5 rem=23 prio=0
+8 6
+2131 8 26: READY -> RUNNG cb=6 rem=17 prio=2
+2135 8 4: RUNNG -> READY  cb=2 rem=13 prio=2
+7 5
+2135 7 4: READY -> RUNNG cb=5 rem=23 prio=2
+2139 7 4: RUNNG -> READY  cb=1 rem=19 prio=2
+0 9
+2139 0 41: READY -> RUNNG cb=9 rem=256 prio=1
+2142 6 19: BLOCK -> READY
+---->PRIO preemption 0 by 6  ? 1 === TS=2143 now=2142----------YES
+pid : 0
+actually ran: 3
+prev run time : 9
+nxt_evt_ts : 2143
+ was started at : 2139
+have to run more : 6
+p rem : 252
+p tt : 198
+p burst left: 5
+p run time : 5
+2142 0 3: RUNNG -> READY  cb=6 rem=253 prio=1
+6 0
+----------------------------------myrandom------------------------------
+2142 6 0: READY -> RUNNG cb=4 rem=71 prio=2
+----------------------------------myrandom------------------------------
+2146 6 4: RUNNG -> BLOCK ib=26 rem=67
+2 4
+2146 2 19: READY -> RUNNG cb=4 rem=61 prio=1
+----------------------------------myrandom------------------------------
+2150 2 4: RUNNG -> BLOCK ib=16 rem=57
+8 2
+2150 8 15: READY -> RUNNG cb=2 rem=13 prio=1
+----------------------------------myrandom------------------------------
+2152 8 2: RUNNG -> BLOCK ib=7 rem=11
+7 1
+2152 7 13: READY -> RUNNG cb=1 rem=19 prio=1
+----------------------------------myrandom------------------------------
+2153 7 1: RUNNG -> BLOCK ib=23 rem=18
+5 3
+2153 5 45: READY -> RUNNG cb=3 rem=237 prio=0
+----------------------------------myrandom------------------------------
+2156 5 3: RUNNG -> BLOCK ib=3 rem=234
+9 13
+2156 9 35: READY -> RUNNG cb=13 rem=232 prio=0
+2159 8 7: BLOCK -> READY
+---->PRIO preemption 9 by 8  ? 1 === TS=2160 now=2159----------YES
+pid : 9
+actually ran: 3
+prev run time : 13
+nxt_evt_ts : 2160
+ was started at : 2156
+have to run more : 10
+p rem : 228
+p tt : 117
+p burst left: 9
+p run time : 9
+2159 5 3: BLOCK -> READY
+---->PRIO preemption 9 by 5  ? 0 === TS=2159 now=2159----------
+2159 9 3: RUNNG -> READY  cb=10 rem=229 prio=0
+8 0
+----------------------------------myrandom------------------------------
+2159 8 0: READY -> RUNNG cb=15 rem=11 prio=2
+2163 8 4: RUNNG -> READY  cb=11 rem=7 prio=2
+8 11
+2163 8 0: READY -> RUNNG cb=11 rem=7 prio=1
+2166 2 16: BLOCK -> READY
+---->PRIO preemption 8 by 2  ? 0 === TS=2167 now=2166----------
+2167 8 4: RUNNG -> READY  cb=7 rem=3 prio=1
+2 0
+----------------------------------myrandom------------------------------
+2167 2 1: READY -> RUNNG cb=11 rem=57 prio=1
+2171 2 4: RUNNG -> READY  cb=7 rem=53 prio=1
+0 6
+2171 0 29: READY -> RUNNG cb=6 rem=253 prio=0
+2172 6 26: BLOCK -> READY
+---->PRIO preemption 0 by 6  ? 1 === TS=2175 now=2172----------YES
+pid : 0
+actually ran: 1
+prev run time : 6
+nxt_evt_ts : 2175
+ was started at : 2171
+have to run more : 5
+p rem : 249
+p tt : 203
+p burst left: 2
+p run time : 2
+2172 0 1: RUNNG -> READY  cb=5 rem=252 prio=0
+6 0
+----------------------------------myrandom------------------------------
+2172 6 0: READY -> RUNNG cb=2 rem=67 prio=2
+----------------------------------myrandom------------------------------
+2174 6 2: RUNNG -> BLOCK ib=27 rem=65
+5 0
+----------------------------------myrandom------------------------------
+2174 5 15: READY -> RUNNG cb=4 rem=234 prio=0
+----------------------------------myrandom------------------------------
+2176 7 23: BLOCK -> READY
+---->PRIO preemption 5 by 7  ? 1 === TS=2178 now=2176----------YES
+pid : 5
+actually ran: 2
+prev run time : 4
+nxt_evt_ts : 2178
+ was started at : 2174
+have to run more : 2
+p rem : 230
+p tt : 93
+p burst left: 0
+p run time : 26
+2176 5 2: RUNNG -> READY  cb=2 rem=232 prio=0
+7 0
+----------------------------------myrandom------------------------------
+2176 7 0: READY -> RUNNG cb=6 rem=18 prio=2
+2180 7 4: RUNNG -> READY  cb=2 rem=14 prio=2
+7 2
+2180 7 0: READY -> RUNNG cb=2 rem=14 prio=1
+----------------------------------myrandom------------------------------
+2182 7 2: RUNNG -> BLOCK ib=17 rem=12
+8 7
+2182 8 15: READY -> RUNNG cb=7 rem=3 prio=0
+2185 8 3: Done
+2 7
+2185 2 14: READY -> RUNNG cb=7 rem=53 prio=0
+2189 2 4: RUNNG -> READY  cb=3 rem=49 prio=0
+0 5
+2189 0 17: READY -> RUNNG cb=5 rem=252 prio=1
+2193 0 4: RUNNG -> READY  cb=1 rem=248 prio=1
+2 3
+2193 2 4: READY -> RUNNG cb=3 rem=49 prio=1
+----------------------------------myrandom------------------------------
+2196 2 3: RUNNG -> BLOCK ib=6 rem=46
+9 10
+2196 9 37: READY -> RUNNG cb=10 rem=229 prio=0
+2199 7 17: BLOCK -> READY
+---->PRIO preemption 9 by 7  ? 1 === TS=2200 now=2199----------YES
+pid : 9
+actually ran: 3
+prev run time : 10
+nxt_evt_ts : 2200
+ was started at : 2196
+have to run more : 7
+p rem : 225
+p tt : 122
+p burst left: 6
+p run time : 6
+2199 9 3: RUNNG -> READY  cb=7 rem=226 prio=0
+7 0
+----------------------------------myrandom------------------------------
+2199 7 0: READY -> RUNNG cb=5 rem=12 prio=2
+2201 6 27: BLOCK -> READY
+---->PRIO preemption 7 by 6  ? 0 === TS=2203 now=2201----------
+2202 2 6: BLOCK -> READY
+---->PRIO preemption 7 by 2  ? 0 === TS=2203 now=2202----------
+2203 7 4: RUNNG -> READY  cb=1 rem=8 prio=2
+6 0
+----------------------------------myrandom------------------------------
+2203 6 2: READY -> RUNNG cb=2 rem=65 prio=2
+----------------------------------myrandom------------------------------
+2205 6 2: RUNNG -> BLOCK ib=26 rem=63
+2 0
+----------------------------------myrandom------------------------------
+2205 2 3: READY -> RUNNG cb=3 rem=46 prio=1
+----------------------------------myrandom------------------------------
+2208 2 3: RUNNG -> BLOCK ib=35 rem=43
+7 1
+2208 7 5: READY -> RUNNG cb=1 rem=8 prio=1
+----------------------------------myrandom------------------------------
+2209 7 1: RUNNG -> BLOCK ib=21 rem=7
+5 2
+2209 5 33: READY -> RUNNG cb=2 rem=232 prio=0
+----------------------------------myrandom------------------------------
+2211 5 2: RUNNG -> BLOCK ib=3 rem=230
+0 1
+2211 0 18: READY -> RUNNG cb=1 rem=248 prio=0
+----------------------------------myrandom------------------------------
+2212 0 1: RUNNG -> BLOCK ib=32 rem=247
+9 7
+2212 9 13: READY -> RUNNG cb=7 rem=226 prio=0
+2214 5 3: BLOCK -> READY
+---->PRIO preemption 9 by 5  ? 0 === TS=2216 now=2214----------
+2216 9 4: RUNNG -> READY  cb=3 rem=222 prio=0
+5 0
+----------------------------------myrandom------------------------------
+2216 5 2: READY -> RUNNG cb=6 rem=230 prio=0
+2220 5 4: RUNNG -> READY  cb=2 rem=226 prio=0
+9 3
+2220 9 4: READY -> RUNNG cb=3 rem=222 prio=0
+----------------------------------myrandom------------------------------
+2223 9 3: RUNNG -> BLOCK ib=10 rem=219
+5 2
+2223 5 3: READY -> RUNNG cb=2 rem=226 prio=0
+----------------------------------myrandom------------------------------
+2225 5 2: RUNNG -> BLOCK ib=4 rem=224
+2229 5 4: BLOCK -> READY
+
+5 0
+----------------------------------myrandom------------------------------
+2229 5 0: READY -> RUNNG cb=3 rem=224 prio=0
+----------------------------------myrandom------------------------------
+2230 7 21: BLOCK -> READY
+---->PRIO preemption 5 by 7  ? 1 === TS=2232 now=2230----------YES
+pid : 5
+actually ran: 1
+prev run time : 3
+nxt_evt_ts : 2232
+ was started at : 2229
+have to run more : 2
+p rem : 221
+p tt : 106
+p burst left: 0
+p run time : 8
+2230 5 1: RUNNG -> READY  cb=2 rem=223 prio=0
+7 0
+----------------------------------myrandom------------------------------
+2230 7 0: READY -> RUNNG cb=18 rem=7 prio=2
+2231 6 26: BLOCK -> READY
+---->PRIO preemption 7 by 6  ? 0 === TS=2234 now=2231----------
+2233 9 10: BLOCK -> READY
+---->PRIO preemption 7 by 9  ? 0 === TS=2234 now=2233----------
+2234 7 4: RUNNG -> READY  cb=14 rem=3 prio=2
+6 0
+----------------------------------myrandom------------------------------
+2234 6 3: READY -> RUNNG cb=5 rem=63 prio=2
+2238 6 4: RUNNG -> READY  cb=1 rem=59 prio=2
+7 14
+2238 7 4: READY -> RUNNG cb=14 rem=3 prio=1
+2241 7 3: Done
+6 1
+2241 6 3: READY -> RUNNG cb=1 rem=59 prio=1
+----------------------------------myrandom------------------------------
+2242 6 1: RUNNG -> BLOCK ib=39 rem=58
+9 0
+----------------------------------myrandom------------------------------
+2242 9 9: READY -> RUNNG cb=14 rem=219 prio=0
+2243 2 35: BLOCK -> READY
+---->PRIO preemption 9 by 2  ? 1 === TS=2246 now=2243----------YES
+pid : 9
+actually ran: 1
+prev run time : 14
+nxt_evt_ts : 2246
+ was started at : 2242
+have to run more : 13
+p rem : 215
+p tt : 134
+p burst left: 10
+p run time : 10
+2243 9 1: RUNNG -> READY  cb=13 rem=218 prio=0
+2 0
+----------------------------------myrandom------------------------------
+2243 2 0: READY -> RUNNG cb=26 rem=43 prio=1
+2244 0 32: BLOCK -> READY
+---->PRIO preemption 2 by 0  ? 0 === TS=2247 now=2244----------
+2247 2 4: RUNNG -> READY  cb=22 rem=39 prio=1
+0 0
+----------------------------------myrandom------------------------------
+2247 0 3: READY -> RUNNG cb=7 rem=247 prio=1
+2251 0 4: RUNNG -> READY  cb=3 rem=243 prio=1
+2 22
+2251 2 4: READY -> RUNNG cb=22 rem=39 prio=0
+2255 2 4: RUNNG -> READY  cb=18 rem=35 prio=0
+0 3
+2255 0 4: READY -> RUNNG cb=3 rem=243 prio=0
+----------------------------------myrandom------------------------------
+2258 0 3: RUNNG -> BLOCK ib=11 rem=240
+2 18
+2258 2 3: READY -> RUNNG cb=18 rem=35 prio=1
+2262 2 4: RUNNG -> READY  cb=14 rem=31 prio=1
+5 2
+2262 5 32: READY -> RUNNG cb=2 rem=223 prio=0
+----------------------------------myrandom------------------------------
+2264 5 2: RUNNG -> BLOCK ib=11 rem=221
+9 13
+2264 9 21: READY -> RUNNG cb=13 rem=218 prio=0
+2268 9 4: RUNNG -> READY  cb=9 rem=214 prio=0
+2 14
+2268 2 6: READY -> RUNNG cb=14 rem=31 prio=0
+2269 0 11: BLOCK -> READY
+---->PRIO preemption 2 by 0  ? 1 === TS=2272 now=2269----------YES
+pid : 2
+actually ran: 1
+prev run time : 14
+nxt_evt_ts : 2272
+ was started at : 2268
+have to run more : 13
+p rem : 27
+p tt : 213
+p burst left: 10
+p run time : 10
+2269 2 1: RUNNG -> READY  cb=13 rem=30 prio=0
+0 0
+----------------------------------myrandom------------------------------
+2269 0 0: READY -> RUNNG cb=5 rem=240 prio=1
+2273 0 4: RUNNG -> READY  cb=1 rem=236 prio=1
+0 1
+2273 0 0: READY -> RUNNG cb=1 rem=236 prio=0
+----------------------------------myrandom------------------------------
+2274 0 1: RUNNG -> BLOCK ib=5 rem=235
+2 13
+2274 2 5: READY -> RUNNG cb=13 rem=30 prio=1
+2275 5 11: BLOCK -> READY
+---->PRIO preemption 2 by 5  ? 0 === TS=2278 now=2275----------
+2278 2 4: RUNNG -> READY  cb=9 rem=26 prio=1
+9 9
+2278 9 10: READY -> RUNNG cb=9 rem=214 prio=0
+2279 0 5: BLOCK -> READY
+---->PRIO preemption 9 by 0  ? 1 === TS=2282 now=2279----------YES
+pid : 9
+actually ran: 1
+prev run time : 9
+nxt_evt_ts : 2282
+ was started at : 2278
+have to run more : 8
+p rem : 210
+p tt : 145
+p burst left: 5
+p run time : 5
+2279 9 1: RUNNG -> READY  cb=8 rem=213 prio=0
+0 0
+----------------------------------myrandom------------------------------
+2279 0 0: READY -> RUNNG cb=45 rem=235 prio=1
+2281 6 39: BLOCK -> READY
+---->PRIO preemption 0 by 6  ? 1 === TS=2283 now=2281----------YES
+pid : 0
+actually ran: 2
+prev run time : 45
+nxt_evt_ts : 2283
+ was started at : 2279
+have to run more : 43
+p rem : 231
+p tt : 227
+p burst left: 41
+p run time : 41
+2281 0 2: RUNNG -> READY  cb=43 rem=233 prio=1
+6 0
+----------------------------------myrandom------------------------------
+2281 6 0: READY -> RUNNG cb=4 rem=58 prio=2
+----------------------------------myrandom------------------------------
+2285 6 4: RUNNG -> BLOCK ib=26 rem=54
+5 0
+----------------------------------myrandom------------------------------
+2285 5 10: READY -> RUNNG cb=1 rem=221 prio=0
+----------------------------------myrandom------------------------------
+2286 5 1: RUNNG -> BLOCK ib=27 rem=220
+2 9
+2286 2 8: READY -> RUNNG cb=9 rem=26 prio=0
+2290 2 4: RUNNG -> READY  cb=5 rem=22 prio=0
+0 43
+2290 0 9: READY -> RUNNG cb=43 rem=233 prio=0
+2294 0 4: RUNNG -> READY  cb=39 rem=229 prio=0
+2 5
+2294 2 4: READY -> RUNNG cb=5 rem=22 prio=1
+2298 2 4: RUNNG -> READY  cb=1 rem=18 prio=1
+0 39
+2298 0 4: READY -> RUNNG cb=39 rem=229 prio=1
+2302 0 4: RUNNG -> READY  cb=35 rem=225 prio=1
+9 8
+2302 9 23: READY -> RUNNG cb=8 rem=213 prio=0
+2306 9 4: RUNNG -> READY  cb=4 rem=209 prio=0
+2 1
+2306 2 8: READY -> RUNNG cb=1 rem=18 prio=0
+----------------------------------myrandom------------------------------
+2307 2 1: RUNNG -> BLOCK ib=29 rem=17
+0 35
+2307 0 5: READY -> RUNNG cb=35 rem=225 prio=0
+2311 6 26: BLOCK -> READY
+---->PRIO preemption 0 by 6  ? 1 === TS=2311 now=2311----------
+2311 0 4: RUNNG -> READY  cb=31 rem=221 prio=0
+6 0
+----------------------------------myrandom------------------------------
+2311 6 0: READY -> RUNNG cb=4 rem=54 prio=2
+----------------------------------myrandom------------------------------
+2313 5 27: BLOCK -> READY
+---->PRIO preemption 6 by 5  ? 0 === TS=2315 now=2313----------
+2315 6 4: RUNNG -> BLOCK ib=5 rem=50
+5 0
+----------------------------------myrandom------------------------------
+2315 5 2: READY -> RUNNG cb=12 rem=220 prio=0
+2319 5 4: RUNNG -> READY  cb=8 rem=216 prio=0
+0 31
+2319 0 8: READY -> RUNNG cb=31 rem=221 prio=1
+2320 6 5: BLOCK -> READY
+---->PRIO preemption 0 by 6  ? 1 === TS=2323 now=2320----------YES
+pid : 0
+actually ran: 1
+prev run time : 31
+nxt_evt_ts : 2323
+ was started at : 2319
+have to run more : 30
+p rem : 217
+p tt : 245
+p burst left: 27
+p run time : 27
+2320 0 1: RUNNG -> READY  cb=30 rem=220 prio=1
+6 0
+----------------------------------myrandom------------------------------
+2320 6 0: READY -> RUNNG cb=5 rem=50 prio=2
+2324 6 4: RUNNG -> READY  cb=1 rem=46 prio=2
+6 1
+2324 6 0: READY -> RUNNG cb=1 rem=46 prio=1
+----------------------------------myrandom------------------------------
+2325 6 1: RUNNG -> BLOCK ib=11 rem=45
+9 4
+2325 9 19: READY -> RUNNG cb=4 rem=209 prio=0
+----------------------------------myrandom------------------------------
+2329 9 4: RUNNG -> BLOCK ib=2 rem=205
+5 8
+2329 5 10: READY -> RUNNG cb=8 rem=216 prio=0
+2331 9 2: BLOCK -> READY
+---->PRIO preemption 5 by 9  ? 0 === TS=2333 now=2331----------
+2333 5 4: RUNNG -> READY  cb=4 rem=212 prio=0
+0 30
+2333 0 13: READY -> RUNNG cb=30 rem=220 prio=0
+2336 2 29: BLOCK -> READY
+---->PRIO preemption 0 by 2  ? 1 === TS=2337 now=2336----------YES
+pid : 0
+actually ran: 3
+prev run time : 30
+nxt_evt_ts : 2337
+ was started at : 2333
+have to run more : 27
+p rem : 216
+p tt : 252
+p burst left: 26
+p run time : 26
+2336 6 11: BLOCK -> READY
+---->PRIO preemption 0 by 6  ? 1 === TS=2336 now=2336----------
+2336 0 3: RUNNG -> READY  cb=27 rem=217 prio=0
+6 0
+----------------------------------myrandom------------------------------
+2336 6 0: READY -> RUNNG cb=4 rem=45 prio=2
+----------------------------------myrandom------------------------------
+2340 6 4: RUNNG -> BLOCK ib=8 rem=41
+2 0
+----------------------------------myrandom------------------------------
+2340 2 4: READY -> RUNNG cb=2 rem=17 prio=1
+----------------------------------myrandom------------------------------
+2342 2 2: RUNNG -> BLOCK ib=36 rem=15
+9 0
+----------------------------------myrandom------------------------------
+2342 9 11: READY -> RUNNG cb=1 rem=205 prio=0
+----------------------------------myrandom------------------------------
+2343 9 1: RUNNG -> BLOCK ib=9 rem=204
+0 27
+2343 0 7: READY -> RUNNG cb=27 rem=217 prio=1
+2347 0 4: RUNNG -> READY  cb=23 rem=213 prio=1
+5 4
+2347 5 14: READY -> RUNNG cb=4 rem=212 prio=0
+----------------------------------myrandom------------------------------
+2348 6 8: BLOCK -> READY
+---->PRIO preemption 5 by 6  ? 1 === TS=2351 now=2348----------YES
+pid : 5
+actually ran: 1
+prev run time : 4
+nxt_evt_ts : 2351
+ was started at : 2347
+have to run more : 3
+p rem : 208
+p tt : 123
+p burst left: 0
+p run time : 27
+2348 5 1: RUNNG -> READY  cb=3 rem=211 prio=0
+6 0
+----------------------------------myrandom------------------------------
+2348 6 0: READY -> RUNNG cb=2 rem=41 prio=2
+----------------------------------myrandom------------------------------
+2350 6 2: RUNNG -> BLOCK ib=14 rem=39
+0 23
+2350 0 3: READY -> RUNNG cb=23 rem=213 prio=0
+2352 9 9: BLOCK -> READY
+---->PRIO preemption 0 by 9  ? 0 === TS=2354 now=2352----------
+2354 0 4: RUNNG -> READY  cb=19 rem=209 prio=0
+9 0
+----------------------------------myrandom------------------------------
+2354 9 2: READY -> RUNNG cb=4 rem=204 prio=0
+----------------------------------myrandom------------------------------
+2358 9 4: RUNNG -> BLOCK ib=4 rem=200
+0 19
+2358 0 4: READY -> RUNNG cb=19 rem=209 prio=1
+2362 9 4: BLOCK -> READY
+---->PRIO preemption 0 by 9  ? 0 === TS=2362 now=2362----------
+2362 0 4: RUNNG -> READY  cb=15 rem=205 prio=1
+5 3
+2362 5 14: READY -> RUNNG cb=3 rem=211 prio=0
+----------------------------------myrandom------------------------------
+2364 6 14: BLOCK -> READY
+---->PRIO preemption 5 by 6  ? 1 === TS=2365 now=2364----------YES
+pid : 5
+actually ran: 2
+prev run time : 3
+nxt_evt_ts : 2365
+ was started at : 2362
+have to run more : 1
+p rem : 208
+p tt : 129
+p burst left: 0
+p run time : 21
+2364 5 2: RUNNG -> READY  cb=1 rem=209 prio=0
+6 0
+----------------------------------myrandom------------------------------
+2364 6 0: READY -> RUNNG cb=1 rem=39 prio=2
+----------------------------------myrandom------------------------------
+2365 6 1: RUNNG -> BLOCK ib=2 rem=38
+9 0
+----------------------------------myrandom------------------------------
+2365 9 3: READY -> RUNNG cb=20 rem=200 prio=0
+2367 6 2: BLOCK -> READY
+---->PRIO preemption 9 by 6  ? 1 === TS=2369 now=2367----------YES
+pid : 9
+actually ran: 2
+prev run time : 20
+nxt_evt_ts : 2369
+ was started at : 2365
+have to run more : 18
+p rem : 196
+p tt : 165
+p burst left: 16
+p run time : 16
+2367 9 2: RUNNG -> READY  cb=18 rem=198 prio=0
+6 0
+----------------------------------myrandom------------------------------
+2367 6 0: READY -> RUNNG cb=1 rem=38 prio=2
+----------------------------------myrandom------------------------------
+2368 6 1: RUNNG -> BLOCK ib=30 rem=37
+0 15
+2368 0 6: READY -> RUNNG cb=15 rem=205 prio=0
+2372 0 4: RUNNG -> READY  cb=11 rem=201 prio=0
+0 11
+2372 0 0: READY -> RUNNG cb=11 rem=201 prio=1
+2376 0 4: RUNNG -> READY  cb=7 rem=197 prio=1
+5 1
+2376 5 12: READY -> RUNNG cb=1 rem=209 prio=0
+----------------------------------myrandom------------------------------
+2377 5 1: RUNNG -> BLOCK ib=12 rem=208
+9 18
+2377 9 10: READY -> RUNNG cb=18 rem=198 prio=0
+2378 2 36: BLOCK -> READY
+---->PRIO preemption 9 by 2  ? 1 === TS=2381 now=2378----------YES
+pid : 9
+actually ran: 1
+prev run time : 18
+nxt_evt_ts : 2381
+ was started at : 2377
+have to run more : 17
+p rem : 194
+p tt : 171
+p burst left: 14
+p run time : 14
+2378 9 1: RUNNG -> READY  cb=17 rem=197 prio=0
+2 0
+----------------------------------myrandom------------------------------
+2378 2 0: READY -> RUNNG cb=18 rem=15 prio=1
+2382 2 4: RUNNG -> READY  cb=14 rem=11 prio=1
+0 7
+2382 0 6: READY -> RUNNG cb=7 rem=197 prio=0
+2386 0 4: RUNNG -> READY  cb=3 rem=193 prio=0
+2 14
+2386 2 4: READY -> RUNNG cb=14 rem=11 prio=0
+2389 5 12: BLOCK -> READY
+---->PRIO preemption 2 by 5  ? 0 === TS=2390 now=2389----------
+2390 2 4: RUNNG -> READY  cb=10 rem=7 prio=0
+5 0
+----------------------------------myrandom------------------------------
+2390 5 1: READY -> RUNNG cb=9 rem=208 prio=0
+2394 5 4: RUNNG -> READY  cb=5 rem=204 prio=0
+0 3
+2394 0 8: READY -> RUNNG cb=3 rem=193 prio=1
+----------------------------------myrandom------------------------------
+2397 0 3: RUNNG -> BLOCK ib=37 rem=190
+2 10
+2397 2 7: READY -> RUNNG cb=10 rem=7 prio=1
+2398 6 30: BLOCK -> READY
+---->PRIO preemption 2 by 6  ? 1 === TS=2401 now=2398----------YES
+pid : 2
+actually ran: 1
+prev run time : 10
+nxt_evt_ts : 2401
+ was started at : 2397
+have to run more : 9
+p rem : 3
+p tt : 243
+p burst left: 6
+p run time : 6
+2398 2 1: RUNNG -> READY  cb=9 rem=6 prio=1
+6 0
+----------------------------------myrandom------------------------------
+2398 6 0: READY -> RUNNG cb=2 rem=37 prio=2
+----------------------------------myrandom------------------------------
+2400 6 2: RUNNG -> BLOCK ib=5 rem=35
+9 17
+2400 9 22: READY -> RUNNG cb=17 rem=197 prio=0
+2404 9 4: RUNNG -> READY  cb=13 rem=193 prio=0
+5 5
+2404 5 10: READY -> RUNNG cb=5 rem=204 prio=0
+2405 6 5: BLOCK -> READY
+---->PRIO preemption 5 by 6  ? 1 === TS=2408 now=2405----------YES
+pid : 5
+actually ran: 1
+prev run time : 5
+nxt_evt_ts : 2408
+ was started at : 2404
+have to run more : 4
+p rem : 200
+p tt : 139
+p burst left: 1
+p run time : 1
+2405 5 1: RUNNG -> READY  cb=4 rem=203 prio=0
+6 0
+----------------------------------myrandom------------------------------
+2405 6 0: READY -> RUNNG cb=2 rem=35 prio=2
+----------------------------------myrandom------------------------------
+2407 6 2: RUNNG -> BLOCK ib=40 rem=33
+2 9
+2407 2 9: READY -> RUNNG cb=9 rem=6 prio=0
+2411 2 4: RUNNG -> READY  cb=5 rem=2 prio=0
+2 5
+2411 2 0: READY -> RUNNG cb=5 rem=2 prio=1
+2413 2 2: Done
+9 13
+2413 9 9: READY -> RUNNG cb=13 rem=193 prio=0
+2417 9 4: RUNNG -> READY  cb=9 rem=189 prio=0
+5 4
+2417 5 12: READY -> RUNNG cb=4 rem=203 prio=0
+----------------------------------myrandom------------------------------
+2421 5 4: RUNNG -> BLOCK ib=1 rem=199
+9 9
+2421 9 4: READY -> RUNNG cb=9 rem=189 prio=0
+2422 5 1: BLOCK -> READY
+---->PRIO preemption 9 by 5  ? 0 === TS=2425 now=2422----------
+2425 9 4: RUNNG -> READY  cb=5 rem=185 prio=0
+5 0
+----------------------------------myrandom------------------------------
+2425 5 3: READY -> RUNNG cb=5 rem=199 prio=0
+2429 5 4: RUNNG -> READY  cb=1 rem=195 prio=0
+9 5
+2429 9 4: READY -> RUNNG cb=5 rem=185 prio=0
+2433 9 4: RUNNG -> READY  cb=1 rem=181 prio=0
+5 1
+2433 5 4: READY -> RUNNG cb=1 rem=195 prio=0
+----------------------------------myrandom------------------------------
+2434 0 37: BLOCK -> READY
+---->PRIO preemption 5 by 0  ? 1 === TS=2434 now=2434----------
+2434 5 1: RUNNG -> BLOCK ib=25 rem=194
+0 0
+----------------------------------myrandom------------------------------
+2434 0 0: READY -> RUNNG cb=26 rem=190 prio=1
+2438 0 4: RUNNG -> READY  cb=22 rem=186 prio=1
+0 22
+2438 0 0: READY -> RUNNG cb=22 rem=186 prio=0
+2442 0 4: RUNNG -> READY  cb=18 rem=182 prio=0
+0 18
+2442 0 0: READY -> RUNNG cb=18 rem=182 prio=1
+2446 0 4: RUNNG -> READY  cb=14 rem=178 prio=1
+9 1
+2446 9 13: READY -> RUNNG cb=1 rem=181 prio=0
+----------------------------------myrandom------------------------------
+2447 6 40: BLOCK -> READY
+---->PRIO preemption 9 by 6  ? 1 === TS=2447 now=2447----------
+2447 9 1: RUNNG -> BLOCK ib=8 rem=180
+6 0
+----------------------------------myrandom------------------------------
+2447 6 0: READY -> RUNNG cb=4 rem=33 prio=2
+----------------------------------myrandom------------------------------
+2451 6 4: RUNNG -> BLOCK ib=8 rem=29
+0 14
+2451 0 5: READY -> RUNNG cb=14 rem=178 prio=0
+2455 9 8: BLOCK -> READY
+---->PRIO preemption 0 by 9  ? 0 === TS=2455 now=2455----------
+2455 0 4: RUNNG -> READY  cb=10 rem=174 prio=0
+9 0
+----------------------------------myrandom------------------------------
+2455 9 0: READY -> RUNNG cb=20 rem=180 prio=0
+2459 5 25: BLOCK -> READY
+---->PRIO preemption 9 by 5  ? 0 === TS=2459 now=2459----------
+2459 6 8: BLOCK -> READY
+---->PRIO preemption 9 by 6  ? 1 === TS=2459 now=2459----------
+2459 9 4: RUNNG -> READY  cb=16 rem=176 prio=0
+6 0
+----------------------------------myrandom------------------------------
+2459 6 0: READY -> RUNNG cb=2 rem=29 prio=2
+----------------------------------myrandom------------------------------
+2461 6 2: RUNNG -> BLOCK ib=7 rem=27
+5 0
+----------------------------------myrandom------------------------------
+2461 5 2: READY -> RUNNG cb=8 rem=194 prio=0
+2465 5 4: RUNNG -> READY  cb=4 rem=190 prio=0
+0 10
+2465 0 10: READY -> RUNNG cb=10 rem=174 prio=1
+2468 6 7: BLOCK -> READY
+---->PRIO preemption 0 by 6  ? 1 === TS=2469 now=2468----------YES
+pid : 0
+actually ran: 3
+prev run time : 10
+nxt_evt_ts : 2469
+ was started at : 2465
+have to run more : 7
+p rem : 170
+p tt : 300
+p burst left: 6
+p run time : 6
+2468 0 3: RUNNG -> READY  cb=7 rem=171 prio=1
+6 0
+----------------------------------myrandom------------------------------
+2468 6 0: READY -> RUNNG cb=5 rem=27 prio=2
+2472 6 4: RUNNG -> READY  cb=1 rem=23 prio=2
+6 1
+2472 6 0: READY -> RUNNG cb=1 rem=23 prio=1
+----------------------------------myrandom------------------------------
+2473 6 1: RUNNG -> BLOCK ib=8 rem=22
+9 16
+2473 9 14: READY -> RUNNG cb=16 rem=176 prio=0
+2477 9 4: RUNNG -> READY  cb=12 rem=172 prio=0
+5 4
+2477 5 12: READY -> RUNNG cb=4 rem=190 prio=0
+----------------------------------myrandom------------------------------
+2481 6 8: BLOCK -> READY
+---->PRIO preemption 5 by 6  ? 1 === TS=2481 now=2481----------
+2481 5 4: RUNNG -> BLOCK ib=14 rem=186
+6 0
+----------------------------------myrandom------------------------------
+2481 6 0: READY -> RUNNG cb=1 rem=22 prio=2
+----------------------------------myrandom------------------------------
+2482 6 1: RUNNG -> BLOCK ib=13 rem=21
+0 7
+2482 0 14: READY -> RUNNG cb=7 rem=171 prio=0
+2486 0 4: RUNNG -> READY  cb=3 rem=167 prio=0
+0 3
+2486 0 0: READY -> RUNNG cb=3 rem=167 prio=1
+----------------------------------myrandom------------------------------
+2489 0 3: RUNNG -> BLOCK ib=27 rem=164
+9 12
+2489 9 12: READY -> RUNNG cb=12 rem=172 prio=0
+2493 9 4: RUNNG -> READY  cb=8 rem=168 prio=0
+9 8
+2493 9 0: READY -> RUNNG cb=8 rem=168 prio=0
+2495 5 14: BLOCK -> READY
+---->PRIO preemption 9 by 5  ? 0 === TS=2497 now=2495----------
+2495 6 13: BLOCK -> READY
+---->PRIO preemption 9 by 6  ? 1 === TS=2497 now=2495----------YES
+pid : 9
+actually ran: 2
+prev run time : 8
+nxt_evt_ts : 2497
+ was started at : 2493
+have to run more : 6
+p rem : 164
+p tt : 207
+p burst left: 4
+p run time : 4
+2495 9 2: RUNNG -> READY  cb=6 rem=166 prio=0
+6 0
+----------------------------------myrandom------------------------------
+2495 6 0: READY -> RUNNG cb=2 rem=21 prio=2
+----------------------------------myrandom------------------------------
+2497 6 2: RUNNG -> BLOCK ib=3 rem=19
+5 0
+----------------------------------myrandom------------------------------
+2497 5 2: READY -> RUNNG cb=5 rem=186 prio=0
+2500 6 3: BLOCK -> READY
+---->PRIO preemption 5 by 6  ? 1 === TS=2501 now=2500----------YES
+pid : 5
+actually ran: 3
+prev run time : 5
+nxt_evt_ts : 2501
+ was started at : 2497
+have to run more : 2
+p rem : 182
+p tt : 163
+p burst left: 1
+p run time : 1
+2500 5 3: RUNNG -> READY  cb=2 rem=183 prio=0
+6 0
+----------------------------------myrandom------------------------------
+2500 6 0: READY -> RUNNG cb=3 rem=19 prio=2
+----------------------------------myrandom------------------------------
+2503 6 3: RUNNG -> BLOCK ib=28 rem=16
+9 6
+2503 9 8: READY -> RUNNG cb=6 rem=166 prio=0
+2507 9 4: RUNNG -> READY  cb=2 rem=162 prio=0
+5 2
+2507 5 7: READY -> RUNNG cb=2 rem=183 prio=0
+----------------------------------myrandom------------------------------
+2509 5 2: RUNNG -> BLOCK ib=9 rem=181
+9 2
+2509 9 2: READY -> RUNNG cb=2 rem=162 prio=0
+----------------------------------myrandom------------------------------
+2511 9 2: RUNNG -> BLOCK ib=9 rem=160
+2516 0 27: BLOCK -> READY
+
+0 0
+----------------------------------myrandom------------------------------
+2516 0 0: READY -> RUNNG cb=45 rem=164 prio=1
+2518 5 9: BLOCK -> READY
+---->PRIO preemption 0 by 5  ? 0 === TS=2520 now=2518----------
+2520 9 9: BLOCK -> READY
+---->PRIO preemption 0 by 9  ? 0 === TS=2520 now=2520----------
+2520 0 4: RUNNG -> READY  cb=41 rem=160 prio=1
+5 0
+----------------------------------myrandom------------------------------
+2520 5 2: READY -> RUNNG cb=9 rem=181 prio=0
+2524 5 4: RUNNG -> READY  cb=5 rem=177 prio=0
+9 0
+----------------------------------myrandom------------------------------
+2524 9 4: READY -> RUNNG cb=5 rem=160 prio=0
+2528 9 4: RUNNG -> READY  cb=1 rem=156 prio=0
+0 41
+2528 0 8: READY -> RUNNG cb=41 rem=160 prio=0
+2531 6 28: BLOCK -> READY
+---->PRIO preemption 0 by 6  ? 1 === TS=2532 now=2531----------YES
+pid : 0
+actually ran: 3
+prev run time : 41
+nxt_evt_ts : 2532
+ was started at : 2528
+have to run more : 38
+p rem : 156
+p tt : 316
+p burst left: 37
+p run time : 37
+2531 0 3: RUNNG -> READY  cb=38 rem=157 prio=0
+6 0
+----------------------------------myrandom------------------------------
+2531 6 0: READY -> RUNNG cb=4 rem=16 prio=2
+----------------------------------myrandom------------------------------
+2535 6 4: RUNNG -> BLOCK ib=20 rem=12
+0 38
+2535 0 4: READY -> RUNNG cb=38 rem=157 prio=1
+2539 0 4: RUNNG -> READY  cb=34 rem=153 prio=1
+5 5
+2539 5 15: READY -> RUNNG cb=5 rem=177 prio=0
+2543 5 4: RUNNG -> READY  cb=1 rem=173 prio=0
+9 1
+2543 9 15: READY -> RUNNG cb=1 rem=156 prio=0
+----------------------------------myrandom------------------------------
+2544 9 1: RUNNG -> BLOCK ib=6 rem=155
+0 34
+2544 0 5: READY -> RUNNG cb=34 rem=153 prio=0
+2548 0 4: RUNNG -> READY  cb=30 rem=149 prio=0
+0 30
+2548 0 0: READY -> RUNNG cb=30 rem=149 prio=1
+2550 9 6: BLOCK -> READY
+---->PRIO preemption 0 by 9  ? 0 === TS=2552 now=2550----------
+2552 0 4: RUNNG -> READY  cb=26 rem=145 prio=1
+5 1
+2552 5 9: READY -> RUNNG cb=1 rem=173 prio=0
+----------------------------------myrandom------------------------------
+2553 5 1: RUNNG -> BLOCK ib=8 rem=172
+9 0
+----------------------------------myrandom------------------------------
+2553 9 3: READY -> RUNNG cb=13 rem=155 prio=0
+2555 6 20: BLOCK -> READY
+---->PRIO preemption 9 by 6  ? 1 === TS=2557 now=2555----------YES
+pid : 9
+actually ran: 2
+prev run time : 13
+nxt_evt_ts : 2557
+ was started at : 2553
+have to run more : 11
+p rem : 151
+p tt : 224
+p burst left: 9
+p run time : 9
+2555 9 2: RUNNG -> READY  cb=11 rem=153 prio=0
+6 0
+----------------------------------myrandom------------------------------
+2555 6 0: READY -> RUNNG cb=3 rem=12 prio=2
+----------------------------------myrandom------------------------------
+2558 6 3: RUNNG -> BLOCK ib=12 rem=9
+0 26
+2558 0 6: READY -> RUNNG cb=26 rem=145 prio=0
+2561 5 8: BLOCK -> READY
+---->PRIO preemption 0 by 5  ? 0 === TS=2562 now=2561----------
+2562 0 4: RUNNG -> READY  cb=22 rem=141 prio=0
+5 0
+----------------------------------myrandom------------------------------
+2562 5 1: READY -> RUNNG cb=5 rem=172 prio=0
+2566 5 4: RUNNG -> READY  cb=1 rem=168 prio=0
+0 22
+2566 0 4: READY -> RUNNG cb=22 rem=141 prio=1
+2570 6 12: BLOCK -> READY
+---->PRIO preemption 0 by 6  ? 1 === TS=2570 now=2570----------
+2570 0 4: RUNNG -> READY  cb=18 rem=137 prio=1
+6 0
+----------------------------------myrandom------------------------------
+2570 6 0: READY -> RUNNG cb=5 rem=9 prio=2
+2574 6 4: RUNNG -> READY  cb=1 rem=5 prio=2
+6 1
+2574 6 0: READY -> RUNNG cb=1 rem=5 prio=1
+----------------------------------myrandom------------------------------
+2575 6 1: RUNNG -> BLOCK ib=5 rem=4
+9 11
+2575 9 20: READY -> RUNNG cb=11 rem=153 prio=0
+2579 9 4: RUNNG -> READY  cb=7 rem=149 prio=0
+5 1
+2579 5 13: READY -> RUNNG cb=1 rem=168 prio=0
+----------------------------------myrandom------------------------------
+2580 6 5: BLOCK -> READY
+---->PRIO preemption 5 by 6  ? 1 === TS=2580 now=2580----------
+2580 5 1: RUNNG -> BLOCK ib=17 rem=167
+6 0
+----------------------------------myrandom------------------------------
+2580 6 0: READY -> RUNNG cb=1 rem=4 prio=2
+----------------------------------myrandom------------------------------
+2581 6 1: RUNNG -> BLOCK ib=33 rem=3
+0 18
+2581 0 11: READY -> RUNNG cb=18 rem=137 prio=0
+2585 0 4: RUNNG -> READY  cb=14 rem=133 prio=0
+0 14
+2585 0 0: READY -> RUNNG cb=14 rem=133 prio=1
+2589 0 4: RUNNG -> READY  cb=10 rem=129 prio=1
+9 7
+2589 9 10: READY -> RUNNG cb=7 rem=149 prio=0
+2593 9 4: RUNNG -> READY  cb=3 rem=145 prio=0
+0 10
+2593 0 4: READY -> RUNNG cb=10 rem=129 prio=0
+2597 5 17: BLOCK -> READY
+---->PRIO preemption 0 by 5  ? 0 === TS=2597 now=2597----------
+2597 0 4: RUNNG -> READY  cb=6 rem=125 prio=0
+5 0
+----------------------------------myrandom------------------------------
+2597 5 0: READY -> RUNNG cb=11 rem=167 prio=0
+2601 5 4: RUNNG -> READY  cb=7 rem=163 prio=0
+0 6
+2601 0 4: READY -> RUNNG cb=6 rem=125 prio=1
+2605 0 4: RUNNG -> READY  cb=2 rem=121 prio=1
+9 3
+2605 9 12: READY -> RUNNG cb=3 rem=145 prio=0
+----------------------------------myrandom------------------------------
+2608 9 3: RUNNG -> BLOCK ib=1 rem=142
+5 7
+2608 5 7: READY -> RUNNG cb=7 rem=163 prio=0
+2609 9 1: BLOCK -> READY
+---->PRIO preemption 5 by 9  ? 0 === TS=2612 now=2609----------
+2612 5 4: RUNNG -> READY  cb=3 rem=159 prio=0
+0 2
+2612 0 7: READY -> RUNNG cb=2 rem=121 prio=0
+----------------------------------myrandom------------------------------
+2614 6 33: BLOCK -> READY
+---->PRIO preemption 0 by 6  ? 1 === TS=2614 now=2614----------
+2614 0 2: RUNNG -> BLOCK ib=37 rem=119
+6 0
+----------------------------------myrandom------------------------------
+2614 6 0: READY -> RUNNG cb=3 rem=3 prio=2
+2617 6 3: Done
+9 0
+----------------------------------myrandom------------------------------
+2617 9 8: READY -> RUNNG cb=4 rem=142 prio=0
+----------------------------------myrandom------------------------------
+2621 9 4: RUNNG -> BLOCK ib=10 rem=138
+5 3
+2621 5 9: READY -> RUNNG cb=3 rem=159 prio=0
+----------------------------------myrandom------------------------------
+2624 5 3: RUNNG -> BLOCK ib=25 rem=156
+2631 9 10: BLOCK -> READY
+
+9 0
+----------------------------------myrandom------------------------------
+2631 9 0: READY -> RUNNG cb=20 rem=138 prio=0
+2635 9 4: RUNNG -> READY  cb=16 rem=134 prio=0
+9 16
+2635 9 0: READY -> RUNNG cb=16 rem=134 prio=0
+2639 9 4: RUNNG -> READY  cb=12 rem=130 prio=0
+9 12
+2639 9 0: READY -> RUNNG cb=12 rem=130 prio=0
+2643 9 4: RUNNG -> READY  cb=8 rem=126 prio=0
+9 8
+2643 9 0: READY -> RUNNG cb=8 rem=126 prio=0
+2647 9 4: RUNNG -> READY  cb=4 rem=122 prio=0
+9 4
+2647 9 0: READY -> RUNNG cb=4 rem=122 prio=0
+----------------------------------myrandom------------------------------
+2649 5 25: BLOCK -> READY
+---->PRIO preemption 9 by 5  ? 0 === TS=2651 now=2649----------
+2651 0 37: BLOCK -> READY
+---->PRIO preemption 9 by 0  ? 1 === TS=2651 now=2651----------
+2651 9 4: RUNNG -> BLOCK ib=8 rem=118
+0 0
+----------------------------------myrandom------------------------------
+2651 0 0: READY -> RUNNG cb=28 rem=119 prio=1
+2655 0 4: RUNNG -> READY  cb=24 rem=115 prio=1
+5 0
+----------------------------------myrandom------------------------------
+2655 5 6: READY -> RUNNG cb=6 rem=156 prio=0
+2659 9 8: BLOCK -> READY
+---->PRIO preemption 5 by 9  ? 0 === TS=2659 now=2659----------
+2659 5 4: RUNNG -> READY  cb=2 rem=152 prio=0
+0 24
+2659 0 4: READY -> RUNNG cb=24 rem=115 prio=0
+2663 0 4: RUNNG -> READY  cb=20 rem=111 prio=0
+9 0
+----------------------------------myrandom------------------------------
+2663 9 4: READY -> RUNNG cb=5 rem=118 prio=0
+2667 9 4: RUNNG -> READY  cb=1 rem=114 prio=0
+0 20
+2667 0 4: READY -> RUNNG cb=20 rem=111 prio=1
+2671 0 4: RUNNG -> READY  cb=16 rem=107 prio=1
+5 2
+2671 5 12: READY -> RUNNG cb=2 rem=152 prio=0
+----------------------------------myrandom------------------------------
+2673 5 2: RUNNG -> BLOCK ib=17 rem=150
+9 1
+2673 9 6: READY -> RUNNG cb=1 rem=114 prio=0
+----------------------------------myrandom------------------------------
+2674 9 1: RUNNG -> BLOCK ib=1 rem=113
+0 16
+2674 0 3: READY -> RUNNG cb=16 rem=107 prio=0
+2675 9 1: BLOCK -> READY
+---->PRIO preemption 0 by 9  ? 0 === TS=2678 now=2675----------
+2678 0 4: RUNNG -> READY  cb=12 rem=103 prio=0
+9 0
+----------------------------------myrandom------------------------------
+2678 9 3: READY -> RUNNG cb=15 rem=113 prio=0
+2682 9 4: RUNNG -> READY  cb=11 rem=109 prio=0
+0 12
+2682 0 4: READY -> RUNNG cb=12 rem=103 prio=1
+2686 0 4: RUNNG -> READY  cb=8 rem=99 prio=1
+9 11
+2686 9 4: READY -> RUNNG cb=11 rem=109 prio=0
+2690 5 17: BLOCK -> READY
+---->PRIO preemption 9 by 5  ? 0 === TS=2690 now=2690----------
+2690 9 4: RUNNG -> READY  cb=7 rem=105 prio=0
+0 8
+2690 0 4: READY -> RUNNG cb=8 rem=99 prio=0
+2694 0 4: RUNNG -> READY  cb=4 rem=95 prio=0
+5 0
+----------------------------------myrandom------------------------------
+2694 5 4: READY -> RUNNG cb=12 rem=150 prio=0
+2698 5 4: RUNNG -> READY  cb=8 rem=146 prio=0
+0 4
+2698 0 4: READY -> RUNNG cb=4 rem=95 prio=1
+----------------------------------myrandom------------------------------
+2702 0 4: RUNNG -> BLOCK ib=26 rem=91
+9 7
+2702 9 12: READY -> RUNNG cb=7 rem=105 prio=0
+2706 9 4: RUNNG -> READY  cb=3 rem=101 prio=0
+5 8
+2706 5 8: READY -> RUNNG cb=8 rem=146 prio=0
+2710 5 4: RUNNG -> READY  cb=4 rem=142 prio=0
+9 3
+2710 9 4: READY -> RUNNG cb=3 rem=101 prio=0
+----------------------------------myrandom------------------------------
+2713 9 3: RUNNG -> BLOCK ib=2 rem=98
+5 4
+2713 5 3: READY -> RUNNG cb=4 rem=142 prio=0
+----------------------------------myrandom------------------------------
+2715 9 2: BLOCK -> READY
+---->PRIO preemption 5 by 9  ? 0 === TS=2717 now=2715----------
+2717 5 4: RUNNG -> BLOCK ib=20 rem=138
+9 0
+----------------------------------myrandom------------------------------
+2717 9 2: READY -> RUNNG cb=6 rem=98 prio=0
+2721 9 4: RUNNG -> READY  cb=2 rem=94 prio=0
+9 2
+2721 9 0: READY -> RUNNG cb=2 rem=94 prio=0
+----------------------------------myrandom------------------------------
+2723 9 2: RUNNG -> BLOCK ib=7 rem=92
+2728 0 26: BLOCK -> READY
+
+0 0
+----------------------------------myrandom------------------------------
+2728 0 0: READY -> RUNNG cb=39 rem=91 prio=1
+2730 9 7: BLOCK -> READY
+---->PRIO preemption 0 by 9  ? 0 === TS=2732 now=2730----------
+2732 0 4: RUNNG -> READY  cb=35 rem=87 prio=1
+9 0
+----------------------------------myrandom------------------------------
+2732 9 2: READY -> RUNNG cb=18 rem=92 prio=0
+2736 9 4: RUNNG -> READY  cb=14 rem=88 prio=0
+0 35
+2736 0 4: READY -> RUNNG cb=35 rem=87 prio=0
+2737 5 20: BLOCK -> READY
+---->PRIO preemption 0 by 5  ? 0 === TS=2740 now=2737----------
+2740 0 4: RUNNG -> READY  cb=31 rem=83 prio=0
+5 0
+----------------------------------myrandom------------------------------
+2740 5 3: READY -> RUNNG cb=1 rem=138 prio=0
+----------------------------------myrandom------------------------------
+2741 5 1: RUNNG -> BLOCK ib=20 rem=137
+0 31
+2741 0 1: READY -> RUNNG cb=31 rem=83 prio=1
+2745 0 4: RUNNG -> READY  cb=27 rem=79 prio=1
+9 14
+2745 9 9: READY -> RUNNG cb=14 rem=88 prio=0
+2749 9 4: RUNNG -> READY  cb=10 rem=84 prio=0
+0 27
+2749 0 4: READY -> RUNNG cb=27 rem=79 prio=0
+2753 0 4: RUNNG -> READY  cb=23 rem=75 prio=0
+0 23
+2753 0 0: READY -> RUNNG cb=23 rem=75 prio=1
+2757 0 4: RUNNG -> READY  cb=19 rem=71 prio=1
+9 10
+2757 9 8: READY -> RUNNG cb=10 rem=84 prio=0
+2761 5 20: BLOCK -> READY
+---->PRIO preemption 9 by 5  ? 0 === TS=2761 now=2761----------
+2761 9 4: RUNNG -> READY  cb=6 rem=80 prio=0
+0 19
+2761 0 4: READY -> RUNNG cb=19 rem=71 prio=0
+2765 0 4: RUNNG -> READY  cb=15 rem=67 prio=0
+5 0
+----------------------------------myrandom------------------------------
+2765 5 4: READY -> RUNNG cb=12 rem=137 prio=0
+2769 5 4: RUNNG -> READY  cb=8 rem=133 prio=0
+0 15
+2769 0 4: READY -> RUNNG cb=15 rem=67 prio=1
+2773 0 4: RUNNG -> READY  cb=11 rem=63 prio=1
+9 6
+2773 9 12: READY -> RUNNG cb=6 rem=80 prio=0
+2777 9 4: RUNNG -> READY  cb=2 rem=76 prio=0
+5 8
+2777 5 8: READY -> RUNNG cb=8 rem=133 prio=0
+2781 5 4: RUNNG -> READY  cb=4 rem=129 prio=0
+0 11
+2781 0 8: READY -> RUNNG cb=11 rem=63 prio=0
+2785 0 4: RUNNG -> READY  cb=7 rem=59 prio=0
+0 7
+2785 0 0: READY -> RUNNG cb=7 rem=59 prio=1
+2789 0 4: RUNNG -> READY  cb=3 rem=55 prio=1
+9 2
+2789 9 12: READY -> RUNNG cb=2 rem=76 prio=0
+----------------------------------myrandom------------------------------
+2791 9 2: RUNNG -> BLOCK ib=3 rem=74
+5 4
+2791 5 10: READY -> RUNNG cb=4 rem=129 prio=0
+----------------------------------myrandom------------------------------
+2794 9 3: BLOCK -> READY
+---->PRIO preemption 5 by 9  ? 0 === TS=2795 now=2794----------
+2795 5 4: RUNNG -> BLOCK ib=16 rem=125
+0 3
+2795 0 6: READY -> RUNNG cb=3 rem=55 prio=0
+----------------------------------myrandom------------------------------
+2798 0 3: RUNNG -> BLOCK ib=35 rem=52
+9 0
+----------------------------------myrandom------------------------------
+2798 9 4: READY -> RUNNG cb=8 rem=74 prio=0
+2802 9 4: RUNNG -> READY  cb=4 rem=70 prio=0
+9 4
+2802 9 0: READY -> RUNNG cb=4 rem=70 prio=0
+----------------------------------myrandom------------------------------
+2806 9 4: RUNNG -> BLOCK ib=10 rem=66
+2811 5 16: BLOCK -> READY
+
+5 0
+----------------------------------myrandom------------------------------
+2811 5 0: READY -> RUNNG cb=15 rem=125 prio=0
+2815 5 4: RUNNG -> READY  cb=11 rem=121 prio=0
+5 11
+2815 5 0: READY -> RUNNG cb=11 rem=121 prio=0
+2816 9 10: BLOCK -> READY
+---->PRIO preemption 5 by 9  ? 0 === TS=2819 now=2816----------
+2819 5 4: RUNNG -> READY  cb=7 rem=117 prio=0
+9 0
+----------------------------------myrandom------------------------------
+2819 9 3: READY -> RUNNG cb=10 rem=66 prio=0
+2823 9 4: RUNNG -> READY  cb=6 rem=62 prio=0
+5 7
+2823 5 4: READY -> RUNNG cb=7 rem=117 prio=0
+2827 5 4: RUNNG -> READY  cb=3 rem=113 prio=0
+9 6
+2827 9 4: READY -> RUNNG cb=6 rem=62 prio=0
+2831 9 4: RUNNG -> READY  cb=2 rem=58 prio=0
+5 3
+2831 5 4: READY -> RUNNG cb=3 rem=113 prio=0
+----------------------------------myrandom------------------------------
+2833 0 35: BLOCK -> READY
+---->PRIO preemption 5 by 0  ? 1 === TS=2834 now=2833----------YES
+pid : 5
+actually ran: 2
+prev run time : 3
+nxt_evt_ts : 2834
+ was started at : 2831
+have to run more : 1
+p rem : 110
+p tt : 237
+p burst left: 0
+p run time : 17
+2833 5 2: RUNNG -> READY  cb=1 rem=111 prio=0
+0 0
+----------------------------------myrandom------------------------------
+2833 0 0: READY -> RUNNG cb=27 rem=52 prio=1
+2837 0 4: RUNNG -> READY  cb=23 rem=48 prio=1
+9 2
+2837 9 6: READY -> RUNNG cb=2 rem=58 prio=0
+----------------------------------myrandom------------------------------
+2839 9 2: RUNNG -> BLOCK ib=4 rem=56
+0 23
+2839 0 2: READY -> RUNNG cb=23 rem=48 prio=0
+2843 9 4: BLOCK -> READY
+---->PRIO preemption 0 by 9  ? 0 === TS=2843 now=2843----------
+2843 0 4: RUNNG -> READY  cb=19 rem=44 prio=0
+9 0
+----------------------------------myrandom------------------------------
+2843 9 0: READY -> RUNNG cb=13 rem=56 prio=0
+2847 9 4: RUNNG -> READY  cb=9 rem=52 prio=0
+0 19
+2847 0 4: READY -> RUNNG cb=19 rem=44 prio=1
+2851 0 4: RUNNG -> READY  cb=15 rem=40 prio=1
+5 1
+2851 5 18: READY -> RUNNG cb=1 rem=111 prio=0
+----------------------------------myrandom------------------------------
+2852 5 1: RUNNG -> BLOCK ib=8 rem=110
+9 9
+2852 9 5: READY -> RUNNG cb=9 rem=52 prio=0
+2856 9 4: RUNNG -> READY  cb=5 rem=48 prio=0
+0 15
+2856 0 5: READY -> RUNNG cb=15 rem=40 prio=0
+2860 5 8: BLOCK -> READY
+---->PRIO preemption 0 by 5  ? 0 === TS=2860 now=2860----------
+2860 0 4: RUNNG -> READY  cb=11 rem=36 prio=0
+5 0
+----------------------------------myrandom------------------------------
+2860 5 0: READY -> RUNNG cb=9 rem=110 prio=0
+2864 5 4: RUNNG -> READY  cb=5 rem=106 prio=0
+0 11
+2864 0 4: READY -> RUNNG cb=11 rem=36 prio=1
+2868 0 4: RUNNG -> READY  cb=7 rem=32 prio=1
+9 5
+2868 9 12: READY -> RUNNG cb=5 rem=48 prio=0
+2872 9 4: RUNNG -> READY  cb=1 rem=44 prio=0
+5 5
+2872 5 8: READY -> RUNNG cb=5 rem=106 prio=0
+2876 5 4: RUNNG -> READY  cb=1 rem=102 prio=0
+0 7
+2876 0 8: READY -> RUNNG cb=7 rem=32 prio=0
+2880 0 4: RUNNG -> READY  cb=3 rem=28 prio=0
+0 3
+2880 0 0: READY -> RUNNG cb=3 rem=28 prio=1
+----------------------------------myrandom------------------------------
+2883 0 3: RUNNG -> BLOCK ib=14 rem=25
+9 1
+2883 9 11: READY -> RUNNG cb=1 rem=44 prio=0
+----------------------------------myrandom------------------------------
+2884 9 1: RUNNG -> BLOCK ib=5 rem=43
+5 1
+2884 5 8: READY -> RUNNG cb=1 rem=102 prio=0
+----------------------------------myrandom------------------------------
+2885 5 1: RUNNG -> BLOCK ib=18 rem=101
+2889 9 5: BLOCK -> READY
+
+9 0
+----------------------------------myrandom------------------------------
+2889 9 0: READY -> RUNNG cb=4 rem=43 prio=0
+----------------------------------myrandom------------------------------
+2893 9 4: RUNNG -> BLOCK ib=1 rem=39
+2894 9 1: BLOCK -> READY
+
+9 0
+----------------------------------myrandom------------------------------
+2894 9 0: READY -> RUNNG cb=16 rem=39 prio=0
+2897 0 14: BLOCK -> READY
+---->PRIO preemption 9 by 0  ? 1 === TS=2898 now=2897----------YES
+pid : 9
+actually ran: 3
+prev run time : 16
+nxt_evt_ts : 2898
+ was started at : 2894
+have to run more : 13
+p rem : 35
+p tt : 344
+p burst left: 12
+p run time : 12
+2897 9 3: RUNNG -> READY  cb=13 rem=36 prio=0
+0 0
+----------------------------------myrandom------------------------------
+2897 0 0: READY -> RUNNG cb=4 rem=25 prio=1
+----------------------------------myrandom------------------------------
+2901 0 4: RUNNG -> BLOCK ib=17 rem=21
+9 13
+2901 9 4: READY -> RUNNG cb=13 rem=36 prio=0
+2903 5 18: BLOCK -> READY
+---->PRIO preemption 9 by 5  ? 0 === TS=2905 now=2903----------
+2905 9 4: RUNNG -> READY  cb=9 rem=32 prio=0
+5 0
+----------------------------------myrandom------------------------------
+2905 5 2: READY -> RUNNG cb=14 rem=101 prio=0
+2909 5 4: RUNNG -> READY  cb=10 rem=97 prio=0
+9 9
+2909 9 4: READY -> RUNNG cb=9 rem=32 prio=0
+2913 9 4: RUNNG -> READY  cb=5 rem=28 prio=0
+5 10
+2913 5 4: READY -> RUNNG cb=10 rem=97 prio=0
+2917 5 4: RUNNG -> READY  cb=6 rem=93 prio=0
+9 5
+2917 9 4: READY -> RUNNG cb=5 rem=28 prio=0
+2918 0 17: BLOCK -> READY
+---->PRIO preemption 9 by 0  ? 1 === TS=2921 now=2918----------YES
+pid : 9
+actually ran: 1
+prev run time : 5
+nxt_evt_ts : 2921
+ was started at : 2917
+have to run more : 4
+p rem : 24
+p tt : 357
+p burst left: 1
+p run time : 1
+2918 9 1: RUNNG -> READY  cb=4 rem=27 prio=0
+0 0
+----------------------------------myrandom------------------------------
+2918 0 0: READY -> RUNNG cb=30 rem=21 prio=1
+2922 0 4: RUNNG -> READY  cb=26 rem=17 prio=1
+5 6
+2922 5 5: READY -> RUNNG cb=6 rem=93 prio=0
+2926 5 4: RUNNG -> READY  cb=2 rem=89 prio=0
+0 26
+2926 0 4: READY -> RUNNG cb=26 rem=17 prio=0
+2930 0 4: RUNNG -> READY  cb=22 rem=13 prio=0
+0 22
+2930 0 0: READY -> RUNNG cb=22 rem=13 prio=1
+2934 0 4: RUNNG -> READY  cb=18 rem=9 prio=1
+9 4
+2934 9 16: READY -> RUNNG cb=4 rem=27 prio=0
+----------------------------------myrandom------------------------------
+2938 9 4: RUNNG -> BLOCK ib=8 rem=23
+5 2
+2938 5 12: READY -> RUNNG cb=2 rem=89 prio=0
+----------------------------------myrandom------------------------------
+2940 5 2: RUNNG -> BLOCK ib=18 rem=87
+0 18
+2940 0 6: READY -> RUNNG cb=18 rem=9 prio=0
+2944 0 4: RUNNG -> READY  cb=14 rem=5 prio=0
+0 14
+2944 0 0: READY -> RUNNG cb=14 rem=5 prio=1
+2946 9 8: BLOCK -> READY
+---->PRIO preemption 0 by 9  ? 0 === TS=2948 now=2946----------
+2948 0 4: RUNNG -> READY  cb=10 rem=1 prio=1
+9 0
+----------------------------------myrandom------------------------------
+2948 9 2: READY -> RUNNG cb=17 rem=23 prio=0
+2952 9 4: RUNNG -> READY  cb=13 rem=19 prio=0
+0 10
+2952 0 4: READY -> RUNNG cb=10 rem=1 prio=0
+2953 0 1: Done
+9 13
+2953 9 1: READY -> RUNNG cb=13 rem=19 prio=0
+2957 9 4: RUNNG -> READY  cb=9 rem=15 prio=0
+9 9
+2957 9 0: READY -> RUNNG cb=9 rem=15 prio=0
+2958 5 18: BLOCK -> READY
+---->PRIO preemption 9 by 5  ? 0 === TS=2961 now=2958----------
+2961 9 4: RUNNG -> READY  cb=5 rem=11 prio=0
+5 0
+----------------------------------myrandom------------------------------
+2961 5 3: READY -> RUNNG cb=7 rem=87 prio=0
+2965 5 4: RUNNG -> READY  cb=3 rem=83 prio=0
+9 5
+2965 9 4: READY -> RUNNG cb=5 rem=11 prio=0
+2969 9 4: RUNNG -> READY  cb=1 rem=7 prio=0
+5 3
+2969 5 4: READY -> RUNNG cb=3 rem=83 prio=0
+----------------------------------myrandom------------------------------
+2972 5 3: RUNNG -> BLOCK ib=28 rem=80
+9 1
+2972 9 3: READY -> RUNNG cb=1 rem=7 prio=0
+----------------------------------myrandom------------------------------
+2973 9 1: RUNNG -> BLOCK ib=6 rem=6
+2979 9 6: BLOCK -> READY
+
+9 0
+----------------------------------myrandom------------------------------
+2979 9 0: READY -> RUNNG cb=12 rem=6 prio=0
+2983 9 4: RUNNG -> READY  cb=8 rem=2 prio=0
+9 8
+2983 9 0: READY -> RUNNG cb=8 rem=2 prio=0
+2985 9 2: Done
+3000 5 28: BLOCK -> READY
+
+5 0
+----------------------------------myrandom------------------------------
+3000 5 0: READY -> RUNNG cb=9 rem=80 prio=0
+3004 5 4: RUNNG -> READY  cb=5 rem=76 prio=0
+5 5
+3004 5 0: READY -> RUNNG cb=5 rem=76 prio=0
+3008 5 4: RUNNG -> READY  cb=1 rem=72 prio=0
+5 1
+3008 5 0: READY -> RUNNG cb=1 rem=72 prio=0
+----------------------------------myrandom------------------------------
+3009 5 1: RUNNG -> BLOCK ib=12 rem=71
+3021 5 12: BLOCK -> READY
+
+5 0
+----------------------------------myrandom------------------------------
+3021 5 0: READY -> RUNNG cb=6 rem=71 prio=0
+3025 5 4: RUNNG -> READY  cb=2 rem=67 prio=0
+5 2
+3025 5 0: READY -> RUNNG cb=2 rem=67 prio=0
+----------------------------------myrandom------------------------------
+3027 5 2: RUNNG -> BLOCK ib=24 rem=65
+3051 5 24: BLOCK -> READY
+
+5 0
+----------------------------------myrandom------------------------------
+3051 5 0: READY -> RUNNG cb=8 rem=65 prio=0
+3055 5 4: RUNNG -> READY  cb=4 rem=61 prio=0
+5 4
+3055 5 0: READY -> RUNNG cb=4 rem=61 prio=0
+----------------------------------myrandom------------------------------
+3059 5 4: RUNNG -> BLOCK ib=26 rem=57
+3085 5 26: BLOCK -> READY
+
+5 0
+----------------------------------myrandom------------------------------
+3085 5 0: READY -> RUNNG cb=4 rem=57 prio=0
+----------------------------------myrandom------------------------------
+3089 5 4: RUNNG -> BLOCK ib=8 rem=53
+3097 5 8: BLOCK -> READY
+
+5 0
+----------------------------------myrandom------------------------------
+3097 5 0: READY -> RUNNG cb=5 rem=53 prio=0
+3101 5 4: RUNNG -> READY  cb=1 rem=49 prio=0
+5 1
+3101 5 0: READY -> RUNNG cb=1 rem=49 prio=0
+----------------------------------myrandom------------------------------
+3102 5 1: RUNNG -> BLOCK ib=12 rem=48
+3114 5 12: BLOCK -> READY
+
+5 0
+----------------------------------myrandom------------------------------
+3114 5 0: READY -> RUNNG cb=6 rem=48 prio=0
+3118 5 4: RUNNG -> READY  cb=2 rem=44 prio=0
+5 2
+3118 5 0: READY -> RUNNG cb=2 rem=44 prio=0
+----------------------------------myrandom------------------------------
+3120 5 2: RUNNG -> BLOCK ib=18 rem=42
+3138 5 18: BLOCK -> READY
+
+5 0
+----------------------------------myrandom------------------------------
+3138 5 0: READY -> RUNNG cb=4 rem=42 prio=0
+----------------------------------myrandom------------------------------
+3142 5 4: RUNNG -> BLOCK ib=21 rem=38
+3163 5 21: BLOCK -> READY
+
+5 0
+----------------------------------myrandom------------------------------
+3163 5 0: READY -> RUNNG cb=1 rem=38 prio=0
+----------------------------------myrandom------------------------------
+3164 5 1: RUNNG -> BLOCK ib=5 rem=37
+3169 5 5: BLOCK -> READY
+
+5 0
+----------------------------------myrandom------------------------------
+3169 5 0: READY -> RUNNG cb=15 rem=37 prio=0
+3173 5 4: RUNNG -> READY  cb=11 rem=33 prio=0
+5 11
+3173 5 0: READY -> RUNNG cb=11 rem=33 prio=0
+3177 5 4: RUNNG -> READY  cb=7 rem=29 prio=0
+5 7
+3177 5 0: READY -> RUNNG cb=7 rem=29 prio=0
+3181 5 4: RUNNG -> READY  cb=3 rem=25 prio=0
+5 3
+3181 5 0: READY -> RUNNG cb=3 rem=25 prio=0
+----------------------------------myrandom------------------------------
+3184 5 3: RUNNG -> BLOCK ib=27 rem=22
+3211 5 27: BLOCK -> READY
+
+5 0
+----------------------------------myrandom------------------------------
+3211 5 0: READY -> RUNNG cb=12 rem=22 prio=0
+3215 5 4: RUNNG -> READY  cb=8 rem=18 prio=0
+5 8
+3215 5 0: READY -> RUNNG cb=8 rem=18 prio=0
+3219 5 4: RUNNG -> READY  cb=4 rem=14 prio=0
+5 4
+3219 5 0: READY -> RUNNG cb=4 rem=14 prio=0
+----------------------------------myrandom------------------------------
+3223 5 4: RUNNG -> BLOCK ib=26 rem=10
+3249 5 26: BLOCK -> READY
+
+5 0
+----------------------------------myrandom------------------------------
+3249 5 0: READY -> RUNNG cb=12 rem=10 prio=0
+3253 5 4: RUNNG -> READY  cb=8 rem=6 prio=0
+5 8
+3253 5 0: READY -> RUNNG cb=8 rem=6 prio=0
+3257 5 4: RUNNG -> READY  cb=4 rem=2 prio=0
+5 4
+3257 5 0: READY -> RUNNG cb=4 rem=2 prio=0
+3259 5 2: Done
+0000:    0  400   50   50 2 |  2953  2953   432  2121
+0001:    0  300   40   40 4 |  1902  1902   285  1317
+0002:    1  200   30   50 2 |  2413  2412   401  1811
+0003:    1  301   20   10 4 |  1479  1478   161  1016
+0004:    9  302   20   20 4 |  1741  1732   360  1070
+0005:   10  303   15   30 1 |  3259  3249   614  2332
+0006:   10  304    5   40 3 |  2617  2607  1922   381
+0007:   11  305   20   40 3 |  2241  2230   453  1472
+0008:   20  306   20   10 3 |  2185  2165   198  1661
+0009:   50  307   20   10 1 |  2985  2935   155  2473
+SUM: 3259 92.91 152.84 2366.30 1565.40 0.307
+end of program

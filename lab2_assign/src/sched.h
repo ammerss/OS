@@ -9,6 +9,7 @@ class Scheduler{
 	public:
 		Scheduler();
 		bool prior;
+		bool preempt;
 		string type;
 		int quantum;
 		deque <Process*> runQ;
@@ -24,6 +25,11 @@ class PRIO : public Scheduler{
 		PRIO();
 		void add_process(Process *p);
 		Process* get_next_process();
+};
+class PREPRIO : public PRIO{
+	public :
+		PREPRIO();
+		void add_process(Process *p);
 };
 class RR : public Scheduler{
 	public:

@@ -8,10 +8,40 @@ Scheduler::Scheduler(){
 	this->quantum = 0;
 	this->type = "";
 	this->prior = false;
+	this->preempt = false;
 }
 void Scheduler::add_process(Process *p){}
 Process* Scheduler::get_next_process(){Process *p;return p;}
 //bool test_preempt(Process *p, int curtime){return false;}
+//PREPRIO
+PREPRIO::PREPRIO(){
+	this->preempt = true;
+}
+void PREPRIO::add_process(Process *p){
+	/*if(p->preempt){
+		activeQ->push_front(p);
+		p->preempt = false;
+	}*/
+	//else{
+		if(p->dprio<0){//reset and enter into expiredQ
+                	p->dprio = p->prio-1;
+                	int pos = 0;
+                	for(auto e : *expireQ){
+                        	if(e->dprio < p->dprio)break;
+                        	pos++;
+                	}
+                expireQ->insert(expireQ->begin() + pos, p);
+        	}
+        	else{//add to activeQ
+                	int pos = 0;
+                	for(auto a : *activeQ){
+                        	if(a->dprio < p->dprio)break;
+                        	pos++;
+                	}
+                	activeQ->insert(activeQ->begin() + pos, p);
+        	}
+	//}
+}
 //PRIO
 PRIO::PRIO(){
 	activeQ = &runQ; 

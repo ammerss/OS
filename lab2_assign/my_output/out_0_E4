@@ -1,13 +1,300 @@
-4
+5
 src/main
+-v
 -sE4
 input0
-./rfile
+preemtive prio scheduler 
 read file : 
 0 100 10 10
+----------------------------------myrandom------------------------------
 500 100 20 10
-0
-500
-scehd : -sE4
-preemtive prio scheduler 
-hello world
+----------------------------------myrandom------------------------------
+0 0 0: CREATED -> READY
+
+0 0
+----------------------------------myrandom------------------------------
+0 0 0: READY -> RUNNG cb=8 rem=100 prio=1
+4 0 4: RUNNG -> READY  cb=4 rem=96 prio=1
+0 4
+4 0 0: READY -> RUNNG cb=4 rem=96 prio=0
+----------------------------------myrandom------------------------------
+8 0 4: RUNNG -> BLOCK ib=2 rem=92
+10 0 2: BLOCK -> READY
+
+0 0
+----------------------------------myrandom------------------------------
+10 0 0: READY -> RUNNG cb=10 rem=92 prio=1
+14 0 4: RUNNG -> READY  cb=6 rem=88 prio=1
+0 6
+14 0 0: READY -> RUNNG cb=6 rem=88 prio=0
+18 0 4: RUNNG -> READY  cb=2 rem=84 prio=0
+0 2
+18 0 0: READY -> RUNNG cb=2 rem=84 prio=1
+----------------------------------myrandom------------------------------
+20 0 2: RUNNG -> BLOCK ib=7 rem=82
+27 0 7: BLOCK -> READY
+
+0 0
+----------------------------------myrandom------------------------------
+27 0 0: READY -> RUNNG cb=7 rem=82 prio=1
+31 0 4: RUNNG -> READY  cb=3 rem=78 prio=1
+0 3
+31 0 0: READY -> RUNNG cb=3 rem=78 prio=0
+----------------------------------myrandom------------------------------
+34 0 3: RUNNG -> BLOCK ib=9 rem=75
+43 0 9: BLOCK -> READY
+
+0 0
+----------------------------------myrandom------------------------------
+43 0 0: READY -> RUNNG cb=7 rem=75 prio=1
+47 0 4: RUNNG -> READY  cb=3 rem=71 prio=1
+0 3
+47 0 0: READY -> RUNNG cb=3 rem=71 prio=0
+----------------------------------myrandom------------------------------
+50 0 3: RUNNG -> BLOCK ib=1 rem=68
+51 0 1: BLOCK -> READY
+
+0 0
+----------------------------------myrandom------------------------------
+51 0 0: READY -> RUNNG cb=9 rem=68 prio=1
+55 0 4: RUNNG -> READY  cb=5 rem=64 prio=1
+0 5
+55 0 0: READY -> RUNNG cb=5 rem=64 prio=0
+59 0 4: RUNNG -> READY  cb=1 rem=60 prio=0
+0 1
+59 0 0: READY -> RUNNG cb=1 rem=60 prio=1
+----------------------------------myrandom------------------------------
+60 0 1: RUNNG -> BLOCK ib=9 rem=59
+69 0 9: BLOCK -> READY
+
+0 0
+----------------------------------myrandom------------------------------
+69 0 0: READY -> RUNNG cb=1 rem=59 prio=1
+----------------------------------myrandom------------------------------
+70 0 1: RUNNG -> BLOCK ib=4 rem=58
+74 0 4: BLOCK -> READY
+
+0 0
+----------------------------------myrandom------------------------------
+74 0 0: READY -> RUNNG cb=6 rem=58 prio=1
+78 0 4: RUNNG -> READY  cb=2 rem=54 prio=1
+0 2
+78 0 0: READY -> RUNNG cb=2 rem=54 prio=0
+----------------------------------myrandom------------------------------
+80 0 2: RUNNG -> BLOCK ib=2 rem=52
+82 0 2: BLOCK -> READY
+
+0 0
+----------------------------------myrandom------------------------------
+82 0 0: READY -> RUNNG cb=2 rem=52 prio=1
+----------------------------------myrandom------------------------------
+84 0 2: RUNNG -> BLOCK ib=4 rem=50
+88 0 4: BLOCK -> READY
+
+0 0
+----------------------------------myrandom------------------------------
+88 0 0: READY -> RUNNG cb=2 rem=50 prio=1
+----------------------------------myrandom------------------------------
+90 0 2: RUNNG -> BLOCK ib=6 rem=48
+96 0 6: BLOCK -> READY
+
+0 0
+----------------------------------myrandom------------------------------
+96 0 0: READY -> RUNNG cb=9 rem=48 prio=1
+100 0 4: RUNNG -> READY  cb=5 rem=44 prio=1
+0 5
+100 0 0: READY -> RUNNG cb=5 rem=44 prio=0
+104 0 4: RUNNG -> READY  cb=1 rem=40 prio=0
+0 1
+104 0 0: READY -> RUNNG cb=1 rem=40 prio=1
+----------------------------------myrandom------------------------------
+105 0 1: RUNNG -> BLOCK ib=5 rem=39
+110 0 5: BLOCK -> READY
+
+0 0
+----------------------------------myrandom------------------------------
+110 0 0: READY -> RUNNG cb=9 rem=39 prio=1
+114 0 4: RUNNG -> READY  cb=5 rem=35 prio=1
+0 5
+114 0 0: READY -> RUNNG cb=5 rem=35 prio=0
+118 0 4: RUNNG -> READY  cb=1 rem=31 prio=0
+0 1
+118 0 0: READY -> RUNNG cb=1 rem=31 prio=1
+----------------------------------myrandom------------------------------
+119 0 1: RUNNG -> BLOCK ib=10 rem=30
+129 0 10: BLOCK -> READY
+
+0 0
+----------------------------------myrandom------------------------------
+129 0 0: READY -> RUNNG cb=2 rem=30 prio=1
+----------------------------------myrandom------------------------------
+131 0 2: RUNNG -> BLOCK ib=7 rem=28
+138 0 7: BLOCK -> READY
+
+0 0
+----------------------------------myrandom------------------------------
+138 0 0: READY -> RUNNG cb=3 rem=28 prio=1
+----------------------------------myrandom------------------------------
+141 0 3: RUNNG -> BLOCK ib=5 rem=25
+146 0 5: BLOCK -> READY
+
+0 0
+----------------------------------myrandom------------------------------
+146 0 0: READY -> RUNNG cb=7 rem=25 prio=1
+150 0 4: RUNNG -> READY  cb=3 rem=21 prio=1
+0 3
+150 0 0: READY -> RUNNG cb=3 rem=21 prio=0
+----------------------------------myrandom------------------------------
+153 0 3: RUNNG -> BLOCK ib=2 rem=18
+155 0 2: BLOCK -> READY
+
+0 0
+----------------------------------myrandom------------------------------
+155 0 0: READY -> RUNNG cb=2 rem=18 prio=1
+----------------------------------myrandom------------------------------
+157 0 2: RUNNG -> BLOCK ib=9 rem=16
+166 0 9: BLOCK -> READY
+
+0 0
+----------------------------------myrandom------------------------------
+166 0 0: READY -> RUNNG cb=1 rem=16 prio=1
+----------------------------------myrandom------------------------------
+167 0 1: RUNNG -> BLOCK ib=9 rem=15
+176 0 9: BLOCK -> READY
+
+0 0
+----------------------------------myrandom------------------------------
+176 0 0: READY -> RUNNG cb=10 rem=15 prio=1
+180 0 4: RUNNG -> READY  cb=6 rem=11 prio=1
+0 6
+180 0 0: READY -> RUNNG cb=6 rem=11 prio=0
+184 0 4: RUNNG -> READY  cb=2 rem=7 prio=0
+0 2
+184 0 0: READY -> RUNNG cb=2 rem=7 prio=1
+----------------------------------myrandom------------------------------
+186 0 2: RUNNG -> BLOCK ib=10 rem=5
+196 0 10: BLOCK -> READY
+
+0 0
+----------------------------------myrandom------------------------------
+196 0 0: READY -> RUNNG cb=5 rem=5 prio=1
+200 0 4: RUNNG -> READY  cb=1 rem=1 prio=1
+0 1
+200 0 0: READY -> RUNNG cb=1 rem=1 prio=0
+201 0 1: Done
+500 1 0: CREATED -> READY
+
+1 0
+----------------------------------myrandom------------------------------
+500 1 0: READY -> RUNNG cb=8 rem=100 prio=3
+504 1 4: RUNNG -> READY  cb=4 rem=96 prio=3
+1 4
+504 1 0: READY -> RUNNG cb=4 rem=96 prio=2
+----------------------------------myrandom------------------------------
+508 1 4: RUNNG -> BLOCK ib=10 rem=92
+518 1 10: BLOCK -> READY
+
+1 0
+----------------------------------myrandom------------------------------
+518 1 0: READY -> RUNNG cb=14 rem=92 prio=3
+522 1 4: RUNNG -> READY  cb=10 rem=88 prio=3
+1 10
+522 1 0: READY -> RUNNG cb=10 rem=88 prio=2
+526 1 4: RUNNG -> READY  cb=6 rem=84 prio=2
+1 6
+526 1 0: READY -> RUNNG cb=6 rem=84 prio=1
+530 1 4: RUNNG -> READY  cb=2 rem=80 prio=1
+1 2
+530 1 0: READY -> RUNNG cb=2 rem=80 prio=0
+----------------------------------myrandom------------------------------
+532 1 2: RUNNG -> BLOCK ib=1 rem=78
+533 1 1: BLOCK -> READY
+
+1 0
+----------------------------------myrandom------------------------------
+533 1 0: READY -> RUNNG cb=18 rem=78 prio=3
+537 1 4: RUNNG -> READY  cb=14 rem=74 prio=3
+1 14
+537 1 0: READY -> RUNNG cb=14 rem=74 prio=2
+541 1 4: RUNNG -> READY  cb=10 rem=70 prio=2
+1 10
+541 1 0: READY -> RUNNG cb=10 rem=70 prio=1
+545 1 4: RUNNG -> READY  cb=6 rem=66 prio=1
+1 6
+545 1 0: READY -> RUNNG cb=6 rem=66 prio=0
+549 1 4: RUNNG -> READY  cb=2 rem=62 prio=0
+1 2
+549 1 0: READY -> RUNNG cb=2 rem=62 prio=3
+----------------------------------myrandom------------------------------
+551 1 2: RUNNG -> BLOCK ib=4 rem=60
+555 1 4: BLOCK -> READY
+
+1 0
+----------------------------------myrandom------------------------------
+555 1 0: READY -> RUNNG cb=11 rem=60 prio=3
+559 1 4: RUNNG -> READY  cb=7 rem=56 prio=3
+1 7
+559 1 0: READY -> RUNNG cb=7 rem=56 prio=2
+563 1 4: RUNNG -> READY  cb=3 rem=52 prio=2
+1 3
+563 1 0: READY -> RUNNG cb=3 rem=52 prio=1
+----------------------------------myrandom------------------------------
+566 1 3: RUNNG -> BLOCK ib=4 rem=49
+570 1 4: BLOCK -> READY
+
+1 0
+----------------------------------myrandom------------------------------
+570 1 0: READY -> RUNNG cb=19 rem=49 prio=3
+574 1 4: RUNNG -> READY  cb=15 rem=45 prio=3
+1 15
+574 1 0: READY -> RUNNG cb=15 rem=45 prio=2
+578 1 4: RUNNG -> READY  cb=11 rem=41 prio=2
+1 11
+578 1 0: READY -> RUNNG cb=11 rem=41 prio=1
+582 1 4: RUNNG -> READY  cb=7 rem=37 prio=1
+1 7
+582 1 0: READY -> RUNNG cb=7 rem=37 prio=0
+586 1 4: RUNNG -> READY  cb=3 rem=33 prio=0
+1 3
+586 1 0: READY -> RUNNG cb=3 rem=33 prio=3
+----------------------------------myrandom------------------------------
+589 1 3: RUNNG -> BLOCK ib=3 rem=30
+592 1 3: BLOCK -> READY
+
+1 0
+----------------------------------myrandom------------------------------
+592 1 0: READY -> RUNNG cb=7 rem=30 prio=3
+596 1 4: RUNNG -> READY  cb=3 rem=26 prio=3
+1 3
+596 1 0: READY -> RUNNG cb=3 rem=26 prio=2
+----------------------------------myrandom------------------------------
+599 1 3: RUNNG -> BLOCK ib=3 rem=23
+602 1 3: BLOCK -> READY
+
+1 0
+----------------------------------myrandom------------------------------
+602 1 0: READY -> RUNNG cb=16 rem=23 prio=3
+606 1 4: RUNNG -> READY  cb=12 rem=19 prio=3
+1 12
+606 1 0: READY -> RUNNG cb=12 rem=19 prio=2
+610 1 4: RUNNG -> READY  cb=8 rem=15 prio=2
+1 8
+610 1 0: READY -> RUNNG cb=8 rem=15 prio=1
+614 1 4: RUNNG -> READY  cb=4 rem=11 prio=1
+1 4
+614 1 0: READY -> RUNNG cb=4 rem=11 prio=0
+----------------------------------myrandom------------------------------
+618 1 4: RUNNG -> BLOCK ib=2 rem=7
+620 1 2: BLOCK -> READY
+
+1 0
+----------------------------------myrandom------------------------------
+620 1 0: READY -> RUNNG cb=13 rem=7 prio=3
+624 1 4: RUNNG -> READY  cb=9 rem=3 prio=3
+1 9
+624 1 0: READY -> RUNNG cb=9 rem=3 prio=2
+627 1 3: Done
+0000:    0  100   10   10 2 |   201   201   101     0
+0001:  500  100   20   10 4 |   627   127    27     0
+SUM: 627 31.90 20.41 164.00 0.00 0.319
+end of program

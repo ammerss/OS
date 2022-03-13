@@ -19,6 +19,10 @@ public:
 	int time_in_prev;
 	int dprio;
 	int burst_left;	
+	int nxt_evt_ts;
+	bool preempted;
+	int prev_run_time;
+	bool gen_rand;
 
 	Process(int id_, int at_, int tc_, int cb_, int io_, int prio_);
 };
