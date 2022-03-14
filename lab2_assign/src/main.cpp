@@ -38,6 +38,10 @@ deque<Event*> eventQ;
 void insertEvent(Event* e);
 int myrandom(int burst);
 void printV(Event* e, bool verbose, int current_time);
+void select_sched(char* s);
+void preempt_process(Process *p, int cur_time);
+void simulation();
+void summary();
 
 void select_sched(char* s){
 	switch(s[0]){
