@@ -18,7 +18,6 @@ Process::Process(int id_, int at_, int tc_, int cb_, int io_, int prio_){
 	this->time_in_prev = at_;
 	this->dprio = prio_-1;
 	this->burst_left = 0;
-	this->preempted = false;
 	this->nxt_evt_ts = 0;
 	this->prev_run_time = 0;
 }

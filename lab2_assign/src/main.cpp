@@ -80,7 +80,6 @@ void select_sched(char* s){
 	}
 }
 void preempt_process(Process *p, int cur_time){
-	p->preempted = true;
 	//remove pending event
 	int pos = int(eventQ.size());
 	for(int i=0;i<eventQ.size();i++){
@@ -214,7 +213,6 @@ void simulation(){
 					if(scheduler->prior) proc->dprio --;
 					scheduler->add_process(proc);
 					CALL_SCHEDULER = true;
-					proc->preempted = false;
 					      }break;
 
 			case DONE:{
