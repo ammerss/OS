@@ -1,4 +1,3 @@
-# OS
 ## how to run linker.cpp
 ``` 
 make
