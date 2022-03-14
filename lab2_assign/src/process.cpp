@@ -21,7 +21,6 @@ Process::Process(int id_, int at_, int tc_, int cb_, int io_, int prio_){
 	this->preempted = false;
 	this->nxt_evt_ts = 0;
 	this->prev_run_time = 0;
-	this->gen_rand = false;
 }
 
 
