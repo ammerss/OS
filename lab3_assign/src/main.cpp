@@ -9,8 +9,9 @@
 #include "pte.h"
 #include "pager.h"
 #include "fte.h"
+#include "proc.h"
 using namespace std;
-const int MAX_VPAGES = 64;
+//const int MAX_VPAGES = 64;
 int MAX_FRAMES;
 typedef struct vma{
 	int pid;
@@ -20,10 +21,10 @@ typedef struct vma{
 	int wp;
 	int fp;
 };
-typedef struct proc{
+/*typedef struct proc{
 	int pid;
 	struct pte_t pagetable[MAX_VPAGES];
-};
+};*/
 vector<struct proc> process;
 //struct pte_t pagetable[MAX_VPAGES];
 vector<vma> vmas;
@@ -41,14 +42,19 @@ void print_pagetable(){
 		printf("PT[%d]: ",i);
 		for(int j=0;j<64;j++){
 			if(verify(i,j)==NULL)printf("*");
-			else {
-				printf("%d:",j);
-				if(pte[j].referenced) cout <<"R";
-				else cout <<"-";
-				if(pte[j].modified) cout << "M";
-				else cout <<"-";
-				if(pte[j].pagedout) cout<<"S";
-				else cout <<"-";
+			else{
+				int pte_i = pte[j].referenced*100 + pte[j].modified*10 + pte[j].pagedout;
+				if(pte_i == 0) printf("*");
+				else if(pte_i == 1) printf("#");
+				else{
+					printf("%d:",j);
+					if(pte[j].referenced) cout <<"R";
+					else cout <<"-";
+					if(pte[j].modified) cout << "M";
+					else cout <<"-";
+					if(pte[j].pagedout) cout<<"S";
+					else cout <<"-";
+				}
 			}
 			printf(" ");
 		}
@@ -94,8 +100,8 @@ int get_frame(){
 		free_pool.pop_front();
 	}
 	//else page fault
-	else 
-		idx = algo->select_victim_frame(frametable,cur_proc->pagetable);
+	else
+		idx = algo->select_victim_frame(frametable,process);
 	return idx;
 }
 vma* verify(int pid, int n){
@@ -111,9 +117,14 @@ vma* verify(int pid, int n){
 }
 int unmap(int pid, int pte_index, bool exit){
 	pte_t *pagetable = process[pid].pagetable;
+	if(exit){
+		pagetable[pte_index].referenced=0;
+		pagetable[pte_index].modified=0;
+		pagetable[pte_index].pagedout=0;
+	}
 	if(pagetable[pte_index].present==0) return -1;
-        pagetable[pte_index].present=0;
-        pagetable[pte_index].referenced=0;
+	pagetable[pte_index].present=0;
+	pagetable[pte_index].referenced=0;
         if(O) printf(" UNMAP %d:%d\n", pid, pte_index);
         if(pagetable[pte_index].modified==1){
         	pagetable[pte_index].modified=0;
@@ -138,9 +149,8 @@ int main(int argc, char *argv[]){
 			case 'a':
 				if (optarg[0] == 'f') algo = new FIFO();
 				else if(optarg[0] =='r') algo = new Random(argv[5]);
-				/*
 				else if(optarg[0] =='c') algo = new Clock();
-				else if(optarg[0] =='e') algo = new NRU();
+				/*else if(optarg[0] =='e') algo = new NRU();
 				else if(optarg[0] =='a') algo = new Aging();
 				else if(optarg[0] =='w') algo = new WorkingSet();*/
 				else algo = new FIFO();
@@ -176,10 +186,6 @@ int main(int argc, char *argv[]){
 			int sv, ev, wp, fm;
 			sscanf(line.c_str(), "%d %d %d %d", &sv, &ev, &wp, &fm);
 			num_vmas--;
-			/*for(int i=sv;i<=ev;i++){
-				vma temp = {prc_cnt,-1,i,wp,fm};
-				vmas.push_back(temp);
-			}*/
 			vma temp = {prc_cnt-1, sv, ev, wp, fm};
 			vmas.push_back(temp);
 			cout <<prc_cnt-1 << " " <<sv <<" " <<ev << " " << wp << " " << fm <<endl;
@@ -210,6 +216,8 @@ int main(int argc, char *argv[]){
 				if(frame_num==-1) continue;
 				//return frames
                 		free_pool.push_back(frame_num);
+				frametable[frame_num].page_num=-1;
+				frametable[frame_num].proc_num=-1;
 			}
 		}
 		else{
@@ -243,6 +251,7 @@ int main(int argc, char *argv[]){
 			}
 			
 			//proceed instruction
+			cout <<"proceeding instruction " << endl;
 			pagetable[n].referenced = 1;
 			if(ins=='w'){
 				if(pagetable[n].write_protect==0)pagetable[n].modified = 1;
