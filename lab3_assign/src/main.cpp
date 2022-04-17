@@ -43,9 +43,11 @@ void print_pagetable(){
 		for(int j=0;j<64;j++){
 			if(verify(i,j)==NULL)printf("*");
 			else{
-				int pte_i = pte[j].referenced*100 + pte[j].modified*10 + pte[j].pagedout;
-				if(pte_i == 0) printf("*");
-				else if(pte_i == 1) printf("#");
+				//int pte_i = pte[j].referenced*100 + pte[j].modified*10 + pte[j].pagedout;
+				if(pte[j].present == 0){
+				       	if(pte[j].pagedout==1) printf("#");
+					else printf("*");
+				}
 				else{
 					printf("%d:",j);
 					if(pte[j].referenced) cout <<"R";
@@ -204,7 +206,7 @@ int main(int argc, char *argv[]){
 		sscanf(line.c_str(), "%c %d", &ins, &n);
 		if(O) printf("%d: ==> %c %d\n",cnt,ins,n);
 		cnt++;
-		print_frametable();
+		//print_frametable();
 		if(ins=='c'){
 			cur_proc = &process[n];
 		}
@@ -251,7 +253,6 @@ int main(int argc, char *argv[]){
 			}
 			
 			//proceed instruction
-			cout <<"proceeding instruction " << endl;
 			pagetable[n].referenced = 1;
 			if(ins=='w'){
 				if(pagetable[n].write_protect==0)pagetable[n].modified = 1;

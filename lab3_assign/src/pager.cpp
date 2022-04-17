@@ -44,26 +44,21 @@ int Random::select_victim_frame(vector<fte_t> frametable, vector<proc> &process)
 Clock::Clock(){
 	this->hand = NULL;
 }
-void p(vector<proc> &process){
+/*void p(vector<proc> &process){
 for(int i=0;i<64;i++){
                 printf("page %d referenced %d\n", i, process[0].pagetable[i].referenced);
         }
 process[0].pagetable[0].referenced=0;
 
-}
+}*/
 int Clock::select_victim_frame(vector<fte_t> frametable, vector<proc> &process){
 	while(1){
-		//p(process);
 		if(hand==&frametable[frametable.size()-1] || hand==NULL) hand = &frametable[0];
 		else hand++;
 		int pid = hand->proc_num;
-		int page = hand->page_num;
-		//pte_t *pagetable = process[pid].pagetable;
-		printf("proc %d page %d referenced %d\n", pid, page, process[pid].pagetable[page].referenced);	
+		int page = hand->page_num;	
 		if(process[pid].pagetable[page].referenced==0) break;
 		else process[pid].pagetable[page].referenced = 0;
-		printf("page %d referecned %d to 0 \n", page, process[pid].pagetable[page].referenced);
-		cout <<"moving to next page" <<endl;
 	}
 	
 	return hand-&frametable[0];
