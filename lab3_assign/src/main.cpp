@@ -21,10 +21,6 @@ typedef struct vma{
 	int wp;
 	int fp;
 };
-/*typedef struct proc{
-	int pid;
-	struct pte_t pagetable[MAX_VPAGES];
-};*/
 vector<struct proc> process;
 //struct pte_t pagetable[MAX_VPAGES];
 vector<vma> vmas;
@@ -152,8 +148,8 @@ int main(int argc, char *argv[]){
 				if (optarg[0] == 'f') algo = new FIFO();
 				else if(optarg[0] =='r') algo = new Random(argv[5]);
 				else if(optarg[0] =='c') algo = new Clock();
-				/*else if(optarg[0] =='e') algo = new NRU();
-				else if(optarg[0] =='a') algo = new Aging();
+				else if(optarg[0] =='e') algo = new NRU();
+				/*else if(optarg[0] =='a') algo = new Aging();
 				else if(optarg[0] =='w') algo = new WorkingSet();*/
 				else algo = new FIFO();
 				break;
@@ -206,6 +202,7 @@ int main(int argc, char *argv[]){
 		sscanf(line.c_str(), "%c %d", &ins, &n);
 		if(O) printf("%d: ==> %c %d\n",cnt,ins,n);
 		cnt++;
+		algo->ins_cnt++;
 		//print_frametable();
 		if(ins=='c'){
 			cur_proc = &process[n];
