@@ -38,7 +38,9 @@ void print_pagetable(){
 	for(int i=0;i<process.size();i++){
 		pte_t *pte = process[i].pagetable;
 		printf("PT[%d]: ",i);
+		//printf("%d %d %d, pte[j].referenced
 		for(int j=0;j<64;j++){
+			//printf("%d:%d %d\n",i,j,pte[j].pagedout);
 			if(verify(i,j)==NULL)printf("*");
 			else{
 				//int pte_i = pte[j].referenced*100 + pte[j].modified*10 + pte[j].pagedout;
@@ -137,12 +139,15 @@ vma* verify(int pid, int n){
 }
 int unmap(int pid, int pte_index, bool exit){
 	pte_t *pagetable = process[pid].pagetable;
-	if(exit){
+	/*if(exit){
 		pagetable[pte_index].referenced=0;
 		pagetable[pte_index].modified=0;
 		pagetable[pte_index].pagedout=0;
+	}*/
+	if(pagetable[pte_index].present==0){
+	       	if(exit)pagetable[pte_index].pagedout=0;
+		return -1;
 	}
-	if(pagetable[pte_index].present==0) return -1;
 	pagetable[pte_index].present=0;
 	pagetable[pte_index].referenced=0;
         if(O) printf(" UNMAP %d:%d\n", pid, pte_index);
@@ -151,7 +156,7 @@ int unmap(int pid, int pte_index, bool exit){
         if(pagetable[pte_index].modified==1){
         	pagetable[pte_index].modified=0;
                 pagetable[pte_index].pagedout=1;
-		if(pagetable[pte_index].file_mapped==1 && !exit){
+		if(pagetable[pte_index].file_mapped==1){
 			if(O)printf(" FOUT\n");
 			cost += 2400;
 			process[pid].fouts++;
@@ -162,6 +167,12 @@ int unmap(int pid, int pte_index, bool exit){
 			process[pid].outs++;
 		}
         }
+	if(exit){
+                pagetable[pte_index].referenced=0;
+                pagetable[pte_index].modified=0;
+                pagetable[pte_index].pagedout=0;
+        }
+
 	return pagetable[pte_index].frame_num;
 }
 
