@@ -74,7 +74,7 @@ void init(){
 	cout << "prc_cnt: " <<prc_cnt << endl;
 	//init free frames
 	for(int i=0;i<MAX_FRAMES;i++){
-		fte_t fte ={-1,-1};
+		fte_t fte ={-1,-1,0};
 		frametable.push_back(fte);
 		free_pool.push_back(i);
 	}
@@ -136,6 +136,7 @@ int unmap(int pid, int pte_index, bool exit){
 int main(int argc, char *argv[]){
 	extern char *optarg;
 	char c;
+	cout << argc << endl;
 	cout << argv[0] << endl;
 	cout << argv[1] << endl;
 	cout << argv[2] << endl;
@@ -146,11 +147,11 @@ int main(int argc, char *argv[]){
 		switch(c){
 			case 'a':
 				if (optarg[0] == 'f') algo = new FIFO();
-				else if(optarg[0] =='r') algo = new Random(argv[5]);
+				else if(optarg[0] =='r') algo = new Random(argv[argc-1]);
 				else if(optarg[0] =='c') algo = new Clock();
 				else if(optarg[0] =='e') algo = new NRU();
-				/*else if(optarg[0] =='a') algo = new Aging();
-				else if(optarg[0] =='w') algo = new WorkingSet();*/
+				else if(optarg[0] =='a') algo = new Aging();
+				/*else if(optarg[0] =='w') algo = new WorkingSet();*/
 				else algo = new FIFO();
 				break;
 			case 'f':
@@ -203,7 +204,7 @@ int main(int argc, char *argv[]){
 		if(O) printf("%d: ==> %c %d\n",cnt,ins,n);
 		cnt++;
 		algo->ins_cnt++;
-		//print_frametable();
+		print_frametable();
 		if(ins=='c'){
 			cur_proc = &process[n];
 		}
@@ -217,6 +218,7 @@ int main(int argc, char *argv[]){
                 		free_pool.push_back(frame_num);
 				frametable[frame_num].page_num=-1;
 				frametable[frame_num].proc_num=-1;
+				frametable[frame_num].age=0;
 			}
 		}
 		else{
