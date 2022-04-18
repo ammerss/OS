@@ -114,16 +114,15 @@ string toBinary(unsigned int n){
 int Aging::select_victim_frame(vector<fte_t> &frametable, vector<proc> &process){
 	int min = -1;
 	unsigned int minAge = 0xffffffff;
-	fte_t *start = hand;
-	int flag = 0;
+	//fte_t *start = hand;
+	//int flag = 0;
 	for(int cnt=0;cnt<frametable.size();cnt++){
-	//while(1){
 		if(hand==&frametable[frametable.size()-1] || hand==NULL)hand = &frametable[0];
 		else hand++;
 		int pid = hand->proc_num;
 		int page = hand->page_num;
 		int i = hand-&frametable[0];
-		unsigned int age = hand->age;
+		//unsigned int age = hand->age;
 		//printf("hand %d age\t",i);
 		//cout << toBinary(frametable[i].age)<<" ";
 		frametable[i].age = frametable[i].age >> 1;
@@ -139,5 +138,47 @@ int Aging::select_victim_frame(vector<fte_t> &frametable, vector<proc> &process)
 	}
 	this->hand = &frametable[min];
 	frametable[min].age=0;
+	return min;
+}
+WorkingSet::WorkingSet(){
+	this->hand = NULL;
+	this->ins_cnt = 0;
+}
+int WorkingSet::select_victim_frame(vector<fte_t> &frametable, vector<proc> &process){
+	int min = -1;
+	unsigned int minAge = 0xffffffff;
+	for(int cnt=0;cnt<frametable.size();cnt++){
+		if(hand==&frametable[frametable.size()-1] || hand==NULL)hand=&frametable[0];
+		else hand++;
+		int pid = hand->proc_num;
+		int page = hand->page_num;
+		int i = hand-&frametable[0];
+		if(process[pid].pagetable[page].referenced==1){
+			frametable[i].age = ins_cnt;
+			process[pid].pagetable[page].referenced=0;
+		}
+		else{
+			if(ins_cnt - frametable[i].age >= 50){
+				min = i;
+				break;
+			}
+			else{
+				if(frametable[i].age < minAge){
+					minAge = frametable[i].age;
+					min = i;
+				}
+			}
+		}
+		//printf("hand %d \t\t",i);
+		//cout << frametable[i].age << endl;
+	}
+	if(min==-1){
+		if(hand==&frametable[frametable.size()-1] || hand==NULL) hand = &frametable[0];
+		else hand++;
+		min = hand-&frametable[0];
+	}
+	//cout << "cur time : " << ins_cnt << endl;
+	this->hand= &frametable[min];
+	frametable[min].age= ins_cnt;
 	return min;
 }

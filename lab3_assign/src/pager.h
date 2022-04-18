@@ -48,4 +48,10 @@ class Aging : public Pager{
 		fte_t *hand;
 		int select_victim_frame(vector<fte_t> &frametable, vector<proc> &process);
 };
+class WorkingSet : public Pager{
+	public:
+		WorkingSet();
+		fte_t *hand;
+		int select_victim_frame(vector<fte_t> &frametable, vector<proc> &process);
+};
 #endif

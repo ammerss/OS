@@ -7,5 +7,6 @@ const int MAX_VPAGES=64;
 typedef struct proc{
 	int pid;
 	struct pte_t pagetable[MAX_VPAGES];
+	unsigned long unmaps,maps,ins,outs,fins,fouts,zeros,segv,segprot;
 };
 #endif
