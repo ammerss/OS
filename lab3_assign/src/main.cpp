@@ -11,18 +11,15 @@
 #include "fte.h"
 #include "proc.h"
 using namespace std;
-//const int MAX_VPAGES = 64;
 int MAX_FRAMES;
 typedef struct vma{
 	int pid;
-	//int vpage;
 	int sv;
 	int ev;
 	int wp;
 	int fp;
 };
 vector<struct proc> process;
-//struct pte_t pagetable[MAX_VPAGES];
 vector<vma> vmas;
 vector<fte_t> frametable;
 deque<int> free_pool;
@@ -31,19 +28,15 @@ int prc_cnt;
 Pager* algo;
 unsigned long long cost;
 unsigned long inst_cnt, ctx_switches, process_exits;
-//pte_t pagetable[MAX_VPAGES];
 vma* verify(int pid, int n);
 bool O=false, P=false, F=false, S=false;
 void print_pagetable(){
 	for(int i=0;i<process.size();i++){
 		pte_t *pte = process[i].pagetable;
 		printf("PT[%d]: ",i);
-		//printf("%d %d %d, pte[j].referenced
 		for(int j=0;j<64;j++){
-			//printf("%d:%d %d\n",i,j,pte[j].pagedout);
 			if(verify(i,j)==NULL)printf("*");
 			else{
-				//int pte_i = pte[j].referenced*100 + pte[j].modified*10 + pte[j].pagedout;
 				if(pte[j].present == 0){
 				       	if(pte[j].pagedout==1&&pte[j].file_mapped==0) printf("#");
 					else printf("*");
@@ -84,15 +77,12 @@ void print_statistics(){
 			inst_cnt, ctx_switches, process_exits, cost, sizeof(pte_t));
 }
 void init(){
-	/*cout << "max frames: " << MAX_FRAMES << endl;
-	cout << "prc_cnt: " <<prc_cnt << endl;*/
 	//init free frames
 	for(int i=0;i<MAX_FRAMES;i++){
 		fte_t fte ={-1,-1,0};
 		frametable.push_back(fte);
 		free_pool.push_back(i);
 	}
-	//cout <<" made free pool" << endl;
 	//init pte
 	for(int i=0;i<prc_cnt;i++){
 		struct proc prc;
@@ -112,7 +102,6 @@ void init(){
 		}
 		process.push_back(prc);
 	}
-	//cout <<"done" <<endl;
 }
 int get_frame(){
 	int idx;
@@ -126,24 +115,15 @@ int get_frame(){
 	return idx;
 }
 vma* verify(int pid, int n){
-	//int pid = cur_proc->pid;
 	for(int i=0;i<vmas.size();i++){
-		//cout << vmas[i].pid << endl;
 		if(vmas[i].pid==pid){
-			if(vmas[i].sv <= n && vmas[i].ev >=n){
-				return &vmas[i];
-			}
+			if(vmas[i].sv <= n && vmas[i].ev >=n)return &vmas[i];
 		}
 	}
 	return NULL;
 }
 int unmap(int pid, int pte_index, bool exit){
 	pte_t *pagetable = process[pid].pagetable;
-	/*if(exit){
-		pagetable[pte_index].referenced=0;
-		pagetable[pte_index].modified=0;
-		pagetable[pte_index].pagedout=0;
-	}*/
 	if(pagetable[pte_index].present==0){
 	       	if(exit)pagetable[pte_index].pagedout=0;
 		return -1;
@@ -179,13 +159,6 @@ int unmap(int pid, int pte_index, bool exit){
 int main(int argc, char *argv[]){
 	extern char *optarg;
 	char c;
-	/*cout << argc << endl;
-	cout << argv[0] << endl;
-	cout << argv[1] << endl;
-	cout << argv[2] << endl;
-	cout << argv[3] << endl;
-	cout << argv[4] << endl;
-	cout << argv[5] << endl;*/
 	while((c=getopt(argc,argv,"a:o:f:")) != -1){
 		switch(c){
 			case 'a':
@@ -195,7 +168,6 @@ int main(int argc, char *argv[]){
 				else if(optarg[0] =='e') algo = new NRU();
 				else if(optarg[0] =='a') algo = new Aging();
 				else if(optarg[0] =='w') algo = new WorkingSet();
-				//else algo = new FIFO();
 				break;
 			case 'f':
 				sscanf(optarg, "%d", &MAX_FRAMES);
