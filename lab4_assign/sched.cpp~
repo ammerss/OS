@@ -103,10 +103,7 @@ void LOOK::set_dir(int active_track, int cur_track, int &dir){}
 CLOOK::CLOOK(){flag = 0;}
 IO* CLOOK::get_next_io(int &cur_track, int &dir){
 	IO *io = NULL;
-	if(flag==1){
-		dir = 1;
-		flag = 2;
-	}
+	if(flag==1) flag=2;
         if(!ioQ.empty()){
                 int min_seektime = -1;
                 int pos = -1;
@@ -150,9 +147,6 @@ IO* CLOOK::get_next_io(int &cur_track, int &dir){
 	return io;
 }
 void CLOOK::set_dir(int active_track, int cur_track, int &dir){
-	if(flag == 2) {
-		dir = 1;
-		flag = 0;
-	}
+	if(flag == 2) dir = 1;
 }
 

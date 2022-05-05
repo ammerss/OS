@@ -32,4 +32,11 @@ class LOOK : public Scheduler{
 		IO* get_next_io(int &cur_track, int &dir);
 		void set_dir(int active_track, int cur_track, int &dir);
 };
+class CLOOK : public Scheduler{
+	public:
+		CLOOK();
+		int flag;
+		IO* get_next_io(int &cur_track, int &dir);
+		void set_dir(int active_track, int cur_track, int &dir);
+};
 #endif
