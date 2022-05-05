@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Author: Hubertus Franke  (frankeh@nyu.edu)
-OUTDIR=${1:-.}
+OUTDIR=${1:-./my_output}
 shift
-SCHED=${*:-../src/iosched}
+SCHED=${*:-./main}
 
 echo "outdir=<$OUTDIR> sched=<$SCHED>"
 
