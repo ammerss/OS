@@ -1,88 +1,58 @@
 gradeit.sh my_output/ refout refout/LOG.txt
-diff -b -q my_output//out_0_s refout/out_0_s failed
-   DIR1-SUM ==> SUM: 531 530 236.60 183.60 370
-   DIR2-SUM ==> SUM: 233 232 93.80 70.60 133
 diff -b -q my_output//out_0_c refout/out_0_c failed
    DIR1-SUM ==> SUM: 531 530 236.60 183.60 370
    DIR2-SUM ==> SUM: 351 350 142.60 107.60 240
 diff -b -q my_output//out_0_f refout/out_0_f failed
    DIR1-SUM ==> SUM: 531 530 236.60 183.60 370
    DIR2-SUM ==> SUM: 341 340 133.20 99.20 196
-diff -b -q my_output//out_1_s refout/out_1_s failed
-   DIR1-SUM ==> SUM: 3375 3374 830.75 662.05 1256
-   DIR2-SUM ==> SUM: 2753 2752 358.85 221.25 736
 diff -b -q my_output//out_1_c refout/out_1_c failed
    DIR1-SUM ==> SUM: 3375 3374 830.75 662.05 1256
    DIR2-SUM ==> SUM: 2513 2512 356.35 230.75 787
 diff -b -q my_output//out_1_f refout/out_1_f failed
    DIR1-SUM ==> SUM: 3375 3374 830.75 662.05 1256
    DIR2-SUM ==> SUM: 2879 2878 515.25 371.35 1000
-diff -b -q my_output//out_2_s refout/out_2_s failed
-   DIR1-SUM ==> SUM: 1888 1887 293.12 255.38 376
-   DIR2-SUM ==> SUM: 1624 1541 78.80 47.98 189
 diff -b -q my_output//out_2_c refout/out_2_c failed
    DIR1-SUM ==> SUM: 1888 1887 293.12 255.38 376
    DIR2-SUM ==> SUM: 1624 1567 82.94 51.60 197
 diff -b -q my_output//out_2_f refout/out_2_f failed
    DIR1-SUM ==> SUM: 1888 1887 293.12 255.38 376
    DIR2-SUM ==> SUM: 1624 1555 103.20 72.10 253
-diff -b -q my_output//out_3_s refout/out_3_s failed
-   DIR1-SUM ==> SUM: 15481 15480 1623.95 1469.15 2657
-   DIR2-SUM ==> SUM: 13035 11898 283.99 165.01 740
 diff -b -q my_output//out_3_c refout/out_3_c failed
    DIR1-SUM ==> SUM: 15481 15480 1623.95 1469.15 2657
    DIR2-SUM ==> SUM: 13035 12322 349.71 226.49 790
 diff -b -q my_output//out_3_f refout/out_3_f failed
    DIR1-SUM ==> SUM: 15481 15480 1623.95 1469.15 2657
    DIR2-SUM ==> SUM: 13035 12158 351.43 229.85 1000
-diff -b -q my_output//out_4_s refout/out_4_s failed
-   DIR1-SUM ==> SUM: 4014 4013 1653.36 1573.10 2793
-   DIR2-SUM ==> SUM: 1441 1440 192.32 163.52 433
 diff -b -q my_output//out_4_c refout/out_4_c failed
    DIR1-SUM ==> SUM: 4014 4013 1653.36 1573.10 2793
    DIR2-SUM ==> SUM: 1602 1601 259.40 227.38 489
 diff -b -q my_output//out_4_f refout/out_4_f failed
    DIR1-SUM ==> SUM: 4014 4013 1653.36 1573.10 2793
    DIR2-SUM ==> SUM: 1441 1440 254.20 225.40 443
-diff -b -q my_output//out_5_s refout/out_5_s failed
-   DIR1-SUM ==> SUM: 1691 1690 568.55 484.05 889
-   DIR2-SUM ==> SUM: 1003 1002 183.55 133.45 373
 diff -b -q my_output//out_5_c refout/out_5_c failed
    DIR1-SUM ==> SUM: 1691 1690 568.55 484.05 889
    DIR2-SUM ==> SUM: 1075 1074 243.85 190.15 406
 diff -b -q my_output//out_5_f refout/out_5_f failed
    DIR1-SUM ==> SUM: 1691 1690 568.55 484.05 889
    DIR2-SUM ==> SUM: 1003 1002 234.35 184.25 487
-diff -b -q my_output//out_6_s refout/out_6_s failed
-   DIR1-SUM ==> SUM: 15806 15805 6341.81 6183.76 12905
-   DIR2-SUM ==> SUM: 3443 3442 382.05 347.63 948
 diff -b -q my_output//out_6_c refout/out_6_c failed
    DIR1-SUM ==> SUM: 15806 15805 6341.81 6183.76 12905
    DIR2-SUM ==> SUM: 3443 3442 527.37 492.95 1124
 diff -b -q my_output//out_6_f refout/out_6_f failed
    DIR1-SUM ==> SUM: 15806 15805 6341.81 6183.76 12905
    DIR2-SUM ==> SUM: 3443 3442 512.69 478.27 913
-diff -b -q my_output//out_7_s refout/out_7_s failed
-   DIR1-SUM ==> SUM: 7179 7178 3042.94 2953.21 5254
-   DIR2-SUM ==> SUM: 2173 2172 280.94 253.79 583
 diff -b -q my_output//out_7_c refout/out_7_c failed
    DIR1-SUM ==> SUM: 7179 7178 3042.94 2953.21 5254
    DIR2-SUM ==> SUM: 2135 2134 319.11 292.44 684
 diff -b -q my_output//out_7_f refout/out_7_f failed
    DIR1-SUM ==> SUM: 7179 7178 3042.94 2953.21 5254
    DIR2-SUM ==> SUM: 2174 2173 324.24 297.07 583
-diff -b -q my_output//out_8_s refout/out_8_s failed
-   DIR1-SUM ==> SUM: 24065 24064 9024.70 8723.90 16657
-   DIR2-SUM ==> SUM: 7618 7617 660.98 565.76 1435
 diff -b -q my_output//out_8_c refout/out_8_c failed
    DIR1-SUM ==> SUM: 24065 24064 9024.70 8723.90 16657
    DIR2-SUM ==> SUM: 7656 7655 910.40 814.71 2105
 diff -b -q my_output//out_8_f refout/out_8_f failed
    DIR1-SUM ==> SUM: 24065 24064 9024.70 8723.90 16657
    DIR2-SUM ==> SUM: 7784 7783 953.30 856.01 1950
-diff -b -q my_output//out_9_s refout/out_9_s failed
-   DIR1-SUM ==> SUM: 83197 83196 30467.42 30301.03 59200
-   DIR2-SUM ==> SUM: 24358 24357 374.44 325.72 952
 diff -b -q my_output//out_9_c refout/out_9_c failed
    DIR1-SUM ==> SUM: 83197 83196 30467.42 30301.03 59200
    DIR2-SUM ==> SUM: 24642 24641 502.48 453.20 1309

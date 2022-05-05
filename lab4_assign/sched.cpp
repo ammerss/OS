@@ -56,3 +56,48 @@ void SSTF::set_dir(int active_track, int cur_track, int &dir){
 	else dir = -1;
 }
 
+LOOK::LOOK(){}
+IO* LOOK::get_next_io(int &cur_track, int &dir){
+	IO *io = NULL;
+	if(!ioQ.empty()){
+		int min_seektime = -1;
+		int pos = -1;
+		for(unsigned int i=0;i<ioQ.size();i++){
+			int seektime = ioQ[i]->track - cur_track;
+			if(dir==1 && seektime <0) continue;
+			if(dir==-1 && seektime>0) continue;
+			seektime = abs(seektime);
+			if(seektime < min_seektime || pos == -1){
+				min_seektime = seektime;
+				pos = i;
+			}
+		}
+		if(pos!=-1){
+			io = ioQ[pos];
+			ioQ.erase(ioQ.begin() + pos);
+		}
+	}
+	if(io!=NULL) return io;
+	dir = -dir;
+	if(!ioQ.empty()){
+                int min_seektime = -1;
+                int pos = -1;
+                for(unsigned int i=0;i<ioQ.size();i++){
+                        int seektime = ioQ[i]->track - cur_track;
+                        if(dir==1 && seektime <0) continue;
+                        if(dir==-1 && seektime>0) continue;
+                        seektime = abs(seektime);
+                        if(seektime < min_seektime || pos == -1){
+                                min_seektime = seektime;
+                                pos = i;
+                        }
+                }
+                if(pos!=-1){
+                        io = ioQ[pos];
+                        ioQ.erase(ioQ.begin() + pos);
+                }
+        }
+	return io;
+}
+void LOOK::set_dir(int active_track, int cur_track, int &dir){}
+
