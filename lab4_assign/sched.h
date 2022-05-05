@@ -20,4 +20,10 @@ class FIFO : public Scheduler{
 		IO* get_next_io(int &cur_track, int &dir);
 		void set_dir(int active_track, int cur_track, int &dir);
 };
+class SSTF : public Scheduler{
+	public:
+		SSTF();
+		IO* get_next_io(int &cur_track, int &dir);
+		void set_dir(int active_track, int cur_track, int &dir);
+};
 #endif

@@ -15,6 +15,7 @@ int main(int argc, char *argv[]){
 		switch(c){
 			case 's':
 				if (optarg[0] == 'i') sched = new FIFO();
+				else if(optarg[0] == 'j') sched = new SSTF();
 				else sched = new FIFO();
 				break;
 			case 'v':
@@ -66,7 +67,7 @@ int main(int argc, char *argv[]){
 				if(active->track == cur_track)continue;
 				//cout << "starting to search for " <<active->track<<endl;
 			}
-			if(active==NULL && sched->empty() && cnt>=io_list.size()-2)break;
+			if(active==NULL && sched->empty() && cnt>=io_list.size())break;
 			//if(active==NULL && cnt < io_list.size())continue;
 			//active->start_time = time;
 			//sched->set_dir(active->track, cur_track, dir);

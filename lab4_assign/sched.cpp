@@ -33,3 +33,26 @@ void FIFO::set_dir(int active_track, int cur_track, int &dir){
 		dir=-1;
 }
 
+SSTF::SSTF(){}
+IO* SSTF::get_next_io(int &cur_track, int &dir){
+	IO *io =NULL;
+	if(!ioQ.empty()){
+		int min_seektime = abs(ioQ[0]->track - cur_track);
+		int pos = 0;
+		for(unsigned int i=1; i<ioQ.size();i++){
+			int seektime = abs(ioQ[i]->track - cur_track);
+			if(seektime < min_seektime){
+				min_seektime = seektime;
+				pos = i;	
+			}
+		}
+		io = ioQ[pos];
+		ioQ.erase(ioQ.begin() + pos);
+	}
+	return io;
+}
+void SSTF::set_dir(int active_track, int cur_track, int &dir){
+	if(cur_track < active_track) dir = 1;
+	else dir = -1;
+}
+
