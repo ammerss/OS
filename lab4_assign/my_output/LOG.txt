@@ -1,0 +1,31 @@
+gradeit.sh refout my_output/ my_output//LOG.txt
+diff -b -q refout/out_0_f my_output//out_0_f failed
+   DIR1-SUM ==> SUM: 341 340 133.20 99.20 196
+   DIR2-SUM ==> SUM: 233 232 93.80 70.60 133
+diff -b -q refout/out_1_f my_output//out_1_f failed
+   DIR1-SUM ==> SUM: 2879 2878 515.25 371.35 1000
+   DIR2-SUM ==> SUM: 2753 2752 358.85 221.25 736
+diff -b -q refout/out_2_f my_output//out_2_f failed
+   DIR1-SUM ==> SUM: 1624 1555 103.20 72.10 253
+   DIR2-SUM ==> SUM: 1624 1541 78.80 47.98 189
+diff -b -q refout/out_3_f my_output//out_3_f failed
+   DIR1-SUM ==> SUM: 13035 12158 351.43 229.85 1000
+   DIR2-SUM ==> SUM: 13035 11898 283.99 165.01 740
+diff -b -q refout/out_4_f my_output//out_4_f failed
+   DIR1-SUM ==> SUM: 1441 1440 254.20 225.40 443
+   DIR2-SUM ==> SUM: 1441 1440 192.32 163.52 433
+diff -b -q refout/out_5_f my_output//out_5_f failed
+   DIR1-SUM ==> SUM: 1003 1002 234.35 184.25 487
+   DIR2-SUM ==> SUM: 1003 1002 183.55 133.45 373
+diff -b -q refout/out_6_f my_output//out_6_f failed
+   DIR1-SUM ==> SUM: 3443 3442 512.69 478.27 913
+   DIR2-SUM ==> SUM: 3443 3442 382.05 347.63 948
+diff -b -q refout/out_7_f my_output//out_7_f failed
+   DIR1-SUM ==> SUM: 2174 2173 324.24 297.07 583
+   DIR2-SUM ==> SUM: 2173 2172 280.94 253.79 583
+diff -b -q refout/out_8_f my_output//out_8_f failed
+   DIR1-SUM ==> SUM: 7784 7783 953.30 856.01 1950
+   DIR2-SUM ==> SUM: 7618 7617 660.98 565.76 1435
+diff -b -q refout/out_9_f my_output//out_9_f failed
+   DIR1-SUM ==> SUM: 24586 24585 486.54 437.37 956
+   DIR2-SUM ==> SUM: 24358 24357 374.44 325.72 952

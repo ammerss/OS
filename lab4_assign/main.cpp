@@ -18,7 +18,7 @@ int main(int argc, char *argv[]){
 				else if(optarg[0] == 'j') sched = new SSTF();
 				else if(optarg[0] == 's') sched = new LOOK();
 				else if(optarg[0] == 'c') sched = new CLOOK();
-				else sched = new FIFO();
+				else if(optarg[0] == 'f') sched = new FLOOK();
 				break;
 			case 'v':
 				break;
